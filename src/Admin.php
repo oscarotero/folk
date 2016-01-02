@@ -5,14 +5,18 @@ namespace Folk;
 use Fol;
 use Folk\Entities\EntitiesInterface;
 use Aura\Router\RouterContainer;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr7Middlewares\Middleware as M;
+use Zend\Diactoros\Response;
+use Relay\RelayBuilder;
 
 /**
  * Main manager
  */
 class Admin extends Fol
 {
-    protected $entities = [];
+    private $entities = [];
 
     public $title = 'Folk';
     public $description = 'Universal CMS';
@@ -23,6 +27,16 @@ class Admin extends Fol
         $this->register(new Providers\Middlewares());
         $this->register(new Providers\Router());
         $this->register(new Providers\Templates());
+    }
+
+    /**
+     * @return ResponseInterface
+     */
+    public function __invoke(ServerRequestInterface $request)
+    {
+        $dispatcher = (new RelayBuilder())->newInstance($this['middlewares']);
+
+        return $dispatcher($request, new Response());
     }
 
     /**

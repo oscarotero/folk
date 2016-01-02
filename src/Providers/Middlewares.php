@@ -26,7 +26,7 @@ class Middlewares implements ServiceProviderInterface
                 Middleware::FormatNegotiator(),
 
                 function ($request, $response, $next) {
-                    $path = substr($request->getUri()->getPath(), 6);
+                    $path = $request->getUri()->getPath();
 
                     $file = dirname(__DIR__).'/assets'.$path;
 

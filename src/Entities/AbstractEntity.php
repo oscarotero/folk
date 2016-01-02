@@ -7,7 +7,7 @@ use Folk\Admin;
 /**
  * Base class extended by all entities.
  */
-abstract class Base implements EntitiesInterface
+abstract class AbstractEntity implements EntitiesInterface
 {
     protected $manager;
 
