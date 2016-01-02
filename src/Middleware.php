@@ -3,7 +3,6 @@
 namespace Folk;
 
 use Relay\RelayBuilder;
-use Psr7Middlewares\Middleware as M;
 
 class Middleware
 {

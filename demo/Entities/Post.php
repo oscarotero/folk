@@ -12,8 +12,8 @@ class Post extends AbstractEntity
     {
         return [
             1 => [
-                'title' => 'Hello world'
-            ]
+                'title' => 'Hello world',
+            ],
         ];
     }
 
@@ -25,7 +25,7 @@ class Post extends AbstractEntity
     public function read($id)
     {
         return [
-            'title' => 'Hello world'
+            'title' => 'Hello world',
         ];
     }
 
@@ -41,7 +41,7 @@ class Post extends AbstractEntity
     public function getScheme(Builder $builder)
     {
         return $builder->group([
-            'title' => $builder->text()->label('Title')
+            'title' => $builder->text()->label('Title'),
         ]);
     }
 }

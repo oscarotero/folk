@@ -1,7 +1,6 @@
 <?php
 
 use Zend\Diactoros\ServerRequestFactory;
-use Zend\Diactoros\Response;
 use Zend\Diactoros\Response\SapiEmitter;
 
 include dirname(__DIR__).'/vendor/autoload.php';

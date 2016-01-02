@@ -3,7 +3,6 @@
 namespace Folk\Controllers;
 
 use Zend\Diactoros\Response\RedirectResponse;
-use Psr7Middlewares\Middleware\ErrorHandler;
 
 class Index
 {

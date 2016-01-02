@@ -1,5 +1,5 @@
 require.config({
-	//urlArgs: "bust=" +  (new Date()).getTime(), //evitar cache
+	urlArgs: "bust=" +  (new Date()).getTime(), //evitar cache
 	paths: {
 		"delegato": "../bower_components/delegato/dist/delegato",
 		"jquery": "../bower_components/jquery/dist/jquery",

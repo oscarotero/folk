@@ -4,7 +4,6 @@ namespace Folk\Providers;
 
 use Fol;
 use Fol\ServiceProviderInterface;
-use Folk\FormatFactory;
 use Psr7Middlewares\Middleware;
 
 class Middlewares implements ServiceProviderInterface
@@ -32,6 +31,7 @@ class Middlewares implements ServiceProviderInterface
 
                     if (is_file($file)) {
                         $response->getBody()->write(file_get_contents($file));
+
                         return $response;
                     }
 

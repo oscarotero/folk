@@ -4,15 +4,13 @@ namespace Folk;
 
 use Fol;
 use Folk\Entities\EntitiesInterface;
-use Aura\Router\RouterContainer;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Psr7Middlewares\Middleware as M;
 use Zend\Diactoros\Response;
 use Relay\RelayBuilder;
 
 /**
- * Main manager
+ * Main manager.
  */
 class Admin extends Fol
 {
