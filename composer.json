@@ -1,0 +1,28 @@
+{
+    "name": "oscarotero/folk",
+    "type": "library",
+    "description": "PHP framework",
+    "keywords": ["cms"],
+    "homepage": "https://github.com/fol-project/fol",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oscar Otero",
+            "email": "oom@oscarotero.com",
+            "homepage": "http://oscarotero.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "oom@oscarotero.com",
+        "issues": "https://github.com/oscarotero/folk/issues"
+    },
+    "require": {
+        "php": ">=5.5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Folk\\": "src/"
+        }
+    }
+}
