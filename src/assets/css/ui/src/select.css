@@ -1,0 +1,67 @@
+/*
+ * .button-select.button select
+ *
+ * wrapper to customize selects
+ */
+
+.button.select {
+	padding:0;
+
+	select {
+		font-size: inherit;
+		line-height: inherit;
+		appearance: none;
+		outline: none;
+		padding: 0.3em 1em;
+		margin: 0;
+		width: 100%;
+		border: none;
+		background: none;
+		box-sizing: border-box;
+		cursor: inherit;
+
+		:-moz-focusring {
+			color: transparent;
+			text-shadow: 0 0 0 #000;
+		}
+	}
+
+	option {
+		padding-right: 1.5em;
+	}
+
+	&::after {
+		content: "\25BC";
+		position: absolute;
+		height: 1em;
+		top: 50%;
+		right: 1em;
+		margin-top:-0.5em;
+		z-index: 2;
+		pointer-events: none;
+		font-size: 0.8em;
+	}
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+	.button.select select {
+		&::-ms-expand {
+			display: none;
+		}
+
+		&:focus::-ms-value {
+			background: transparent;
+			color: inherit;
+		}
+	}
+}
+
+@-moz-document url-prefix() {
+	.button.select {
+		overflow: hidden;
+
+		select {
+			width: calc(100% + 3em);
+		}
+	}
+}

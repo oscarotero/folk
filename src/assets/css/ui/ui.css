@@ -1,0 +1,15 @@
+/* Variables */
+:root {
+	--border-radius: 3px;
+	--main-color: #CCC;
+}
+
+/* components */
+@import 'src/button.css';
+@import 'src/select.css';
+@import 'src/range.css';
+@import 'src/check.css';
+
+/* statuses */
+@import 'src/disabled.css';
+@import 'src/checked.css';

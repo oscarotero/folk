@@ -1,0 +1,46 @@
+.page-console .console {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--black);
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+
+	.console-output {
+		padding: 1em;
+		flex-grow: 1;
+		color: white;
+		overflow-y: auto;
+	}
+	.console-input {
+		background: black;
+		color: white;
+		border: none;
+		padding: 1em;
+		font-family: monospace;
+		font-size: 1rem;
+		font-weight: normal;
+	}
+
+	.command-request {
+		font-weight: bold;
+		padding: 0.5em;
+	}
+	.command-response {
+		color: var(--gray);
+		margin-bottom: 2em;
+		padding-left: 2em;
+
+		.error {
+			background: color(red a(0.5));
+			color: white;
+		}
+	}
+
+	::selection {
+		background: black;
+	}
+}

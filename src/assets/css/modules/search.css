@@ -1,0 +1,68 @@
+/* Buscador typeahead */
+
+.tt-dropdown-menu {
+	width: 100%;
+	min-width: 230px;
+	background: var(--white);
+	padding: 0.5em 0.5em;
+	border: var(--border-thin);
+	border-top: none;
+	box-sizing: border-box;
+	margin-top: 0.6em;
+	box-shadow: 0 3px 6px -3px color(black a(0.1));
+
+	.tt-suggestion {
+		padding: 0.5em;
+
+		&.tt-cursor {
+			background-color: var(--lightgray);
+		}
+	}
+}
+
+/* Buscador selectize */
+@import "selectize";
+
+.selectize-input, .selectize-input.full {
+	border: var(--border-thin);
+	padding: 0.7em 0.5em;
+	border-radius: 2px;
+	box-shadow: none;
+	font-size: inherit;
+	line-height: inherit;
+	color: inherit;
+	display: block;
+	background: color(var(--gray) tint(93%));
+
+	input {
+		font-size: inherit;
+		line-height: inherit;
+		color: inherit;
+	}
+
+	&.focus {
+		border: var(--border-thin);
+		border-top-color: color(var(--gray) tint(60%));
+		box-shadow: inset 0 1px 2px color(var(--gray) a(0.15));
+	}
+}
+.selectize-control.multi .selectize-input > div {
+	background: color(var(--gray) tint(75%)) !important;
+	border-radius: 2px;
+	padding: 0.3em 0.6em;
+}
+.selectize-control.single .selectize-input.input-active {
+	background: color(var(--gray) tint(93%));
+	display: block;
+}
+.selectize-dropdown {
+	font-size: inherit;
+	line-height: inherit;
+	color: var(--gray);
+	background: var(--lightgray);
+
+	.active {
+		color: var(--black);
+		background: color(var(--gray) tint(75%));
+	}
+}

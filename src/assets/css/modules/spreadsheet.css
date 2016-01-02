@@ -1,0 +1,8 @@
+/* Estilos handsontable */
+@import "handsontable";
+
+.handsontableInputHolder {
+	.handsontableInput {
+		padding: 0;
+	}
+}

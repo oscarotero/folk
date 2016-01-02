@@ -1,0 +1,8 @@
+/* Estilos codemirror */
+@import "codemirror";
+
+.CodeMirror {
+	border: var(--border-thin);
+	border-radius: 3px;
+	height: auto;
+}

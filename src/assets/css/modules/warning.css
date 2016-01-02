@@ -1,0 +1,8 @@
+.warning {
+	padding: 2em;
+	text-align: center;
+	color: var(--gray);
+	font-size: 4rem;
+	letter-spacing: -0.03em;
+	font-weight: var(--font-normal);
+}

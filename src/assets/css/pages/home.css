@@ -1,0 +1,56 @@
+.html-index {
+	background: var(--black);
+	color: var(--lightgray);
+}
+
+.page-home {
+	.page-header {
+		text-align: center;
+		padding: 2em 0;
+
+		h1 {
+			font-size: 4em;
+			letter-spacing: -0.03em;
+			margin: 0;
+			line-height: 1;
+		}
+
+		p {
+			font-size: 0.8rem;
+		}
+
+		a {
+			color: inherit;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+}
+.page-home-list {
+	max-width: 30em;
+	margin: 0 auto;
+}
+
+@media (min-width: 800px) {
+	.page-home {
+		.page-header {
+			position: fixed;
+			right: 60%;
+			top: 33%;
+			text-align: right;
+			padding-right: 2em;
+		}
+		.page-content {
+			padding: 2em;
+			position: absolute;
+			left: 40%;
+			top: 15%;
+			width: 40%;
+		}
+	}
+	.page-home-list {
+		margin-left: 0;
+	}
+}

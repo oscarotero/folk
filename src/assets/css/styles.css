@@ -1,0 +1,89 @@
+@import "system-font.css";
+@import "normalize-css";
+
+:root {
+	--font: system, Helvetica, Arial, sans-serif;
+	--font-normal: 300;
+	--font-bold: 500;
+	--black: #2F3438;
+	--gray: color(var(--black) tint(50));
+	--alightgray: color(var(--gray) a(0.15));
+	--lightgray: color(var(--gray) tint(85%));
+	--xlightgray: color(var(--gray) tint(93%));
+	--white: #FFF;
+	--color-error: red;
+
+	/* Borders */
+	--border-thin: solid 1px var(--alightgray);
+	--border-bold: solid 6px var(--alightgray);
+}
+
+@custom-media --narrow (min-width: 20rem);
+@custom-media --medium (min-width: 40rem);
+
+html {
+	font-family: var(--font);
+	color: var(--black);
+	font-weight: var(--font-normal);
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.logo {
+	font-weight: normal;
+	font-family: Georgia, Times, sans-serif;
+	letter-spacing: -0.02em;
+}
+
+h1, h2, h3, h4, h5, h6, strong {
+	font-weight: var(--font-bold);
+}
+
+::selection {
+	background: color(var(--black) a(0.2));
+}
+
+/* Modules */
+@import "modules/menu.css";
+@import "modules/footer.css";
+@import "modules/buttons.css";
+@import "modules/search.css";
+@import "modules/popup.css";
+@import "modules/icons.css";
+@import "modules/wysiwyg.css";
+@import "modules/code.css";
+@import "modules/spreadsheet.css";
+
+/* pages */
+@import "pages/home.css";
+@import "pages/console.css";
+@import "pages/form.css";
+@import "pages/list.css";
+
+
+.ia-12 {
+	line, circle {
+		stroke: var(--gray);
+		stroke-width: 2px;
+	}
+}
+:hover > .ia-12 {
+	line, circle {
+		stroke-width: 4px;
+	}
+}
+
+.home-header {
+	text-align: center;
+	padding: 6em 0;
+	border-bottom: var(--border-thin);
+	margin-bottom: 1em;
+
+	h1 {
+		font-size: 3em;
+		margin: 0;
+	}
+}

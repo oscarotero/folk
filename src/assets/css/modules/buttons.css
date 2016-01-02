@@ -1,0 +1,218 @@
+@import '../ui/src/button.css';
+
+.button {
+	transition: all 0.5s;
+
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.5em;
+  }
+}
+
+.button.button-link {
+  background: none;
+  padding: 0.5em 1em;
+  color: var(--gray);
+  font-weight: var(--font-normal);
+
+  &:hover {
+    color: var(--black);
+    background-color: var(--lightgray);
+  }
+}
+
+.button.button-bookmarklet {
+  background: var(--gray);
+  padding: 0.3em 0.5em;
+  font-size: 0.8rem;
+  font-weight: var(--font-normal);
+  display: inline-block;
+  width: auto;
+  border-radius: 1rem;
+
+  &:hover {
+    color: var(--black);
+    background-color: var(--lightgray);
+  }
+}
+
+.button-toolbar {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin: 0 0 0.3em 0;
+  border-left: var(--border-thin);
+
+  .button {
+    color: var(--gray);
+    font-weight: var(--font-normal);
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    padding: 0.5em 1em;
+    border: var(--border-thin);
+    border-left: none;
+
+    &:hover {
+      color: var(--black);
+      background-color: var(--lightgray);
+    }
+
+    &.is-active {
+      color: var(--black);
+      background-color: var(--lightgray);
+    }
+  }
+}
+
+.button-separator {
+  text-align: center;
+  margin: 4rem 0;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 45%;
+    width: 100%;
+    border-top: dotted 2px var(--gray);
+  }
+  .button {
+    box-shadow: 0 0 0 10px white;
+  }
+}
+
+.button.button-normal {
+	background: var(--lightgray);
+	padding: 0.5em 1em;
+	min-width: 150px;
+  color: var(--gray);
+  font-weight: var(--font-bold);
+  border: var(--border-thin);
+
+  &:hover {
+	  color: var(--white);
+		background-color: var(--gray);
+
+    line {
+      stroke: var(--white);
+    }
+	}
+}
+
+.button.button-call {
+  background: var(--black);
+  padding: 1em 2em;
+  min-width: 200px;
+  text-transform: uppercase;
+  color: var(--white);
+  font-weight: var(--font-bold);
+
+  &:hover {
+    background-color: var(--gray);
+  }
+}
+
+.button.button-page {
+	background: var(--lightgray);
+  padding: 0.5em 1em;
+  color: var(--gray);
+  font-weight: var(--font-bold);
+  border: var(--border-thin);
+  font-size: var(--fs-26);
+  line-height: 1.6;
+  svg {
+    margin: 0;
+  }
+
+  &:hover {
+    color: var(--white);
+    background-color: var(--gray);
+
+    line {
+      stroke: var(--white);
+    }
+  }
+}
+
+@media (max-width: 400px) {
+	.button {
+		display: block;
+		width: 100%;
+	}
+}
+
+/* Range */
+input[type=range].range {
+/* mozilla */
+  &::-moz-range-track {
+    border: var(--border-thin);
+    background: var(--white);
+    border-radius: 6px;
+  }
+
+  &::-moz-range-thumb {
+    border: none;
+    border-radius: 2px;
+    background: var(--gray);
+  }
+
+  /* webkit */
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 0.5em;
+    cursor: pointer;
+    background: var(--white);
+    border-radius: 6px;
+    border: var(--border-thin);
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+    background-color: var(--white);
+  }
+
+  &::-webkit-slider-thumb {
+    border: none;
+    height: 1.5em;
+    width: 1.2em;
+    border-radius: 2px;
+    background: var(--gray);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -0.5em;
+  }
+
+  /* microsoft */
+  &::-ms-track {
+    width: 100%;
+    height: 0.5em;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+    border-radius: 6px;
+    border: var(--border-thin);
+  }
+
+  &::-ms-fill-lower, &::-ms-fill-upper {
+    border-radius: 6px;
+    border: var(--border-thin);
+    background: var(--white);
+  }
+
+  &::-ms-thumb {
+    border: none;
+    height: 1.5em;
+    width: 1.2em;
+    border-radius: 2px;
+    background: var(--gray);
+    cursor: pointer;
+  }
+
+  &:focus::-ms-fill-lower {
+    background: var(--white);
+  }
+  &:focus::-ms-fill-upper {
+    background: var(--white);
+  }
+}

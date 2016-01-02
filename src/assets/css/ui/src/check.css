@@ -1,0 +1,14 @@
+/*
+ * .button-select.button select
+ *
+ * wrapper to customize selects
+ */
+
+.check {
+	display: inline-block;
+	vertical-align: middle;
+	input[type="checkbox"],
+	input[type="radio"] {
+		display: none;
+	}
+}

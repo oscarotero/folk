@@ -1,0 +1,24 @@
+.format {
+	.cke_chrome {
+		box-shadow: none;
+		border: none;
+	}
+	.cke_top {
+		padding: 0;
+		border-bottom: none;
+		background: none !important;
+		position: sticky;
+		top: 60px;
+		box-shadow: none;
+	}
+	.cke_contents {
+		border: var(--border-thin);
+		border-radius: 3px;
+	}
+	.cke_bottom {
+		border-top: none;
+	}
+	.cke_combo_text {
+		width: auto; /* para que non quede cortado o texto */
+	}
+}

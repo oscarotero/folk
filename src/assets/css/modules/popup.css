@@ -1,0 +1,19 @@
+/* Buscador selectize */
+@import "magnific-popup";
+
+.mfp-bg {
+	opacity: 1;
+	background: var(--alightgray);
+}
+.mfp-container {
+	.mfp-close {
+		color: var(--black);
+	}
+	.mfp-title {
+		color: var(--black);
+		background: white;
+	}
+	.mfp-figure::after {
+		box-shadow: none;
+	}
+}

@@ -1,0 +1,51 @@
+/*
+ * .button
+ *
+ * Base class
+ */
+
+/* Generic button */
+.button {
+	box-sizing: border-box;
+	display: inline-block;
+	padding: 0.3em 1em;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	border: 1px solid transparent;
+	text-decoration: none;
+	font-style: normal;
+	white-space: nowrap;
+	margin: 0;
+	position: relative;
+	overflow: hidden;
+	color: black;
+	font-size: 1em;
+	line-height: 1.25;
+	max-width: 100%;
+	text-overflow: ellipsis;
+	background: none;
+	font-family: inherit;
+
+	/* Buttons containing input[type="file"] */
+	input[type="file"] {
+		opacity: 0;
+		position: absolute;
+		left: 0;
+		top: 0;
+		cursor: inherit;
+	}
+
+	/* Buttons with select */
+	&select {
+		line-height: 1;
+		padding-right: 0.7em;
+		padding-left: 0.7em;
+		outline: none;
+		text-align: left;
+
+		option {
+			padding: 0 0.5em;
+		}
+	}
+}

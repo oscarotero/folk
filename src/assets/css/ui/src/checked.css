@@ -1,0 +1,8 @@
+
+/* Checked */
+input:checked + .button,
+.button:active,
+.is-checked {
+	background: black;
+	color: white;
+}
