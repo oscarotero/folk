@@ -15,7 +15,7 @@ class Index
     {
         $entity = $request->getAttribute('entity');
 
-        return new RedirectResponse($app['router']->getGenerator()->generate('list', [
+        return new RedirectResponse($app->getRouteUrl('list', [
             'entity' => $entity,
         ]));
     }

@@ -43,7 +43,7 @@ class Entity
 
         //Redirect to edit element if it's only one result
         if (!empty($search->getQuery()) && count($items) === 1) {
-            return new RedirectResponse($app['router']->getGenerator()->generate('edit', [
+            return new RedirectResponse($app->getRouteUrl('edit', [
                 'entity' => $entity->name,
                 'id' => key($items),
             ]));
@@ -105,7 +105,7 @@ class Entity
             $form->loadFromPsr7($request);
 
             if ($form->isValid()) {
-                return new RedirectResponse($app['router']->getGenerator()->generate('edit', [
+                return new RedirectResponse($app->getRouteUrl('edit', [
                     'entity' => $entity->name,
                     'id' => $entity->create($form['data']->val()),
                 ]));
@@ -146,7 +146,7 @@ class Entity
             if ($form->isValid()) {
                 $entity->update($id, $form['data']->val());
 
-                return new RedirectResponse($app['router']->getGenerator()->generate('edit', [
+                return new RedirectResponse($app->getRouteUrl('edit', [
                     'entity' => $entity->name,
                     'id' => $id,
                 ]));
@@ -187,7 +187,7 @@ class Entity
 
         $entity->delete($request->getAttribute('id'));
 
-        return new RedirectResponse($app['router']->getGenerator()->generate('list', [
+        return new RedirectResponse($app->getRouteUrl('list', [
             'entity' => $entity->name,
         ]));
     }
@@ -213,7 +213,7 @@ class Entity
 
         call_user_func($actions[$name][0], $data);
 
-        return new RedirectResponse($app['router']->getGenerator()->generate('edit', [
+        return new RedirectResponse($app->getRouteUrl('edit', [
             'entity' => $entity->name,
             'id' => $request->attributes['id'],
         ]));

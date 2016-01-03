@@ -11,7 +11,7 @@ class Router implements ServiceProviderInterface
     public function register(Fol $app)
     {
         $app['router'] = function ($app) {
-            $router = new RouterContainer($app->getUrlPath());
+            $router = new RouterContainer();
 
             $map = $router->getMap();
             $ns = 'Folk\\Controllers';

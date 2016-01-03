@@ -19,8 +19,10 @@ class Admin extends Fol
     public $title = 'Folk';
     public $description = 'Universal CMS';
 
-    public function __construct()
+    public function __construct($url)
     {
+        $this->setUrl($url);
+
         $this->register(new Providers\Builder());
         $this->register(new Providers\Middlewares());
         $this->register(new Providers\Router());
@@ -35,6 +37,11 @@ class Admin extends Fol
         $dispatcher = (new RelayBuilder())->newInstance($this['middlewares']);
 
         return $dispatcher($request, new Response());
+    }
+
+    public function getRouteUrl($name, array $data = array(), array $query = null)
+    {
+        return $this->getUrl($this['router']->getGenerator()->generate($name, $data)).($query ? '?'.http_build_query($query) : '');
     }
 
     /**

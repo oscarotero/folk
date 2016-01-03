@@ -19,7 +19,7 @@
 				<?php foreach ($rows as $id => $row): ?>
 				<tr>
 					<th>
-						<a class="button button-normal" href="<?= $this->url('edit', ['entity' => $entity->name, 'id' => $id]) ?>">
+						<a class="button button-normal" href="<?= $app->getRouteUrl('edit', ['entity' => $entity->name, 'id' => $id]) ?>">
 							<?= $id ?>
 						</a>
 					</th>
@@ -38,7 +38,7 @@
 
 		<?php if ($search->getPage() !== null): ?>
 			<footer class="footer-primary">
-				<a href="<?= $this->url('list', ['entity' => $entity->name], [
+				<a href="<?= $app->getRouteUrl('list', ['entity' => $entity->name], [
                         'query' => isset($search) ? $search->getQuery() : null,
                         'page' => $search->getPage() + 1,
                     ]) ?>" class="button button-normal ui-autoload-btn">

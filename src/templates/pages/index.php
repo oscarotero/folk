@@ -6,13 +6,13 @@ $this->layout('html', ['html_class' => 'html-index']);
 	<header class="page-header">
 		<h1><?= $app->title ?></h1>
 
-		<?php if (false && $admin->hasUrl()): ?>
+		<?php if ($app->has('url')): ?>
 
 		<?php
             $bookmarklet = <<<BOOKMARKLET
 (function () {
-	if (document.location.href.indexOf('{$admin->getUrl()}') !== 0) {
-		alert('This bookmarklet is only valid for \'{$admin->getUrl()}\'');
+	if (document.location.href.indexOf('{$app['url']}') !== 0 || document.location.href.indexOf('{$app->getUrl()}') === 0) {
+		alert('This bookmarklet is only valid for \'{$app['url']}\'');
 	}
 
 	var buttons = document.querySelectorAll('.folk-button');
@@ -31,10 +31,10 @@ $this->layout('html', ['html_class' => 'html-index']);
 
 		if (parts.length === 1) {
 			link.innerHTML = 'List ' + parts[0];
-			link.setAttribute('href', '{$this->asset()}/' + parts[0] + '/list');
+			link.setAttribute('href', '{$app->getUrl()}/' + parts[0] + '/list');
 		} else {
 			link.innerHTML = 'Edit ' + parts[0] + ' #' + parts[1];
-			link.setAttribute('href', '{$this->asset()}/' + parts[0] + '/' + parts[1] + '/edit');
+			link.setAttribute('href', '{$app->getUrl()}/' + parts[0] + '/' + parts[1] + '/edit');
 		}
 
 		link.setAttribute('class', 'folk-button');
@@ -62,7 +62,7 @@ BOOKMARKLET;
 
 			<p>
 				<?= $app->description ?>
-				| <a href="<?= $app->getUrl() ?>" target="_blank">View web</a>
+				| <a href="<?= $app['url'] ?>" target="_blank">View web</a>
 			</p>
 			<p>
 				<a class="button button-bookmarklet" href="javascript:<?= $bookmarklet ?>">Bookmarklet</a>
@@ -79,7 +79,7 @@ BOOKMARKLET;
 		<ul class="page-home-list menu-primary-options">
 			<?php foreach ($app->getAllEntities() as $entity): ?>
 			<li>
-				<a href="<?= $this->url('list', ['entity' => $entity->name]) ?>">
+				<a href="<?= $app->getRouteUrl('list', ['entity' => $entity->name]) ?>">
 					<h2><?= $entity->title; ?></h2>
 
 					<?php if ($entity->description): ?>

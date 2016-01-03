@@ -20,7 +20,9 @@ class Middlewares implements ServiceProviderInterface
                     return false;
                 }),
 
-                Middleware::trailingSlash()->basePath($app->getUrlPath()),
+                Middleware::basePath($app->getUrlPath()),
+
+                Middleware::trailingSlash(),
 
                 Middleware::FormatNegotiator(),
 
