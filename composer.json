@@ -26,27 +26,7 @@
         "oscarotero/psr7-middlewares": "^3.10",
         "willdurand/negotiation": "^2.0",
         "fol/core": "^11.1",
-        "form-manager/form-manager": "^4.7",
-        "fxp/composer-asset-plugin": "^1.1",
-
-        "bower-asset/delegato": "^1.0.3",
-        "bower-asset/jquery": "^2.1.4",
-        "bower-asset/jquery-lazyscript": "^1.1.3",
-        "bower-asset/normalize-css": "^3.0.3",
-        "bower-asset/icona": "^1.0.0",
-        "bower-asset/typeahead.js": "^0.10.0",
-        "bower-asset/selectize": "^0.12.1",
-        "bower-asset/magnific-popup": "^1.0.1",
-        "bower-asset/codemirror": "^5.10.0",
-        "bower-asset/handsontable": "^0.14.1",
-        "bower-asset/ckeditor": "^4.5.6",
-        "bower-asset/requirejs": "^2.1.22"
-    },
-    "extra": {
-        "asset-optimize-with-installed-packages": false,
-        "asset-installer-paths": {
-            "bower-asset-library": "assets/vendor"
-        }
+        "form-manager/form-manager": "^4.7"
     },
     "autoload": {
         "psr-4": {
