@@ -11,9 +11,9 @@ This is a framework-agnostic CMS that you can use to edit the content of your si
 
 ## Installation
 
-This package is installable and autoloadable via Composer as oscarotero/folk.
+This package is installable and autoloadable via Composer as [oscarotero/folk](https://packagist.org/packages/oscarotero/folk).
 
-```php
+```
 composer require oscarotero/folk
 ```
 
