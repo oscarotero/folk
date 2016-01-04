@@ -1,0 +1,76 @@
+:root {
+	--color: #E95048;
+}
+
+html {
+	background: var(--color);
+	color: white;
+	font-family: Helvetica, Arial, sans-serif
+}
+body {
+	padding: 0 20px;
+	text-align: center;
+	color: color(var(--color) shade(50));
+}
+
+a {
+	color: inherit;
+
+	&:hover {
+		color: black;
+		text-decoration: none;
+	}
+}
+
+h1 {
+	margin: 1rem 0;
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 1.4em;
+}
+
+ul {
+	list-style: none;
+	margin: 3em 0;
+	padding: 0;
+
+	> li {
+		display: inline-block;
+		vertical-align: top;
+		padding: 50px;
+		cursor: pointer;
+
+		svg {
+			margin: 0 auto 10px auto;
+
+			:matches(line, circle) {
+				stroke: white;
+				fill: none;
+				vector-effect: non-scaling-stroke;
+				transition: all 0.5s;
+				stroke-width: 4px;
+				stroke-linecap: round;
+			}
+		}
+
+		&.ia-16 svg {
+			width: 64px;
+			height: 64px;
+			display: block;
+		}
+
+		&.ia-12 svg {
+			width: 48px;
+			height: 48px;
+			display: block;
+		}
+
+		&:hover {
+			background: color(var(--color) blackness(+10%));
+
+			svg :matches(line, circle) {
+				stroke-width: 6px;
+			}
+		}
+	}
+}

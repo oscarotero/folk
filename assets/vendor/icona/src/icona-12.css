@@ -1,0 +1,44 @@
+@import "icona-12-placeholders.css";
+
+.ia-12-menu {
+	@extend %ia12-menu;
+}
+.ia-12-plus {
+	@extend %ia12-plus;
+}
+.ia-12-minus {
+	@extend %ia12-minus;
+}
+.ia-12-cross {
+	@extend %ia12-cross;
+}
+.ia-12-right {
+	@extend %ia12-right;
+}
+.ia-12-left {
+	@extend %ia12-left;
+}
+.ia-12-top {
+	@extend %ia12-top;
+}
+.ia-12-bottom {
+	@extend %ia12-bottom;
+}
+.ia-12-search {
+	@extend %ia12-search;
+}
+.ia-12-check {
+	@extend %ia12-check;
+}
+.ia-12-tright {
+	@extend %ia12-tright;
+}
+.ia-12-tleft {
+	@extend %ia12-tleft;
+}
+.ia-12-ttop {
+	@extend %ia12-ttop;
+}
+.ia-12-tbottom {
+	@extend %ia12-tbottom;
+}

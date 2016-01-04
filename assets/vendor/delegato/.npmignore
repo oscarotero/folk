@@ -1,0 +1,5 @@
+demo/
+.gitignore
+.jshintrc
+Gruntfile.js
+bower.json

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Demo with images</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../jquery.lazyscript.js"></script>
+
+	<style type="text/css">
+		.item {
+			border: solid 4px white;
+			transition: border 4s;
+			width: 300px;
+			height: 300px;
+			float: left;
+			margin: 10px;
+
+		}
+		.changed {
+			border: solid 4px blue;
+		}
+	</style>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$(window).lazyScript({
+				callback: function ($item) {
+					$item.html('<img src="' + $item.data('src') + '">');
+					$item.addClass('changed');
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<div data-src="http://lorempixum.com/300/300/animals/1" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/animals/2" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/animals/3" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/animals/4" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/animals/5" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/animals/6" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/animals/7" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/animals/8" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/animals/9" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/nature/1" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/nature/2" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/nature/3" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/nature/4" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/nature/5" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/nature/6" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/nature/7" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/nature/8" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/nature/9" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/cats/1" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/cats/2" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/cats/3" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/cats/4" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/cats/5" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/cats/6" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/cats/7" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/cats/8" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/cats/9" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/abstract/1" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/abstract/2" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/abstract/3" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/abstract/4" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/abstract/5" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/abstract/6" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/abstract/7" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/abstract/8" class="item lazy">wait...</div>
+	<div data-src="http://lorempixum.com/300/300/abstract/9" class="item lazy">wait...</div>
+
+</body>
+</html>

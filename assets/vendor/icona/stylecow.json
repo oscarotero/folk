@@ -1,0 +1,46 @@
+{
+	"files": [
+		{
+			"input": "src/icona-12.css",
+			"output": "dist/icona-12.min.css",
+			"map": "dist/icona-12.map"
+		},{
+			"input": "src/icona-16.css",
+			"output": "dist/icona-16.min.css",
+			"map": "dist/icona-16.map"
+		},{
+			"input": "demo/styles.css",
+			"output": "demo/styles.min.css",
+			"map": false
+		}
+	],
+	"support": {
+		"explorer": 9,
+		"firefox": 35,
+		"chrome": 40,
+		"safari": 7,
+		"opera": false,
+		"android": 4.2,
+		"ios": 7
+	},
+	"plugins": [
+		"calc",
+		"color",
+		"custom-media",
+		"custom-selector",
+		"extend",
+		"fixes",
+		"flex",
+		"import",
+		"matches",
+		"msfilter-background-alpha",
+		"msfilter-linear-gradient",
+		"msfilter-transform",
+		"nested-rules",
+		"prefixes",
+		"rem",
+		"variables",
+		"webkit-gradient"
+	],
+	"code": "minify"
+}

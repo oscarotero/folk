@@ -1,0 +1,42 @@
+# MACOSX
+
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Icon must ends with two \r.
+Icon
+
+
+
+# WINDOWS
+
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+
+
+
+# DATA STUFF (logs, cache, local config etc)
+config/*/
+
+
+
+# DEPENDENCIES
+
+node_modules/*
+bower_components
+public/*
+composer.phar
+vendor/
+
+# You can comment this line: http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file
+composer.lock

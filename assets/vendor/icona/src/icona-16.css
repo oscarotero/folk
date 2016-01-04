@@ -1,0 +1,44 @@
+@import "icona-16-placeholders.css";
+
+.ia-16-menu {
+	@extend %ia16-menu;
+}
+.ia-16-plus {
+	@extend %ia16-plus;
+}
+.ia-16-minus {
+	@extend %ia16-minus;
+}
+.ia-16-cross {
+	@extend %ia16-cross;
+}
+.ia-16-right {
+	@extend %ia16-right;
+}
+.ia-16-left {
+	@extend %ia16-left;
+}
+.ia-16-top {
+	@extend %ia16-top;
+}
+.ia-16-bottom {
+	@extend %ia16-bottom;
+}
+.ia-16-search {
+	@extend %ia16-search;
+}
+.ia-16-check {
+	@extend %ia16-check;
+}
+.ia-16-tright {
+	@extend %ia16-tright;
+}
+.ia-16-tleft {
+	@extend %ia16-tleft;
+}
+.ia-16-ttop {
+	@extend %ia16-ttop;
+}
+.ia-16-tbottom {
+	@extend %ia16-tbottom;
+}
