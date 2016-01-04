@@ -5,8 +5,13 @@ namespace Folk\Entities;
 use Folk\SearchQuery;
 use SimpleCrud\SimpleCrud as SimpleCrudDatabase;
 
-abstract class SimpleCrud extends AbstractEntity
+abstract class SimpleCrud implements EntityInterface
 {
+    public $manager;
+    public $name;
+    public $title;
+    public $description;
+
     protected $db;
     protected $entity;
     protected $searchFields;

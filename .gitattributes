@@ -1,1 +1,5 @@
-/demo/ export-ignore
+/demo/         export-ignore
+bower.json     export-ignore
+gulpfile.js    export-ignore
+stylecow.json  export-ignore
+.gitattributes export-ignore

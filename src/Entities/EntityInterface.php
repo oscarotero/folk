@@ -9,20 +9,14 @@ use FormManager\Builder;
 /**
  * Interface used by all entities.
  */
-interface EntitiesInterface
+interface EntityInterface
 {
-    /**
-     * Set the Admin instance for this entity.
-     *
-     * @param string $name
-     * @param Admin  $admin
-     */
-    public function setAdmin($name, Admin $admin);
-
     /**
      * List the entity rows.
      *
      * @param SearchQuery|null $search
+     * 
+     * @return array The rows data
      */
     public function search(SearchQuery $search = null);
 

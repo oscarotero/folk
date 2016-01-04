@@ -3,7 +3,7 @@
 namespace Folk;
 
 use Fol;
-use Folk\Entities\EntitiesInterface;
+use Folk\Entities\EntityInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Zend\Diactoros\Response;
@@ -47,12 +47,20 @@ class Admin extends Fol
     /**
      * Add a new entity.
      *
-     * @param EntitiesInterface $entity
+     * @param EntityInterface $entity
      */
-    protected function addEntity(EntitiesInterface $entity)
+    protected function addEntity(EntityInterface $entity)
     {
-        $name = strtolower(substr(strrchr(get_class($entity), '\\'), 1));
-        $entity->setAdmin($name, $this);
+        if (empty($entity->name)) {
+            $name = strtolower(substr(strrchr(get_class($entity), '\\'), 1));
+            $entity->name = $name;
+        }
+
+        if (empty($entity->title)) {
+            $entity->title = ucfirst($entity->name);
+        }
+
+        $entity->admin = $this;
 
         $this->entities[$name] = $entity;
     }
