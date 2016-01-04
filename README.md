@@ -31,7 +31,7 @@ $admin->addEntity(new Entities\Comments());
 $admin->addEntity(new Entities\Categories());
 $admin->addEntity(new Entities\Tags());
 
-//Use a PSR-7 compatible library to run the site. For example Diactoros
+//Run the web
 $request = Zend\Diactoros\ServerRequestFactory::fromGlobals();
 $emitter = new Zend\Diactoros\Response\SapiEmitter();
 
