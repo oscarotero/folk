@@ -62,7 +62,7 @@ class Admin extends Fol
 
         $entity->admin = $this;
 
-        $this->entities[$name] = $entity;
+        $this->entities[$entity->name] = $entity;
     }
 
     /**
@@ -70,7 +70,7 @@ class Admin extends Fol
      *
      * @param string $name
      *
-     * @return EntitiesInterface|null
+     * @return EntityInterface|null
      */
     public function getEntity($name)
     {

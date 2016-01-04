@@ -55,7 +55,7 @@ use Folk\Entities\EntityInterface;
 /**
  * Entity to manage the posts
  */
-class Posts implements EntitiesInterface
+class Posts implements EntityInterface
 {
     public $admin;
     public $name;
