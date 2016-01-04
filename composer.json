@@ -43,6 +43,7 @@
         "bower-asset/requirejs": "^2.1.22"
     },
     "extra": {
+        "asset-optimize-with-installed-packages": false,
         "asset-installer-paths": {
             "bower-asset-library": "assets/vendor"
         }
