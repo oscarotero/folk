@@ -8,9 +8,7 @@ class Admin extends Folk\Admin
 {
     public function __construct()
     {
-        $this->setUrl('http://localhost:8888');
-
-        parent::__construct();
+        parent::__construct('http://localhost/folk/demo');
 
         $this->addEntity(new Entities\Post());
     }

@@ -29,7 +29,7 @@ class Middlewares implements ServiceProviderInterface
                 function ($request, $response, $next) {
                     $path = $request->getUri()->getPath();
 
-                    $file = dirname(__DIR__).'/assets'.$path;
+                    $file = dirname(dirname(__DIR__)).'/assets'.$path;
 
                     if (is_file($file)) {
                         $response->getBody()->write(file_get_contents($file));
