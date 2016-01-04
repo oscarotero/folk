@@ -1,7 +1,7 @@
 {
     "name": "oscarotero/folk",
     "type": "library",
-    "description": "PHP framework",
+    "description": "Universal CMS",
     "keywords": ["cms"],
     "homepage": "https://github.com/fol-project/fol",
     "license": "MIT",
