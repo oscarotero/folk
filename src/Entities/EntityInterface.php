@@ -43,8 +43,6 @@ interface EntityInterface
      *
      * @param mixed $id   The entity id
      * @param array $data The entity data
-     *
-     * @return array The entity data
      */
     public function update($id, array $data);
 
