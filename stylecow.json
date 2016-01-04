@@ -1,8 +1,8 @@
 {
     "files": [
         {
-            "input": "public/css/styles.css",
-            "output": "public/css/styles.min.css"
+            "input": "assets/css/styles.css",
+            "output": "assets/css.dist/styles.css"
         }
     ],
     "support": {

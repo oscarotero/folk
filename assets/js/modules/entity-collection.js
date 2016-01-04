@@ -1,6 +1,6 @@
 define([
 	'jquery',
-	'loader',
+	'../loader',
 ], function ($, loader) {
 	return {
 		init: function ($element) {

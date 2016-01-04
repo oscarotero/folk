@@ -22,7 +22,20 @@ gulp.task('css', function() {
 gulp.task('js', function(done) {
     var config = require('./webpack.config');
 
-    requirejs.optimize({}, function () {
+    requirejs.optimize({
+        appDir: "assets/js",
+        baseUrl: '.',
+        mainConfigFile : 'assets/js/main.js',
+        dir: 'assets/js.dist',
+        removeCombined: true
+        /*,
+        modules: [
+            {
+                name: 'main',
+                include: ['../../bower_components/almond/almond.js']
+            }
+        ]*/
+    }, function () {
         done();
     });
 });

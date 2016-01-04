@@ -1,6 +1,6 @@
 define([
 	'jquery',
-	'modules/entity-upload',
+	'./entity-upload',
 	'magnific-popup'
 ], function ($, upload) {
 	return {

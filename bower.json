@@ -1,5 +1,5 @@
 {
-  "name": "bower-dependencies",
+  "name": "folk-dependencies",
   "private": true,
   "dependencies": {
     "delegato": "~1.0.3",

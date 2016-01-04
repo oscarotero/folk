@@ -1,16 +1,16 @@
 require.config({
 	urlArgs: "bust=" +  (new Date()).getTime(), //evitar cache
 	paths: {
-		"delegato": "../bower_components/delegato/dist/delegato",
-		"jquery": "../bower_components/jquery/dist/jquery",
-		"jquery-lazyscript": "../bower_components/jquery-lazyscript/jquery.lazyscript",
-		"magnific-popup": "../bower_components/magnific-popup/dist/jquery.magnific-popup",
-		"sifter": "../bower_components/sifter/sifter",
-		"microplugin": "../bower_components/microplugin/src/microplugin",
-		"selectize": "../bower_components/selectize/dist/js/selectize",
-		"typeahead": "../bower_components/typeahead.js/dist/typeahead.jquery",
-		"ckeditor": "../bower_components/ckeditor/ckeditor",
-		"handsontable": "../bower_components/handsontable/dist/handsontable"
+		"delegato": "../vendor/delegato/dist/delegato",
+		"jquery": "../vendor/jquery/dist/jquery",
+		"jquery-lazyscript": "../vendor/jquery-lazyscript/jquery.lazyscript",
+		"magnific-popup": "../vendor/magnific-popup/dist/jquery.magnific-popup",
+		"sifter": "../vendor/sifter/sifter",
+		"microplugin": "../vendor/microplugin/src/microplugin",
+		"selectize": "../vendor/selectize/dist/js/selectize",
+		"typeahead": "../vendor/typeahead.js/dist/typeahead.jquery",
+		"ckeditor": "../vendor/ckeditor/ckeditor",
+		"handsontable": "../vendor/handsontable/dist/handsontable"
 	},
 	shim: {
 		'ckeditor': {
@@ -22,14 +22,14 @@ require.config({
 	},
 	packages: [{
 		name: "codemirror",
-		location: "../bower_components/codemirror",
+		location: "../vendor/codemirror",
 		main: "lib/codemirror"
 	}]
 });
 
 require([
 	"jquery",
-	"loader",
+	"./loader",
 	"delegato",
 ], function ($, loader) {
 

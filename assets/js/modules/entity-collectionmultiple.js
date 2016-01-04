@@ -1,6 +1,6 @@
 define([
 	'jquery',
-	'loader',
+	'../loader',
 	'./entity-collection'
 ], function ($, loader, collection) {
 	return {
