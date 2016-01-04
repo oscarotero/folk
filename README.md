@@ -2,6 +2,8 @@
 
 The universal CMS
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/oscarotero/folk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/oscarotero/folk/?branch=master)
+
 This is a framework-agnostic CMS that you can use to edit the content of your site. It works with any kind of websites, no matter if the content is stored in a database, yml files, json, etc.
 
 ## Requirements

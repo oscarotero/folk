@@ -49,8 +49,6 @@ class Loader extends Containers\Loader
             $class .= ' has-error';
         }
 
-        $html = $this['loader']->toHtml($prepend, $append).$this['field'];
-
         return <<<EOT
 <div class="{$class}"{$module}{$config}>
     {$prepend}
