@@ -1,0 +1,1 @@
+define(["jquery","./entity-upload","magnific-popup"],function(e,t){return{init:function(n){t.init(n),n.on("click",".ui-view",function(t){t.preventDefault(),e.magnificPopup.open({type:"image",items:{src:e(this).attr("href")}})})},destroy:function(e){t.destroy(e)}}});

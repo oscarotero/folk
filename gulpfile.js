@@ -10,31 +10,29 @@ gulp.task('css', function() {
         gulp
             .src(file.input)
             .pipe(stylecow(config))
-            .on('error', function (error) {
-                console.log(error.toString());
-                this.emit('end');
-            })
             .pipe(rename(file.output))
             .pipe(gulp.dest(''));
     });
 });
 
 gulp.task('js', function(done) {
-    var config = require('./webpack.config');
-
     requirejs.optimize({
         appDir: "assets/js",
         baseUrl: '.',
         mainConfigFile : 'assets/js/main.js',
         dir: 'assets/js.dist',
-        removeCombined: true
-        /*,
+        removeCombined: true,
         modules: [
             {
                 name: 'main',
-                include: ['../../bower_components/almond/almond.js']
+                include: [
+                    '../vendor/requirejs/require',
+                    './modules/page-loader',
+                    './modules/page-loader',
+                    './modules/search'
+                ]
             }
-        ]*/
+        ]
     }, function () {
         done();
     });

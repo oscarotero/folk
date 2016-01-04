@@ -27,6 +27,6 @@
         "rem",
         "variables"
     ],
-    "code": "normal",
+    "code": "minify",
     "map": "file"
 }

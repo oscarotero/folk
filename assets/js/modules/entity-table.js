@@ -17,11 +17,7 @@ define([
 			var config = $.extend({}, defaults, $element.data('config') || {}, {
 				data: data ? JSON.parse(data) : [
 					['', ''],['', '']
-				],
-				afterChange: function (changes, source) {
-					console.log(changes);
-					console.log(source);
-				}
+				]
 			});
 
 			var editor = new handsontable($container[0], config);

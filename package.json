@@ -5,12 +5,10 @@
     "bower": "^1.6.5",
     "gulp": "^3.9.0",
     "gulp-rename": "^1.2.2",
-    "gulp-stylecow": "^3.0.2"
+    "gulp-stylecow": "^3.0.2",
+    "requirejs": "^2.1.22"
   },
   "scripts": {
     "install": "bower install"
-  },
-  "dependencies": {
-    "requirejs": "^2.1.22"
   }
 }
