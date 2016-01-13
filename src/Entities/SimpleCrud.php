@@ -5,33 +5,25 @@ namespace Folk\Entities;
 use Folk\SearchQuery;
 use SimpleCrud\SimpleCrud as SimpleCrudDatabase;
 
-abstract class SimpleCrud implements EntityInterface
+abstract class SimpleCrud extends AbstractEntity implements EntityInterface
 {
-    public $manager;
-    public $name;
-    public $title;
-    public $description;
-
-    protected $db;
-    protected $entity;
     protected $searchFields;
 
-    protected function setDatabase(SimpleCrudDatabase $database)
-    {
-        $this->db = $database;
-        $this->entity = $this->db->get($this->name);
-    }
+    abstract protected function getDatabase();
 
     protected function getQuery(SearchQuery $search = null, &$page = null)
     {
+        $database = $this->getDatabase();
+        $entity = $database->get($this->name);
+
         if ($search === null) {
-            return $this->entity->select()->orderBy('id DESC');
+            return $entity->select()->orderBy('id DESC');
         }
 
         $page = $search->getPage() ?: 1;
 
-        $query = $this->entity->select()
-            ->orderBy("`{$this->entity->name}`.`id` DESC")
+        $query = $entity->select()
+            ->orderBy("`{$entity->name}`.`id` DESC")
             ->offset(($page * 50) - 50)
             ->limit(50);
 
@@ -41,12 +33,12 @@ abstract class SimpleCrud implements EntityInterface
 
         foreach ($search->getWords() as $k => $word) {
             foreach ($this->searchFields as $field) {
-                $query->where("`{$this->entity->name}`.`{$field}` LIKE :w{$k}", [":w{$k}" => "%{$word}%"]);
+                $query->where("`{$entity->name}`.`{$field}` LIKE :w{$k}", [":w{$k}" => "%{$word}%"]);
             }
         }
 
         foreach ($search->getConditions() as $name => $value) {
-            $related = $this->db->get($name)->select()->by('id', $value)->all();
+            $related = $database->get($name)->select()->by('id', $value)->all();
             $query->relatedWith($related);
         }
 
@@ -74,7 +66,9 @@ abstract class SimpleCrud implements EntityInterface
      */
     public function create(array $data)
     {
-        return $this->entity->create($data)->save(false, true)->id;
+        $entity = $this->getDatabase()->get($this->name);
+
+        return $entity->create($data)->save(false, true)->id;
     }
 
     /**
@@ -82,7 +76,9 @@ abstract class SimpleCrud implements EntityInterface
      */
     public function read($id)
     {
-        $row = $this->entity[$id];
+        $entity = $this->getDatabase()->get($this->name);
+
+        $row = $entity[$id];
 
         return $row ? $row->toArray() : null;
     }
@@ -92,7 +88,9 @@ abstract class SimpleCrud implements EntityInterface
      */
     public function update($id, array $data)
     {
-        return $this->entity[$id]->set($data)->save(false, true)->toArray();
+        $entity = $this->getDatabase()->get($this->name);
+
+        return $entity[$id]->set($data)->save(false, true)->toArray();
     }
 
     /**
@@ -100,7 +98,9 @@ abstract class SimpleCrud implements EntityInterface
      */
     public function delete($id)
     {
-        unset($this->entity[$id]);
+        $entity = $this->getDatabase()->get($this->name);
+
+        unset($entity[$id]);
     }
 
     /**
@@ -116,7 +116,9 @@ abstract class SimpleCrud implements EntityInterface
      */
     protected function getFirstField()
     {
-        foreach (array_keys($this->entity->fields) as $key) {
+        $entity = $this->getDatabase()->get($this->name);
+
+        foreach (array_keys($entity->fields) as $key) {
             if ($key !== 'id') {
                 return $key;
             }

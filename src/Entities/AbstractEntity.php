@@ -9,7 +9,7 @@ use Folk\Admin;
  */
 abstract class AbstractEntity implements EntityInterface
 {
-    public $manager;
+    public $admin;
     public $name;
     public $title;
     public $description;
