@@ -21,19 +21,19 @@ composer require oscarotero/folk
 
 ## Entities
 
-The entities are classes to manage "things". It can be a database table, a file, a directory with files, etc. They implement the `Folk\Entities\EntityInterface` interface to execute CRUD functions. Let's say an example of a entity using a database table to save/retrieve data.
+The entities are classes to manage "things". It can be a database table, a file, a directory with files, etc. They must implement the `Folk\Entities\EntityInterface` interface (or extend the `Folk\Entities\AbstractEntity`). Let's see an example of an entity using a database table.
 
 ```php
 namespace MyEntities;
 
 use Folk\SearchQuery;
 use FormManager\Builder;
-use Folk\Entities\EntityInterface;
+use Folk\Entities\AbstractEntity;
 
 /**
  * Entity to manage the posts
  */
-class Posts implements EntityInterface
+class Posts extends AbstractEntity
 {
     public $title = 'Posts';
     public $description = 'These are the posts of the blog';
@@ -45,7 +45,7 @@ class Posts implements EntityInterface
      */
     public function search(SearchQuery $search = null)
     {
-        $pdo = $this->admin->get('pdo');
+        $pdo = $this->admin['pdo'];
 
         $result = $pdo->query('SELECT * FROM posts');
         $data = [];
@@ -64,7 +64,7 @@ class Posts implements EntityInterface
      */
     public function create(array $data)
     {
-        $pdo = $this->admin->get('pdo');
+        $pdo = $this->admin['pdo'];
 
         $statement = $pdo->prepare('INSERT INTO posts (title, text) VALUES (:title, :text)');
         $statement->execute([
@@ -82,7 +82,7 @@ class Posts implements EntityInterface
      */
     public function read($id)
     {
-        $pdo = $this->admin->get('pdo');
+        $pdo = $this->admin['pdo'];
 
         $statement = $pdo->prepare('SELECT * FROM posts WHERE id = ? LIMIT 1');
         $statement->execute([$id]);
@@ -95,7 +95,7 @@ class Posts implements EntityInterface
      */
     public function update($id, array $data)
     {
-        $pdo = $this->admin->get('pdo');
+        $pdo = $this->admin['pdo'];
 
         $statement = $pdo->prepare('UPDATE posts SET title = :title, text = :text WHERE id = :id LIMIT 1');
         $statement->execute([
@@ -110,7 +110,7 @@ class Posts implements EntityInterface
      */
     public function delete($id)
     {
-        $pdo = $this->admin->get('pdo');
+        $pdo = $this->admin['pdo'];
 
         $statement = $pdo->prepare('DELETE FROM posts WHERE id = ? LIMIT 1');
         $statement->execute([$id]);
@@ -149,6 +149,9 @@ use Entities\Posts;
 
 //Create a Admin instance passing the admin url:
 $admin = new Admin('http://my-site.com/admin');
+
+//Set the pdo instance:
+$admin['pdo'] = new PDO('mysql:dbname=database;charset=UTF8');
 
 //Add set your entities classes
 $admin->setEntities([
