@@ -9,12 +9,16 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
 {
     protected $searchFields;
 
-    abstract protected function getDatabase();
+    /**
+     * Returns the simple-crud entity
+     * 
+     * @return SimpleCrud\Entity
+     */
+    abstract protected function getDbEntity();
 
     protected function getQuery(SearchQuery $search = null, &$page = null)
     {
-        $database = $this->getDatabase();
-        $entity = $database->get($this->name);
+        $entity = $this->getDbEntity();
 
         if ($search === null) {
             return $entity->select()->orderBy('id DESC');
@@ -37,8 +41,10 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
             }
         }
 
+        $db = $entity->getDb();
+
         foreach ($search->getConditions() as $name => $value) {
-            $related = $database->get($name)->select()->by('id', $value)->all();
+            $related = $db->get($name)->select()->by('id', $value)->all();
             $query->relatedWith($related);
         }
 
@@ -66,9 +72,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
      */
     public function create(array $data)
     {
-        $entity = $this->getDatabase()->get($this->name);
-
-        return $entity->create($data)->save(false, true)->id;
+        return $this->getDbEntity()->create($data)->save(false, true)->id;
     }
 
     /**
@@ -76,7 +80,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
      */
     public function read($id)
     {
-        $entity = $this->getDatabase()->get($this->name);
+        $entity = $this->getDbEntity();
 
         $row = $entity[$id];
 
@@ -88,7 +92,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
      */
     public function update($id, array $data)
     {
-        $entity = $this->getDatabase()->get($this->name);
+        $entity = $this->getDbEntity();
 
         return $entity[$id]->set($data)->save(false, true)->toArray();
     }
@@ -98,7 +102,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
      */
     public function delete($id)
     {
-        $entity = $this->getDatabase()->get($this->name);
+        $entity = $this->getDbEntity();
 
         unset($entity[$id]);
     }
@@ -116,7 +120,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
      */
     protected function getFirstField()
     {
-        $entity = $this->getDatabase()->get($this->name);
+        $entity = $this->getDbEntity();
 
         foreach (array_keys($entity->fields) as $key) {
             if ($key !== 'id') {

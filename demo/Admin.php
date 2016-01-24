@@ -10,6 +10,8 @@ class Admin extends Folk\Admin
     {
         parent::__construct($url);
 
-        $this->addEntity(new Entities\Post());
+        $this->setEntities([
+            Entities\Post::class
+        ]);
     }
 }

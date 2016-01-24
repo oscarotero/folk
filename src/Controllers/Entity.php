@@ -44,7 +44,7 @@ class Entity
         //Redirect to edit element if it's only one result
         if (!empty($search->getQuery()) && count($items) === 1) {
             return new RedirectResponse($app->getRouteUrl('edit', [
-                'entity' => $entity->name,
+                'entity' => $entity->getName(),
                 'id' => key($items),
             ]));
         }
@@ -95,7 +95,7 @@ class Entity
             ->enctype('multipart/form-data');
 
         $form->add([
-            'entity' => F::hidden()->val($entity->name)->class('field-data-entity'),
+            'entity' => F::hidden()->val($entity->getName())->class('field-data-entity'),
             'data' => $entity->getScheme($app['builder']),
         ]);
 
@@ -106,7 +106,7 @@ class Entity
 
             if ($form->isValid()) {
                 return new RedirectResponse($app->getRouteUrl('edit', [
-                    'entity' => $entity->name,
+                    'entity' => $entity->getName(),
                     'id' => $entity->create($form['data']->val()),
                 ]));
             }
@@ -134,7 +134,7 @@ class Entity
 
         $form->add([
             'id' => F::hidden()->val($id)->class('field-data-id'),
-            'entity' => F::hidden()->val($entity->name)->class('field-data-entity'),
+            'entity' => F::hidden()->val($entity->getName())->class('field-data-entity'),
             'data' => $entity->getScheme($app['builder']),
         ]);
 
@@ -147,7 +147,7 @@ class Entity
                 $entity->update($id, $form['data']->val());
 
                 return new RedirectResponse($app->getRouteUrl('edit', [
-                    'entity' => $entity->name,
+                    'entity' => $entity->getName(),
                     'id' => $id,
                 ]));
             }
@@ -188,7 +188,7 @@ class Entity
         $entity->delete($request->getAttribute('id'));
 
         return new RedirectResponse($app->getRouteUrl('list', [
-            'entity' => $entity->name,
+            'entity' => $entity->getName(),
         ]));
     }
 
@@ -214,7 +214,7 @@ class Entity
         call_user_func($actions[$name][0], $data);
 
         return new RedirectResponse($app->getRouteUrl('edit', [
-            'entity' => $entity->name,
+            'entity' => $entity->getName(),
             'id' => $request->attributes['id'],
         ]));
     }

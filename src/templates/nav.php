@@ -10,7 +10,7 @@
 
 		<?php foreach ($app->getAllEntities() as $e): ?>
 		<li>
-			<a href="<?= $app->getRouteUrl('list', ['entity' => $e->name]) ?>" title="<?= $e->description ?>"<?= ($entity === $e) ? ' class="is-active"' : '' ?>>
+			<a href="<?= $app->getRouteUrl('list', ['entity' => $e->getName()]) ?>" title="<?= $e->description ?>"<?= ($entity === $e) ? ' class="is-active"' : '' ?>>
 				<strong><?= $e->title ?></strong>
 			</a>
 		</li>
@@ -23,8 +23,8 @@
 		<?= $this->icon('menu'); ?>
 	</span>
 
-	<form action="<?= $app->getRouteUrl('list', ['entity' => $entity->name]) ?>" class="menu-secondary-search" data-module="search" method="get">
-		<a href="<?= $app->getRouteUrl('list', ['entity' => $entity->name]) ?>" title="<?= $entity->title ?>">
+	<form action="<?= $app->getRouteUrl('list', ['entity' => $entity->getName()]) ?>" class="menu-secondary-search" data-module="search" method="get">
+		<a href="<?= $app->getRouteUrl('list', ['entity' => $entity->getName()]) ?>" title="<?= $entity->title ?>">
 			<?= $entity->title ?>
 		</a>
 
@@ -36,7 +36,7 @@
 
 	<ul class="menu-secondary-options">
 		<li>
-			<a href="<?= $app->getRouteUrl('create', ['entity' => $entity->name]) ?>">
+			<a href="<?= $app->getRouteUrl('create', ['entity' => $entity->getName()]) ?>">
 				<?= $this->icon('plus'); ?>
 			</a>
 		</li>

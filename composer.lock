@@ -233,16 +233,16 @@
         },
         {
             "name": "oscarotero/psr7-middlewares",
-            "version": "v3.11.1",
+            "version": "v3.12.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/psr7-middlewares.git",
-                "reference": "f09b61955b3bffe852c8da28767a2311e16dc573"
+                "reference": "a5a9aa170aaccc725f4da0e809a86096e5975508"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/psr7-middlewares/zipball/f09b61955b3bffe852c8da28767a2311e16dc573",
-                "reference": "f09b61955b3bffe852c8da28767a2311e16dc573",
+                "url": "https://api.github.com/repos/oscarotero/psr7-middlewares/zipball/a5a9aa170aaccc725f4da0e809a86096e5975508",
+                "reference": "a5a9aa170aaccc725f4da0e809a86096e5975508",
                 "shasum": ""
             },
             "require": {
@@ -253,11 +253,12 @@
                 "aura/session": "2.*",
                 "filp/whoops": "^1.1",
                 "google/recaptcha": "^1.1",
-                "imagecow/imagecow": "^1.5",
+                "imagecow/imagecow": "^2.0",
                 "league/route": "2.0.0-RC1",
                 "m6web/firewall": "~1.0",
                 "matthiasmullie/scrapbook": "^1.0",
                 "maximebf/debugbar": "~1.11",
+                "micheh/psr7-cache": "^0.3.0",
                 "mobiledetect/mobiledetectlib": "^2.8",
                 "monolog/monolog": "^1.17",
                 "mrclay/minify": "^2.2",
@@ -266,7 +267,7 @@
                 "paragonie/csp-builder": "^1.2",
                 "phpunit/phpunit": "~4.0",
                 "piwik/referrer-spam-blacklist": "^1.0",
-                "ramsey/uuid": "^2.8",
+                "ramsey/uuid": "^3.1",
                 "relay/relay": "1.*",
                 "willdurand/geocoder": "^3.2",
                 "willdurand/negotiation": "~2.0",
@@ -281,6 +282,7 @@
                 "league/route": "To use LeagueRoute",
                 "m6web/firewall": "To use Firewall",
                 "maximebf/debugbar": "To use DebugBar",
+                "micheh/psr7-cache": "To use Cache",
                 "mobiledetect/mobiledetectlib": "To use DetectDevice",
                 "mrclay/minify": "To use Minify",
                 "neomerx/cors-psr7": "To use Cors",
@@ -319,7 +321,7 @@
                 "psr-7",
                 "psr-messages"
             ],
-            "time": "2016-01-13 08:37:40"
+            "time": "2016-01-24 15:52:23"
         },
         {
             "name": "psr/http-message",

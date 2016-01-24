@@ -45,24 +45,33 @@ class Admin extends Fol
     }
 
     /**
+     * Set the admin entities
+     *
+     * @param array $entities
+     */
+    public function setEntities(array $entities)
+    {
+        foreach ($entities as $name => $entity) {
+            if (is_int($name)) {
+                $name = strtolower(substr(strrchr($entity, '\\'), 1));
+            }
+
+            $this->addEntity(new $entity($name, $this));
+        }
+    }
+
+    /**
      * Add a new entity.
      *
      * @param EntityInterface $entity
      */
-    protected function addEntity(EntityInterface $entity)
+    public function addEntity(EntityInterface $entity)
     {
-        if (empty($entity->name)) {
-            $name = strtolower(substr(strrchr(get_class($entity), '\\'), 1));
-            $entity->name = $name;
-        }
-
         if (empty($entity->title)) {
-            $entity->title = ucfirst($entity->name);
+            $entity->title = ucfirst($entity->getName());
         }
 
-        $entity->admin = $this;
-
-        $this->entities[$entity->name] = $entity;
+        $this->entities[$entity->getName()] = $entity;
     }
 
     /**

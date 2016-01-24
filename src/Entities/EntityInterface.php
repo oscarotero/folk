@@ -12,6 +12,21 @@ use FormManager\Builder;
 interface EntityInterface
 {
     /**
+     * Constructor
+     *
+     * @param string $name
+     * @param Admin  $admin
+     */
+    public function __construct($name, Admin $admin);
+
+    /**
+     * Returns the entity name
+     * 
+     * @return string
+     */
+    public function getName();
+
+    /**
      * List the entity rows.
      *
      * @param SearchQuery|null $search

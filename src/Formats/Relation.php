@@ -25,9 +25,11 @@ class Relation extends Fields\Field
 
         parent::__construct();
 
+        $name = $related->getName();
+
         $this->data([
-            'source' => "/{$related->name}/list",
-            'relate' => $related->name,
+            'source' => "/{$name}/list",
+            'relate' => $name,
         ]);
 
         $this->set([
