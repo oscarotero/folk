@@ -140,7 +140,7 @@ class Posts extends AbstractEntity
 
 ## Getting started
 
-Once your entities are created, let's make them running:
+Once your entities are created, let's make them to run:
 
 ```php
 use Folk\Admin;
@@ -151,7 +151,7 @@ use Entities\Posts;
 $admin = new Admin('http://my-site.com/admin');
 
 //Set the pdo instance:
-$admin['pdo'] = new PDO('mysql:dbname=database;charset=UTF8');
+$admin['pdo'] = new PDO('mysql:dbname=database;charset=UTF8') ;
 
 //Add set your entities classes
 $admin->setEntities([
