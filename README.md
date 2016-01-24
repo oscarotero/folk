@@ -19,28 +19,6 @@ This package is installable and autoloadable via Composer as [oscarotero/folk](h
 composer require oscarotero/folk
 ```
 
-## Getting started
-
-```php
-use Folk\Admin;
-
-//Create a Admin instance passing the admin url:
-$admin = new Admin('http://my-site.com/admin');
-
-//Add some entities
-$admin->addEntity(new Entities\Posts());
-$admin->addEntity(new Entities\Comments());
-$admin->addEntity(new Entities\Categories());
-$admin->addEntity(new Entities\Tags());
-
-//Run the web
-$request = Zend\Diactoros\ServerRequestFactory::fromGlobals();
-$emitter = new Zend\Diactoros\Response\SapiEmitter();
-
-$response = $admin($request);
-$emitter->emit($response);
-```
-
 ## Entities
 
 The entities are classes to manage "things". It can be a database table, a file, a directory with files, etc. They implement the `Folk\Entities\EntityInterface` interface to execute CRUD functions. Let's say an example of a entity using a database table to save/retrieve data.
@@ -57,20 +35,8 @@ use Folk\Entities\EntityInterface;
  */
 class Posts implements EntityInterface
 {
-    public $admin;
-    public $name;
     public $title = 'Posts';
     public $description = 'These are the posts of the blog';
-
-    protected $pdo;
-
-    /**
-     * Save the database connection instance
-     */
-    public function __construct(\PDO $pdo)
-    {
-        $this->pdo = $pdo;
-    }
 
     /**
      * List the posts
@@ -79,7 +45,9 @@ class Posts implements EntityInterface
      */
     public function search(SearchQuery $search = null)
     {
-        $result = $this->pdo->query('SELECT * FROM posts');
+        $pdo = $this->admin->get('pdo');
+
+        $result = $pdo->query('SELECT * FROM posts');
         $data = [];
 
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -96,13 +64,15 @@ class Posts implements EntityInterface
      */
     public function create(array $data)
     {
-        $statement = $this->pdo->prepare('INSERT INTO posts (title, text) VALUES (:title, :text)');
+        $pdo = $this->admin->get('pdo');
+
+        $statement = $pdo->prepare('INSERT INTO posts (title, text) VALUES (:title, :text)');
         $statement->execute([
             ':title' => $data['title'],
             ':text' => $data['text'],
         ]);
 
-        return $this->pdo->lastInsertId();
+        return $pdo->lastInsertId();
     }
 
     /**
@@ -112,7 +82,9 @@ class Posts implements EntityInterface
      */
     public function read($id)
     {
-        $statement = $this->pdo->prepare('SELECT * FROM posts WHERE id = ? LIMIT 1');
+        $pdo = $this->admin->get('pdo');
+
+        $statement = $pdo->prepare('SELECT * FROM posts WHERE id = ? LIMIT 1');
         $statement->execute([$id]);
 
         return $statement->fetch(PDO::FETCH_ASSOC);
@@ -123,7 +95,9 @@ class Posts implements EntityInterface
      */
     public function update($id, array $data)
     {
-        $statement = $this->pdo->prepare('UPDATE posts SET title = :title, text = :text WHERE id = :id LIMIT 1');
+        $pdo = $this->admin->get('pdo');
+
+        $statement = $pdo->prepare('UPDATE posts SET title = :title, text = :text WHERE id = :id LIMIT 1');
         $statement->execute([
             ':title' => $data['title'],
             ':text' => $data['text'],
@@ -136,7 +110,9 @@ class Posts implements EntityInterface
      */
     public function delete($id)
     {
-        $statement = $this->pdo->prepare('DELETE FROM posts WHERE id = ? LIMIT 1');
+        $pdo = $this->admin->get('pdo');
+
+        $statement = $pdo->prepare('DELETE FROM posts WHERE id = ? LIMIT 1');
         $statement->execute([$id]);
     }
 
@@ -162,9 +138,32 @@ class Posts implements EntityInterface
 }
 ```
 
+## Getting started
+
+Once your entities are created, let's make them running:
+
+```php
+use Folk\Admin;
+
+use Entities\Posts;
+
+//Create a Admin instance passing the admin url:
+$admin = new Admin('http://my-site.com/admin');
+
+//Add set your entities classes
+$admin->setEntities([
+    Posts::class
+]);
+
+//Run the web
+$request = Zend\Diactoros\ServerRequestFactory::fromGlobals();
+$emitter = new Zend\Diactoros\Response\SapiEmitter();
+
+$response = $admin($request);
+$emitter->emit($response);
+```
+
 As you can see, this is a simple example with a mysql table. But the interface is flexible enought to work with any kind of data.
 
 To know how to work with the scheme, visit [form-manager](https://github.com/oscarotero/form-manager/) project.
-
-
 
