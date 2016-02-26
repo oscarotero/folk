@@ -24,23 +24,13 @@ class Middlewares implements ServiceProviderInterface
 
                 Middleware::trailingSlash(),
 
-                Middleware::FormatNegotiator(),
+                Middleware::formatNegotiator(),
 
-                function ($request, $response, $next) {
-                    $path = $request->getUri()->getPath();
+                Middleware::readResponse(dirname(dirname(__DIR__)).'/assets')
+                    ->continueOnError(),
 
-                    $file = dirname(dirname(__DIR__)).'/assets'.$path;
-
-                    if (is_file($file)) {
-                        $response->getBody()->write(file_get_contents($file));
-
-                        return $response;
-                    }
-
-                    return $next($request, $response);
-                },
-
-                Middleware::AuraRouter($app['router'])->arguments($app),
+                Middleware::AuraRouter($app['router'])
+                    ->arguments($app),
             ];
         };
     }
