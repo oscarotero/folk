@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "393ebb258aa5a0183e4a8737405efcf0",
-    "content-hash": "c03a512ed6e299e2ad280ea2254338ac",
+    "hash": "007c9395d30a2394d8e4cfa586428cd3",
+    "content-hash": "4570f633b03215968328032afb8a4c3d",
     "packages": [
         {
             "name": "aura/router",
@@ -233,16 +233,16 @@
         },
         {
             "name": "oscarotero/psr7-middlewares",
-            "version": "v3.12.3",
+            "version": "v3.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/psr7-middlewares.git",
-                "reference": "a5a9aa170aaccc725f4da0e809a86096e5975508"
+                "reference": "3f520f1acc3f53f14605f54d5847615d2728d193"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/psr7-middlewares/zipball/a5a9aa170aaccc725f4da0e809a86096e5975508",
-                "reference": "a5a9aa170aaccc725f4da0e809a86096e5975508",
+                "url": "https://api.github.com/repos/oscarotero/psr7-middlewares/zipball/3f520f1acc3f53f14605f54d5847615d2728d193",
+                "reference": "3f520f1acc3f53f14605f54d5847615d2728d193",
                 "shasum": ""
             },
             "require": {
@@ -251,7 +251,7 @@
             "require-dev": {
                 "aura/router": "^3.0",
                 "aura/session": "2.*",
-                "filp/whoops": "^1.1",
+                "filp/whoops": "2.*",
                 "google/recaptcha": "^1.1",
                 "imagecow/imagecow": "^2.0",
                 "league/route": "2.0.0-RC1",
@@ -321,7 +321,7 @@
                 "psr-7",
                 "psr-messages"
             ],
-            "time": "2016-01-24 15:52:23"
+            "time": "2016-02-26 10:24:22"
         },
         {
             "name": "psr/http-message",
