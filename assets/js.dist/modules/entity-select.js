@@ -1,0 +1,1 @@
+define(["jquery","selectize"],function(e){return{init:function(e){var t=e.find("select").selectize()}}});

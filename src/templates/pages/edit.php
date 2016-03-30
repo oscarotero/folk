@@ -4,19 +4,6 @@
 
 <div class="page page-form">
 	<div class="page-content">
-		<?php if ($actions): ?>
-		<div class="page-form-actions">
-			<div class="button-toolbar">
-				<?php foreach ($actions as $action): ?>
-				<form method="post" target="_blank" action="<?= $app->getRouteUrl('action', ['entity' => $entity->getName(), 'id' => $id]) ?>">
-					<input type="hidden" name="id" value="<?= $id ?>">
-					<input type="submit" class="button" name="action" value="<?= $action ?>">
-				</form>
-				<?php endforeach; ?>
-			</div>
-		</div>
-		<?php endif; ?>
-
 		<?php
         echo $form->openHtml();
 

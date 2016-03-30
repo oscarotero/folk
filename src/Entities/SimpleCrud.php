@@ -5,6 +5,7 @@ namespace Folk\Entities;
 use Folk\SearchQuery;
 use SimpleCrud\SimpleCrud as SimpleCrudDatabase;
 use SimpleCrud\Row;
+use SimpleCrud\Scheme\Scheme;
 
 abstract class SimpleCrud extends AbstractEntity implements EntityInterface
 {
@@ -91,7 +92,20 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
 
         $row = $entity[$id];
 
-        return $row ? $row->toArray() : null;
+        if (empty($row)) {
+            return;
+        }
+
+        $relations = $entity->getScheme()['relations'];
+        $array = $row->toArray();
+
+        foreach ($relations as $name => $relation) {
+            if ($relation[0] === Scheme::HAS_MANY || $relation[0] === Scheme::HAS_MANY_TO_MANY) {
+                $array[$name] = array_values($row->$name->id);
+            }
+        }
+
+        return $array;
     }
 
     /**

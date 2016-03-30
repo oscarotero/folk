@@ -158,21 +158,9 @@ class Entity
             $form['data']->val($data);
         }
 
-        //Actions
-        $actions = [];
-
-        /*
-        foreach ($entity->getActions() as $name => $action) {
-            if (empty($action[1]) || call_user_func($action[1], $data)) {
-                $actions[] = $name;
-            }
-        }
-        */
-
         //Render template
         return $app['templates']->render('pages/edit', [
             'entity' => $entity,
-            'actions' => $actions,
             'form' => $form,
             'id' => $id,
         ]);
