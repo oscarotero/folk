@@ -3,7 +3,6 @@
 namespace Folk\Entities;
 
 use Folk\SearchQuery;
-use SimpleCrud\SimpleCrud as SimpleCrudDatabase;
 use SimpleCrud\Row;
 use SimpleCrud\Scheme\Scheme;
 
@@ -12,7 +11,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
     protected $searchFields;
 
     /**
-     * Returns the simple-crud entity
+     * Returns the simple-crud entity.
      * 
      * @return SimpleCrud\Entity
      */

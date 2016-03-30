@@ -12,7 +12,7 @@ use FormManager\Builder;
 interface EntityInterface
 {
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $name
      * @param Admin  $admin
@@ -20,7 +20,7 @@ interface EntityInterface
     public function __construct($name, Admin $admin);
 
     /**
-     * Returns the entity name
+     * Returns the entity name.
      * 
      * @return string
      */

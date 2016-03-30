@@ -45,7 +45,7 @@ class Admin extends Fol
     }
 
     /**
-     * Set the admin entities
+     * Set the admin entities.
      *
      * @param array $entities
      */

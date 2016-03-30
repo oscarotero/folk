@@ -42,14 +42,14 @@ class Post extends AbstractEntity
     {
         return $builder->group([
             'checkbox' => $builder->checkbox()->label('Checkbox'),
-            
+
             'choose' => $builder->choose([
                 1 => $builder->radio()->label('Radio 1'),
                 2 => $builder->radio()->label('Radio 2'),
             ])->label('Choose'),
-            
+
             'code' => $builder->code()->label('Code'),
-            
+
             'collection' => $builder->collection([
                 'text' => $builder->text()->label('Text'),
                 'textarea' => $builder->textarea()->label('Textarea'),
@@ -64,25 +64,25 @@ class Post extends AbstractEntity
                     'text' => $builder->imageupload()->label('Image'),
                 ],
             ])->label('Collection multiple'),
-            
+
             'color' => $builder->color()->label('Color'),
-            
+
             'date' => $builder->date()->label('Date'),
-            
+
             'datetime' => $builder->datetime()->label('Datetime'),
-            
+
             'datetimeLocal' => $builder->datetimeLocal()->label('Datetime local'),
-            
+
             'email' => $builder->email()->label('Email'),
-            
+
             'fileupload' => $builder->fileupload()->label('File upload'),
-            
+
             'html' => $builder->html()->label('Html'),
-            
+
             'imageupload' => $builder->imageupload()->label('Image upload'),
-            
+
             'info' => $builder->info()->label('Info'),
-            
+
             'loader' => $builder->loader([
                 'field' => $builder->url()->label('Url'),
                 'loader' => $builder->text()->label('Text'),
