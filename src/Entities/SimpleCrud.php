@@ -4,6 +4,7 @@ namespace Folk\Entities;
 
 use Folk\SearchQuery;
 use SimpleCrud\SimpleCrud as SimpleCrudDatabase;
+use SimpleCrud\Row;
 
 abstract class SimpleCrud extends AbstractEntity implements EntityInterface
 {
@@ -41,10 +42,10 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
             }
         }
 
-        $db = $entity->getDb();
+        $db = $entity->getDatabase();
 
         foreach ($search->getConditions() as $name => $value) {
-            $related = $db->get($name)->select()->by('id', $value)->all();
+            $related = $db->$name->select()->by('id', $value)->run();
             $query->relatedWith($related);
         }
 
@@ -56,9 +57,11 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
      */
     public function search(SearchQuery $search = null)
     {
-        $query = $this->getQuery($search, $page);
+        $result = [];
 
-        $result = $query->all()->toArray(true);
+        foreach ($this->getQuery($search, $page)->run() as $row) {
+            $result[$row->id] = $row->toArray();
+        }
 
         if ($search && (count($result) === 50 || $page > 1)) {
             $search->setPage($page);
@@ -72,7 +75,11 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
      */
     public function create(array $data)
     {
-        return $this->getDbEntity()->create($data)->save(false, true)->id;
+        $row = $this->getDbEntity()->create();
+
+        $this->save($row, $data);
+
+        return $row->id;
     }
 
     /**
@@ -92,9 +99,11 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
      */
     public function update($id, array $data)
     {
-        $entity = $this->getDbEntity();
+        $row = $this->getDbEntity()[$id];
 
-        return $entity[$id]->set($data)->save(false, true)->toArray();
+        $this->save($row, $data);
+
+        return $row->toArray();
     }
 
     /**
@@ -127,5 +136,22 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
                 return $key;
             }
         }
+    }
+
+    protected function save(Row $row, array $data)
+    {
+        $entity = $this->getDbEntity();
+        $db = $entity->getDatabase();
+        $scheme = $entity->getScheme();
+
+        foreach ($data as $name => $value) {
+            if (isset($scheme['relations'][$name])) {
+                $row->$name = $db->$name->select()->by('id', $value)->run();
+            } else {
+                $row->$name = $value;
+            }
+        }
+
+        $row->save(true);
     }
 }
