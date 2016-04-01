@@ -35,5 +35,8 @@
     },
     "autoload-dev": {
         "psr-4": { "Demo\\": "demo/" }
+    },
+    "require-dev": {
+        "symfony/yaml": "^3.0"
     }
 }

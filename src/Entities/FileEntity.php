@@ -57,12 +57,13 @@ abstract class FileEntity extends AbstractEntity implements EntityInterface
      */
     public function create(array $data)
     {
-        $file = $this->getFilePath($this->getId($data));
+        $id = $this->getId($data);
+        $file = $this->getFilePath($id);
         $source = $this->stringify($data);
 
         file_put_contents($file, $source);
 
-        return $file;
+        return $id;
     }
 
     /**

@@ -13,6 +13,7 @@ class Admin extends Folk\Admin
         $this->setEntities([
             Entities\Post::class,
             Entities\Items::class,
+            Entities\MoreItems::class,
         ]);
     }
 }
