@@ -73,7 +73,7 @@ class Entity
             $rows[$id]->val($item);
         }
 
-        if ($search->getPage() && count($items) === 50) {
+        if ($search->getPage() !== null && count($items) === 50) {
             $search->setPage($search->getPage() + 1);
         }
 

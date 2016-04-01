@@ -37,14 +37,14 @@
 		</table>
 
 		<?php if ($search->getPage() !== null): ?>
-			<footer class="footer-primary">
-				<a href="<?= $app->getRouteUrl('list', ['entity' => $entity->getName()], [
-                        'query' => isset($search) ? $search->getQuery() : null,
-                        'page' => (isset($search) ? $search->getPage() : 0) + 1,
-                    ]) ?>" class="button button-normal ui-autoload-btn">
-					More results
-				</a>
-			</footer>
+		<footer class="footer-primary">
+			<a href="<?= $app->getRouteUrl('list', ['entity' => $entity->getName()], [
+                    'query' => isset($search) ? $search->getQuery() : null,
+                    'page' => (isset($search) ? $search->getPage() : 0) + 1,
+                ]) ?>" class="button button-normal ui-autoload-btn">
+				More results
+			</a>
+		</footer>
 		<?php endif; ?>
 
 		<?php else: ?>

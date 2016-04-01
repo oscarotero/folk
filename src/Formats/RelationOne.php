@@ -24,7 +24,7 @@ class RelationOne extends Fields\Field
             $search = new SearchQuery();
         }
 
-        foreach ($related->search() as $id => $row) {
+        foreach ($related->search($search) as $id => $row) {
             $this->input[$id] = $related->getLabel($id, $row);
         }
 

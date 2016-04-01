@@ -21,7 +21,7 @@ class SearchQuery
             $this->parseQuery($query['query']);
         }
 
-        $this->page = isset($query['page']) ? $query['page'] : null;
+        $this->page = isset($query['page']) ? (int) $query['page'] : null;
     }
 
     /**

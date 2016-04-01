@@ -25,7 +25,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
             ->select()
             ->orderBy("`{$entity->name}`.`id` DESC");
 
-        if ($search->getPage()) {
+        if ($search->getPage() !== null) {
             $query
                 ->offset(($search->getPage() * 50) - 50)
                 ->limit(50);
