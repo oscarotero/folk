@@ -1,6 +1,6 @@
 <?php
 
-namespace Demo;
+namespace demo;
 
 use Folk;
 
@@ -12,6 +12,7 @@ class Admin extends Folk\Admin
 
         $this->setEntities([
             Entities\Post::class,
+            Entities\Items::class,
         ]);
     }
 }
