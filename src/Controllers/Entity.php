@@ -73,6 +73,10 @@ class Entity
             $rows[$id]->val($item);
         }
 
+        if ($search->getPage() && count($items) === 50) {
+            $search->setPage($search->getPage() + 1);
+        }
+
         //List all results
         return $app['templates']->render('pages/list', [
             'rows' => $rows,
@@ -177,33 +181,6 @@ class Entity
 
         return new RedirectResponse($app->getRouteUrl('list', [
             'entity' => $entity->getName(),
-        ]));
-    }
-
-    /**
-     * POST: Execute an item action.
-     */
-    public function actionItem($request, $response, $app)
-    {
-        $entity = $app->getEntity($request->getAttribute('entity'));
-
-        $data = $entity->read($request->getAttribute('id'));
-        $actions = $entity->getActions();
-        $name = $request->getParsedBody()['action'];
-
-        if (empty($actions[$name])) {
-            throw new \Exception("The action '{$name}' does not exists");
-        }
-
-        if (!empty($actions[$name][1]) && !call_user_func($actions[$name][1], $data)) {
-            throw new \Exception("The action '{$name}' cannot be executed with this row");
-        }
-
-        call_user_func($actions[$name][0], $data);
-
-        return new RedirectResponse($app->getRouteUrl('edit', [
-            'entity' => $entity->getName(),
-            'id' => $request->attributes['id'],
         ]));
     }
 }

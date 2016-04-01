@@ -15,7 +15,7 @@ class SearchQuery
     /**
      * @param array $query
      */
-    public function __construct(array $query)
+    public function __construct(array $query = [])
     {
         if (!empty($query['query'])) {
             $this->parseQuery($query['query']);

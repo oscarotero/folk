@@ -1,6 +1,6 @@
 <?php
 
-namespace demo\Entities;
+namespace Demo\Entities;
 
 use Folk\Entities\AbstractEntity;
 use Folk\SearchQuery;

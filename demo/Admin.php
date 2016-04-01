@@ -1,6 +1,6 @@
 <?php
 
-namespace demo;
+namespace Demo;
 
 use Folk;
 

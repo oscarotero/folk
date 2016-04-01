@@ -21,7 +21,6 @@ class Router implements ServiceProviderInterface
             $map->get('create', '/{entity}/new', "{$ns}\\Entity::createItem")->allows(['POST']);
             $map->get('edit', '/{entity}/{id}/edit', "{$ns}\\Entity::editItem")->allows('POST');
             $map->post('delete', '/{entity}/{id}/delete', "{$ns}\\Entity::deleteItem");
-            $map->post('action', '/{entity}/{id}/action', "{$ns}\\Entity::actionItem");
             $map->get('entity', '/{entity}', "{$ns}\\Index::entity");
 
             return $router;

@@ -17,20 +17,19 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
      */
     abstract protected function getDbEntity();
 
-    protected function getQuery(SearchQuery $search = null, &$page = null)
+    protected function getQuery(SearchQuery $search)
     {
         $entity = $this->getDbEntity();
 
-        if ($search === null) {
-            return $entity->select()->orderBy('id DESC');
+        $query = $entity
+            ->select()
+            ->orderBy("`{$entity->name}`.`id` DESC");
+
+        if ($search->getPage()) {
+            $query
+                ->offset(($search->getPage() * 50) - 50)
+                ->limit(50);
         }
-
-        $page = $search->getPage() ?: 1;
-
-        $query = $entity->select()
-            ->orderBy("`{$entity->name}`.`id` DESC")
-            ->offset(($page * 50) - 50)
-            ->limit(50);
 
         if ($this->searchFields === null) {
             $this->searchFields = [$this->getFirstField()];
@@ -45,7 +44,11 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
         $db = $entity->getDatabase();
 
         foreach ($search->getConditions() as $name => $value) {
-            $related = $db->$name->select()->by('id', $value)->run();
+            $related = $db->$name
+                ->select()
+                ->by('id', $value)
+                ->run();
+
             $query->relatedWith($related);
         }
 
@@ -55,16 +58,12 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    public function search(SearchQuery $search = null)
+    public function search(SearchQuery $search)
     {
         $result = [];
 
-        foreach ($this->getQuery($search, $page)->run() as $row) {
+        foreach ($this->getQuery($search)->run() as $row) {
             $result[$row->id] = $row->toArray();
-        }
-
-        if ($search && (count($result) === 50 || $page > 1)) {
-            $search->setPage($page);
         }
 
         return $result;

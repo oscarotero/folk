@@ -1,6 +1,6 @@
 <?php
 
-namespace demo\Entities;
+namespace Demo\Entities;
 
 use Folk\Entities\JsonEntity;
 use FormManager\Builder;

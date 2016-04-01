@@ -26,7 +26,7 @@ abstract class FileEntity extends AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    public function search(SearchQuery $search = null)
+    public function search(SearchQuery $search)
     {
         $result = [];
         $words = $search->getWords();

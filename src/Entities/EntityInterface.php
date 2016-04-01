@@ -29,11 +29,11 @@ interface EntityInterface
     /**
      * List the entity rows.
      *
-     * @param SearchQuery|null $search
+     * @param SearchQuery $search
      * 
      * @return array The rows data
      */
-    public function search(SearchQuery $search = null);
+    public function search(SearchQuery $search);
 
     /**
      * Creates a new entity row.
