@@ -15,6 +15,8 @@ class Loader extends Containers\Loader
     {
         parent::__construct($children);
 
+        $this->class('format is-loader');
+
         $this->set([
             'list' => false,
         ]);
@@ -37,24 +39,18 @@ class Loader extends Containers\Loader
     protected function customRender($prepend = '', $append = '')
     {
         //Set class
-        $class = 'format '.$this->get('class');
+        $class = $this->get('class');
 
         //Set module
-        $module = $this->get('module') ? ' data-module="'.$this->get('module').'"' : '';
-
-        //Set module configuration
-        $config = $this->get('config') ? ' data-config="'.htmlspecialchars(json_encode($this->get('config')), ENT_QUOTES, 'UTF-8').'"' : '';
+        $this->data([
+            'module' => $this->get('module'),
+            'config' => $this->get('config') ? json_encode($this->get('config')) : null,
+        ]);
 
         if ($this->error()) {
-            $class .= ' has-error';
+            $this->addClass('has-error');
         }
 
-        return <<<EOT
-<div class="{$class}"{$module}{$config}>
-    {$prepend}
-    {$this}
-    {$append}
-</div>
-EOT;
+        return $this->toHtml($prepend, $append);
     }
 }

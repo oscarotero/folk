@@ -21,4 +21,14 @@
 	.cke_combo_text {
 		width: auto; /* para que non quede cortado o texto */
 	}
+
+	.CodeMirror-sizer {
+		background: #F8F8F8;
+	}
+	.CodeMirror-gutters {
+		background: white;
+	}
+	.CodeMirror-linenumber {
+		color: black;
+	}
 }

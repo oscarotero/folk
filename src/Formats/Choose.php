@@ -18,4 +18,12 @@ class Choose extends Containers\Choose
             'class' => 'is-responsive',
         ]);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function customRender($prepend = '', $append = '')
+    {
+        return (string) $this->addClass('format');
+    }
 }

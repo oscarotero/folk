@@ -17,4 +17,12 @@ class Radio extends Fields\Radio
             'class' => 'is-boolean',
         ]);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function customRender($prepend = '', $append = '')
+    {
+        return '<div class="button button-radio">'.$this.'</div>';
+    }
 }

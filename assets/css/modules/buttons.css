@@ -37,51 +37,6 @@
   }
 }
 
-.button-toolbar {
-  display: inline-flex;
-  flex-wrap: wrap;
-  margin: 0 0 0.3em 0;
-  border-left: var(--border-thin);
-
-  .button {
-    color: var(--gray);
-    font-weight: var(--font-normal);
-    flex-shrink: 0;
-    font-size: 0.9rem;
-    padding: 0.5em 1em;
-    border: var(--border-thin);
-    border-left: none;
-
-    &:hover {
-      color: var(--black);
-      background-color: var(--lightgray);
-    }
-
-    &.is-active {
-      color: var(--black);
-      background-color: var(--lightgray);
-    }
-  }
-}
-
-.button-separator {
-  text-align: center;
-  margin: 4rem 0;
-  position: relative;
-
-  &::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 45%;
-    width: 100%;
-    border-top: dotted 2px var(--gray);
-  }
-  .button {
-    box-shadow: 0 0 0 10px white;
-  }
-}
-
 .button.button-normal {
 	background: var(--lightgray);
 	padding: 0.5em 1em;

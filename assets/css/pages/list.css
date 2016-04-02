@@ -1,10 +1,9 @@
 .page-list {
-	padding: 6rem 1rem;
+	padding: 5.5rem 1rem;
 
 	@media (--medium) {
-		padding-left: 4.5rem;
-		padding-right: 4.5rem;
-
+		padding-left: 2rem;
+		padding-right: 2rem;
 	}
 }
 .page-list-table {
@@ -17,26 +16,30 @@
 			color: var(--black);
 			font-weight: var(--font-bold);
 			padding: 1em;
-			border-bottom: var(--border-bold);
+			border-bottom: var(--border-thin);
+			vertical-align: bottom;
 		}
 	}
 
 	tbody {
 		th, td {
 			border-bottom: var(--border-thin);
+			background: white;
 		}
 		td {
 			padding: 1em;
+
+			&:last-child {
+				border-right: var(--border-thin);
+			}
 		}
 		th {
 			width: 50px;
-			background: var(--white);
-			border-right: var(--border-style);
-			border-left: var(--border-style);
 			font-weight: var(--font-normal);
 			font-size: 0.9em;
 			text-align: center;
-			padding: 1em 1em 1em 0;
+			padding: 1em;
+			border-left: var(--border-thin);
 
 			.button {
 				min-width: 0;

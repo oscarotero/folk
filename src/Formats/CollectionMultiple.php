@@ -36,16 +36,16 @@ class CollectionMultiple extends Containers\CollectionMultiple
             ->toHtml();
 
         $addBtn = '<div class="button-separator">'.$addBtn.'</div>';
-        $toolbar = '<div class="button-toolbar"><button title="Move to up" type="button" class="button format-child-up">&#8593;</button><button title="Move to down" type="button" class="button format-child-down">&#8595;</button><button title="Remove" type="button" class="button format-child-remove">&#215;</button></div>';
+        $toolbar = '<button title="Move to up" type="button" class="button format-child-up">&#8593;</button><button title="Move to down" type="button" class="button format-child-down">&#8595;</button><button title="Remove" type="button" class="button format-child-remove">&#215;</button>';
 
         foreach ($templates as $type => $tmpl) {
-            $html .= '<script type="js-template" data-type="'.$type.'">'.$tmpl->toHtml("{$addBtn} <strong class=\"format-child-label\">{$type}</strong> {$toolbar}").'</script>';
+            $html .= '<script type="js-template" data-type="'.$type.'">'.$tmpl->toHtml("{$addBtn} <div class=\"button-toolbar\"><strong class=\"button-toolbar-label\">{$type}</strong> {$toolbar}</div>").'</script>';
         }
 
         foreach ($this as $child) {
             $type = $child['type']->val();
 
-            $html .= $child->toHtml("{$addBtn} <strong class=\"format-child-label\">{$type}</strong> {$toolbar}");
+            $html .= $child->toHtml("{$addBtn} <div class=\"button-toolbar\"><strong class=\"button-toolbar-label\">{$type}</strong> {$toolbar}</div>");
         }
 
         $html .= "<div>{$addBtn}</div>";

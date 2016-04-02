@@ -25,12 +25,12 @@ class Collection extends Containers\Collection
         $html .= '<div>';
 
         $addBtn = '<div class="button-separator"><button type="button" class="format-child-add button button-normal">Add</button></div>';
-        $toolbar = '<div class="button-toolbar"><button title="Move to up" type="button" class="button format-child-up">&#8593;</button><button title="Move to down" type="button" class="button format-child-down">&#8595;</button><button title="Remove" type="button" class="button format-child-remove">&#215;</button></div>';
+        $toolbar = '<div class="button-toolbar"><strong class="button-toolbar-label"></strong><button title="Move to up" type="button" class="button format-child-up">&#8593;</button><button title="Move to down" type="button" class="button format-child-down">&#8595;</button><button title="Remove" type="button" class="button format-child-remove">&#215;</button></div>';
 
-        $html .= '<script type="js-template">'.$this->getTemplate()->toHtml($addBtn.'<strong class="format-child-label"></strong>'.$toolbar).'</script>';
+        $html .= '<script type="js-template">'.$this->getTemplate()->toHtml($addBtn.$toolbar).'</script>';
 
         foreach ($this as $child) {
-            $html .= $child->toHtml($addBtn.'<strong class="format-child-label"></strong>'.$toolbar);
+            $html .= $child->toHtml($addBtn.$toolbar);
         }
 
         $html .= "<div>{$addBtn}</div>";

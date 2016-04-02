@@ -1,10 +1,12 @@
+html {
+	background: var(--xlightgray);
+}
 .page-form {
-	padding: 6rem 1rem;
+	padding: 5.5rem 1rem;
 
 	@media (--medium) {
-		padding-left: 4.5rem;
-		padding-right: 4.5rem;
-
+		padding-left: 2rem;
+		padding-right: 2rem;
 	}
 
 	input[type="date"],
@@ -60,7 +62,6 @@
 	.page-form-content {
 		position: relative;
 		z-index: 1;
-		background: white;
 	}
 	.footer-primary {
 		flex-direction: row-reverse;
@@ -71,8 +72,18 @@
 		text-align: right;
 	}
 
-	.format {
-		padding: 1em 0;
+	.format .format {
+		padding: 1em;
+		border: var(--border-thin);
+		background: white;
+
+		&:not(.is-collection) + .format {
+			border-top: none;
+		}
+
+		&.is-loader .format {
+			border: none;
+		}
 
 		> label {
 			font-weight: var(--font-bold);
@@ -127,12 +138,15 @@
 			}
 		}
 
+		&.is-loader {
+			padding: 0;
+		}
+
 		&.is-collection {
-			border-left: var(--border-bold);
-			padding-left: 1rem;
-			padding-top: 0;
-			padding-bottom: 0;
+			background: var(--xlightgray);
 			margin-top: 1rem;
+			margin-bottom: 1rem;
+			border: none;
 
 			&:first-of-type {
 				margin-top: 0;
@@ -162,19 +176,13 @@
 				text-transform: uppercase;
 			}
 
-			.button-toolbar {
-				position: absolute;
-				top: 3rem;
-				right: 0;
-			}
-
 			> div {
 				counter-reset: collection;
 
 				> div {
 					position: relative;
 
-					.format-child-label::after {
+					.button-toolbar-label::after {
 						content: '#' counter(collection);
 						counter-increment: collection;
 					}
@@ -185,14 +193,6 @@
 				}
 			}
 		}
-	}
-}
-
-.page-form-content > div > .format {
-	&.is-collection,
-	&.is-group {
-		border-width: 0;
-		padding-left: 0;
 	}
 }
 
@@ -228,5 +228,66 @@
 				}
 			}
 		}
+	}
+}
+
+
+.button-separator {
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 45%;
+    width: 100%;
+  }
+}
+
+.button-toolbar {
+  display: flex;
+  background-color: var(--lightgray);
+  border: var(--border-thin);
+  border-bottom: none;
+
+  .button-toolbar-label {
+  	flex: 1 1 auto;
+  	padding: 0.5em 1em;
+  }
+
+  .button {
+    color: var(--gray);
+    font-weight: var(--font-normal);
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    padding: 0.5em 1em;
+
+    + .button {
+    	border-left: none;
+    }
+
+    &:hover {
+    	background-color: var(--lightgray);
+      color: var(--black);
+    }
+
+    &.is-active {
+      color: var(--black);
+      background-color: var(--lightgray);
+    }
+  }
+}
+.button-radio {
+	padding-left: 0;
+	padding-right: 2rem;
+
+	> label {
+		font-weight: var(--font-bold);
+		padding: 0.5em .3em;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		user-select: none;
 	}
 }
