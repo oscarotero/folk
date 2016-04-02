@@ -23,12 +23,12 @@
 	}
 
 	.CodeMirror-sizer {
-		background: #F8F8F8;
+		background: var(--xlightgray);
 	}
 	.CodeMirror-gutters {
 		background: white;
 	}
 	.CodeMirror-linenumber {
-		color: black;
+		color: var(--black);
 	}
 }
