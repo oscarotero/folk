@@ -29,6 +29,6 @@ abstract class YamlEntity extends FileEntity implements EntityInterface
      */
     protected function parse($source)
     {
-        return Yaml::parse($source);
+        return (array) Yaml::parse($source);
     }
 }

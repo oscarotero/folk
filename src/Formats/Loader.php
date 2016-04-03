@@ -38,9 +38,6 @@ class Loader extends Containers\Loader
      */
     protected function customRender($prepend = '', $append = '')
     {
-        //Set class
-        $class = $this->get('class');
-
         //Set module
         $this->data([
             'module' => $this->get('module'),
