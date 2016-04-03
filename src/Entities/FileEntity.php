@@ -109,7 +109,7 @@ abstract class FileEntity extends AbstractEntity implements EntityInterface
     protected function getId(array $data)
     {
         $list = glob($this->getBasePath()."/*.{$this->extension}");
-        
+
         return $list ? count($list) + 1 : uniqid();
     }
 
