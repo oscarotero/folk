@@ -2,7 +2,7 @@
     "name": "oscarotero/folk",
     "type": "library",
     "description": "Universal CMS",
-    "keywords": ["cms"],
+    "keywords": ["cms", "admin", "psr-7", "crud"],
     "homepage": "https://github.com/fol-project/fol",
     "license": "MIT",
     "authors": [

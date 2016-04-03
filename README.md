@@ -24,7 +24,7 @@ composer require oscarotero/folk
 
 ## Entities
 
-The entities are classes to manage "things". It can be a database table, a file, a directory with files, etc. They must implement the `Folk\Entities\EntityInterface` interface (or extend the `Folk\Entities\AbstractEntity`). Let's see an example of an entity using a database table.
+The entities are classes to manage "things". It can be a database table, a file, a directory with files, etc. They must implement `Folk\Entities\EntityInterface` (or extend `Folk\Entities\AbstractEntity`). Let's see an example of an entity using a database table.
 
 ```php
 namespace MyEntities;
@@ -46,11 +46,20 @@ class Posts extends AbstractEntity
      *
      * @return array [id => data, ...]
      */
-    public function search(SearchQuery $search = null)
+    public function search(SearchQuery $search)
     {
-        $pdo = $this->admin['pdo'];
+        $query = 'SELECT * FROM posts';
 
-        $result = $pdo->query('SELECT * FROM posts');
+        if ($search->getPage() !== null) {
+            $limit = 50;
+            $offset = ($search->getPage() * $limit) - $limit;
+
+            $query .= " LIMIT {$offset}, {$limit}";
+        }
+
+        $pdo = $this->admin->get('pdo');
+        $result = $pdo->query($query);
+
         $data = [];
 
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -67,7 +76,7 @@ class Posts extends AbstractEntity
      */
     public function create(array $data)
     {
-        $pdo = $this->admin['pdo'];
+        $pdo = $this->admin->get('pdo');
 
         $statement = $pdo->prepare('INSERT INTO posts (title, text) VALUES (:title, :text)');
         $statement->execute([
@@ -85,7 +94,7 @@ class Posts extends AbstractEntity
      */
     public function read($id)
     {
-        $pdo = $this->admin['pdo'];
+        $pdo = $this->admin->get('pdo');
 
         $statement = $pdo->prepare('SELECT * FROM posts WHERE id = ? LIMIT 1');
         $statement->execute([$id]);
@@ -98,7 +107,7 @@ class Posts extends AbstractEntity
      */
     public function update($id, array $data)
     {
-        $pdo = $this->admin['pdo'];
+        $pdo = $this->admin->get('pdo');
 
         $statement = $pdo->prepare('UPDATE posts SET title = :title, text = :text WHERE id = :id LIMIT 1');
         $statement->execute([
@@ -113,7 +122,7 @@ class Posts extends AbstractEntity
      */
     public function delete($id)
     {
-        $pdo = $this->admin['pdo'];
+        $pdo = $this->admin->get('pdo');
 
         $statement = $pdo->prepare('DELETE FROM posts WHERE id = ? LIMIT 1');
         $statement->execute([$id]);
@@ -125,8 +134,12 @@ class Posts extends AbstractEntity
     public function getScheme(Builder $b)
     {
         return $b->group([
-            'title' => $b->text()->label('The post title'),
-            'text' => $b->html()->label('The body'),
+            'title' => $b->text()
+                ->maxlength(200)
+                ->label('The post title'),
+
+            'text' => $b->html()
+                ->label('The body'),
         ]);
     }
 
@@ -142,6 +155,8 @@ class Posts extends AbstractEntity
 ```
 
 ## Getting started
+
+There's some predefined entities that you can extend and configure, for example to use with [simplecrud](https://github.com/oscarotero/simple-crud), or to save the content in yaml or json files, etc.
 
 Once your entities are created, let's make them to run:
 
@@ -161,7 +176,7 @@ $admin->setEntities([
     Posts::class
 ]);
 
-//Run the web
+//Run the web (using psr-7 request/responses)
 $request = Zend\Diactoros\ServerRequestFactory::fromGlobals();
 $emitter = new Zend\Diactoros\Response\SapiEmitter();
 
@@ -169,7 +184,7 @@ $response = $admin($request);
 $emitter->emit($response);
 ```
 
-As you can see, this is a simple example with a mysql table. But the interface is flexible enought to work with any kind of data.
+As you can see, this is a simple example with a simple mysql table. But the interface is flexible enought to work with any kind of data.
 
 To know how to work with the scheme, visit [form-manager](https://github.com/oscarotero/form-manager/) project.
 
