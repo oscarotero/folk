@@ -5,13 +5,13 @@
 	--font: system, Helvetica, Arial, sans-serif;
 	--font-normal: 300;
 	--font-bold: 500;
-	--black: #223344;
 	--black: #263541;
 	--gray: color(var(--black) tint(50));
 	--alightgray: color(var(--gray) a(0.15));
 	--lightgray: color(var(--gray) tint(85%));
 	--xlightgray: color(var(--gray) tint(93%));
 	--white: #FFF;
+	--color: #28CB8C;
 	--color-error: red;
 
 	/* Borders */
@@ -24,7 +24,8 @@
 
 html {
 	font-family: var(--font);
-	color: var(--black);
+	color: var(--white);
+	background: var(--black);
 	font-weight: var(--font-normal);
 }
 

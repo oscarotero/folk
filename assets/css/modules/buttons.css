@@ -15,6 +15,7 @@
   padding: 0.5em 1em;
   color: var(--gray);
   font-weight: var(--font-normal);
+  border-radius: 3px;
 
   &:hover {
     color: var(--black);
@@ -44,6 +45,7 @@
   color: var(--gray);
   font-weight: var(--font-bold);
   border: var(--border-thin);
+  border-radius: 3px;
 
   &:hover {
 	  color: var(--white);
@@ -56,15 +58,17 @@
 }
 
 .button.button-call {
-  background: var(--black);
+  background: var(--color);
   padding: 1em 2em;
   min-width: 200px;
   text-transform: uppercase;
   color: var(--white);
   font-weight: var(--font-bold);
+  border-radius: 3px;
 
   &:hover {
-    background-color: var(--gray);
+    background-color: color(var(--color) blackness(+20%));
+    text-decoration: none;
   }
 }
 

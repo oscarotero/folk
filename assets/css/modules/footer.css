@@ -2,8 +2,7 @@
 .footer-primary {
 	box-sizing: border-box;
 	width: 100%;
-	padding: 1rem;
-	border-top: var(--border-thin);
+	padding: 1rem 0;
 
 	.button {
 		margin-right: 1rem;
@@ -11,35 +10,16 @@
 
 	&.is-floating {
 		@media (min-width: 750px) AND (min-height: 400px) {
+			position: sticky;
+			bottom: 0;
 			display: flex;
-			align-items: center;
-			justify-content: flex-end;
 			color: var(--black);
 			box-shadow: 0 0 -5px color(black a(0.05));
-			position: fixed;
-			background: var(--white);
-			border-left: var(--border-thin);
+			background: var(--black);
 			bottom: 0;
 			z-index: 10;
 			right: 0;
 			width: auto;
-		}
-
-		@media (min-width: 1401px) {
-			max-width: calc(100% - 250px);
-		}
-	}
-}
-
-@media (max-width: 1400px) {
-	body.has-menu {
-		.footer-primary {
-			transition: transform 0.5s;
-		}
-		&.menu-is-opened {
-			.footer-primary {
-				transform: translate(250px, 0);
-			}
 		}
 	}
 }

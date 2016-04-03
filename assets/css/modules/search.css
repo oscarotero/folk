@@ -10,6 +10,7 @@
 	box-sizing: border-box;
 	margin-top: 0.6em;
 	box-shadow: 0 3px 6px -3px color(black a(0.1));
+	color: var(--black);
 
 	.tt-suggestion {
 		padding: 0.5em;

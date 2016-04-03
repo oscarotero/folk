@@ -22,7 +22,7 @@ class CollectionMultiple extends Containers\CollectionMultiple
     protected function customRender($prepend = '', $append = '')
     {
         $html = $this->openHtml();
-        $html .= '<label>'.$this->label().'</label>';
+        $html .= $this->label() ? '<label>'.$this->label().'</label>' : '';
         $html .= '<div>';
 
         $templates = $this->getTemplate();
@@ -32,7 +32,7 @@ class CollectionMultiple extends Containers\CollectionMultiple
 
         $addBtn = (new Fields\Select())
             ->options($options)
-            ->class('format-child-add button button-normal')
+            ->class('format-child-add button')
             ->toHtml();
 
         $addBtn = '<div class="button-separator">'.$addBtn.'</div>';

@@ -14,7 +14,7 @@
 
 		&.is-active {
 			background: black;
-			border-left-color: var(--white);
+			border-left-color: var(--color);
 			border-top: none;
 			border-bottom: none;
 			color: white;
@@ -99,16 +99,14 @@
 
 /* Menú horizontal */
 .menu-secondary {
-	background: var(--white);
-	border-bottom: solid 1px color(var(--gray) a(0.2));
-	box-shadow: 0 0 5px color(var(--black) a(0.05));
+	box-shadow: 0 0 5px color(black a(0.5));
 	position: fixed;
 	width: 100%;
 	top: 0;
 	display: flex;
 	align-items: center;
-	color: var(--black);
 	z-index: 2;
+	background: var(--black);
 
 	.menu-btn {
 		cursor: pointer;
@@ -137,7 +135,7 @@
 			display: block;
 			font-weight: var(--font-bold);
 			text-decoration: none;
-			color: var(--black);
+			color: var(--white);
 			padding: 1rem;
 			white-space: nowrap;
 			overflow: hidden;
