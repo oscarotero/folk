@@ -1,8 +1,10 @@
-<?php $this->layout('html'); ?>
+<?php $this->layout('html', ['title' => "Error 500 | {$app->title}"]); ?>
 
-<div class="page">
-	<header class="page-header">
-        <h1><?= $error->getMessage() ?></h1>
-        <pre><?= $error->getTraceAsString() ?></pre>
-	</header>
+<div class="page-error">
+	<header>
+        <h1>There was an error!</h1>
+    </header>
+
+    <h2><?= $error->getMessage() ?></h2>
+    <pre><?= $error->getTraceAsString() ?></pre>
 </div>

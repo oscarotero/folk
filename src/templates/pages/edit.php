@@ -1,4 +1,4 @@
-<?php $this->layout('html'); ?>
+<?php $this->layout('html', ['title' => $entity->title.' #'.$form['id']->val()." | {$app->title}"]); ?>
 
 <?php $this->insert('nav', ['entity' => $entity, 'placeholder' => "#{$id}"]) ?>
 

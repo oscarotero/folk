@@ -1,4 +1,4 @@
-<?php $this->layout('html'); ?>
+<?php $this->layout('html', ['title' => "{$entity->title} - New | {$app->title}"]); ?>
 
 <?php $this->insert('nav', ['entity' => $entity]) ?>
 

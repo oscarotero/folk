@@ -1,6 +1,4 @@
-<?php
-$this->layout('html', ['html_class' => 'html-index']);
-?>
+<?php $this->layout('html', ['title' => "{$app->title} - {$app->description}"]); ?>
 
 <div class="page page-home">
 	<header class="page-header">

@@ -64,6 +64,7 @@ h1, h2, h3, h4, h5, h6, strong {
 @import "pages/console.css";
 @import "pages/form.css";
 @import "pages/list.css";
+@import "pages/error.css";
 
 
 .ia-12 {

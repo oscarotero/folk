@@ -1,0 +1,16 @@
+.page-error {
+	padding: 2rem;
+	background: white;
+	color: var(--black);
+	width: 90%;
+	max-width: 50rem;
+	margin: 2rem auto;
+
+	h1 {
+		font-weight: bold;
+		color: var(--color-error);
+	}
+	pre {
+		color: var(--gray);
+	}
+}

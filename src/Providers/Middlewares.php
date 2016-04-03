@@ -28,6 +28,10 @@ class Middlewares implements ServiceProviderInterface
                     return false;
                 }),
 
+                Middleware::errorHandler('Folk\\Controllers\\Index::error')
+                    ->arguments($app)
+                    ->catchExceptions(),
+
                 Middleware::basePath($app->getUrlPath()),
 
                 Middleware::trailingSlash(),

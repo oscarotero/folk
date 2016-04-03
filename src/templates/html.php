@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<html data-baseurl="<?= $app->getUrl() ?>" <?= isset($html_class) ? ' class="'.$html_class.'"' : '' ?>>
+<html data-baseurl="<?= $app->getUrl() ?>">
     <head>
         <meta charset="utf-8">
 
-        <title><?= $app->title ?> | FOLK</title>
+        <title><?= $title ?></title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
