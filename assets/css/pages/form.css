@@ -72,6 +72,7 @@
 		+ .format {
 			border-top: dashed 1px color(var(--black) a(.15));
 		}
+
 		&:first-child {
 			border-top-left-radius: 3px;
 			border-top-right-radius: 3px;
@@ -144,14 +145,23 @@
 
 		&.is-collection {
 			background: var(--black);
-			margin-top: 1rem;
-			margin-bottom: 1rem;
 			border: none;
 			color: white;
-			padding: 0;
+			padding-left: 0;
+			padding-right: 0;
 
 			&:first-of-type {
 				margin-top: 0;
+			}
+
+			+ .format:not(.is-collection) {
+				border-top: none;
+				border-top-left-radius: 3px;
+				border-top-right-radius: 3px;
+			}
+
+			+ .format.is-collection {
+				border-top: dashed 1px var(--gray);
 			}
 
 			.is-group {
@@ -242,7 +252,6 @@
 .button-separator {
   position: relative;
   margin-top: 1rem;
-  margin-bottom: 1rem;
 
   .button {
   	max-width: 100%;
@@ -262,6 +271,7 @@
 
 .button-toolbar {
   display: flex;
+  margin-top: 1rem;
 
   .button-toolbar-label {
   	flex: 1 1 auto;
