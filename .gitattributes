@@ -1,6 +1,9 @@
-/demo/         export-ignore
-bower.json     export-ignore
-gulpfile.js    export-ignore
-stylecow.json  export-ignore
-.gitattributes export-ignore
-*.png          export-ignore
+.gitignore         export-ignore
+.gitattributes     export-ignore
+/demo/             export-ignore
+/*-screenshoot.png export-ignore
+bower.json         export-ignore
+composer.lock      export-ignore
+gulpfile.js        export-ignore
+package.json       export-ignore
+stylecow.json      export-ignore
