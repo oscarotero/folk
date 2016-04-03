@@ -11,9 +11,9 @@ class Admin extends Folk\Admin
         parent::__construct($url);
 
         $this->setEntities([
+            Entities\Articles::class,
             Entities\Post::class,
             Entities\Items::class,
-            Entities\MoreItems::class,
         ]);
     }
 }

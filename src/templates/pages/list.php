@@ -4,6 +4,7 @@
 
 <article class="page page-list">
 	<div class="page-content" data-module="page-loader">
+
 		<?php if ($rows): ?>
 		<table class="page-list-table">
 			<thead>
@@ -36,7 +37,7 @@
 			</tbody>
 		</table>
 
-		<?php if ($search->getPage() === null): ?>
+		<?php if ($search->getPage() !== null): ?>
 		<footer class="footer-primary">
 			<a href="<?= $app->getRouteUrl('list', ['entity' => $entity->getName()], [
                     'query' => isset($search) ? $search->getQuery() : null,
