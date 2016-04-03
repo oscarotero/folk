@@ -19,6 +19,10 @@ class Entity
         $entity = $app->getEntity($request->getAttribute('entity'));
         $search = new SearchQuery($request->getQueryParams());
 
+        if ($search->getPage() === null) {
+            $search->setPage(1);
+        }
+
         //Check whether the query is an id
         if (($id = $search->getId())) {
             if ($items = $entity->read($id)) {
@@ -73,7 +77,7 @@ class Entity
             $rows[$id]->val($item);
         }
 
-        if ($search->getPage() !== null && count($items) === 50) {
+        if (count($items) === 50) {
             $search->setPage($search->getPage() + 1);
         }
 
