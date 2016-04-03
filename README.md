@@ -6,6 +6,9 @@ The universal CMS
 
 This is a framework-agnostic CMS that you can use to edit the content of your site. It works with any kind of websites, no matter if the content is stored in a database, yml files, json, etc.
 
+![List view](https://raw.githubusercontent.com/oscarotero/folk/master/list-screenshoot.png)
+![Edit view](https://raw.githubusercontent.com/oscarotero/folk/master/edit-screenshoot.png)
+
 ## Requirements
 
 * PHP >= 5.5
