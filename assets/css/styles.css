@@ -90,3 +90,8 @@ h1, h2, h3, h4, h5, h6, strong {
 		margin: 0;
 	}
 }
+.page {
+	box-sizing: border-box;
+	min-height: 100vh;
+	overflow-x: auto;
+}
