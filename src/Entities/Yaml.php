@@ -2,9 +2,9 @@
 
 namespace Folk\Entities;
 
-use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\Yaml\Yaml as SymfonyYaml;
 
-abstract class YamlEntity extends FileEntity implements EntityInterface
+abstract class Yaml extends File implements EntityInterface
 {
     protected $extension = 'yml';
 
@@ -17,7 +17,7 @@ abstract class YamlEntity extends FileEntity implements EntityInterface
      */
     protected function stringify(array $data)
     {
-        return Yaml::dump($data);
+        return SymfonyYaml::dump($data);
     }
 
     /**
@@ -29,6 +29,6 @@ abstract class YamlEntity extends FileEntity implements EntityInterface
      */
     protected function parse($source)
     {
-        return (array) Yaml::parse($source);
+        return (array) SymfonyYaml::parse($source);
     }
 }

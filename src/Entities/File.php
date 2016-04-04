@@ -7,7 +7,7 @@ use SimpleCrud\Row;
 use FilesystemIterator;
 use RecursiveDirectoryIterator;
 
-abstract class FileEntity extends AbstractEntity implements EntityInterface
+abstract class File extends AbstractEntity implements EntityInterface
 {
     protected $extension;
 
@@ -47,6 +47,28 @@ abstract class FileEntity extends AbstractEntity implements EntityInterface
             }
 
             $result[$id] = $this->parse(file_get_contents($file->getPathname()));
+        }
+
+        $sort = $search->getSort();
+
+        if ($sort) {
+            uasort($result, function ($a, $b) use ($sort) {
+                if ($a[$sort] === $b[$sort]) {
+                    return 0;
+                }
+    
+                return ($a[$sort] < $b[$sort]) ? -1 : 1;
+            });
+
+            if ($search->getDirection() === 'DESC') {
+                $result = array_reverse($result, true);
+            }
+        }
+
+        if ($search->getPage() !== null) {
+            $offset = ($search->getPage() * 50) - 50;
+
+            $result = array_slice($result, $offset, 50, true);
         }
 
         return $result;

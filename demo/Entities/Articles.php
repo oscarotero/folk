@@ -2,10 +2,10 @@
 
 namespace Demo\Entities;
 
-use Folk\Entities\YamlEntity;
+use Folk\Entities\Yaml;
 use FormManager\Builder;
 
-class Articles extends YamlEntity
+class Articles extends Yaml
 {
     protected function getBasePath()
     {

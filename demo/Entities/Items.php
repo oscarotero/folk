@@ -2,10 +2,10 @@
 
 namespace Demo\Entities;
 
-use Folk\Entities\JsonEntity;
+use Folk\Entities\Json;
 use FormManager\Builder;
 
-class Items extends JsonEntity
+class Items extends Json
 {
     protected function getBasePath()
     {
