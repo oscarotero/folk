@@ -79,6 +79,8 @@ class Entity
 
         if (count($items) === 50) {
             $search->setPage($search->getPage() + 1);
+        } else {
+            $search->setPage(null);
         }
 
         //List all results
