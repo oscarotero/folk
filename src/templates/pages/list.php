@@ -9,9 +9,15 @@
 		<table class="page-list-table">
 			<thead>
 				<th></th>
-				<?php foreach (reset($rows) as $column): ?>
-				<th class="format <?= $column->get('class') ?>">
-					<?= $column->label(); ?>
+				<?php foreach (reset($rows) as $name => $column): ?>
+				<th class="format <?= $column->get('class').($search->getSort() === $name ? ' is-sorted' : '') ?>">
+					<a href="<?= $app->getRouteUrl('list', ['entity' => $entity->getName()], [
+						'query' => isset($search) ? $search->getQuery() : null,
+						'sort' => $name,
+						'direction' => ($search->getSort() === $name) ? ($search->getDirection() === 'ASC' ? 'DESC' : 'ASC') : 'ASC'
+					]) ?>">
+						<?= $column->label(); ?>
+					</a>
 				</th>
 				<?php endforeach; ?>
 			</thead>

@@ -11,6 +11,8 @@ class SearchQuery
     protected $ids = [];
     protected $conditions = [];
     protected $words = [];
+    protected $sort;
+    protected $direction;
 
     /**
      * @param array $query
@@ -21,7 +23,19 @@ class SearchQuery
             $this->parseQuery($query['query']);
         }
 
-        $this->page = isset($query['page']) ? (int) $query['page'] : null;
+        if (!empty($query['page'])) {
+            $this->page = (int) $query['page'];
+        }
+
+        if (!empty($query['sort'])) {
+            $this->sort = $query['sort'];
+            
+            if (!empty($query['direction'])) {
+                $this->direction = strtoupper($query['direction']) === 'DESC' ? 'DESC' : 'ASC';
+            } else {
+                $this->direction = 'ASC';
+            }
+        }
     }
 
     /**
@@ -141,13 +155,33 @@ class SearchQuery
     }
 
     /**
-     * Return a condition.
+     * Return all conditions.
      *
      * @return array
      */
     public function getConditions()
     {
         return $this->conditions;
+    }
+
+    /**
+     * Return the sort field.
+     *
+     * @return string|null
+     */
+    public function getSort()
+    {
+        return $this->sort;
+    }
+
+    /**
+     * Return the sort direction in UPPERCASE.
+     *
+     * @return string|null
+     */
+    public function getDirection()
+    {
+        return isset($this->direction) ? strtoupper($this->direction) : null;
     }
 
     /**
