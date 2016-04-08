@@ -62,9 +62,8 @@ class SearchEntity extends Entity
         ]);
     }
 
-    public function json(Request $request, Response $response, Admin $app)
+    public function json(Request $request, Response $response, Admin $app, EntityInterface $entity)
     {
-        $entity = $app->getEntity($request->getAttribute('entity'));
         $search = new SearchQuery($request->getQueryParams());
 
         $json = [];
