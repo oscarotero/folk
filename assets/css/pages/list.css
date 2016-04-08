@@ -1,5 +1,6 @@
 .page-list {
 	padding: 5rem 1rem;
+	overflow-x: auto;
 }
 .page-list-table {
 	min-width: 100%;
