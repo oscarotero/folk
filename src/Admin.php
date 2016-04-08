@@ -39,7 +39,7 @@ class Admin extends Fol
         return $dispatcher($request, new Response());
     }
 
-    public function getRouteUrl($name, array $data = array(), array $query = null)
+    public function getRoute($name, array $data = array(), array $query = null)
     {
         return $this->getUrl($this['router']->getGenerator()->generate($name, $data)).($query ? '?'.http_build_query($query) : '');
     }

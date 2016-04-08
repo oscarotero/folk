@@ -37,6 +37,7 @@
         "psr-4": { "Demo\\": "demo/" }
     },
     "require-dev": {
-        "symfony/yaml": "^3.0"
+        "symfony/yaml": "^3.0",
+        "filp/whoops": "^2.1"
     }
 }

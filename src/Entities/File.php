@@ -56,7 +56,7 @@ abstract class File extends AbstractEntity implements EntityInterface
                 if ($a[$sort] === $b[$sort]) {
                     return 0;
                 }
-    
+
                 return ($a[$sort] < $b[$sort]) ? -1 : 1;
             });
 
@@ -132,7 +132,7 @@ abstract class File extends AbstractEntity implements EntityInterface
     {
         $list = glob($this->getBasePath()."/*.{$this->extension}");
 
-        return $list ? count($list) + 1 : uniqid();
+        return count($list) + 1;
     }
 
     /**

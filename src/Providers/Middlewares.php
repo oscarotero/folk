@@ -28,15 +28,22 @@ class Middlewares implements ServiceProviderInterface
                     return false;
                 }),
 
-                Middleware::errorHandler('Folk\\Controllers\\Index::error')
+                Middleware::errorHandler()
                     ->arguments($app)
                     ->catchExceptions(),
+
+                Middleware::create(function () {
+                    return class_exists('Whoops\\Run') ? Middleware::whoops() : false;
+                }),
 
                 Middleware::basePath($app->getUrlPath()),
 
                 Middleware::trailingSlash(),
 
                 Middleware::formatNegotiator(),
+
+                Middleware::methodOverride()
+                    ->parameter('method-override'),
 
                 Middleware::readResponse(dirname(dirname(__DIR__)).'/assets')
                     ->continueOnError(),

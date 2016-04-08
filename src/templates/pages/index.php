@@ -77,7 +77,7 @@ BOOKMARKLET;
 		<ul class="page-home-list menu-primary-options">
 			<?php foreach ($app->getAllEntities() as $entity): ?>
 			<li>
-				<a href="<?= $app->getRouteUrl('list', ['entity' => $entity->getName()]) ?>">
+				<a href="<?= $app->getRoute('search', ['entity' => $entity->getName()]) ?>">
 					<h2><?= $entity->title; ?></h2>
 
 					<?php if ($entity->description): ?>

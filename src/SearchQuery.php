@@ -29,7 +29,7 @@ class SearchQuery
 
         if (!empty($query['sort'])) {
             $this->sort = $query['sort'];
-            
+
             if (!empty($query['direction'])) {
                 $this->direction = strtoupper($query['direction']) === 'DESC' ? 'DESC' : 'ASC';
             } else {

@@ -16,12 +16,16 @@ class Router implements ServiceProviderInterface
             $map = $router->getMap();
             $ns = 'Folk\\Controllers';
 
-            $map->get('index', '/', "{$ns}\\Index::index");
-            $map->get('list', '/{entity}/list', "{$ns}\\Entity::listItems");
-            $map->get('create', '/{entity}/new', "{$ns}\\Entity::createItem")->allows(['POST']);
-            $map->get('edit', '/{entity}/{id}/edit', "{$ns}\\Entity::editItem")->allows('POST');
-            $map->post('delete', '/{entity}/{id}/delete', "{$ns}\\Entity::deleteItem");
-            $map->get('entity', '/{entity}', "{$ns}\\Index::entity");
+            $map->get('index', '/', "{$ns}\\Index");
+
+            $map->get('search', '/{entity}', "{$ns}\\SearchEntity");
+
+            $map->get('insert', '/{entity}/new', "{$ns}\\InsertEntity");
+
+            $map->put('create', '/{entity}', "{$ns}\\CreateEntity");
+            $map->get('read', '/{entity}/{id}', "{$ns}\\ReadEntity");
+            $map->post('update', '/{entity}/{id}', "{$ns}\\UpdateEntity");
+            $map->delete('delete', '/{entity}/{id}', "{$ns}\\DeleteEntity");
 
             return $router;
         };
