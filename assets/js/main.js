@@ -46,12 +46,6 @@ require([
 		}
 	});
 
-	$body.on('click', '[data-method-override]', function (e) {
-		$(this.form)
-			.find('input[name="method-override"]')
-			.val($(this).data('methodOverride'));
-	});
-
 	$('#menu-btn').on('click', function (e) {
 		e.preventDefault();
 
