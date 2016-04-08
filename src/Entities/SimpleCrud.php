@@ -33,10 +33,12 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
             $this->searchFields = [$this->getFirstField()];
         }
 
-        $orderBy = $search->getSort() ?: 'id';
+        $orderBy = $search->getSort();
 
-        if (isset($entity->getScheme()['fields'][$orderBy])) {
+        if (!empty($orderBy) && isset($entity->getScheme()['fields'][$orderBy])) {
             $query->orderBy("`{$entity->name}`.`{$orderBy}`", $search->getDirection());
+        } else {
+            $query->orderBy("`{$entity->name}`.`id`", 'DESC');
         }
 
         foreach ($search->getWords() as $k => $word) {
