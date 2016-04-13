@@ -35,7 +35,7 @@ class Items extends Json
                     'textarea' => $builder->textarea()->label('Textarea'),
                 ],
                 'image' => [
-                    'text' => $builder->imageupload()->label('Image'),
+                    'text' => $builder->imageUpload()->label('Image'),
                 ],
             ])->label('Collection multiple'),
 
@@ -49,11 +49,11 @@ class Items extends Json
 
             'email' => $builder->email()->label('Email'),
 
-            'fileupload' => $builder->fileupload()->label('File upload'),
+            'fileupload' => $builder->fileUpload()->label('File upload'),
 
             'html' => $builder->html()->label('Html'),
 
-            'imageupload' => $builder->imageupload()->label('Image upload'),
+            'imageupload' => $builder->imageUpload()->label('Image upload'),
 
             'info' => $builder->info()->label('Info'),
 
