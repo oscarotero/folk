@@ -42,9 +42,6 @@
 
   background: $mfp-overlay-color;
   opacity: $mfp-overlay-opacity;
-  @if $mfp-IE7support {
-    filter: unquote("alpha(opacity=#{$mfp-overlay-opacity*100})");
-  }
 }
 
 // Wrapper for popup
@@ -68,8 +65,6 @@
   left: 0;
   top: 0;
   padding: 0 $mfp-popup-padding-left;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -218,8 +213,8 @@ button {
     outline: none;
     padding: 0;
     z-index: $mfp-z-index-base + 6;
-    -webkit-box-shadow: none;
     box-shadow: none;
+    touch-action: manipulation;
   }
   &::-moz-focus-inner {
       padding: 0;
@@ -240,9 +235,6 @@ button {
   text-decoration: none;
   text-align: center;
   opacity: $mfp-controls-opacity;
-  @if $mfp-IE7support {
-    filter: unquote("alpha(opacity=#{$mfp-controls-opacity*100})");
-  }
   padding: 0 0 18px 10px;
   color: $mfp-controls-color;
 
@@ -253,9 +245,6 @@ button {
   &:hover,
   &:focus {
     opacity: 1;
-    @if $mfp-IE7support {
-      filter: unquote("alpha(opacity=#{1*100})");
-    }
   }
 
   &:active {
@@ -294,9 +283,6 @@ button {
   .mfp-arrow {
     position: absolute;
     opacity: $mfp-controls-opacity;
-    @if $mfp-IE7support {
-      filter: unquote("alpha(opacity=#{$mfp-controls-opacity*100})");
-    }
     margin: 0;
     top: 50%;
     margin-top: -55px;
@@ -310,14 +296,9 @@ button {
     &:hover,
     &:focus {
       opacity: 1;
-      @if $mfp-IE7support {
-        filter: unquote("alpha(opacity=#{1*100})");
-      }
     }
     &:before,
-    &:after,
-    .mfp-b,
-    .mfp-a {
+    &:after {
       content: '';
       display: block;
       width: 0;
@@ -330,16 +311,14 @@ button {
       border: medium inset transparent;
     }
 
-    &:after,
-    .mfp-a {
+    &:after {
 
       border-top-width: 13px;
       border-bottom-width: 13px;
       top:8px;
     }
 
-    &:before,
-    .mfp-b {
+    &:before {
       border-top-width: 21px;
       border-bottom-width: 21px;
       opacity: 0.7;
@@ -349,14 +328,11 @@ button {
 
   .mfp-arrow-left {
     left: 0;
-
-    &:after,
-    .mfp-a {
+    &:after {
       border-right: 17px solid $mfp-controls-color;
       margin-left: 31px;
     }
-    &:before,
-    .mfp-b {
+    &:before {
       margin-left: 25px;
       border-right: 27px solid $mfp-controls-border-color;
     }
@@ -364,13 +340,11 @@ button {
 
   .mfp-arrow-right {
     right: 0;
-    &:after,
-    .mfp-a {
+    &:after {
       border-left: 17px solid $mfp-controls-color;
       margin-left: 39px
     }
-    &:before,
-    .mfp-b {
+    &:before {
       border-left: 27px solid $mfp-controls-border-color;
     }
   }
@@ -423,8 +397,6 @@ button {
       height: auto;
       display: block;
       line-height: 0;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
       box-sizing: border-box;
       padding: $mfp-image-padding-top 0 $mfp-image-padding-bottom;
       margin: 0 auto;
@@ -522,8 +494,6 @@ button {
           top: auto;
           padding: 3px 5px;
           position: fixed;
-          -webkit-box-sizing: border-box;
-          -moz-box-sizing: border-box;
           box-sizing: border-box;
           &:empty {
             padding: 0;
@@ -571,32 +541,3 @@ button {
   }
 }
 
-
-
-// IE7 support
-// Styles that make popup look nicier in old IE
-@if $mfp-IE7support {
-  .mfp-ie7 {
-    .mfp-img {
-      padding: 0;
-    }
-    .mfp-bottom-bar {
-      width: 600px;
-      left: 50%;
-      margin-left: -300px;
-      margin-top: 5px;
-      padding-bottom: 5px;
-    }
-    .mfp-container {
-      padding: 0;
-    }
-    .mfp-content {
-      padding-top: 44px;
-    }
-    .mfp-close {
-      top: 0;
-      right: 0;
-      padding-top: 0;
-    }
-  }
-}

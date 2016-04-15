@@ -8,7 +8,7 @@ $mfp-overlay-opacity:                 0.8 !default;                        // Op
 $mfp-shadow:                          0 0 8px rgba(0, 0, 0, 0.6) !default; // Shadow on image or iframe
 
 // spacing
-$mfp-popup-padding-left:              8px!default ;                        // Padding from left and from right side
+$mfp-popup-padding-left:              8px !default;                        // Padding from left and from right side
 $mfp-popup-padding-left-mobile:       6px !default;                        // Same as above, but is applied when width of window is less than 800px
 
 $mfp-z-index-base:                    1040 !default;                       // Base z-index of popup
@@ -21,7 +21,6 @@ $mfp-controls-border-color:           #3F3F3F !default; 	                 // Bor
 $mfp-inner-close-icon-color:          #333 !default;                       // Color of close button when inside
 $mfp-controls-text-color:             #CCC !default;                       // Color of preloader and "1 of X" indicator
 $mfp-controls-text-color-hover:       #FFF !default;                       // Hover color of preloader and "1 of X" indicator
-$mfp-IE7support:                      true !default;                       // Very basic IE7 support
 
 // Iframe-type options
 $mfp-include-iframe-type:             true !default;                       // Enable Iframe-type popups

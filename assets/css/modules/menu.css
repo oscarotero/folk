@@ -18,6 +18,10 @@
 			border-top: none;
 			border-bottom: none;
 			color: white;
+
+			path {
+				fill: var(--color);
+			}
 		}
 	}
 	.menu-primary-logo {
@@ -62,12 +66,11 @@
 
 	a {
 		color: var(--gray);
-		display: block;
 		padding: 16px;
 		text-decoration: none;
 		transition: all 0.5s;
 		outline: 0;
-		display: block;
+		display: flex;
 		font-weight: var(--font-bold);
 		border-bottom: solid 1px color(var(--black) b(+10));
 		box-shadow: 0 1px 0 color(var(--black) tint(5));
@@ -85,6 +88,16 @@
 			font-weight: var(--font-normal);
 			color: var(--gray);
 		}
+		> div {
+			flex: 1 1 auto;
+		}
+		svg {
+			margin-right: 5px;
+			flex: 0 0 24px;
+		}
+		path {
+			fill: var(--gray);
+		}
 
 		&:hover {
 			background: color(black a(0.2));
@@ -92,6 +105,9 @@
 
 			strong, h2 {
 				color: var(--white);
+			}
+			path {
+				fill: var(--color);
 			}
 		}
 	}
@@ -161,9 +177,14 @@
 			padding: 0.5em;
 			width: 100%;
 			text-overflow: ellipsis;
+			color: white;
 
 			&::input-placeholder {
 				color: var(--gray);
+			}
+			&:focus {
+				background: white !important;
+				color: var(--black);
 			}
 		}
 		button {

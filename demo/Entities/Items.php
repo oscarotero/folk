@@ -7,6 +7,9 @@ use FormManager\Builder;
 
 class Items extends Json
 {
+    public $title = 'Items';
+    public $description = 'Random items';
+
     protected function getBasePath()
     {
         return __DIR__.'/json';

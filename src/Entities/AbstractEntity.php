@@ -12,6 +12,7 @@ abstract class AbstractEntity implements EntityInterface
     protected $admin;
     protected $name;
 
+    public $icon;
     public $title;
     public $description;
 

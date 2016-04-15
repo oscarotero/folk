@@ -33,6 +33,10 @@ body {
 	margin: 0;
 	padding: 0;
 }
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
 
 .logo {
 	font-weight: normal;

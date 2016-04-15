@@ -78,11 +78,15 @@ BOOKMARKLET;
 			<?php foreach ($app->getAllEntities() as $entity): ?>
 			<li>
 				<a href="<?= $app->getRoute('search', ['entity' => $entity->getName()]) ?>">
-					<h2><?= $entity->title; ?></h2>
+					<?= $this->icon($entity->icon ?: 'file/folder_open') ?>
 
-					<?php if ($entity->description): ?>
-		    		<p><?= $entity->description; ?></p>
-					<?php endif ?>
+					<div>
+						<h2><?= $entity->title; ?></h2>
+
+						<?php if ($entity->description): ?>
+			    		<p><?= $entity->description; ?></p>
+						<?php endif ?>
+					</div>
 				</a>
 			</li>
 			<?php endforeach ?>
