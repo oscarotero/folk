@@ -10,7 +10,6 @@ use Folk\Admin;
 abstract class AbstractEntity implements EntityInterface
 {
     protected $admin;
-    protected $name;
 
     public $icon;
     public $title;
@@ -19,18 +18,9 @@ abstract class AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    public function __construct($name, Admin $admin)
+    public function __construct(Admin $admin)
     {
         $this->admin = $admin;
-        $this->name = $name;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**

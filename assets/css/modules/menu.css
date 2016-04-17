@@ -130,14 +130,16 @@
 		padding: 1rem;
 		background: var(--black);
 
-		.ia-12 {
-			line, circle {
-				stroke: var(--white);
-			}
+		path {
+			fill: var(--white);
 		}
 
 		&:hover {
 			background: black;
+
+			path {
+				fill: var(--color);
+			}
 		}
 	}
 
@@ -178,6 +180,8 @@
 			width: 100%;
 			text-overflow: ellipsis;
 			color: white;
+			transition: background .3s, color .3s;
+			border-radius: 3px;
 
 			&::input-placeholder {
 				color: var(--gray);
@@ -192,6 +196,13 @@
 			border: none;
 			cursor: pointer;
 			background: none;
+
+			&:hover path {
+				fill: var(--color);
+			}
+		}
+		path {
+			fill: var(--white);
 		}
 	}
 
@@ -205,6 +216,18 @@
 			border-left: var(--border-thin);
 			display: block;
 			padding: 1rem;
+
+			path {
+				fill: var(--white);
+			}
+
+			&:hover {
+				background: black;
+
+				path {
+					fill: var(--color);
+				}
+			}
 		}
 	}
 }

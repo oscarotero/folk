@@ -2,7 +2,7 @@
     "files": [
         {
             "input": "assets/css/styles.css",
-            "output": "assets/css.dist/styles.css"
+            "output": "assets/css/styles.min.css"
         }
     ],
     "support": {

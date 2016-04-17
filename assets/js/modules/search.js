@@ -1,4 +1,7 @@
-define(['jquery', 'typeahead'], function ($) {
+define([
+	'jquery',
+	'typeahead'
+], function ($) {
 	return {
 		init: function ($element) {
 			var $search = $element.find('input[type="search"]'),

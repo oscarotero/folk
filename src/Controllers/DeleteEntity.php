@@ -10,12 +10,12 @@ use Zend\Diactoros\Response\RedirectResponse;
 
 class DeleteEntity extends Entity
 {
-    public function html(Request $request, Response $response, Admin $app, EntityInterface $entity)
+    public function html(Request $request, Response $response, Admin $app, $entityName)
     {
-        $entity->delete($request->getAttribute('id'));
+        $app->getEntity($entityName)->delete($request->getAttribute('id'));
 
         return new RedirectResponse($app->getRoute('search', [
-            'entity' => $entity->getName(),
+            'entity' => $entityName,
         ]));
     }
 }

@@ -3,6 +3,7 @@
   "private": true,
   "devDependencies": {
     "bower": "^1.6.5",
+    "del": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-rename": "^1.2.2",
     "gulp-stylecow": "^3.0.2",
