@@ -4,19 +4,21 @@
 	width: 100%;
 	min-width: 230px;
 	background: var(--white);
-	padding: 0.5em 0.5em;
-	border: var(--border-thin);
 	border-top: none;
 	box-sizing: border-box;
-	margin-top: 0.6em;
-	box-shadow: 0 3px 6px -3px color(black a(0.1));
+	box-shadow: 0 0 3px color(black a(0.3));
 	color: var(--black);
+	border-radius: 3px;
+	margin-top: 3px;
+	padding: 3px;
 
 	.tt-suggestion {
 		padding: 0.5em;
+		border-radius: 3px;
 
 		&.tt-cursor {
-			background-color: var(--lightgray);
+			background-color: var(--color);
+			color: var(--white);
 		}
 	}
 }

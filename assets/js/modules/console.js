@@ -1,4 +1,6 @@
-define(['jquery'], function ($) {
+define([
+	'jquery'
+], function ($) {
 	return {
 		init: function ($form) {
 			var $input = $form.find('.console-input'),

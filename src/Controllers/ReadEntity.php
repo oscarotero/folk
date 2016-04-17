@@ -9,16 +9,16 @@ use Folk\Entities\EntityInterface;
 
 class ReadEntity extends Entity
 {
-    public function html(Request $request, Response $response, Admin $app, EntityInterface $entity)
+    public function html(Request $request, Response $response, Admin $app, $entityName)
     {
         $id = $request->getAttribute('id');
 
-        $form = static::createForm($entity, $app, $id);
-        $form['data']->val($entity->read($id));
+        $form = static::createForm($app, $entityName, $id);
+        $form['data']->val($app->getEntity($entityName)->read($id));
 
         //Render template
         return $app['templates']->render('pages/read', [
-            'entity' => $entity,
+            'entityName' => $entityName,
             'form' => $form,
             'id' => $id,
         ]);

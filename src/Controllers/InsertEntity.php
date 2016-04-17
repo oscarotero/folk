@@ -9,11 +9,11 @@ use Folk\Entities\EntityInterface;
 
 class InsertEntity extends Entity
 {
-    public function html(Request $request, Response $response, Admin $app, EntityInterface $entity)
+    public function html(Request $request, Response $response, Admin $app, $entityName)
     {
         return $app['templates']->render('pages/insert', [
-            'entity' => $entity,
-            'form' => static::createForm($entity, $app),
+            'entityName' => $entityName,
+            'form' => static::createForm($app, $entityName),
         ]);
     }
 }

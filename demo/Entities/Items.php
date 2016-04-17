@@ -7,6 +7,10 @@ use FormManager\Builder;
 
 class Items extends Json
 {
+    public $icon = 'editor/insert_drive_file';
+    public $title = 'Items';
+    public $description = 'Random items';
+
     protected function getBasePath()
     {
         return __DIR__.'/json';
@@ -15,6 +19,7 @@ class Items extends Json
     public function getScheme(Builder $builder)
     {
         return $builder->group([
+            'text' => $builder->text()->label('Title'),
             'checkbox' => $builder->checkbox()->label('Checkbox'),
 
             'choose' => $builder->choose([

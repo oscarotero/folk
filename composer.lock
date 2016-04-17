@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f520e2ddf4b5ce3ed7a7592a9d9e5635",
-    "content-hash": "9bc8cc8e0c4c1a12e1d99d5b28f0ceb0",
+    "hash": "53c73b2cbf7efffb5ce9c39586607911",
+    "content-hash": "4f4a8d6b5e30787383374eba36d70f81",
     "packages": [
         {
             "name": "aura/router",
@@ -230,6 +230,49 @@
                 "views"
             ],
             "time": "2015-07-09 02:14:40"
+        },
+        {
+            "name": "oscarotero/inline-svg",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oscarotero/inline-svg.git",
+                "reference": "da8ce25fff99ed2243ad09fbcd6fa52947f648fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oscarotero/inline-svg/zipball/da8ce25fff99ed2243ad09fbcd6fa52947f648fd",
+                "reference": "da8ce25fff99ed2243ad09fbcd6fa52947f648fd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "InlineSvg\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oscar Otero",
+                    "email": "oom@oscarotero.com",
+                    "homepage": "http://oscarotero.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP library to embed svg in the html",
+            "homepage": "https://github.com/oscarotero/inline-svg",
+            "keywords": [
+                "icons",
+                "svg"
+            ],
+            "time": "2016-03-04 01:17:47"
         },
         {
             "name": "oscarotero/psr7-middlewares",

@@ -26,7 +26,8 @@
         "oscarotero/psr7-middlewares": "^3.14",
         "willdurand/negotiation": "^2.0",
         "fol/core": "^11.1",
-        "form-manager/form-manager": "^4.7"
+        "form-manager/form-manager": "^4.7",
+        "oscarotero/inline-svg": "^1.0"
     },
     "autoload": {
         "psr-4": {

@@ -9,19 +9,20 @@ use SimpleCrud\Scheme\Scheme;
 abstract class SimpleCrud extends AbstractEntity implements EntityInterface
 {
     protected $searchFields;
+    protected $firstField;
 
     /**
-     * Returns the simple-crud entity.
+     * Returns the simple-crud table.
      * 
-     * @return SimpleCrud\Entity
+     * @return SimpleCrud\Table
      */
-    abstract protected function getDbEntity();
+    abstract protected function getTable();
 
     protected function getQuery(SearchQuery $search)
     {
-        $entity = $this->getDbEntity();
+        $table = $this->getTable();
 
-        $query = $entity->select();
+        $query = $table->select();
 
         if ($search->getPage() !== null) {
             $query
@@ -35,19 +36,19 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
 
         $orderBy = $search->getSort();
 
-        if (!empty($orderBy) && isset($entity->getScheme()['fields'][$orderBy])) {
-            $query->orderBy("`{$entity->name}`.`{$orderBy}`", $search->getDirection());
+        if (!empty($orderBy) && isset($table->getScheme()['fields'][$orderBy])) {
+            $query->orderBy("`{$table->name}`.`{$orderBy}`", $search->getDirection());
         } else {
-            $query->orderBy("`{$entity->name}`.`id`", 'DESC');
+            $query->orderBy("`{$table->name}`.`id`", 'DESC');
         }
 
         foreach ($search->getWords() as $k => $word) {
             foreach ($this->searchFields as $field) {
-                $query->where("`{$entity->name}`.`{$field}` LIKE :w{$k}", [":w{$k}" => "%{$word}%"]);
+                $query->where("`{$table->name}`.`{$field}` LIKE :w{$k}", [":w{$k}" => "%{$word}%"]);
             }
         }
 
-        $db = $entity->getDatabase();
+        $db = $table->getDatabase();
 
         foreach ($search->getConditions() as $name => $value) {
             $related = $db->$name
@@ -80,7 +81,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
      */
     public function create(array $data)
     {
-        $row = $this->getDbEntity()->create();
+        $row = $this->getTable()->create();
 
         $this->save($row, $data);
 
@@ -92,15 +93,15 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
      */
     public function read($id)
     {
-        $entity = $this->getDbEntity();
+        $table = $this->getTable();
 
-        $row = $entity[$id];
+        $row = $table[$id];
 
         if (empty($row)) {
             return;
         }
 
-        $relations = $entity->getScheme()['relations'];
+        $relations = $table->getScheme()['relations'];
         $array = $row->toArray();
 
         foreach ($relations as $name => $relation) {
@@ -117,7 +118,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
      */
     public function update($id, array $data)
     {
-        $row = $this->getDbEntity()[$id];
+        $row = $this->getTable()[$id];
 
         $this->save($row, $data);
 
@@ -129,9 +130,9 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
      */
     public function delete($id)
     {
-        $entity = $this->getDbEntity();
+        $table = $this->getTable();
 
-        unset($entity[$id]);
+        unset($table[$id]);
     }
 
     /**
@@ -147,20 +148,19 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
      */
     protected function getFirstField()
     {
-        $entity = $this->getDbEntity();
-
-        foreach (array_keys($entity->fields) as $key) {
-            if ($key !== 'id') {
-                return $key;
-            }
+        if ($this->firstField === null) {
+            $scheme = $this->getScheme();
+            $this->firstField = key($scheme);
         }
+
+        return $this->firstField;
     }
 
     protected function save(Row $row, array $data)
     {
-        $entity = $this->getDbEntity();
-        $db = $entity->getDatabase();
-        $scheme = $entity->getScheme();
+        $table = $this->getTable();
+        $db = $table->getDatabase();
+        $scheme = $table->getScheme();
 
         foreach ($data as $name => $value) {
             if (isset($scheme['relations'][$name])) {

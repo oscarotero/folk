@@ -1,16 +1,14 @@
 require.config({
-	//urlArgs: "bust=" +  (new Date()).getTime(), //avoid cache
 	paths: {
-		"delegato": "../vendor/delegato/dist/delegato",
-		"jquery": "../vendor/jquery/dist/jquery",
-		"jquery-lazyscript": "../vendor/jquery-lazyscript/jquery.lazyscript",
-		"magnific-popup": "../vendor/magnific-popup/dist/jquery.magnific-popup",
-		"sifter": "../vendor/sifter/sifter",
-		"microplugin": "../vendor/microplugin/src/microplugin",
-		"selectize": "../vendor/selectize/dist/js/selectize",
-		"typeahead": "../vendor/typeahead.js/dist/typeahead.jquery",
-		"ckeditor": "../vendor/ckeditor/ckeditor",
-		"handsontable": "../vendor/handsontable/dist/handsontable"
+		"jquery": "vendor/jquery/jquery",
+		"jquery-lazyscript": "vendor/jquery-lazyscript/jquery.lazyscript",
+		"magnific-popup": "vendor/magnific-popup/jquery.magnific-popup",
+		"sifter": "vendor/sifter/sifter",
+		"microplugin": "vendor/microplugin/microplugin",
+		"selectize": "vendor/selectize/selectize",
+		"typeahead": "vendor/typeahead.js/typeahead.jquery",
+		"ckeditor": "vendor/ckeditor/ckeditor",
+		"handsontable": "vendor/handsontable/handsontable.full"
 	},
 	shim: {
 		'ckeditor': {
@@ -22,7 +20,7 @@ require.config({
 	},
 	packages: [{
 		name: "codemirror",
-		location: "../vendor/codemirror",
+		location: "vendor/codemirror",
 		main: "lib/codemirror"
 	}]
 });
@@ -30,15 +28,10 @@ require.config({
 require([
 	"jquery",
 	"./loader",
-	"delegato",
 ], function ($, loader) {
 
 	//Generic interactions
 	var $body = $('body');
-
-	$body.delegato({
-		includeJquery: true
-	});
 
 	$body.on('click', '[data-confirm]', function (e) {
 		if (!confirm($(this).data('confirm'))) {
@@ -53,10 +46,8 @@ require([
 
 		if ($body.hasClass('menu-is-opened')) {
 			$body.removeClass('menu-is-opened');
-			$svg.attr('class', 'ia-12 ia-menu');
 		} else {
 			$body.addClass('menu-is-opened');
-			$svg.attr('class', 'ia-12 ia-cross');
 		}
 	});
 

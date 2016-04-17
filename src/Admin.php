@@ -3,6 +3,7 @@
 namespace Folk;
 
 use Fol;
+use Fol\NotFoundException;
 use Folk\Entities\EntityInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -56,22 +57,35 @@ class Admin extends Fol
                 $name = strtolower(substr(strrchr($entity, '\\'), 1));
             }
 
-            $this->addEntity(new $entity($name, $this));
+            $this->addEntity($name, new $entity($this));
         }
     }
 
     /**
      * Add a new entity.
      *
+     * @param string $name
      * @param EntityInterface $entity
      */
-    public function addEntity(EntityInterface $entity)
+    public function addEntity($name, EntityInterface $entity)
     {
         if (empty($entity->title)) {
-            $entity->title = ucfirst($entity->getName());
+            $entity->title = ucfirst($name);
         }
 
-        $this->entities[$entity->getName()] = $entity;
+        $this->entities[$name] = $entity;
+    }
+
+    /**
+     * Return whether an entity exists.
+     *
+     * @param string $name
+     *
+     * @return bool
+     */
+    public function hasEntity($name)
+    {
+        return isset($this->entities[$name]);
     }
 
     /**
@@ -79,11 +93,17 @@ class Admin extends Fol
      *
      * @param string $name
      *
-     * @return EntityInterface|null
+     * @throw NotFoundException
+     * 
+     * @return EntityInterface
      */
     public function getEntity($name)
     {
-        return isset($this->entities[$name]) ? $this->entities[$name] : null;
+        if ($this->hasEntity($name)) {
+            return $this->entities[$name];
+        }
+
+        throw new NotFoundException(sprintf('Entity %s not found', $name));
     }
 
     /**

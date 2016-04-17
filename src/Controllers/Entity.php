@@ -14,10 +14,10 @@ abstract class Entity
     public function __invoke(Request $request, Response $response, Admin $app)
     {
         $format = FormatNegotiator::getFormat($request);
-        $entity = $app->getEntity($request->getAttribute('entity'));
+        $entityName = $request->getAttribute('entity');
 
-        if ($entity !== null && method_exists($this, $format)) {
-            return $this->$format($request, $response, $app, $entity);
+        if ($app->hasEntity($entityName) && method_exists($this, $format)) {
+            return $this->$format($request, $response, $app, $entityName);
         }
 
         return $response->withStatus(404);
@@ -26,19 +26,21 @@ abstract class Entity
     /**
      * Helper to build the entity form.
      * 
-     * @param EntityInterface $entity
      * @param Admin           $app
+     * @param string $entityName
      * @param mixed|null      $id
      * 
      * return \Folk\Formats\Form
      */
-    protected static function createForm(EntityInterface $entity, Admin $app, $id = null)
+    protected static function createForm(Admin $app, $entityName, $id = null)
     {
+        $entity = $app->getEntity($entityName);
+
         $form = F::form()
             ->method('post')
             ->enctype('multipart/form-data')
             ->add([
-                'entity' => F::hidden()->val($entity->getName())->class('field-data-entity'),
+                'entity' => F::hidden()->val($entityName)->class('field-data-entity'),
                 'data' => $entity->getScheme($app['builder']),
             ]);
 

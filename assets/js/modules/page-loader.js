@@ -1,4 +1,7 @@
-define(['jquery', 'jquery-lazyscript'], function ($) {
+define([
+	'jquery',
+	'jquery-lazyscript'
+], function ($) {
 	return {
 		init: function ($element) {
 			var containerSelector = '.ui-autoload-container';

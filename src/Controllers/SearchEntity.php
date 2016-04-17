@@ -11,15 +11,16 @@ use Folk\SearchQuery;
 
 class SearchEntity extends Entity
 {
-    public function html(Request $request, Response $response, Admin $app, EntityInterface $entity)
+    public function html(Request $request, Response $response, Admin $app, $entityName)
     {
+        $entity = $app->getEntity($entityName);
         $search = new SearchQuery($request->getQueryParams());
         $items = $this->search($entity, $search);
 
         //Redirect to edit element if it's only one result
         if (count($items) === 1 && !empty($search->getQuery())) {
             return new RedirectResponse($app->getRoute('read', [
-                'entity' => $entity->getName(),
+                'entity' => $entityName,
                 'id' => key($items),
             ]));
         }
@@ -57,13 +58,15 @@ class SearchEntity extends Entity
         //List all results
         return $app['templates']->render('pages/search', [
             'rows' => $rows,
-            'entity' => $entity,
+            'entityName' => $entityName,
             'search' => $search,
         ]);
     }
 
-    public function json(Request $request, Response $response, Admin $app, EntityInterface $entity)
+    public function json(Request $request, Response $response, Admin $app, $entityName)
     {
+        $entity = $app->getEntity($entityName);
+
         $search = new SearchQuery($request->getQueryParams());
 
         $json = [];
