@@ -33,7 +33,7 @@
 			<?= $entity->title ?>
 		</a>
 
-		<input id="search-entity" name="query" type="search" placeholder="<?= isset($placeholder) ? $placeholder : 'Buscar '.strtolower($entity->title).'...' ?>" value="<?= isset($search) ? $search->getQuery() : ''; ?>">
+		<input id="search-entity" name="query" type="search" placeholder="<?= isset($placeholder) ? $placeholder : 'Search '.strtolower($entity->title).'...' ?>" value="<?= isset($search) ? $search->getQuery() : ''; ?>">
 		<input type="hidden" name="page" value="1">
 		<button type="submit">
 			<?= $this->icon('action/search'); ?>

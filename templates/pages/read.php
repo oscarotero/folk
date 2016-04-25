@@ -7,7 +7,10 @@
 <div class="page page-form">
 	<div class="page-content">
 		<?php
-        echo $form->action($app->getRoute('update', ['entity' => $entityName, 'id' => $id]))->openHtml();
+        echo $form
+            //->data('module', 'submit')
+            ->action($app->getRoute('update', ['entity' => $entityName, 'id' => $id]))
+            ->openHtml();
 
         $form['data']->addClass('page-form-content');
         echo $form->html();

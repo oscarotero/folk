@@ -130,16 +130,16 @@
         },
         {
             "name": "form-manager/form-manager",
-            "version": "v4.7.2",
+            "version": "v4.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/form-manager.git",
-                "reference": "a467fbfc4fc0ce6802898ece5820f057bbb89763"
+                "reference": "265154bdd50f12d5ca25e4fde8410cac582b1b3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/form-manager/zipball/a467fbfc4fc0ce6802898ece5820f057bbb89763",
-                "reference": "a467fbfc4fc0ce6802898ece5820f057bbb89763",
+                "url": "https://api.github.com/repos/oscarotero/form-manager/zipball/265154bdd50f12d5ca25e4fde8410cac582b1b3d",
+                "reference": "265154bdd50f12d5ca25e4fde8410cac582b1b3d",
                 "shasum": ""
             },
             "require": {
@@ -177,7 +177,7 @@
                 "psr-7",
                 "validator"
             ],
-            "time": "2015-10-06 20:09:44"
+            "time": "2016-04-14 10:20:07"
         },
         {
             "name": "league/plates",
@@ -276,16 +276,16 @@
         },
         {
             "name": "oscarotero/psr7-middlewares",
-            "version": "v3.14.2",
+            "version": "v3.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/psr7-middlewares.git",
-                "reference": "fb6627b2ba15f9f30a1bcd588bd503e2a3f97ad2"
+                "reference": "e60dd605bcd6349480931db4137764ce15576163"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/psr7-middlewares/zipball/fb6627b2ba15f9f30a1bcd588bd503e2a3f97ad2",
-                "reference": "fb6627b2ba15f9f30a1bcd588bd503e2a3f97ad2",
+                "url": "https://api.github.com/repos/oscarotero/psr7-middlewares/zipball/e60dd605bcd6349480931db4137764ce15576163",
+                "reference": "e60dd605bcd6349480931db4137764ce15576163",
                 "shasum": ""
             },
             "require": {
@@ -297,7 +297,7 @@
                 "filp/whoops": "2.*",
                 "google/recaptcha": "^1.1",
                 "imagecow/imagecow": "^2.0",
-                "league/route": "2.0.0-RC1",
+                "league/route": "^2.0",
                 "m6web/firewall": "~1.0",
                 "matthiasmullie/scrapbook": "^1.0",
                 "maximebf/debugbar": "~1.11",
@@ -364,7 +364,7 @@
                 "psr-7",
                 "psr-messages"
             ],
-            "time": "2016-03-11 09:06:48"
+            "time": "2016-04-21 09:16:26"
         },
         {
             "name": "psr/http-message",

@@ -11,14 +11,13 @@ html {
 body
 {
 	/* Font */
-	font-family: 'Roboto', Helvetica, Arial, sans-serif;
+	font-family: system, Helvetica, Arial, sans-serif;
 	font-size: 100%;
 	line-height: 1.4;
 	font-weight: 300;
 
 	/* Text color */
 	color: #333;
-
 	margin: 1em;
 }
 
@@ -129,4 +128,11 @@ a > img {
 	margin: 1px;
 	border: none;
 	outline: 1px solid #0782C1;
+}
+
+strong, b {
+	font-weight: bold;
+}
+em, i {
+	font-style: italic;
 }

@@ -8,6 +8,7 @@ use FormManager\Builder;
 class Collection extends Containers\Collection
 {
     use Traits\ContainerTrait;
+    use Traits\CollectionTrait;
 
     public function __construct(Builder $builder, array $children = null)
     {
@@ -25,7 +26,7 @@ class Collection extends Containers\Collection
         $html .= '<div>';
 
         $addBtn = '<div class="button-separator"><button type="button" class="format-child-add button">Add</button></div>';
-        $toolbar = '<div class="button-toolbar"><strong class="button-toolbar-label"></strong><button title="Move to up" type="button" class="button format-child-up">&#8593;</button><button title="Move to down" type="button" class="button format-child-down">&#8595;</button><button title="Remove" type="button" class="button format-child-remove">&#215;</button></div>';
+        $toolbar = '<div class="button-toolbar"><strong class="button-toolbar-label"></strong>'.$this->getToolbarButtons().'</div>';
 
         $html .= '<script type="js-template">'.$this->getTemplate()->toHtml($addBtn.$toolbar).'</script>';
 

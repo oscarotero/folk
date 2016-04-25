@@ -20,14 +20,6 @@ class Middlewares implements ServiceProviderInterface
                     return false;
                 }),
 
-                Middleware::create(function () use ($app) {
-                    if ($app->has('cache')) {
-                        return Middleware::cache($app['cache']);
-                    }
-
-                    return false;
-                }),
-
                 Middleware::errorHandler()
                     ->arguments($app)
                     ->catchExceptions(),
@@ -35,6 +27,8 @@ class Middlewares implements ServiceProviderInterface
                 Middleware::create(function () {
                     return class_exists('Whoops\\Run') ? Middleware::whoops() : false;
                 }),
+
+                Middleware::expires(),
 
                 Middleware::basePath($app->getUrlPath()),
 
