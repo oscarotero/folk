@@ -149,8 +149,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
     protected function getFirstField()
     {
         if ($this->firstField === null) {
-            $scheme = $this->getScheme();
-            $this->firstField = key($scheme);
+            $this->firstField = $this->getScheme($this->admin['builder'])->key();
         }
 
         return $this->firstField;
