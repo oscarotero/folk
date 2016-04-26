@@ -1,5 +1,6 @@
 .page-form {
 	padding: 5rem 1rem;
+	overflow-x: hidden;
 
 	input[type="date"],
 	input[type="datetime"],
@@ -48,11 +49,11 @@
 		background-color: var(--xlightgray);
 		background-repeat: no-repeat;
 		background-position: 95% center;
-		background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16"><polyline fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="rgb(147,154,160)" stroke-width="2" stroke-miterlimit="10" points="0.5,4.2 8,11.8 15.5,4.2 "/></svg>');
+		background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="rgb(147,154,160)" d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/></svg>');
 		border: var(--border-thin);
 		color: var(--black);
-		padding: 0.5em 50px 0.5em 0.5em;
-		min-width: 20em;
+		padding: 0.5em 40px 0.5em 0.5em;
+		min-width: 15em;
 	}
 
 	.page-form-content {
@@ -161,7 +162,7 @@
 			}
 
 			+ .format.is-collection {
-				border-top: dashed 1px var(--gray);
+				border-top: dashed 1px color(white a(.15));
 			}
 
 			.is-group {
@@ -296,6 +297,16 @@
     font-size: 0.9rem;
     padding: 0.5em 1em;
     border-radius: 3px;
+    width: 18px;
+    height: 18px;
+    box-sizing: content-box;
+
+    svg {
+    	height: 18px;
+    	width: 18px;
+    	margin: 0;
+    	display: block;
+    }
 
     + .button {
     	border-left: none;
