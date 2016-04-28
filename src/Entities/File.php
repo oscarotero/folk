@@ -32,6 +32,7 @@ abstract class File extends AbstractEntity implements EntityInterface
         $words = $search->getWords();
         $start = strlen($this->getBasePath()) + 1;
         $length = -strlen($this->extension) - 1;
+        $ids = $search->getIds();
 
         foreach ($this->getIterator() as $file) {
             if (!$file->isFile() || $file->getExtension() !== $this->extension) {
@@ -40,6 +41,12 @@ abstract class File extends AbstractEntity implements EntityInterface
 
             $id = substr($file->getPathname(), $start, $length);
 
+            //Filter by id
+            if (!empty($ids) && !in_array($id, $ids, true)) {
+                continue;
+            }
+
+            //Filter by word
             foreach ($words as $word) {
                 if (strpos($id, $word) === false) {
                     continue;
@@ -66,9 +73,10 @@ abstract class File extends AbstractEntity implements EntityInterface
         }
 
         if ($search->getPage() !== null) {
-            $offset = ($search->getPage() * 50) - 50;
+            $limit = $search->getLimit();
+            $offset = ($search->getPage() * $limit) - $limit;
 
-            $result = array_slice($result, $offset, 50, true);
+            $result = array_slice($result, $offset, $limit, true);
         }
 
         return $result;

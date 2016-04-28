@@ -7,6 +7,7 @@ namespace Folk;
  */
 class SearchQuery
 {
+    protected $limit = 50;
     protected $page;
     protected $ids = [];
     protected $conditions = [];
@@ -20,22 +21,55 @@ class SearchQuery
     public function __construct(array $query = [])
     {
         if (!empty($query['query'])) {
-            $this->parseQuery($query['query']);
+            $this->setQuery($query['query']);
         }
 
         if (!empty($query['page'])) {
-            $this->page = (int) $query['page'];
+            $this->setPage($query['page']);
         }
 
         if (!empty($query['sort'])) {
-            $this->sort = $query['sort'];
+            $this->setSortAndDirection($query['sort'], isset($query['direction']) ? $query['direction'] : null);
+        }
+    }
 
-            if (!empty($query['direction'])) {
-                $this->direction = strtoupper($query['direction']) === 'DESC' ? 'DESC' : 'ASC';
-            } else {
-                $this->direction = 'ASC';
+    /**
+     * Set the a query.
+     *
+     * @param string $query
+     *
+     * @return self
+     */
+    public function setQuery($query)
+    {
+        $this->conditions = $this->ids = $this->words = [];
+
+        preg_match_all('/([\w]+:)?("([^"]*)"|([^ ]*))/', trim($query), $pieces, PREG_SET_ORDER);
+
+        if (is_array($pieces)) {
+            foreach ($pieces as $piece) {
+                if (empty($piece[0])) {
+                    continue;
+                }
+
+                $name = $piece[1] ? substr($piece[1], 0, -1) : null;
+                $value = isset($piece[4]) ? $piece[4] : $piece[3];
+
+                if ($name !== null) {
+                    if (!isset($this->conditions[$name])) {
+                        $this->conditions[$name] = [$value];
+                    } else {
+                        $this->conditions[$name][] = $value;
+                    }
+                } elseif (preg_match('/^#[\w-]+$/', $value)) {
+                    $this->ids[] = substr($value, 1);
+                } else {
+                    $this->words[] = $value;
+                }
             }
         }
+
+        return $this;
     }
 
     /**
@@ -50,6 +84,7 @@ class SearchQuery
         foreach ($this->ids as $id) {
             $query .= " #{$id}";
         }
+
         foreach ($this->conditions as $name => $values) {
             foreach ($values as $value) {
                 if (strpos($value, ' ') === false) {
@@ -77,20 +112,38 @@ class SearchQuery
      * Set the page.
      *
      * @param null|int $page
+     * 
+     * @return self
      */
     public function setPage($page)
     {
-        $this->page = $page;
+        $this->page = (int) $page;
+
+        return $this;
     }
 
     /**
-     * Returns the first id.
+     * Returns the limit of results per page.
      *
-     * @return string|null
+     * @return int
      */
-    public function getId()
+    public function getLimit()
     {
-        return isset($this->ids[0]) ? $this->ids[0] : null;
+        return $this->limit;
+    }
+
+    /**
+     * Set the limit of results per page.
+     *
+     * @param int $limit
+     * 
+     * @return self
+     */
+    public function setLimit($limit)
+    {
+        $this->limit = (int) $limit;
+
+        return $this;
     }
 
     /**
@@ -107,10 +160,14 @@ class SearchQuery
      * Set new ids.
      *
      * @param array $ids
+     * 
+     * @return self
      */
     public function setIds(array $ids)
     {
         $this->ids = $ids;
+
+        return $this;
     }
 
     /**
@@ -127,31 +184,28 @@ class SearchQuery
      * Set new words.
      *
      * @param array $words
+     * 
+     * @return self
      */
     public function setWords(array $words)
     {
         $this->words = $words;
+
+        return $this;
     }
 
     /**
-     * Return a condition.
+     * Set new conditions.
      *
-     * @return array|null
+     * @param array $conditions
+     * 
+     * @return self
      */
-    public function getCondition($name)
+    public function setConditions(array $conditions)
     {
-        return isset($this->conditions[$name]) ? $this->conditions[$name] : null;
-    }
+        $this->conditions[$name] = $value;
 
-    /**
-     * Set a new condition.
-     *
-     * @param string $name
-     * @param array  $value
-     */
-    public function setCondition($name, array $value)
-    {
-        return $this->conditions[$name] = $value;
+        return $this;
     }
 
     /**
@@ -162,6 +216,30 @@ class SearchQuery
     public function getConditions()
     {
         return $this->conditions;
+    }
+
+    /**
+     * Set the sort and direction fields.
+     *
+     * @param string $sort
+     * @param string $direction
+     * 
+     * @return self
+     */
+    public function setSortAndDirection($sort, $direction)
+    {
+        $this->sort = $this->direction = null;
+
+        if (!empty($sort)) {
+            $this->sort = $sort;
+            $this->direction = strtoupper($direction);
+
+            if ($this->direction !== 'DESC') {
+                $this->direction = 'ASC';
+            }
+        }
+
+        return $this;
     }
 
     /**
@@ -182,40 +260,5 @@ class SearchQuery
     public function getDirection()
     {
         return isset($this->direction) ? strtoupper($this->direction) : null;
-    }
-
-    /**
-     * Split a query in pieces.
-     *
-     * @param string $query
-     *
-     * @return array
-     */
-    protected function parseQuery($query)
-    {
-        preg_match_all('/([\w]+:)?("([^"]*)"|([^ ]*))/', trim($query), $pieces, PREG_SET_ORDER);
-
-        if (is_array($pieces)) {
-            foreach ($pieces as $piece) {
-                if (empty($piece[0])) {
-                    continue;
-                }
-
-                $name = $piece[1] ? substr($piece[1], 0, -1) : null;
-                $value = isset($piece[4]) ? $piece[4] : $piece[3];
-
-                if ($name !== null) {
-                    if (!isset($this->conditions[$name])) {
-                        $this->conditions[$name] = [$value];
-                    } else {
-                        $this->conditions[$name][] = $value;
-                    }
-                } elseif (preg_match('/^#[\w-]+$/', $value)) {
-                    $this->ids[] = substr($value, 1);
-                } else {
-                    $this->words[] = $value;
-                }
-            }
-        }
     }
 }

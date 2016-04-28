@@ -24,10 +24,15 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
 
         $query = $table->select();
 
+        //Filter by id
+        if (count($search->getIds())) {
+            $query->byId($search->getIds());
+        }
+
         if ($search->getPage() !== null) {
-            $query
-                ->offset(($search->getPage() * 50) - 50)
-                ->limit(50);
+            $limit = $search->getLimit();
+
+            $query->offset(($search->getPage() * $limit) - $limit)->limit($limit);
         }
 
         if ($this->searchFields === null) {
@@ -42,12 +47,14 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
             $query->orderBy("`{$table->name}`.`id`", 'DESC');
         }
 
+        //Filter by words
         foreach ($search->getWords() as $k => $word) {
             foreach ($this->searchFields as $field) {
                 $query->where("`{$table->name}`.`{$field}` LIKE :w{$k}", [":w{$k}" => "%{$word}%"]);
             }
         }
 
+        //Filter by relations
         $db = $table->getDatabase();
 
         foreach ($search->getConditions() as $name => $value) {

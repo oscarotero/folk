@@ -92,14 +92,6 @@ class SearchEntity extends Entity
             $search->setPage(1);
         }
 
-        if (($id = $search->getId())) {
-            if ($items = $entity->read($id)) {
-                return [$id => $items];
-            }
-
-            return [];
-        }
-
         return $entity->search($search);
     }
 }
