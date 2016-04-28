@@ -1,6 +1,6 @@
 <?php $entity = $app->getEntity($entityName); ?>
 
-<?php $this->layout('html', ['title' => "{$entity->title} - New | {$app->title}"]); ?>
+<?php $this->layout('html', ['title' => p__('insert', '%s - New | %s', $entity->title, $app->title)]); ?>
 
 <?php $this->insert('nav', ['entityName' => $entityName]) ?>
 
@@ -14,7 +14,7 @@
         ?>
 
 		<div class="footer-primary">
-			<button type="submit" class="button button-call">Create</button>
+			<button type="submit" class="button button-call"><?= p__('insert', 'Create') ?></button>
 		</div>
 
         <input type="hidden" name="method-override" value="put">

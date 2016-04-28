@@ -1,6 +1,6 @@
 <?php $entity = $app->getEntity($entityName); ?>
 
-<?php $this->layout('html', ['title' => "{$entity->title} | {$app->title}"]); ?>
+<?php $this->layout('html', ['title' => p__('search', '%s | %s', $entity->title, $app->title)]); ?>
 
 <?php $this->insert('nav', ['entityName' => $entityName, 'search' => $search]); ?>
 
@@ -53,14 +53,14 @@
                     'query' => isset($search) ? $search->getQuery() : null,
                     'page' => (isset($search) ? $search->getPage() : 0) + 1,
                 ]) ?>" class="button button-call ui-autoload-btn">
-				More results
+				<?= p__('search', 'More results') ?>
 			</a>
 		</footer>
 		<?php endif; ?>
 
 		<?php else: ?>
 		<div class="page-list-noresults">
-			<p>No items found</p>
+			<p><?= p__('search', 'No items found') ?></p>
 		</div>
 		<?php endif; ?>
 	</div>

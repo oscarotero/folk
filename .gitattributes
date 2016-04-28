@@ -7,3 +7,4 @@ composer.lock      export-ignore
 gulpfile.js        export-ignore
 package.json       export-ignore
 stylecow.json      export-ignore
+RoboFile.php       export-ignore

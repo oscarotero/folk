@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-04-28T18:29:53+00:00\n"
+"POT-Creation-Date: 2016-04-28T18:29:53+00:00\n"
+"Language: \n"
+
+#: templates/nav.php:36
+msgctxt "search"
+msgid "Search %s..."
+msgstr "Buscar %s..."
+
+#: templates/pages/index.php:1
+msgctxt "home"
+msgid "%s | %s"
+msgstr ""
+
+#: templates/pages/index.php:63
+msgctxt "home"
+msgid "View web"
+msgstr "Ver a web"
+
+#: templates/pages/index.php:66
+msgctxt "home"
+msgid "Bookmarklet"
+msgstr ""
+
+#: templates/pages/insert.php:3
+msgctxt "insert"
+msgid "%s - New | %s"
+msgstr "%s - Novo | %s"
+
+#: templates/pages/insert.php:17
+msgctxt "insert"
+msgid "Create"
+msgstr "Crear"
+
+#: templates/pages/read.php:3
+msgctxt "edit"
+msgid "%s #%s | %s"
+msgstr ""
+
+#: templates/pages/read.php:20
+msgctxt "edit"
+msgid "Save"
+msgstr "Gardar"
+
+#: templates/pages/read.php:21
+msgctxt "edit"
+msgid "You will save this data as a new row. Are you sure?"
+msgstr "Vas gardar estes datos nun novo rexistro. Estas seguro?"
+
+#: templates/pages/read.php:21
+msgctxt "edit"
+msgid "Duplicate"
+msgstr "Duplicar"
+
+#: templates/pages/read.php:22
+msgctxt "edit"
+msgid "This action cannot be undo. Are you sure?"
+msgstr "Esta acción non se pode desfacer. Estas seguro?"
+
+#: templates/pages/read.php:22
+msgctxt "edit"
+msgid "Delete"
+msgstr "Eliminar"
+
+#: templates/pages/search.php:3
+msgctxt "search"
+msgid "%s | %s"
+msgstr ""
+
+#: templates/pages/search.php:56
+msgctxt "search"
+msgid "More results"
+msgstr "Máis resultados"
+
+#: templates/pages/search.php:63
+msgctxt "search"
+msgid "No items found"
+msgstr "Non se atoparon resultados"

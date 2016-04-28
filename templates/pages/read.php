@@ -1,6 +1,6 @@
 <?php $entity = $app->getEntity($entityName); ?>
 
-<?php $this->layout('html', ['title' => $entity->title.' #'.$id." | {$app->title}"]); ?>
+<?php $this->layout('html', ['title' => p__('edit', '%s #%s | %s', $entity->title, $id, $app->title)]); ?>
 
 <?php $this->insert('nav', ['entityName' => $entityName, 'placeholder' => "#{$id}"]) ?>
 
@@ -17,9 +17,9 @@
         ?>
 
 		<div class="footer-primary is-floating">
-			<button type="submit" class="button button-call">Save</button>
-			<button type="submit" name="method-override" value="PUT" data-confirm="You will save this data as a new row. Are you sure?" formaction="<?= $app->getRoute('create', ['entity' => $entityName]); ?>" class="button button-link">Duplicate</button>
-			<button type="submit" name="method-override" value="DELETE" data-confirm="This action cannot be undo. Are you sure?" formaction="<?= $app->getRoute('delete', ['entity' => $entityName, 'id' => $id]); ?>" class="button button-link">Delete</button>
+			<button type="submit" class="button button-call"><?= p__('edit', 'Save') ?></button>
+			<button type="submit" name="method-override" value="PUT" data-confirm="<?= p__('edit', 'You will save this data as a new row. Are you sure?') ?>" formaction="<?= $app->getRoute('create', ['entity' => $entityName]); ?>" class="button button-link"><?= p__('edit', 'Duplicate') ?></button>
+			<button type="submit" name="method-override" value="DELETE" data-confirm="<?= p__('edit', 'This action cannot be undo. Are you sure?') ?>" formaction="<?= $app->getRoute('delete', ['entity' => $entityName, 'id' => $id]); ?>" class="button button-link"><?= p__('edit', 'Delete') ?></button>
 		</div>
 		<?= $form->closeHtml(); ?>
 	</div>

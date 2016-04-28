@@ -5,6 +5,8 @@ namespace Folk\Providers;
 use Fol;
 use Fol\ServiceProviderInterface;
 use Psr7Middlewares\Middleware;
+use Gettext\Translator;
+use Gettext\Translations;
 
 class Middlewares implements ServiceProviderInterface
 {
@@ -35,6 +37,23 @@ class Middlewares implements ServiceProviderInterface
                 Middleware::trailingSlash(),
 
                 Middleware::formatNegotiator(),
+
+                Middleware::languageNegotiator(['en', 'gl', 'es']),
+
+                function ($request, $response, $next) {
+                    $language = Middleware\LanguageNegotiator::getLanguage($request);
+                    $translator = new Translator();
+                    $translator->loadTranslations(Translations::fromPoFile(dirname(dirname(__DIR__)).'/locales/'.$language.'.po'));
+                    $prev = $translator->register();
+
+                    $response = $next($request, $response);
+
+                    if ($prev) {
+                        $prev->register();
+                    }
+
+                    return $response;
+                },
 
                 Middleware::methodOverride()
                     ->parameter('method-override'),

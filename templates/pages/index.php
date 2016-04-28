@@ -1,4 +1,4 @@
-<?php $this->layout('html', ['title' => "{$app->title} - {$app->description}"]); ?>
+<?php $this->layout('html', ['title' => p__('home', '%s | %s', $app->title, $app->description)]); ?>
 
 <div class="page page-home">
 	<header class="page-header">
@@ -60,10 +60,10 @@ BOOKMARKLET;
 
 			<p>
 				<?= $app->description ?>
-				| <a href="<?= $app['url'] ?>" target="_blank">View web</a>
+				| <a href="<?= $app['url'] ?>" target="_blank"><?= p__('home', 'View web') ?></a>
 			</p>
 			<p>
-				<a class="button button-bookmarklet" href="javascript:<?= $bookmarklet ?>">Bookmarklet</a>
+				<a class="button button-bookmarklet" href="javascript:<?= $bookmarklet ?>"><?= p__('home', 'Bookmarklet') ?></a>
 			</p>
 
 		<?php else: ?>
