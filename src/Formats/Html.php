@@ -10,6 +10,6 @@ class Html extends Textarea
     {
         parent::__construct($builder);
 
-        $this->set('module', 'entity-html');
+        $this->set('module', 'format-html');
     }
 }

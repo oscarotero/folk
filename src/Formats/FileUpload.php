@@ -13,6 +13,6 @@ class FileUpload extends Loader
             'field' => $builder->hidden(),
         ]);
 
-        $this->set('module', 'entity-upload');
+        $this->set('module', 'format-upload');
     }
 }

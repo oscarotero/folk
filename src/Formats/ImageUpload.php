@@ -12,6 +12,6 @@ class ImageUpload extends FileUpload
 
         $this['loader']->accept('image/*');
 
-        $this->set('module', 'entity-image');
+        $this->set('module', 'format-image');
     }
 }

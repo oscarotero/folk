@@ -16,7 +16,7 @@ class Collection extends Containers\Collection
 
         $this->set('list', false);
         $this->class('format is-collection is-responsive is-large');
-        $this->data('module', 'entity-collection');
+        $this->data('module', 'format-collection');
     }
 
     protected function customRender($prepend = '', $append = '')

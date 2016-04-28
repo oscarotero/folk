@@ -33,7 +33,7 @@ class RelationOne extends Fields\Field
         $this->set([
             'list' => false,
             'class' => 'is-responsive',
-            'module' => 'entity-select',
+            'module' => 'format-select',
         ]);
     }
 }

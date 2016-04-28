@@ -1,7 +1,7 @@
 define([
 	'jquery',
 	'../loader',
-	'./entity-collection'
+	'./format-collection'
 ], function ($, loader, collection) {
 	return {
 		init: function ($element) {

@@ -13,7 +13,6 @@ class Relation extends Fields\Field
 
     public $list = false;
 
-    protected $module = 'entity-relation';
     protected $related;
 
     public function __construct(Builder $builder, EntityInterface $related)
@@ -34,7 +33,7 @@ class Relation extends Fields\Field
 
         $this->set([
             'list' => false,
-            'module' => 'entity-relation',
+            'module' => 'format-relation',
             'class' => 'is-responsive',
         ]);
     }

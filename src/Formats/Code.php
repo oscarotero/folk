@@ -10,7 +10,7 @@ class Code extends Textarea
 
         $this->set([
             'list' => false,
-            'module' => 'entity-code',
+            'module' => 'format-code',
         ]);
     }
 }

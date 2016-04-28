@@ -17,7 +17,7 @@ class CollectionMultiple extends Containers\CollectionMultiple
 
         $this->set('list', false);
         $this->class('format is-collection is-responsive is-large');
-        $this->data('module', 'entity-collectionmultiple');
+        $this->data('module', 'format-collectionmultiple');
     }
 
     protected function customRender($prepend = '', $append = '')

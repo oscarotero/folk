@@ -12,7 +12,7 @@ class Table extends Textarea
 
         $this->set([
             'list' => false,
-            'module' => 'entity-table',
+            'module' => 'format-table',
         ]);
     }
 
