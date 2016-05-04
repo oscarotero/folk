@@ -29,10 +29,10 @@
 
 		if (parts.length === 1) {
 			link.innerHTML = 'List ' + parts[0];
-			link.setAttribute('href', '{$app->getUrl()}/' + parts[0] + '/list');
+			link.setAttribute('href', '{$app->getUrl()}/' + parts[0]);
 		} else {
 			link.innerHTML = 'Edit ' + parts[0] + ' #' + parts[1];
-			link.setAttribute('href', '{$app->getUrl()}/' + parts[0] + '/' + parts[1] + '/edit');
+			link.setAttribute('href', '{$app->getUrl()}/' + parts[0] + '/' + parts[1]);
 		}
 
 		link.setAttribute('class', 'folk-button');
