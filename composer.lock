@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "10b485eb138330ebaa01024965d3ff70",
-    "content-hash": "3be7d2a3fd7ac4fa82f1b4d45aaaab40",
+    "hash": "747f77fe6002f89546e00e9d4cc23a12",
+    "content-hash": "17da09033447f7c94217d6e00d53809a",
     "packages": [
         {
             "name": "aura/router",
@@ -130,16 +130,16 @@
         },
         {
             "name": "form-manager/form-manager",
-            "version": "v5.0",
+            "version": "v5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/form-manager.git",
-                "reference": "4ae6df966eb6532e6408a84724c5f37a0eac2376"
+                "reference": "7be00970dd2527677a108ad946e88b775f20dcb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/form-manager/zipball/4ae6df966eb6532e6408a84724c5f37a0eac2376",
-                "reference": "4ae6df966eb6532e6408a84724c5f37a0eac2376",
+                "url": "https://api.github.com/repos/oscarotero/form-manager/zipball/7be00970dd2527677a108ad946e88b775f20dcb9",
+                "reference": "7be00970dd2527677a108ad946e88b775f20dcb9",
                 "shasum": ""
             },
             "require": {
@@ -177,25 +177,25 @@
                 "psr-7",
                 "validator"
             ],
-            "time": "2016-05-04 17:54:29"
+            "time": "2016-05-04 18:19:56"
         },
         {
             "name": "gettext/gettext",
-            "version": "dev-master",
+            "version": "v3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Gettext.git",
-                "reference": "f1d559eb9bee481b9b2973ae812b6fb0110cc62e"
+                "reference": "0db171e15df0da3aa6122d6335921dfb67c9b099"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Gettext/zipball/f1d559eb9bee481b9b2973ae812b6fb0110cc62e",
-                "reference": "f1d559eb9bee481b9b2973ae812b6fb0110cc62e",
+                "url": "https://api.github.com/repos/oscarotero/Gettext/zipball/0db171e15df0da3aa6122d6335921dfb67c9b099",
+                "reference": "0db171e15df0da3aa6122d6335921dfb67c9b099",
                 "shasum": ""
             },
             "require": {
                 "gettext/languages": "2.*",
-                "php": ">=5.4.0"
+                "php": ">=5.3.0"
             },
             "require-dev": {
                 "illuminate/view": "*",
@@ -237,7 +237,7 @@
                 "po",
                 "translation"
             ],
-            "time": "2016-04-28 08:34:51"
+            "time": "2016-04-27 19:15:17"
         },
         {
             "name": "gettext/languages",
@@ -775,21 +775,21 @@
         },
         {
             "name": "gettext/robo",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/GettextRobo.git",
-                "reference": "fd5dac53573f73aa526492f6463f6998232bc207"
+                "reference": "d3af03ed11a51a4eedbe3e997eafed0a91f414f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/GettextRobo/zipball/fd5dac53573f73aa526492f6463f6998232bc207",
-                "reference": "fd5dac53573f73aa526492f6463f6998232bc207",
+                "url": "https://api.github.com/repos/oscarotero/GettextRobo/zipball/d3af03ed11a51a4eedbe3e997eafed0a91f414f9",
+                "reference": "d3af03ed11a51a4eedbe3e997eafed0a91f414f9",
                 "shasum": ""
             },
             "require": {
-                "gettext/gettext": "dev-master",
-                "php": ">=5.4"
+                "gettext/gettext": "3.*",
+                "php": ">=5.3.0"
             },
             "type": "library",
             "autoload": {
@@ -821,7 +821,7 @@
                 "robo",
                 "translation"
             ],
-            "time": "2016-04-28 18:10:16"
+            "time": "2015-10-01 23:00:30"
         },
         {
             "name": "symfony/yaml",
@@ -875,10 +875,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "gettext/gettext": 20,
-        "gettext/robo": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -27,7 +27,7 @@
         "willdurand/negotiation": "^2.0",
         "fol/core": "^11.1",
         "form-manager/form-manager": "^5.0",
-        "gettext/gettext": "dev-master",
+        "gettext/gettext": "^3.6",
         "oscarotero/inline-svg": "^1.0"
     },
     "autoload": {
@@ -41,6 +41,6 @@
     "require-dev": {
         "symfony/yaml": "^3.0",
         "filp/whoops": "^2.1",
-        "gettext/robo": "dev-master"
+        "gettext/robo": "^1.0"
     }
 }
