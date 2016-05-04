@@ -53,9 +53,8 @@ class Posts extends AbstractEntity
         $query = 'SELECT * FROM posts';
 
         if ($search->getPage() !== null) {
-            $limit = 50;
+            $limit = $search->getLimit();
             $offset = ($search->getPage() * $limit) - $limit;
-
             $query .= " LIMIT {$offset}, {$limit}";
         }
 
