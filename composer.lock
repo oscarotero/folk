@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "37508a1c7f58d84d46d33ccba1febc83",
-    "content-hash": "9de993d59a8046100d7fc98c7b72fbc8",
+    "hash": "10b485eb138330ebaa01024965d3ff70",
+    "content-hash": "3be7d2a3fd7ac4fa82f1b4d45aaaab40",
     "packages": [
         {
             "name": "aura/router",
@@ -130,20 +130,20 @@
         },
         {
             "name": "form-manager/form-manager",
-            "version": "v4.7.3",
+            "version": "v5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/form-manager.git",
-                "reference": "265154bdd50f12d5ca25e4fde8410cac582b1b3d"
+                "reference": "4ae6df966eb6532e6408a84724c5f37a0eac2376"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/form-manager/zipball/265154bdd50f12d5ca25e4fde8410cac582b1b3d",
-                "reference": "265154bdd50f12d5ca25e4fde8410cac582b1b3d",
+                "url": "https://api.github.com/repos/oscarotero/form-manager/zipball/4ae6df966eb6532e6408a84724c5f37a0eac2376",
+                "reference": "4ae6df966eb6532e6408a84724c5f37a0eac2376",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
+                "php": ">=5.4.0",
                 "psr/http-message": "~1.0"
             },
             "require-dev": {
@@ -177,7 +177,7 @@
                 "psr-7",
                 "validator"
             ],
-            "time": "2016-04-14 10:20:07"
+            "time": "2016-05-04 17:54:29"
         },
         {
             "name": "gettext/gettext",
@@ -825,7 +825,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.0.4",
+            "version": "v3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",

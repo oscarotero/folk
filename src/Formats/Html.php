@@ -4,12 +4,12 @@ namespace Folk\Formats;
 
 use FormManager\Builder;
 
-class Html extends Textarea
+class Html extends Textarea implements FormatInterface
 {
     public function __construct(Builder $builder)
     {
         parent::__construct($builder);
 
-        $this->set('module', 'format-html');
+        $this->data('module', 'format-html');
     }
 }

@@ -144,6 +144,13 @@
 			padding: 0;
 		}
 
+		&.is-choose .is-boolean {
+			display: inline-block;
+			border: none;
+			padding-left: 0;
+			padding-right: 2rem;
+		}
+
 		&.is-collection {
 			background: var(--black);
 			border: none;

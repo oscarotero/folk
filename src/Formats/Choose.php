@@ -2,28 +2,19 @@
 
 namespace Folk\Formats;
 
-use FormManager\Containers;
+use FormManager\Fields;
 use FormManager\Builder;
 
-class Choose extends Containers\Choose
+class Choose extends Fields\Choose implements FormatInterface
 {
-    use Traits\ContainerTrait;
+    use Traits\LabelTrait;
+    use Traits\HtmlValueTrait;
 
     public function __construct(Builder $builder, array $children = null)
     {
         parent::__construct($children);
 
-        $this->set([
-            'list' => true,
-            'class' => 'is-responsive',
-        ]);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function customRender($prepend = '', $append = '')
-    {
-        return (string) $this->addClass('format');
+        $this->set('list', true);
+        $this->class('format is-choose');
     }
 }

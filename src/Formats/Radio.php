@@ -4,25 +4,15 @@ namespace Folk\Formats;
 
 use FormManager\Fields;
 
-class Radio extends Fields\Radio
+class Radio extends Fields\Radio implements FormatInterface
 {
-    use Traits\FieldTrait;
+    use Traits\HtmlValueTrait;
 
     public function __construct()
     {
         parent::__construct();
 
-        $this->set([
-            'list' => true,
-            'class' => 'is-boolean',
-        ]);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function customRender($prepend = '', $append = '')
-    {
-        return '<div class="button button-radio">'.$this.'</div>';
+        $this->set('list', true);
+        $this->wrapper->class('format is-boolean');
     }
 }

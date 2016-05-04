@@ -2,10 +2,10 @@
 
 namespace Folk\Formats\Traits;
 
-trait ContainerTrait
-{
-    use CommonTrait;
+use FormManager\Elements\Label;
 
+trait LabelTrait
+{
     protected $label;
 
     public function label($label = null)
@@ -14,7 +14,11 @@ trait ContainerTrait
             return $this->label;
         }
 
-        $this->label = $label;
+        if (empty($this->label)) {
+            $this->label = new Label();
+        }
+
+        $this->label->html($label);
 
         return $this;
     }

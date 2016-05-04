@@ -4,16 +4,14 @@ namespace Folk\Formats;
 
 use FormManager\Builder;
 
-class Table extends Textarea
+class Table extends Textarea implements FormatInterface
 {
     public function __construct(Builder $builder)
     {
         parent::__construct($builder);
 
-        $this->set([
-            'list' => false,
-            'module' => 'format-table',
-        ]);
+        $this->set('list', false);
+        $this->data('module', 'format-table');
     }
 
     public function val($value = null)

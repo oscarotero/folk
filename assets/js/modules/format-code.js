@@ -17,8 +17,7 @@ define([
 			}
 
 			require(deps, function (codemirror) {
-				var $textarea = $element.find('textarea');
-				var editor = codemirror.fromTextArea($textarea[0], config);
+				var editor = codemirror.fromTextArea($element[0], config);
 
 				//todo: plugins: fullscreen
 				editor.addKeyMap({
@@ -43,12 +42,11 @@ define([
 					}
 				});
 
-				$textarea.data('codemirror', editor);
+				$element.data('codemirror', editor);
 			});
 		},
 		destroy: function ($element) {
 			$element
-				.find('textarea')
 				.data('codemirror')
 				.toTextArea();
 		}

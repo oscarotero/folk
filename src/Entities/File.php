@@ -58,7 +58,7 @@ abstract class File extends AbstractEntity implements EntityInterface
 
         $sort = $search->getSort();
 
-        if ($sort) {
+        if ($sort !== null) {
             uasort($result, function ($a, $b) use ($sort) {
                 if ($a[$sort] === $b[$sort]) {
                     return 0;

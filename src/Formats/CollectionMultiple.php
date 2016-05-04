@@ -2,14 +2,15 @@
 
 namespace Folk\Formats;
 
-use FormManager\Containers;
 use FormManager\Fields;
 use FormManager\Builder;
 
-class CollectionMultiple extends Containers\CollectionMultiple
+class CollectionMultiple extends Fields\CollectionMultiple implements FormatInterface
 {
-    use Traits\ContainerTrait;
-    use Traits\CollectionTrait;
+    use Traits\LabelTrait;
+    use Traits\ToolbarTrait;
+    use Traits\CollectionValueTrait;
+    use Traits\RenderContainerTrait;
 
     public function __construct(Builder $builder, array $children = null)
     {
@@ -20,11 +21,11 @@ class CollectionMultiple extends Containers\CollectionMultiple
         $this->data('module', 'format-collectionmultiple');
     }
 
-    protected function customRender($prepend = '', $append = '')
+    public function html($html = null)
     {
-        $html = $this->openHtml();
-        $html .= $this->label() ? '<label>'.$this->label().'</label>' : '';
-        $html .= '<div>';
+        if ($html !== null) {
+            return parent::html($html);
+        }
 
         $templates = $this->getTemplate();
 
@@ -50,8 +51,6 @@ class CollectionMultiple extends Containers\CollectionMultiple
         }
 
         $html .= "<div>{$addBtn}</div>";
-        $html .= '</div>';
-        $html .= $this->closeHtml();
 
         return $html;
     }

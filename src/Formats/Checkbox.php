@@ -4,18 +4,14 @@ namespace Folk\Formats;
 
 use FormManager\Fields;
 
-class Checkbox extends Fields\Checkbox
+class Checkbox extends Fields\Checkbox implements FormatInterface
 {
-    use Traits\FieldTrait;
-
     public function __construct()
     {
         parent::__construct();
 
-        $this->set([
-            'list' => true,
-            'class' => 'is-boolean',
-        ]);
+        $this->set('list', true);
+        $this->wrapper->class('format is-boolean');
     }
 
     /**

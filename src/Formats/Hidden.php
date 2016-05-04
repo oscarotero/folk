@@ -4,16 +4,14 @@ namespace Folk\Formats;
 
 use FormManager\Fields;
 
-class Hidden extends Fields\Hidden
+class Hidden extends Fields\Hidden implements FormatInterface
 {
-    use Traits\CommonTrait;
-
+    use Traits\HtmlValueTrait;
+    
     public function __construct()
     {
         parent::__construct();
 
-        $this->set([
-            'list' => false,
-        ]);
+        $this->set('list', false);
     }
 }

@@ -2,9 +2,8 @@
 
 namespace Folk\Formats;
 
-use FormManager\Containers;
+use FormManager\Fields;
 
-class Form extends Containers\Form
+class Form extends Fields\Form
 {
-    use Traits\CommonTrait;
 }

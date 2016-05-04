@@ -7,11 +7,10 @@ use FormManager\Elements;
 use FormManager\Builder;
 use Folk\Entities\EntityInterface;
 
-class Relation extends Fields\Field
+class Relation extends Fields\Field implements FormatInterface
 {
-    use Traits\FieldTrait;
-
-    public $list = false;
+    use Traits\HtmlValueTrait;
+    use Traits\RenderTrait;
 
     protected $related;
 

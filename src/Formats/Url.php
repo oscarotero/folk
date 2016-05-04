@@ -4,9 +4,17 @@ namespace Folk\Formats;
 
 use FormManager\Fields;
 
-class Url extends Fields\Url
+class Url extends Fields\Url implements FormatInterface
 {
-    use Traits\FieldTrait;
+    use Traits\RenderTrait;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->set('list', true);
+        $this->wrapper->class('format is-responsive');
+    }
 
     /**
      * {@inheritdoc}
@@ -18,15 +26,5 @@ class Url extends Fields\Url
         if ($val) {
             return '<a href="'.$val.'" target="_blank">'.$val.'</a>';
         }
-    }
-
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->set([
-            'list' => true,
-            'class' => 'is-responsive',
-        ]);
     }
 }

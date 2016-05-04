@@ -2,13 +2,15 @@
 
 namespace Folk\Formats;
 
-use FormManager\Containers;
+use FormManager\Fields;
 use FormManager\Builder;
 
-class Collection extends Containers\Collection
+class Collection extends Fields\Collection implements FormatInterface
 {
-    use Traits\ContainerTrait;
-    use Traits\CollectionTrait;
+    use Traits\LabelTrait;
+    use Traits\ToolbarTrait;
+    use Traits\CollectionValueTrait;
+    use Traits\RenderContainerTrait;
 
     public function __construct(Builder $builder, array $children = null)
     {
@@ -19,24 +21,21 @@ class Collection extends Containers\Collection
         $this->data('module', 'format-collection');
     }
 
-    protected function customRender($prepend = '', $append = '')
+    public function html($html = null)
     {
-        $html = $this->openHtml();
-        $html .= $this->label() ? '<label>'.$this->label().'</label>' : '';
-        $html .= '<div>';
+        if ($html !== null) {
+            return parent::html($html);
+        }
 
         $addBtn = '<div class="button-separator"><button type="button" class="format-child-add button">Add</button></div>';
         $toolbar = '<div class="button-toolbar"><strong class="button-toolbar-label"></strong>'.$this->getToolbarButtons().'</div>';
-
-        $html .= '<script type="js-template">'.$this->getTemplate()->toHtml($addBtn.$toolbar).'</script>';
+        $html = '<script type="js-template">'.$this->getTemplate()->toHtml($addBtn.$toolbar).'</script>';
 
         foreach ($this as $child) {
             $html .= $child->toHtml($addBtn.$toolbar);
         }
 
         $html .= "<div>{$addBtn}</div>";
-        $html .= '</div>';
-        $html .= $this->closeHtml();
 
         return $html;
     }

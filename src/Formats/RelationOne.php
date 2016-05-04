@@ -8,15 +8,14 @@ use FormManager\Builder;
 use Folk\Entities\EntityInterface;
 use Folk\SearchQuery;
 
-class RelationOne extends Fields\Field
+class RelationOne extends Fields\Select implements FormatInterface
 {
-    use Traits\FieldTrait;
+    use Traits\HtmlValueTrait;
+    use Traits\RenderTrait;
 
     public function __construct(Builder $builder, EntityInterface $related, SearchQuery $search = null)
     {
-        $this->datalistAllowed = false;
-
-        $this->input = new Elements\Select();
+        parent::__construct();
 
         $this->input[''] = '';
 
@@ -28,12 +27,8 @@ class RelationOne extends Fields\Field
             $this->input[$id] = $related->getLabel($id, $row);
         }
 
-        parent::__construct();
-
-        $this->set([
-            'list' => false,
-            'class' => 'is-responsive',
-            'module' => 'format-select',
-        ]);
+        $this->set('list', false);
+        $this->wrapper->class('format is-responsive');
+        $this->data('module', 'format-select');
     }
 }

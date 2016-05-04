@@ -2,7 +2,7 @@
 
 namespace Folk\Formats\Traits;
 
-trait CommonTrait
+trait HtmlValueTrait
 {
     /**
      * Returns the value as html.
@@ -12,15 +12,5 @@ trait CommonTrait
     public function valToHtml()
     {
         return $this->val();
-    }
-
-    /**
-     * Returns the value as plain text.
-     *
-     * @return string
-     */
-    public function valToText()
-    {
-        return strip_tags($this->val());
     }
 }

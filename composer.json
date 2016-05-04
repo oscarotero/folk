@@ -26,7 +26,7 @@
         "oscarotero/psr7-middlewares": "^3.15",
         "willdurand/negotiation": "^2.0",
         "fol/core": "^11.1",
-        "form-manager/form-manager": "^4.7",
+        "form-manager/form-manager": "^5.0",
         "gettext/gettext": "dev-master",
         "oscarotero/inline-svg": "^1.0"
     },

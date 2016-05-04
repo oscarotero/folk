@@ -4,7 +4,7 @@ namespace Folk\Formats;
 
 use FormManager\Builder;
 
-class ImageUpload extends FileUpload
+class ImageUpload extends FileUpload implements FormatInterface
 {
     public function __construct(Builder $builder)
     {
@@ -12,6 +12,6 @@ class ImageUpload extends FileUpload
 
         $this['loader']->accept('image/*');
 
-        $this->set('module', 'format-image');
+        $this->data('module', 'format-image');
     }
 }

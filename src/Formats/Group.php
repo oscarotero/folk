@@ -2,12 +2,14 @@
 
 namespace Folk\Formats;
 
-use FormManager\Containers;
+use FormManager\Fields;
 use FormManager\Builder;
 
-class Group extends Containers\Group
+class Group extends Fields\Group implements FormatInterface
 {
-    use Traits\ContainerTrait;
+    use Traits\LabelTrait;
+    use Traits\CollectionValueTrait;
+    use Traits\RenderContainerTrait;
 
     public function __construct(Builder $builder, array $children = null)
     {
@@ -15,26 +17,5 @@ class Group extends Containers\Group
 
         $this->set('list', false);
         $this->class('format is-responsive is-group is-large');
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function customRender($prepend = '', $append = '')
-    {
-        $html = $this->openHtml();
-
-        if (isset($this->label)) {
-            $html .= '<label>'.$this->label.'</label>';
-        }
-
-        $html .= '<div>';
-        $html .= $prepend;
-        $html .= $this->html();
-        $html .= $append;
-        $html .= '</div>';
-        $html .= $this->closeHtml();
-
-        return $html;
     }
 }

@@ -5,42 +5,36 @@ namespace Folk\Formats;
 use FormManager\Fields;
 use FormManager\Elements;
 
-class Info extends Fields\Field
+class Info extends Fields\Field implements FormatInterface
 {
-    use Traits\CommonTrait;
+    use Traits\HtmlValueTrait;
 
     public function __construct()
     {
-        $this->labelPosition = static::LABEL_BEFORE;
-        $this->datalistAllowed = false;
-
-        $this->input = (new Elements\Input())->type('hidden');
-
-        parent::__construct();
+        parent::__construct((new Elements\Input())->type('hidden'));
 
         $this->set('list', true);
+        $this->wrapper->class('format is-responsive');
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function customRender($prepend = '', $append = '')
+    protected function defaultRender($prepend = '', $append = '')
     {
-        $class = 'format is-responsive';
-
         if ($this->error()) {
-            $class .= ' has-error';
+            $this->wrapper->addClass('has-error');
         }
 
         return <<<EOT
-<div class="{$class}">
-	{$this->label}
+{$this->label}
 
-	<div>
-		{$this->errorLabel}
-        <p>{$this->val()}</p>
-        {$this->input}
-	</div>
+<div>
+    {$this->errorLabel}
+    {$prepend}
+    <p>{$this->input->val()}</p>
+    {$this->input}
+    {$append}
 </div>
 EOT;
     }

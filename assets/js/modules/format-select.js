@@ -4,7 +4,7 @@ define([
 ], function ($) {
 	return {
 		init: function ($element) {
-			var $select = $element.find('select').selectize();
+			var $select = $element.selectize();
 		}
 	};
 });

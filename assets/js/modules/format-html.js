@@ -26,16 +26,12 @@ define([
 	var module = {
 		init: function ($element) {
 			var config = $.extend({}, defaults, $element.data('config') || {});
-			var $textarea = $element.find('textarea');
-			var textarea = $element.find('textarea')[0];
-
-			var instance = ckeditor.replace($textarea[0], config);
-			$textarea.data('ckeditor', instance);
+			var instance = ckeditor.replace($element[0], config);
+			$element.data('ckeditor', instance);
 		},
 		destroy: function ($element) {
-			var $textarea = $element.find('textarea');
-			var editor = $textarea.data('ckeditor');
-			$textarea.removeData('ckeditor');
+			var editor = $element.data('ckeditor');
+			$element.removeData('ckeditor');
 
 			editor.updateElement();
 			$(editor.container.$).remove();

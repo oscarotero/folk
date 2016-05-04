@@ -2,12 +2,12 @@
 
 namespace Folk\Formats;
 
-use FormManager\Containers;
+use FormManager\Fields;
 use FormManager\Builder;
 
-class Loader extends Containers\Loader
+class Loader extends Fields\Loader implements FormatInterface
 {
-    use Traits\CommonTrait;
+    use Traits\HtmlValueTrait;
 
     public $list = false;
 
@@ -16,10 +16,7 @@ class Loader extends Containers\Loader
         parent::__construct($children);
 
         $this->class('format is-loader');
-
-        $this->set([
-            'list' => false,
-        ]);
+        $this->set('list', false);
     }
 
     public function label($html = null)
@@ -31,23 +28,5 @@ class Loader extends Containers\Loader
         $this['loader']->label($html);
 
         return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function customRender($prepend = '', $append = '')
-    {
-        //Set module
-        $this->data([
-            'module' => $this->get('module'),
-            'config' => $this->get('config') ? json_encode($this->get('config')) : null,
-        ]);
-
-        if ($this->error()) {
-            $this->addClass('has-error');
-        }
-
-        return $this->toHtml($prepend, $append);
     }
 }

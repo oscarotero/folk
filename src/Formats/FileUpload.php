@@ -4,15 +4,15 @@ namespace Folk\Formats;
 
 use FormManager\Builder;
 
-class FileUpload extends Loader
+class FileUpload extends Loader implements FormatInterface
 {
     public function __construct(Builder $builder)
     {
         parent::__construct($builder, [
-            'loader' => $builder->file()->set('class', 'is-responsive is-large'),
+            'loader' => $builder->file(),
             'field' => $builder->hidden(),
         ]);
 
-        $this->set('module', 'format-upload');
+        $this->data('module', 'format-upload');
     }
 }

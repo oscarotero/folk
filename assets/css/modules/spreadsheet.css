@@ -6,3 +6,11 @@
 		padding: 0;
 	}
 }
+.handsontable {
+    th {
+        background: var(--xlightgray);
+    }
+    th, td {
+        border-color: var(--alightgray) !important;
+    }
+}

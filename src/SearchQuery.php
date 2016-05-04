@@ -203,7 +203,7 @@ class SearchQuery
      */
     public function setConditions(array $conditions)
     {
-        $this->conditions[$name] = $value;
+        $this->conditions = $conditions;
 
         return $this;
     }

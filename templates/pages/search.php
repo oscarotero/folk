@@ -47,7 +47,7 @@
 			</tbody>
 		</table>
 
-		<?php if ($search->getPage() !== null): ?>
+		<?php if ($search->getPage() !== null && count($rows) === $search->getLimit()): ?>
 		<footer class="footer-primary">
 			<a href="<?= $app->getRoute('search', ['entity' => $entityName], [
                     'query' => isset($search) ? $search->getQuery() : null,

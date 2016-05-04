@@ -4,10 +4,8 @@ namespace Folk\Formats\Traits;
 
 use Datetime;
 
-trait DatetimeTrait
+trait DatetimeValueTrait
 {
-    use FieldTrait;
-
     /**
      * Returns the value as html.
      *

@@ -12,7 +12,7 @@ define([
 					}
 
 					var $this = $(this),
-						$container = $(this).parent().parent(),
+						$container = $(this).parent().parent().parent(),
 						template = $container.siblings('script[type="js-template"][data-type="' + this.value + '"]').html(),
 						num = $container.siblings('div').length;
 
