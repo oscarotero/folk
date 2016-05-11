@@ -390,16 +390,16 @@
         },
         {
             "name": "oscarotero/psr7-middlewares",
-            "version": "v3.15.0",
+            "version": "v3.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/psr7-middlewares.git",
-                "reference": "e60dd605bcd6349480931db4137764ce15576163"
+                "reference": "d5bc1cd2a39d6d1e4a0433dec222e86a86f9db83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/psr7-middlewares/zipball/e60dd605bcd6349480931db4137764ce15576163",
-                "reference": "e60dd605bcd6349480931db4137764ce15576163",
+                "url": "https://api.github.com/repos/oscarotero/psr7-middlewares/zipball/d5bc1cd2a39d6d1e4a0433dec222e86a86f9db83",
+                "reference": "d5bc1cd2a39d6d1e4a0433dec222e86a86f9db83",
                 "shasum": ""
             },
             "require": {
@@ -419,10 +419,10 @@
                 "mobiledetect/mobiledetectlib": "^2.8",
                 "monolog/monolog": "^1.17",
                 "mrclay/minify": "^2.2",
-                "neomerx/cors-psr7": "^0.2.0",
+                "neomerx/cors-psr7": "^1.0",
                 "nikic/fast-route": "0.*",
                 "paragonie/csp-builder": "^1.2",
-                "phpunit/phpunit": "~4.0",
+                "phpunit/phpunit": "*",
                 "piwik/referrer-spam-blacklist": "^1.0",
                 "ramsey/uuid": "^3.1",
                 "relay/relay": "1.*",
@@ -478,7 +478,7 @@
                 "psr-7",
                 "psr-messages"
             ],
-            "time": "2016-04-21 09:16:26"
+            "time": "2016-05-06 11:54:18"
         },
         {
             "name": "psr/http-message",
@@ -825,7 +825,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",

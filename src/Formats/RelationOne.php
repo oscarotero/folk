@@ -19,11 +19,7 @@ class RelationOne extends Fields\Select implements FormatInterface
 
         $this->input[''] = '';
 
-        if ($search === null) {
-            $search = new SearchQuery();
-        }
-
-        foreach ($related->search($search) as $id => $row) {
+        foreach ($related->search($search ?: new SearchQuery()) as $id => $row) {
             $this->input[$id] = $related->getLabel($id, $row);
         }
 

@@ -28,7 +28,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
         if (count($search->getIds())) {
             $query->byId($search->getIds());
         }
-
+        
         if ($search->getPage() !== null) {
             $limit = $search->getLimit();
 
@@ -128,8 +128,6 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
         $row = $this->getTable()[$id];
 
         $this->save($row, $data);
-
-        return $row->toArray();
     }
 
     /**
@@ -156,7 +154,11 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
     protected function getFirstField()
     {
         if ($this->firstField === null) {
-            $this->firstField = $this->getScheme($this->admin['builder'])->key();
+            foreach (array_keys($this->getTable()->getScheme()['fields']) as $field) {
+                if ($field !== 'id') {
+                    return $this->firstField = $field;
+                }
+            }
         }
 
         return $this->firstField;
@@ -170,12 +172,18 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
 
         foreach ($data as $name => $value) {
             if (isset($scheme['relations'][$name])) {
-                $row->$name = $db->$name->select()->by('id', $value)->run();
+                $row->unrelateAll($db->$name);
+
+                $rows = $db->$name->select()->by('id', $value)->run();
+
+                foreach ($rows as $r) {
+                    $row->relate($r);
+                }
             } else {
                 $row->$name = $value;
             }
         }
 
-        $row->save(true);
+        $row->save();
     }
 }
