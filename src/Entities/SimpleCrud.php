@@ -19,7 +19,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
     abstract protected function getTable();
 
     /**
-     * Generates the query to search rows
+     * Generates the query to search rows.
      * 
      * @param SearchQuery $search
      * 
@@ -172,7 +172,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
     }
 
     /**
-     * Save the data in the database
+     * Save the data in the database.
      * 
      * @param Row   $row
      * @param array $data
