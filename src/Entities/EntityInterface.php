@@ -14,7 +14,7 @@ interface EntityInterface
     /**
      * Constructor.
      *
-     * @param Admin  $admin
+     * @param Admin $admin
      */
     public function __construct(Admin $admin);
 

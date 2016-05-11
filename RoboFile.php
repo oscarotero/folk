@@ -1,4 +1,5 @@
 <?php
+
 require __DIR__.'/vendor/autoload.php';
 
 /**
@@ -11,7 +12,7 @@ class RoboFile extends \Robo\Tasks
     use Gettext\Robo\GettextScanner;
 
     /**
-     * Scan files to find new gettext values
+     * Scan files to find new gettext values.
      */
     public function gettext()
     {

@@ -14,10 +14,17 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
     /**
      * Returns the simple-crud table.
      * 
-     * @return SimpleCrud\Table
+     * @return \SimpleCrud\Table
      */
     abstract protected function getTable();
 
+    /**
+     * Generates the query to search rows
+     * 
+     * @param SearchQuery $search
+     * 
+     * @return \SimpleCrud\Queries\Query
+     */
     protected function getQuery(SearchQuery $search)
     {
         $table = $this->getTable();
@@ -28,7 +35,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
         if (count($search->getIds())) {
             $query->byId($search->getIds());
         }
-        
+
         if ($search->getPage() !== null) {
             $limit = $search->getLimit();
 
@@ -164,6 +171,12 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
         return $this->firstField;
     }
 
+    /**
+     * Save the data in the database
+     * 
+     * @param Row   $row
+     * @param array $data
+     */
     protected function save(Row $row, array $data)
     {
         $table = $this->getTable();

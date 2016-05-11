@@ -7,7 +7,7 @@ use FormManager\FieldInterface;
 interface FormatInterface extends FieldInterface
 {
     /**
-     * Set the format label
+     * Set the format label.
      * 
      * @param string|null $label
      * 
@@ -16,7 +16,7 @@ interface FormatInterface extends FieldInterface
     public function label($label = null);
 
     /**
-     * Returns the value as html
+     * Returns the value as html.
      * 
      * @return string
      */

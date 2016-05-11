@@ -5,7 +5,6 @@ namespace Folk\Controllers;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Folk\Admin;
-use Folk\Entities\EntityInterface;
 use Psr7Middlewares\Middleware\FormatNegotiator;
 use FormManager\Builder as F;
 
@@ -26,9 +25,9 @@ abstract class Entity
     /**
      * Helper to build the entity form.
      * 
-     * @param Admin           $app
-     * @param string $entityName
-     * @param mixed|null      $id
+     * @param Admin      $app
+     * @param string     $entityName
+     * @param mixed|null $id
      * 
      * return \Folk\Formats\Form
      */

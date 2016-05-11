@@ -3,7 +3,6 @@
 namespace Folk\Formats;
 
 use FormManager\Fields;
-use FormManager\Elements;
 use FormManager\Builder;
 use Folk\Entities\EntityInterface;
 use Folk\SearchQuery;

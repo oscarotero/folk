@@ -64,7 +64,7 @@ class Admin extends Fol
     /**
      * Add a new entity.
      *
-     * @param string $name
+     * @param string          $name
      * @param EntityInterface $entity
      */
     public function addEntity($name, EntityInterface $entity)
