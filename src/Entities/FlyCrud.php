@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Admin;
+namespace Folk\Entities;
 
-use Folk\Entities\EntityInterface;
-use Folk\Entities\AbstractEntity;
 use Folk\SearchQuery;
 use FlyCrud\Document;
 
-abstract class FlyCrudEntity extends AbstractEntity implements EntityInterface
+abstract class FlyCrud extends AbstractEntity implements EntityInterface
 {
     /**
      * Returns the fly-crud repository.
