@@ -54,7 +54,7 @@ class Admin extends Fol
     {
         foreach ($entities as $name => $entity) {
             if (is_int($name)) {
-                $name = strtolower(substr(strrchr($entity, '\\'), 1));
+                $name = substr(strrchr($entity, '\\'), 1);
             }
 
             $this->addEntity($name, new $entity($this));
@@ -73,7 +73,7 @@ class Admin extends Fol
             $entity->title = ucfirst($name);
         }
 
-        $this->entities[$name] = $entity;
+        $this->entities[strtolower($name)] = $entity;
     }
 
     /**
@@ -85,7 +85,7 @@ class Admin extends Fol
      */
     public function hasEntity($name)
     {
-        return isset($this->entities[$name]);
+        return isset($this->entities[strtolower($name)]);
     }
 
     /**
@@ -100,7 +100,7 @@ class Admin extends Fol
     public function getEntity($name)
     {
         if ($this->hasEntity($name)) {
-            return $this->entities[$name];
+            return $this->entities[strtolower($name)];
         }
 
         throw new NotFoundException(sprintf('Entity %s not found', $name));
