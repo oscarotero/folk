@@ -26,7 +26,7 @@ class UpdateEntity extends Entity
         }
 
         //Render template
-        return $app['templates']->render('pages/edit', [
+        return $app['templates']->render('pages/read', [
             'entity' => $entityName,
             'form' => $form,
             'id' => $id,
