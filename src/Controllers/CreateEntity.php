@@ -15,7 +15,7 @@ class CreateEntity extends Entity
         $form = static::createForm($app, $entityName);
         $form->loadFromPsr7($request);
 
-        if ($form->isValid()) {
+        if ($form->validate()) {
             return new RedirectResponse($app->getRoute('read', [
                 'entity' => $entityName,
                 'id' => $entity->create($form['data']->val()),
