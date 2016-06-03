@@ -16,7 +16,7 @@ class UpdateEntity extends Entity
         $form = static::createForm($app, $entityName, $id);
         $form->loadFromPsr7($request);
 
-        if ($form->isValid()) {
+        if ($form->validate()) {
             $app->getEntity($entityName)->update($id, $form['data']->val());
 
             return new RedirectResponse($app->getRoute('read', [
@@ -27,7 +27,7 @@ class UpdateEntity extends Entity
 
         //Render template
         return $app['templates']->render('pages/read', [
-            'entity' => $entityName,
+            'entityName' => $entityName,
             'form' => $form,
             'id' => $id,
         ]);
