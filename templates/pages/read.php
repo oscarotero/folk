@@ -8,7 +8,7 @@
 	<div class="page-content">
 		<?php
         echo $form
-            //->data('module', 'submit')
+            ->data('module', 'submit')
             ->action($app->getRoute('update', ['entity' => $entityName, 'id' => $id]))
             ->openHtml();
 
@@ -22,5 +22,7 @@
 			<button type="submit" name="method-override" value="DELETE" data-confirm="<?= p__('edit', 'This action cannot be undo. Are you sure?') ?>" formaction="<?= $app->getRoute('delete', ['entity' => $entityName, 'id' => $id]); ?>" class="button button-link"><?= p__('edit', 'Delete') ?></button>
 		</div>
 		<?= $form->closeHtml(); ?>
+
+        <progress class="progress"></progress>
 	</div>
 </div>

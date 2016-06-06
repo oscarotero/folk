@@ -15,6 +15,7 @@
                 baseUrl: "<?= $app->getUrl('js') ?>",
             };
         </script>
+        <script type="text/javascript" src="<?= $app->getUrl('js/modernizr.js'); ?>"></script>
         <script type="text/javascript" data-main="<?= $app->getUrl('js/main.js'); ?>" src="<?= $app->getUrl('js/vendor/requirejs/require.js'); ?>"></script>
     </head>
 

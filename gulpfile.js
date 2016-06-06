@@ -6,6 +6,8 @@ const gulp      = require('gulp'),
       path      = require('path'),
       requirejs = require('requirejs'),
       del       = require('del'),
+      fs        = require('fs'),
+      modernizr = require('modernizr'),
       bower     = path.join(__dirname, 'bower_components');
 
 gulp.task('css', function() {
@@ -20,7 +22,9 @@ gulp.task('css', function() {
     });
 });
 
-gulp.task('js', function(done) {
+gulp.task('js', ['js:vendor', 'js:modernizr']);
+
+gulp.task('js:vendor', function(done) {
     del.sync(path.join('assets/js/vendor'));
 
     [
@@ -35,10 +39,28 @@ gulp.task('js', function(done) {
         ['selectize', 'dist/js/*'],
         ['sifter', '*.js'],
         ['typeahead.js', 'dist/**/*'],
+        ['datetimepicker', 'build/*.js'],
+        ['jquery-mousewheel', '*.js'],
+        ['php-date-formatter', 'js/*.js'],
     ].forEach(function (module) {
         gulp
             .src(path.join(bower, module[0], module[1]))
             .pipe(gulp.dest(path.join('assets/js/vendor', module[0])))
+    });
+});
+
+gulp.task('js:modernizr', function(callback) {
+    modernizr.build({
+        'options': [
+            'setClasses'
+        ],
+        'feature-detects': [
+            'inputtypes',
+        ]
+    }, function (result) {
+        fs.writeFile('assets/js/modernizr.js', result, function(error) {
+            callback(error);
+        });
     });
 });
 

@@ -1,0 +1,22 @@
+progress.progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    appearance: none;
+    border: none;
+    height: 6px;
+    color: var(--color);
+    display: none;
+    z-index: 9;
+
+    &::-webkit-progress-value {
+        background: var(--color);
+    }
+    &::-webkit-progress-bar {
+        background: var(--black);
+    }
+    &::-moz-progress-bar {
+        background: var(--color);
+    }
+}

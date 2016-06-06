@@ -61,6 +61,8 @@ h1, h2, h3, h4, h5, h6, strong {
 @import "modules/wysiwyg.css";
 @import "modules/code.css";
 @import "modules/spreadsheet.css";
+@import "modules/datetime.css";
+@import "modules/progress.css";
 
 /* pages */
 @import "pages/home.css";

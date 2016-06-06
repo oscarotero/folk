@@ -1,0 +1,47 @@
+@import "datetimepicker";
+
+.xdsoft_datetimepicker {
+	border: solid 1px color(var(--gray) a(0.3));
+	font-family: var(--font);
+	box-shadow: 0 5px 10px -5px color(var(--gray) a(.5));
+
+	.xdsoft_label {
+		white-space: nowrap;
+	}
+	.xdsoft_option {
+		font-weight: normal !important;
+	}
+
+	.xdsoft_calendar td,
+	.xdsoft_timepicker .xdsoft_time_box .xdsoft_time {
+		border: solid 1px transparent !important;
+		color: var(--black);
+		background: var(--xlightgray);
+
+		&.xdsoft_current {
+			background: var(--color);
+			box-shadow: none;
+		}
+
+		&:hover {
+			border-color: var(--color) !important;
+			color: var(--black) !important;
+			background: var(--xlightgray) !important;
+		}
+	}
+	.xdsoft_calendar th {
+		border: none;
+		background: white;
+	}
+	.xdsoft_calendar table {
+		border-collapse: separate;
+	}
+	.xdsoft_datepicker + .xdsoft_timepicker {
+		border-left: solid 1px color(var(--gray) a(0.3));
+	}
+	.xdsoft_timepicker .xdsoft_time_box {
+		border: none;
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+}

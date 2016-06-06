@@ -14,6 +14,7 @@ class Month extends Fields\Month implements FormatInterface
         parent::__construct();
 
         $this->set('list', true);
+        $this->data('module', 'format-datetime');
         $this->wrapper->class('format is-responsive');
     }
 }

@@ -7,18 +7,22 @@
 <div class="page page-form">
 	<div class="page-content">
 		<?php
-        echo $form->action($app->getRoute('create', ['entity' => $entityName]))->openHtml();
+        echo $form
+            ->data('module', 'submit')
+            ->action($app->getRoute('create', ['entity' => $entityName]))
+            ->openHtml();
 
         $form['data']->addClass('page-form-content');
         echo $form->html();
         ?>
 
-		<div class="footer-primary">
+		<div class="footer-primary is-floating">
 			<button type="submit" class="button button-call"><?= p__('insert', 'Create') ?></button>
 		</div>
 
         <input type="hidden" name="method-override" value="put">
 
 		<?= $form->closeHtml(); ?>
+        <progress class="progress"></progress>
 	</div>
 </div>

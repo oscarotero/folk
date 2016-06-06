@@ -8,7 +8,9 @@ require.config({
 		"selectize": "vendor/selectize/selectize",
 		"typeahead": "vendor/typeahead.js/typeahead.jquery",
 		"ckeditor": "vendor/ckeditor/ckeditor",
-		"handsontable": "vendor/handsontable/handsontable.full"
+		"handsontable": "vendor/handsontable/handsontable.full",
+		"datetimepicker": "vendor/datetimepicker/jquery.datetimepicker.full",
+		"jquery-mousewheel": "vendor/jquery-mousewheel/jquery.mousewheel"
 	},
 	shim: {
 		'ckeditor': {
