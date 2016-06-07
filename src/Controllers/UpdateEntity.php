@@ -25,11 +25,14 @@ class UpdateEntity extends Entity
             ]));
         }
 
-        //Render template
-        return $app['templates']->render('pages/read', [
-            'entityName' => $entityName,
-            'form' => $form,
-            'id' => $id,
-        ]);
+        $response->getBody()->write(
+            $app['templates']->render('pages/read', [
+                'entityName' => $entityName,
+                'form' => $form,
+                'id' => $id,
+            ])
+        );
+
+        return $response->withStatus(400);
     }
 }

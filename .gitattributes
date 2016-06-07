@@ -3,7 +3,6 @@
 /demo/             export-ignore
 /*-screenshoot.png export-ignore
 bower.json         export-ignore
-composer.lock      export-ignore
 gulpfile.js        export-ignore
 package.json       export-ignore
 stylecow.json      export-ignore

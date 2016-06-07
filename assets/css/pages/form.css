@@ -1,6 +1,16 @@
 .page-form {
 	padding: 5rem 1rem;
 
+	form {
+		will-change: opacity;
+		transition: opacity 1s;
+		
+		.is-submiting {
+			pointer-events: none;
+			opacity: .2;
+		}
+	}
+
 	input[type="date"],
 	input[type="datetime"],
 	input[type="datetime-local"],

@@ -1,0 +1,12 @@
+.notifyjs-folk-base {
+    padding: .8em 1em;
+    font-weight: var(--font-bold);
+}
+.notifyjs-folk-error {
+    color: var(--color-error);
+    background: color(var(--color-error) tint(92%));
+}
+.notifyjs-folk-success {
+    color: var(--color);
+    background: white;
+}

@@ -10,7 +10,8 @@ require.config({
 		"ckeditor": "vendor/ckeditor/ckeditor",
 		"handsontable": "vendor/handsontable/handsontable.full",
 		"datetimepicker": "vendor/datetimepicker/jquery.datetimepicker.full",
-		"jquery-mousewheel": "vendor/jquery-mousewheel/jquery.mousewheel"
+		"jquery-mousewheel": "vendor/jquery-mousewheel/jquery.mousewheel",
+		"notify": "vendor/notifyjs/notify"
 	},
 	shim: {
 		'ckeditor': {

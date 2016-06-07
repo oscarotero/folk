@@ -42,6 +42,7 @@ gulp.task('js:vendor', function(done) {
         ['datetimepicker', 'build/*.js'],
         ['jquery-mousewheel', '*.js'],
         ['php-date-formatter', 'js/*.js'],
+        ['notifyjs', 'dist/*.js'],
     ].forEach(function (module) {
         gulp
             .src(path.join(bower, module[0], module[1]))
@@ -73,4 +74,4 @@ gulp.task('img', function (done) {
         .on('end', done);
 });
 
-gulp.task('default', ['css', 'js', 'img']);
+gulp.task('default', ['css', 'js']);

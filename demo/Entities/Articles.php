@@ -4,6 +4,7 @@ namespace Demo\Entities;
 
 use Folk\Entities\Yaml;
 use FormManager\Builder;
+use FormManager\InvalidValueException;
 
 class Articles extends Yaml
 {

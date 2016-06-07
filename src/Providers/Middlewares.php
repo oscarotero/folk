@@ -22,10 +22,6 @@ class Middlewares implements ServiceProviderInterface
                     return false;
                 }),
 
-                Middleware::errorHandler()
-                    ->arguments($app)
-                    ->catchExceptions(),
-
                 Middleware::create(function () {
                     return class_exists('Whoops\\Run') ? Middleware::whoops() : false;
                 }),

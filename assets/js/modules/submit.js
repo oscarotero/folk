@@ -1,6 +1,8 @@
 define([
-    'jquery'
-], function ($) {
+    'jquery',
+    '../loader',
+    '../notifier'
+], function ($, loader, notifier) {
     return {
         init: function ($form) {
             var enabled = true;
@@ -26,10 +28,6 @@ define([
                         processData: false,
                         contentType: false,
                         data: data,
-                        success: function () {
-                            alert('Ok!');
-                            $progress.hide();
-                        },
                         xhr: function () {
                             var myXhr = $.ajaxSettings.xhr();
                             var progress = $progress.show().get(0);
@@ -39,16 +37,37 @@ define([
                                     if (e.lengthComputable) {
                                         progress.max = e.total;
                                         progress.value = e.loaded;
-                                        console.log(e.loaded);
                                     }
                                 }, false);
                             }
 
                             return myXhr;
+                        },
+                        beforeSend: function() {
+                            $form.addClass('is-submiting');
                         }
+                    })
+                    .done(function (response) {
+                        loadContent(response);
+                        setTimeout(function () {
+                            notifier.success('Data saved successfully');
+                        });
+                    })
+                    .fail(function (response) {
+                        loadContent(response);
+                        setTimeout(function () {
+                            notifier.error('Error saving data');
+                        });
                     });
                 });
             });
         }
     };
+
+    function loadContent(response) {
+        var doc = document.implementation.createHTMLDocument();
+        doc.documentElement.innerHTML = response.responseText;
+        $('.page').html($(doc.body).find('.page').html());
+        loader.init($('.page'));
+    }
 });

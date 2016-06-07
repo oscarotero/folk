@@ -13,6 +13,7 @@
     "ckeditor": "^4.5.9",
     "requirejs": "^2.2.0",
     "material-design-icons": "^2.2.3",
-    "datetimepicker": "^2.5.4"
+    "datetimepicker": "^2.5.4",
+    "notifyjs": "^0.4.2"
   }
 }

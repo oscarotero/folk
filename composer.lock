@@ -130,16 +130,16 @@
         },
         {
             "name": "form-manager/form-manager",
-            "version": "v5.0.1",
+            "version": "v5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/form-manager.git",
-                "reference": "7be00970dd2527677a108ad946e88b775f20dcb9"
+                "reference": "03205c7bb012af128126dbddee9b5d8eef982587"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/form-manager/zipball/7be00970dd2527677a108ad946e88b775f20dcb9",
-                "reference": "7be00970dd2527677a108ad946e88b775f20dcb9",
+                "url": "https://api.github.com/repos/oscarotero/form-manager/zipball/03205c7bb012af128126dbddee9b5d8eef982587",
+                "reference": "03205c7bb012af128126dbddee9b5d8eef982587",
                 "shasum": ""
             },
             "require": {
@@ -177,7 +177,7 @@
                 "psr-7",
                 "validator"
             ],
-            "time": "2016-05-04 18:19:56"
+            "time": "2016-05-18 15:18:02"
         },
         {
             "name": "gettext/gettext",
@@ -390,16 +390,16 @@
         },
         {
             "name": "oscarotero/psr7-middlewares",
-            "version": "v3.15.1",
+            "version": "v3.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/psr7-middlewares.git",
-                "reference": "d5bc1cd2a39d6d1e4a0433dec222e86a86f9db83"
+                "reference": "d604f1844c12af03996eed879ead9f97ab32555f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/psr7-middlewares/zipball/d5bc1cd2a39d6d1e4a0433dec222e86a86f9db83",
-                "reference": "d5bc1cd2a39d6d1e4a0433dec222e86a86f9db83",
+                "url": "https://api.github.com/repos/oscarotero/psr7-middlewares/zipball/d604f1844c12af03996eed879ead9f97ab32555f",
+                "reference": "d604f1844c12af03996eed879ead9f97ab32555f",
                 "shasum": ""
             },
             "require": {
@@ -478,7 +478,7 @@
                 "psr-7",
                 "psr-messages"
             ],
-            "time": "2016-05-06 11:54:18"
+            "time": "2016-05-28 11:46:50"
         },
         {
             "name": "psr/http-message",
@@ -825,16 +825,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.0.6",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "0047c8366744a16de7516622c5b7355336afae96"
+                "reference": "eca51b7b65eb9be6af88ad7cc91685f1556f5c9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/0047c8366744a16de7516622c5b7355336afae96",
-                "reference": "0047c8366744a16de7516622c5b7355336afae96",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/eca51b7b65eb9be6af88ad7cc91685f1556f5c9a",
+                "reference": "eca51b7b65eb9be6af88ad7cc91685f1556f5c9a",
                 "shasum": ""
             },
             "require": {
@@ -843,7 +843,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -870,7 +870,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-04 07:55:57"
+            "time": "2016-05-26 21:46:24"
         }
     ],
     "aliases": [],
