@@ -5,7 +5,7 @@
 		will-change: opacity;
 		transition: opacity 1s;
 		
-		.is-submiting {
+		&.is-submiting {
 			pointer-events: none;
 			opacity: .2;
 		}

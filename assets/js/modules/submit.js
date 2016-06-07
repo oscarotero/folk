@@ -37,6 +37,7 @@ define([
                                     if (e.lengthComputable) {
                                         progress.max = e.total;
                                         progress.value = e.loaded;
+                                        console.log(e.loaded + ' / ' + e.total);
                                     }
                                 }, false);
                             }
@@ -54,7 +55,7 @@ define([
                         });
                     })
                     .fail(function (response) {
-                        loadContent(response);
+                        loadContent(response.text);
                         setTimeout(function () {
                             notifier.error('Error saving data');
                         });
@@ -64,9 +65,9 @@ define([
         }
     };
 
-    function loadContent(response) {
+    function loadContent(html) {
         var doc = document.implementation.createHTMLDocument();
-        doc.documentElement.innerHTML = response.responseText;
+        doc.documentElement.innerHTML = html;
         $('.page').html($(doc.body).find('.page').html());
         loader.init($('.page'));
     }
