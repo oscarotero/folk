@@ -21,6 +21,7 @@ define([
 
                 setTimeout(function () {
                     var data = new FormData($form[0]);
+                    var myXhr = $.ajaxSettings.xhr();
 
                     $.ajax({
                         url: $form.attr('action'),
@@ -29,7 +30,6 @@ define([
                         contentType: false,
                         data: data,
                         xhr: function () {
-                            var myXhr = $.ajaxSettings.xhr();
                             var progress = $progress.show().get(0);
 
                             if (myXhr.upload && progress) {
@@ -51,6 +51,7 @@ define([
                     .done(function (response) {
                         notifier.success('Data saved successfully');
                         loadContent(response);
+                        window.history.replaceState({}, null, myXhr.responseURL);
                     })
                     .fail(function (response) {
                         if (response.text) {
@@ -71,6 +72,7 @@ define([
         var doc = document.implementation.createHTMLDocument();
         doc.documentElement.innerHTML = html;
         $('.page').html($(doc.body).find('.page').html());
+        $('title').text($(doc.head).find('title').text());
         loader.init($('.page'));
     }
 });
