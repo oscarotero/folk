@@ -20,6 +20,7 @@ define([], function () {
                         $.each(this.files, function (index, file) {
                             if (file.size > max) {
                                 alert('Too big file: ' + formatBytes(file.size) + ' (' + formatBytes(max) + ' max allowed)');
+                                $file.get(0).value = null;
                             }
                         });
                     }
