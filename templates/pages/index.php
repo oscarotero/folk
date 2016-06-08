@@ -7,10 +7,11 @@
 		<?php if ($app->has('url')): ?>
 
 		<?php
-            $bookmarklet = <<<BOOKMARKLET
+			$url = urlencode($app['url']);
+			$bookmarklet = <<<BOOKMARKLET
 (function () {
 	if (document.location.href.indexOf('{$app['url']}') !== 0 || document.location.href.indexOf('{$app->getUrl()}') === 0) {
-		alert('This bookmarklet is only valid for \'{$app['url']}\'');
+		alert('This bookmarklet is only valid for \'{$url}\'');
 	}
 
 	var buttons = document.querySelectorAll('.folk-button');
