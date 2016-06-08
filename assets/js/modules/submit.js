@@ -59,6 +59,7 @@ define([
                         } else {
                             notifier.error('Too big data');
                             $form.removeClass('is-submiting');
+                            $progress.hide();
                         }
                     });
                 });

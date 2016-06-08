@@ -13,6 +13,21 @@ class FileUpload extends Loader implements FormatInterface
             'field' => $builder->hidden(),
         ]);
 
-        $this->data('module', 'format-upload');
+        $this->data([
+            'module' => 'format-upload',
+            'max-size' => self::getMaxSize(),
+        ]);
+    }
+
+    private static function getMaxSize() {
+        $size = ini_get('upload_max_filesize');
+
+        switch (strtoupper(substr($size, -1))) {
+            case 'M':
+                return intval($size) * 1000000;
+
+            default:
+                return intval($size);
+        }
     }
 }
