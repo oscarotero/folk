@@ -53,11 +53,11 @@ define([
                         loadContent(response);
                     })
                     .fail(function (response) {
-                        notifier.error('Error saving data');
-
                         if (response.text) {
+                            notifier.error('Error saving data');
                             loadContent(response.text);
                         } else {
+                            notifier.error('Too big data');
                             $form.removeClass('is-submiting');
                         }
                     });
