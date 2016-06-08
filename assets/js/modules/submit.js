@@ -5,7 +5,7 @@ define([
 ], function ($, loader, notifier) {
     return {
         init: function ($form) {
-            var enabled = true;
+            var enabled = 'FormData' in window;
             var $progress = $form.next('.progress');
 
             $form.on('click', 'button[name="method-override"]', function () {
@@ -49,16 +49,17 @@ define([
                         }
                     })
                     .done(function (response) {
+                        notifier.success('Data saved successfully');
                         loadContent(response);
-                        setTimeout(function () {
-                            notifier.success('Data saved successfully');
-                        });
                     })
                     .fail(function (response) {
-                        loadContent(response.text);
-                        setTimeout(function () {
-                            notifier.error('Error saving data');
-                        });
+                        notifier.error('Error saving data');
+
+                        if (response.text) {
+                            loadContent(response.text);
+                        } else {
+                            $form.removeClass('is-submiting');
+                        }
                     });
                 });
             });
