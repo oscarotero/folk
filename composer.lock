@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "747f77fe6002f89546e00e9d4cc23a12",
-    "content-hash": "17da09033447f7c94217d6e00d53809a",
+    "hash": "a7698773a7da6b12af4414b2331c0207",
+    "content-hash": "60a03c1a7e579ca6a3efeb05560fa6a0",
     "packages": [
         {
             "name": "aura/router",
@@ -390,16 +390,16 @@
         },
         {
             "name": "oscarotero/psr7-middlewares",
-            "version": "v3.16.0",
+            "version": "v3.16.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/psr7-middlewares.git",
-                "reference": "d604f1844c12af03996eed879ead9f97ab32555f"
+                "reference": "f5591f0417d255d2cbc97cf0d2e0e42dc3c9ba2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/psr7-middlewares/zipball/d604f1844c12af03996eed879ead9f97ab32555f",
-                "reference": "d604f1844c12af03996eed879ead9f97ab32555f",
+                "url": "https://api.github.com/repos/oscarotero/psr7-middlewares/zipball/f5591f0417d255d2cbc97cf0d2e0e42dc3c9ba2d",
+                "reference": "f5591f0417d255d2cbc97cf0d2e0e42dc3c9ba2d",
                 "shasum": ""
             },
             "require": {
@@ -478,7 +478,7 @@
                 "psr-7",
                 "psr-messages"
             ],
-            "time": "2016-05-28 11:46:50"
+            "time": "2016-06-10 10:13:22"
         },
         {
             "name": "psr/http-message",
