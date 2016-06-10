@@ -22,11 +22,14 @@ class Middlewares implements ServiceProviderInterface
                     return false;
                 }),
 
-                Middleware::create(function () {
-                    return class_exists('Whoops\\Run') ? Middleware::whoops() : false;
-                }),
-
                 Middleware::expires(),
+                
+                Middleware::errorHandler('Folk\\Controllers\\Error')
+                    ->catchExceptions()
+                    ->statusCode(function ($code) {
+                        return $code > 400 && $code < 600;
+                    })
+                    ->arguments($app),
 
                 Middleware::basePath($app->getUrlPath()),
 
