@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html data-baseurl="<?= $app->getUrl() ?>">
+<html data-baseurl="<?= $app->getUrl() ?>" lang="<?= $language ?>">
     <head>
         <meta charset="utf-8">
 

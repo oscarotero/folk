@@ -36,11 +36,13 @@ class Middlewares implements ServiceProviderInterface
 
                 Middleware::languageNegotiator(['en', 'gl', 'es']),
 
-                function ($request, $response, $next) {
+                function ($request, $response, $next) use ($app) {
                     $language = Middleware\LanguageNegotiator::getLanguage($request);
                     $translator = new Translator();
                     $translator->loadTranslations(Translations::fromPoFile(dirname(dirname(__DIR__)).'/locales/'.$language.'.po'));
                     $prev = $translator->register();
+
+                    $app['templates']->addData(['language' => $language]);
 
                     $response = $next($request, $response);
 
