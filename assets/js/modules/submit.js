@@ -55,9 +55,13 @@ define([
                         window.history.replaceState({}, null, myXhr.responseURL);
                     })
                     .fail(function (response) {
-                        if (response.text) {
-                            notifier.error(i18n.__('Error saving data'));
-                            loadContent(response.text);
+                        if (response.status == 500) {
+                            notifier.error('Server error: ' + (response.responseText || response.statusText));
+                            $form.removeClass('is-submiting');
+                            $progress.hide();
+                        } else if (response.responseText) {
+                            notifier.error('Error saving data');
+                            loadContent(response.responseText);
                         } else {
                             notifier.error(i18n.__('Too big data'));
                             $form.removeClass('is-submiting');

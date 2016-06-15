@@ -23,7 +23,7 @@
         "relay/relay": "^1.1",
         "league/plates": "^3.1",
         "aura/router": "^3.0",
-        "oscarotero/psr7-middlewares": "^3.15",
+        "oscarotero/psr7-middlewares": "^3.16.1",
         "willdurand/negotiation": "^2.0",
         "fol/core": "^11.1",
         "form-manager/form-manager": "^5.0.3",
