@@ -43,6 +43,10 @@ gulp.task('js:vendor', function(done) {
         ['jquery-mousewheel', '*.js'],
         ['php-date-formatter', 'js/*.js'],
         ['notifyjs', 'dist/*.js'],
+        ['gettext-translator', 'src/*.js'],
+        ['sprintf', 'src/sprintf.js'],
+        ['requirejs-plugins', 'src/*.js'],
+        ['requirejs-plugins', 'lib/text.js'],
     ].forEach(function (module) {
         gulp
             .src(path.join(bower, module[0], module[1]))

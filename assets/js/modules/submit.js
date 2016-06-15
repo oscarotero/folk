@@ -1,8 +1,9 @@
 define([
     'jquery',
     '../loader',
-    '../notifier'
-], function ($, loader, notifier) {
+    '../notifier',
+    '../i18n'
+], function ($, loader, notifier, i18n) {
     return {
         init: function ($form) {
             var enabled = 'FormData' in window;
@@ -49,16 +50,16 @@ define([
                         }
                     })
                     .done(function (response) {
-                        notifier.success('Data saved successfully');
+                        notifier.success(i18n.__('Data saved successfully'));
                         loadContent(response);
                         window.history.replaceState({}, null, myXhr.responseURL);
                     })
                     .fail(function (response) {
                         if (response.text) {
-                            notifier.error('Error saving data');
+                            notifier.error(i18n.__('Error saving data'));
                             loadContent(response.text);
                         } else {
-                            notifier.error('Too big data');
+                            notifier.error(i18n.__('Too big data'));
                             $form.removeClass('is-submiting');
                             $progress.hide();
                         }

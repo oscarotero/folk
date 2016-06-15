@@ -18,7 +18,10 @@ class RoboFile extends \Robo\Tasks
     {
         $this->taskGettextScanner()
             ->extract('templates/')
-            ->generate('locales/en.po')
+            ->extract('assets/js/modules', '/.*\.js/')
+            ->generate('locales/en.po', 'assets/js/locales/en.json')
+            ->generate('locales/es.po', 'assets/js/locales/es.json')
+            ->generate('locales/gl.po', 'assets/js/locales/gl.json')
             ->run();
     }
 }

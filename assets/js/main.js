@@ -11,7 +11,11 @@ require.config({
 		"handsontable": "vendor/handsontable/handsontable.full",
 		"datetimepicker": "vendor/datetimepicker/jquery.datetimepicker.full",
 		"jquery-mousewheel": "vendor/jquery-mousewheel/jquery.mousewheel",
-		"notify": "vendor/notifyjs/notify"
+		"notify": "vendor/notifyjs/notify",
+		"gettext-translator": "vendor/gettext-translator/translator",
+		"sprintf": "vendor/sprintf/sprintf",
+		"json": "vendor/requirejs-plugins/json",
+		"text": "vendor/requirejs-plugins/text"
 	},
 	shim: {
 		'ckeditor': {

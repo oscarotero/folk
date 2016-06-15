@@ -14,6 +14,8 @@
     "requirejs": "^2.2.0",
     "material-design-icons": "^2.2.3",
     "datetimepicker": "^2.5.4",
-    "notifyjs": "^0.4.2"
+    "notifyjs": "^0.4.2",
+    "requirejs-plugins": "^1.0.3",
+    "gettext-translator": "^1.0.0"
   }
 }
