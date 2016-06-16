@@ -25,7 +25,7 @@ define([
 
 			$element.parents('form').on('submit.format-table', function (e) {
 				var data = editor.getData();
-				$element.find('textarea').val(JSON.stringify(data));
+				$element.val(JSON.stringify(data));
 			});
 		},
 		destroy: function ($element) {
