@@ -6,6 +6,7 @@ define([
 ], function ($, loader, notifier, i18n) {
     return {
         init: function ($form) {
+            return;
             var enabled = 'FormData' in window;
             var $progress = $form.next('.progress');
 

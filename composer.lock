@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "13f73d622c5f56385f0b7caf15de7b1c",
-    "content-hash": "9f59bb86bf78466e47504664ee82f24b",
+    "hash": "5ccc5184d6e8277a2f6af0e30b439bcf",
+    "content-hash": "144522125897cbaa3c93ca575d2d2a73",
     "packages": [
         {
             "name": "aura/router",
@@ -292,6 +292,48 @@
                 "unicode"
             ],
             "time": "2015-03-27 11:32:41"
+        },
+        {
+            "name": "imagecow/imagecow",
+            "version": "v2.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oscarotero/imagecow.git",
+                "reference": "b99dd22a888e151e4a1f2b0dadd567b995f87647"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oscarotero/imagecow/zipball/b99dd22a888e151e4a1f2b0dadd567b995f87647",
+                "reference": "b99dd22a888e151e4a1f2b0dadd567b995f87647",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Imagecow\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oscar Otero",
+                    "email": "oom@oscarotero.com",
+                    "homepage": "http://oscarotero.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP library to manipulate and generate responsive images",
+            "homepage": "https://github.com/oscarotero/imagecow/",
+            "keywords": [
+                "image"
+            ],
+            "time": "2016-05-13 15:52:21"
         },
         {
             "name": "league/plates",

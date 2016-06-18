@@ -39,17 +39,20 @@
 }
 
 .button.button-normal {
-	background: var(--lightgray);
+	background: var(--xlightgray);
 	padding: 0.5em 1em;
 	min-width: 150px;
-  color: var(--gray);
-  font-weight: var(--font-bold);
+  color: var(--black);
   border: var(--border-thin);
   border-radius: 3px;
 
+  img {
+    display: block;
+    margin: .5rem 0;
+  }
+
   &:hover {
-	  color: var(--white);
-		background-color: var(--gray);
+		background-color: var(--lightgray);
 
     line {
       stroke: var(--white);

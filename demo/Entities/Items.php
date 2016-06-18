@@ -2,6 +2,8 @@
 
 namespace Demo\Entities;
 
+use Psr\Http\Message\UploadedFileInterface;
+
 use Folk\Entities\Json;
 use FormManager\Builder;
 
@@ -14,6 +16,17 @@ class Items extends Json
     protected function getBasePath()
     {
         return __DIR__.'/json';
+    }
+
+    public function create(array $data)
+    {
+        if ($data['imageupload'] instanceof UploadedFileInterface) {
+            $file = $data['imageupload'];
+            $file->moveTo(__DIR__.'/img/'.$file->getClientFilename());
+            $data['imageupload'] = '/'.$file->getClientFilename();
+        }
+
+        return parent::create($data);
     }
 
     public function getScheme(Builder $builder)
@@ -58,7 +71,11 @@ class Items extends Json
 
             'html' => $builder->html()->label('Html'),
 
-            'imageupload' => $builder->imageUpload()->label('Image upload'),
+            'imageupload' => $builder->imageUpload()
+                ->data('config', [
+                    'thumb' => 'Entities/img'
+                ])
+                ->label('Image upload'),
 
             'info' => $builder->info()->label('Info'),
 

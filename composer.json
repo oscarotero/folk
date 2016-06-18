@@ -28,7 +28,8 @@
         "fol/core": "^11.1",
         "form-manager/form-manager": "^5.0.3",
         "gettext/gettext": "^4.0",
-        "oscarotero/inline-svg": "^1.0"
+        "oscarotero/inline-svg": "^1.0",
+        "imagecow/imagecow": "^2.1"
     },
     "autoload": {
         "psr-4": {

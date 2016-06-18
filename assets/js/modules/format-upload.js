@@ -1,4 +1,7 @@
-define([], function () {
+define([
+    '../i18n'
+], function (i18n) {
+    var baseUrl = $('html').data('baseurl');
     var defaults = {
         url: null
     };
@@ -8,9 +11,21 @@ define([], function () {
             var config = $.extend({}, defaults, $element.data('config') || {});
             var $file = $element.find('input[type="file"]');
             var $hidden = $element.find('input[type="hidden"]');
-            var $extra = $('<p>');
-            
-            updateUI();
+            var $extra = $('<p>').insertAfter($file);
+
+            var $editLink = $('<span class="button button-normal ui-edit">' + i18n.__('Insert value as text') + '</span>')
+                .appendTo($extra)
+                .click(function () {
+                    var value = window.prompt(i18n.__('New value (empty to remove)'), $hidden.val());
+                    
+                    if (value !== null) {
+                        $hidden.val(value);
+
+                        updateUI(config);
+                    }
+                });
+
+            updateUI(config);
 
             if ($element.data('max-size')) {
                 $file.on('change', function () {
@@ -19,7 +34,7 @@ define([], function () {
                     if (this.files) {
                         $.each(this.files, function (index, file) {
                             if (file.size > max) {
-                                alert('Too big file: ' + formatBytes(file.size) + ' (' + formatBytes(max) + ' max allowed)');
+                                alert(i18n.__('Too big file: %s (%s max allowed)', formatBytes(file.size), formatBytes(max)));
                                 $file.get(0).value = null;
                             }
                         });
@@ -27,36 +42,17 @@ define([], function () {
                 });
             }
 
-            $('<a class="button button-link ui-edit">Edit as text</a>')
-                .appendTo($extra)
-                .click(function () {
-                    var value = window.prompt('New value (empty to remove)', $hidden.val());
-                    
-                    if (value !== null) {
-                        $hidden.val(value);
-
-                        updateUI();
-                    }
-                })
-
-            $extra.insertAfter($file);
-
-            function updateUI (value) {
+            function updateUI (config) {
                 var value = $hidden.val();
 
-                $extra.find('.ui-value').remove();
+                if (config.thumb && value) {
+                    var src = baseUrl + '?thumb=' + encodeURIComponent(config.thumb + value);
 
-                if (config.url && value) {
-                    var path = value.split('/');
-                    var filename = path.pop();
-
-                    var url = config.url
-                        .replace('{path}', path.join('/'))
-                        .replace('{filename}', filename);
-
-                    $extra.prepend('<a class="button button-link ui-view ui-value" href="' + url + '">' + value + '</a>');
+                    $editLink.html('<img src="' + src + '">');
+                } else if (value) {
+                    $editLink.html('<small>' + value + '</small>');
                 } else {
-                    $extra.prepend('<small class="ui-value">' + value + '</small>');
+                    $editLink.html(i18n.__('Edit as text'));
                 }
             }
 
