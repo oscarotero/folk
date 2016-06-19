@@ -13,7 +13,7 @@ define([
             var config = $.extend({}, defaults, $element.data('config') || {});
             var $file = $element.find('input[type="file"]');
             var $hidden = $element.find('input[type="hidden"]');
-            var $extra = $('<p>').insertAfter($file);
+            var $extra = $('<p class="ui-extra"></p>').insertAfter($file);
 
             var $editLink = $('<span class="button button-normal ui-edit">' + i18n.__('Insert value as text') + '</span>')
                 .appendTo($extra)
@@ -35,6 +35,7 @@ define([
                     .click(function () {
                         $.getJSON(baseUrl, {
                             thumbs: config.thumb,
+                            pattern: config.pattern,
                             limit: config.limit
                         }, function (files) {
                             $thumbs = $('<ul class="thumbs">' + htmlImages(config, files) + '</ul>');
@@ -56,6 +57,7 @@ define([
 
                                         $.getJSON(baseUrl, {
                                             thumbs: config.thumb,
+                                            pattern: config.pattern,
                                             limit: config.limit,
                                             offset: $thumbs.children().length
                                         }, function (files) {
@@ -131,8 +133,7 @@ define([
             }
         },
         destroy: function ($element) {
-            $element.find('.ui-edit').remove();
-            $element.find('.ui-value').remove();
+            $element.find('.ui-extra').remove();
         }
     };
 });

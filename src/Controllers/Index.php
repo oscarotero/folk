@@ -47,21 +47,17 @@ class Index
         $thumbs = $app->getPath($query['thumbs']);
         $limit = empty($query['limit']) ? 100 : (int) $query['limit'];
         $offset = empty($query['offset']) ? 0 : (int) $query['offset'];
+        $pattern = empty($query['pattern']) ? '/*' : $query['pattern'];
 
         $files = [];
+        $baseLength = strlen($thumbs);
 
         if (is_dir($thumbs)) {
-            $dir = opendir($thumbs);
-
-            while (($file = readdir($dir)) !== false) {
-                $file = '/'.$file;
-
-                if (is_file($thumbs.$file)) {
-                    $files[] = $file;
+            foreach (glob($thumbs.$pattern, GLOB_NOSORT | GLOB_NOESCAPE | GLOB_BRACE) as $file) {
+                if (is_file($file)) {
+                    $files[] = substr($file, $baseLength);
                 }
             }
-
-            closedir($dir);
         }
 
         $files = array_reverse($files);
