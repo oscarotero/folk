@@ -28,6 +28,8 @@ define([
                 });
 
             if (config.thumb) {
+                config.limit = parseInt(config.limit);
+
                 var $history = $('<span class="button button-normal">' + i18n.__('Previously uploaded...', config.limit) + '</span>')
                     .appendTo($extra)
                     .click(function () {
@@ -40,24 +42,31 @@ define([
                             $.magnificPopup.open({
                                 type: 'inline',
                                 mainClass: 'popup-thumbs',
+                                closeOnBgClick: false,
                                 items: {
-                                    src: $thumbs
+                                    src: $('<div></div>').html($thumbs)
                                 }
                             });
 
-                            $('<span class="button button-normal">' + i18n.__('Load %d more...', config.limit) + '</span>')
-                                .insertAfter($thumbs)
-                                .on('click', function (e) {
-                                    $.getJSON(baseUrl, {
-                                        thumbs: config.thumb,
-                                        limit: config.limit,
-                                        offset: $thumbs.children().length
-                                    }, function (files) {
-                                        $thumbs.append(htmlImages(config, files));
-                                    });
+                            if ($thumbs.children().length === config.limit) {
+                                $('<span class="button button-normal">' + i18n.__('Load %d more...', config.limit) + '</span>')
+                                    .insertAfter($thumbs)
+                                    .on('click', function (e) {
+                                        var $this = $(this);
 
-                                    return false;
-                                });
+                                        $.getJSON(baseUrl, {
+                                            thumbs: config.thumb,
+                                            limit: config.limit,
+                                            offset: $thumbs.children().length
+                                        }, function (files) {
+                                            $thumbs.append(htmlImages(config, files));
+
+                                            if (files.length < config.limit) {
+                                                $this.remove();
+                                            }
+                                        });
+                                    });
+                            }
 
                             $thumbs.on('click', 'img', function () {
                                 $hidden.val($(this).attr('alt'));
