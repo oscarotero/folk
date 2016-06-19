@@ -11,7 +11,5 @@ class ImageUpload extends FileUpload implements FormatInterface
         parent::__construct($builder);
 
         $this['loader']->accept('image/*');
-
-        $this->data('module', 'format-image');
     }
 }
