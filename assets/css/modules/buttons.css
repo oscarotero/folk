@@ -45,6 +45,7 @@
   color: var(--black);
   border: var(--border-thin);
   border-radius: 3px;
+  margin: .3em .3em 0 0;
 
   img {
     display: block;

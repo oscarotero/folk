@@ -2,18 +2,67 @@
 @import "magnific-popup";
 
 .mfp-bg {
-	opacity: 1;
-	background: var(--alightgray);
+    opacity: 1;
+    background: var(--alightgray);
 }
 .mfp-container {
-	.mfp-close {
-		color: var(--black);
-	}
-	.mfp-title {
-		color: var(--black);
-		background: white;
-	}
-	.mfp-figure::after {
-		box-shadow: none;
-	}
+    padding: 8px;
+
+    &::before {
+        display: none;
+    }
+    &::after {
+        display: none;
+    }
+
+    .mfp-close {
+        color: var(--black);
+    }
+    .mfp-title {
+        color: var(--black);
+        background: white;
+    }
+    .mfp-figure::after {
+        box-shadow: none;
+    }
+}
+
+.popup-thumbs {
+    .mfp-content {
+        background: white;
+        padding: 1rem;
+        box-sizing: border-box;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        ul {
+            overflow-y: auto;
+            list-style: none;
+            padding: 0;
+            margin: 0 0 8px 0;
+            display: flex;
+            flex-wrap: wrap;
+            width: calc(100% - 20px);
+
+            ~ * {
+                flex-shrink: 0;
+            }
+        }
+
+        li {
+            margin: 0 .5rem .5rem 0;
+            height: 200px;
+            min-width: 100px;
+            border: var(--border-thin);
+            padding: .5rem;
+
+            &:hover {
+                opacity: .5;
+            }
+        }
+        img {
+            display: block;
+        }
+    }
 }

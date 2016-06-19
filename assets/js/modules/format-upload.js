@@ -1,9 +1,11 @@
 define([
-    '../i18n'
-], function (i18n) {
+    'jquery',
+    '../i18n',
+    'magnific-popup'
+], function ($, i18n) {
     var baseUrl = $('html').data('baseurl');
     var defaults = {
-        url: null
+        limit: 100
     };
 
     return {
@@ -24,6 +26,47 @@ define([
                         updateUI(config);
                     }
                 });
+
+            if (config.thumb) {
+                var $history = $('<span class="button button-normal">' + i18n.__('Previously uploaded...', config.limit) + '</span>')
+                    .appendTo($extra)
+                    .click(function () {
+                        $.getJSON(baseUrl, {
+                            thumbs: config.thumb,
+                            limit: config.limit
+                        }, function (files) {
+                            $thumbs = $('<ul class="thumbs">' + htmlImages(config, files) + '</ul>');
+
+                            $.magnificPopup.open({
+                                type: 'inline',
+                                mainClass: 'popup-thumbs',
+                                items: {
+                                    src: $thumbs
+                                }
+                            });
+
+                            $('<span class="button button-normal">' + i18n.__('Load %d more...', config.limit) + '</span>')
+                                .insertAfter($thumbs)
+                                .on('click', function (e) {
+                                    $.getJSON(baseUrl, {
+                                        thumbs: config.thumb,
+                                        limit: config.limit,
+                                        offset: $thumbs.children().length
+                                    }, function (files) {
+                                        $thumbs.append(htmlImages(config, files));
+                                    });
+
+                                    return false;
+                                });
+
+                            $thumbs.on('click', 'img', function () {
+                                $hidden.val($(this).attr('alt'));
+                                updateUI(config);
+                                $.magnificPopup.close();
+                            });
+                        });
+                    });
+            }
 
             updateUI(config);
 
@@ -48,7 +91,7 @@ define([
                 if (config.thumb && value) {
                     var src = baseUrl + '?thumb=' + encodeURIComponent(config.thumb + value);
 
-                    $editLink.html('<img src="' + src + '">');
+                    $editLink.html('<img src="' + src + '" alt="' + value + '">');
                 } else if (value) {
                     $editLink.html('<small>' + value + '</small>');
                 } else {
@@ -66,6 +109,16 @@ define([
                 var i = Math.floor(Math.log(bytes) / Math.log(k));
 
                 return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            function htmlImages (config, files) {
+                return files
+                    .map(function (file) {
+                        var src = baseUrl + '?thumb=' + encodeURIComponent(config.thumb + file);
+
+                        return '<li><img src="' + src + '" alt="' + file + '"></li>';
+                    })
+                    .join('');
             }
         },
         destroy: function ($element) {
