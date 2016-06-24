@@ -7,14 +7,18 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2016-06-19T11:53:49+00:00\n"
-"PO-Revision-Date: 2016-06-19T11:53:49+00:00\n"
+"POT-Creation-Date: 2016-06-24T16:22:13+00:00\n"
+"PO-Revision-Date: 2016-06-24T16:22:13+00:00\n"
 "Language: es\n"
 
 #: templates/nav.php:36
 msgctxt "search"
 msgid "Search %s..."
 msgstr "Buscar %s..."
+
+#: assets/js/modules/format-collection.js:30
+msgid "Are you sure?"
+msgstr "¿Estas seguro?"
 
 #: templates/pages/index.php:1
 msgctxt "home"
@@ -99,19 +103,23 @@ msgstr "Insertar el valor manualmente"
 msgid "New value (empty to remove)"
 msgstr "Nuevo valor (deja vacio para eliminar)"
 
+#: assets/js/modules/format-upload.js:33
 #: assets/js/modules/format-upload.js:31
 msgid "Previously uploaded..."
 msgstr "Cargados previamente..."
 
+#: assets/js/modules/format-upload.js:53
 #: assets/js/modules/format-upload.js:48
 msgid "Load %d more..."
 msgstr "Cargar %d más..."
 
+#: assets/js/modules/format-upload.js:91
 #: assets/js/modules/format-upload.js:80
 #: assets/js/modules/format-upload.js:37
 msgid "Too big file: %s (%s max allowed)"
 msgstr "Archivo demasiado grande: %s (máximo permitido: %s)"
 
+#: assets/js/modules/format-upload.js:109
 #: assets/js/modules/format-upload.js:98
 #: assets/js/modules/format-upload.js:55
 msgid "Edit as text"

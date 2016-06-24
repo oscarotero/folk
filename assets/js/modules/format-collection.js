@@ -1,7 +1,8 @@
 define([
 	'jquery',
 	'../loader',
-], function ($, loader) {
+	'../i18n'
+], function ($, loader, i18n) {
 	return {
 		init: function ($element) {
 			$element
@@ -26,7 +27,7 @@ define([
 	function initBtnEvents ($element) {
 		$element
 			.on('click', '.format-child-remove', function (e) {
-				if (confirm('Are you sure?')) {
+				if (confirm(i18n.__('Are you sure?'))) {
 					var $this = $(this).parent().parent().parent();
 
 					$this.slideUp('normal', function () {
