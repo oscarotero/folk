@@ -28,11 +28,11 @@ class Collection extends Fields\Collection implements FormatInterface
         }
 
         $addBtn = '<div class="button-separator"><button type="button" class="format-child-add button">Add</button></div>';
-        $toolbar = '<div class="button-toolbar"><strong class="button-toolbar-label"></strong>'.$this->getToolbarButtons().'</div>';
-        $html = '<script type="js-template">'.$this->getTemplate()->toHtml($addBtn.$toolbar).'</script>';
+        $toolbar = sprintf('<div class="button-toolbar"><div>%s</div></div>', $this->getToolbarButtons());
+        $html = '<script type="js-template">'.$this->getTemplate()->toHtml("{$addBtn} {$toolbar}").'</script>';
 
         foreach ($this as $child) {
-            $html .= $child->toHtml($addBtn.$toolbar);
+            $html .= $child->toHtml("{$addBtn} {$toolbar}");
         }
 
         $html .= "<div>{$addBtn}</div>";

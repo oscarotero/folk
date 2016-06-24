@@ -27,7 +27,7 @@ define([
 		$element
 			.on('click', '.format-child-remove', function (e) {
 				if (confirm('Are you sure?')) {
-					var $this = $(this).parent().parent();
+					var $this = $(this).parent().parent().parent();
 
 					$this.slideUp('normal', function () {
 						$this.remove();
@@ -37,7 +37,7 @@ define([
 				e.preventDefault();
 			})
 			.on('click', '.format-child-up', function (e) {
-				var $this = $(this).parent().parent();
+				var $this = $(this).parent().parent().parent();
 				var $sibling = $this.prev();
 
 				if ($sibling.length) {
@@ -49,7 +49,7 @@ define([
 				e.preventDefault();
 			})
 			.on('click', '.format-child-down', function (e) {
-				var $this = $(this).parent().parent();
+				var $this = $(this).parent().parent().parent();
 				var $sibling = $this.next();
 
 				if ($sibling.length) {

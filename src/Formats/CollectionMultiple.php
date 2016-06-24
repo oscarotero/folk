@@ -38,16 +38,16 @@ class CollectionMultiple extends Fields\CollectionMultiple implements FormatInte
             ->toHtml();
 
         $addBtn = '<div class="button-separator">'.$addBtn.'</div>';
-        $toolbar = $this->getToolbarButtons();
+        $toolbar = sprintf('<div class="button-toolbar"><div>%s</div></div>', $this->getToolbarButtons());
 
         foreach ($templates as $type => $tmpl) {
-            $html .= '<script type="js-template" data-type="'.$type.'">'.$tmpl->toHtml("{$addBtn} <div class=\"button-toolbar\"><strong class=\"button-toolbar-label\">{$type}</strong> {$toolbar}</div>").'</script>';
+            $html .= '<script type="js-template" data-type="'.$type.'">'.$tmpl->toHtml("{$addBtn} {$toolbar}").'</script>';
         }
 
         foreach ($this as $child) {
             $type = $child['type']->val();
 
-            $html .= $child->toHtml("{$addBtn} <div class=\"button-toolbar\"><strong class=\"button-toolbar-label\">{$type}</strong> {$toolbar}</div>");
+            $html .= $child->toHtml("{$addBtn} {$toolbar}");
         }
 
         $html .= "<div>{$addBtn}</div>";

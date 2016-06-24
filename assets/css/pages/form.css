@@ -83,15 +83,6 @@
 			border-top: dashed 1px color(var(--black) a(.15));
 		}
 
-		&:first-child {
-			border-top-left-radius: 3px;
-			border-top-right-radius: 3px;
-		}
-		&:last-of-type {
-			border-bottom-left-radius: 3px;
-			border-bottom-right-radius: 3px;
-		}
-
 		&.is-loader .format {
 			border: none;
 		}
@@ -164,21 +155,20 @@
 			background: var(--black);
 			border: none;
 			color: white;
-			padding-left: 0;
-			padding-right: 0;
+			padding-top: 3rem;
+			padding-bottom: 3rem;
 
-			&:first-of-type {
-				margin-top: 0;
+			> div {
+				margin-top: -1rem;
+				margin-bottom: -1rem;
 			}
 
 			+ .format:not(.is-collection) {
 				border-top: none;
-				border-top-left-radius: 3px;
-				border-top-right-radius: 3px;
 			}
 
 			+ .format.is-collection {
-				border-top: dashed 1px color(white a(.15));
+				border-top: var(--border-thin);
 			}
 
 			.is-group {
@@ -187,39 +177,6 @@
 				padding-top: 0;
 				padding-bottom: 0;
 				margin-bottom: 1rem;
-			}
-
-			.format-child-label {
-				font-weight: var(--font-normal);
-				color: var(--gray);
-				font-size: 1rem;
-				display: inline-block;
-				padding: 0.5em 1em;
-				margin-left: -1rem;
-				margin-right: calc(1em - 4px);
-				width: 4rem;
-				cursor: default;
-				position: absolute;
-				top: 3rem;
-				left: 0;
-				text-transform: uppercase;
-			}
-
-			> div {
-				counter-reset: collection;
-
-				> div {
-					position: relative;
-
-					.button-toolbar-label::after {
-						content: ' #' counter(collection);
-						counter-increment: collection;
-					}
-
-					&:first-of-type .button-separator {
-						margin-top: 0;
-					}
-				}
 			}
 		}
 	}
@@ -269,6 +226,7 @@
 .button-separator {
   position: relative;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 
   .button {
   	max-width: 100%;
@@ -287,24 +245,18 @@
 }
 
 .button-toolbar {
-  display: flex;
-  margin-top: 1rem;
+	position: relative;
 
-  .button-toolbar-label {
-  	flex: 1 1 auto;
-  	padding: 0.5em 0;
-  	color: var(--gray);
-  }
+	> div {
+		display: flex;
+		justify-content: flex-end;
 
-  + .format {
-  	border-top-left-radius: 3px;
-  	border-top-right-radius: 3px;
-  }
-
-  ~ .format:last-of-type {
-  	border-bottom-left-radius: 3px;
-  	border-bottom-right-radius: 3px;
-  }
+		@media (min-width: 500px) {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+	}
 
   .button {
     color: var(--gray);

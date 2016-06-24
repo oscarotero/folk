@@ -5,18 +5,16 @@
 	left: 0;
 	height: 100%;
 	background: var(--black);
-	box-shadow: inset -15px 0 15px color(black a(0.25)), inset -1px 0 0 black;
-	z-index: 2;
+	border-right: solid 1px black;
+	z-index: 3;
 	width: 250px;
 
 	a {
-		border-left: solid 6px transparent;
+		border-right: solid 6px transparent;
 
 		&.is-active {
 			background: black;
-			border-left-color: var(--color);
-			border-top: none;
-			border-bottom: none;
+			border-right-color: var(--color);
 			color: white;
 
 			path {
@@ -72,8 +70,6 @@
 		outline: 0;
 		display: flex;
 		font-weight: var(--font-bold);
-		border-bottom: solid 1px color(var(--black) b(+10));
-		box-shadow: 0 1px 0 color(var(--black) tint(5));
 
 		h2, p {
 			margin: 0;
@@ -101,7 +97,6 @@
 
 		&:hover {
 			background: color(black a(0.2));
-			box-shadow: 0 -1px 0 color(var(--black) b(+20)), 0 1px 0 color(var(--black) tint(5));
 
 			strong, h2 {
 				color: var(--white);
@@ -115,7 +110,7 @@
 
 /* Menú horizontal */
 .menu-secondary {
-	box-shadow: 0 0 5px color(black a(0.5));
+	border-bottom: solid 1px black;
 	position: fixed;
 	width: 100%;
 	top: 0;
@@ -213,7 +208,7 @@
 		display: flex;
 
 		a {
-			border-left: var(--border-thin);
+			border-left: solid 1px black;
 			display: block;
 			padding: 1rem;
 

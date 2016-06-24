@@ -53,22 +53,6 @@
 				background: var(--lightgray);
 			}
 		}
-		tr:first-child {
-			th:first-child {
-				border-top-left-radius: 3px;
-			}
-			td:last-child {
-				border-top-right-radius: 3px;
-			}
-		}
-		tr:last-child {
-			th:first-child {
-				border-bottom-left-radius: 3px;
-			}
-			td:last-child {
-				border-bottom-right-radius: 3px;
-			}
-		}
 		th {
 			width: 50px;
 			font-weight: var(--font-normal);
