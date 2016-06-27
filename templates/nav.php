@@ -28,7 +28,7 @@
 		<?= $this->icon('navigation/menu'); ?>
 	</span>
 
-	<form action="<?= $app->getRoute('search', ['entity' => $entityName]) ?>" class="menu-secondary-search" data-module="search" method="get">
+	<form action="<?= $app->getRoute('search', ['entity' => $entityName]) ?>" class="menu-secondary-search" data-module="search" method="get" tabindex="-1">
 		<a href="<?= $app->getRoute('search', ['entity' => $entityName]) ?>" title="<?= $entity->description ?>">
 			<?= $entity->title ?>
 		</a>

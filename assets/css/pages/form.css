@@ -53,6 +53,9 @@
 	input[type="tel"] {
 		max-width: 20em;
 	}
+	input[type="range"] {
+		width: 100%;
+	}
 	select {
 		appearance: none;
 		background-color: var(--xlightgray);

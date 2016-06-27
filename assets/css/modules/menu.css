@@ -4,17 +4,17 @@
 	top: 0;
 	left: 0;
 	height: 100%;
-	background: var(--black);
-	border-right: solid 1px black;
-	z-index: 3;
+	background: color(var(--black) shade(20%));
+	z-index: 1;
 	width: 250px;
+	box-shadow: inset -5px 0 5px color(black a(0.2));
 
 	a {
-		border-right: solid 6px transparent;
+		border-left: solid 6px transparent;
 
 		&.is-active {
 			background: black;
-			border-right-color: var(--color);
+			border-left-color: var(--color);
 			color: white;
 
 			path {
@@ -116,7 +116,7 @@
 	top: 0;
 	display: flex;
 	align-items: center;
-	z-index: 2;
+	z-index: 3;
 	background: var(--black);
 
 	.menu-btn {
@@ -143,12 +143,19 @@
 		align-items: center;
 		padding: 0;
 		flex-grow: 1;
+		color: var(--white);
+		transition: background .3s, color .3s;
+
+		&.is-focused {
+			background: white;
+			color: var(--black);
+		}
 
 		> a {
 			display: block;
 			font-weight: var(--font-bold);
 			text-decoration: none;
-			color: var(--white);
+			color: inherit;
 			padding: 1rem;
 			white-space: nowrap;
 			overflow: hidden;
@@ -174,16 +181,10 @@
 			padding: 0.5em;
 			width: 100%;
 			text-overflow: ellipsis;
-			color: white;
-			transition: background .3s, color .3s;
-			border-radius: 3px;
+			color: inherit;
 
 			&::input-placeholder {
 				color: var(--gray);
-			}
-			&:focus {
-				background: white !important;
-				color: var(--black);
 			}
 		}
 		button {
@@ -191,13 +192,10 @@
 			border: none;
 			cursor: pointer;
 			background: none;
-
-			&:hover path {
-				fill: var(--color);
-			}
+			color: inherit;
 		}
 		path {
-			fill: var(--white);
+			fill: currentColor;
 		}
 	}
 
@@ -229,20 +227,14 @@
 
 @media (max-width: 1400px) {
 	body.has-menu {
-		.menu-primary, .menu-secondary, .page {
+		.menu-secondary, .page {
 			transition: transform 0.5s;
-		}
-		.menu-primary {
-			transform: translate(-250px, 0);
 		}
 		&.menu-is-opened {
 			overflow-x: hidden;
 
 			.menu-secondary, .page {
 				transform: translate(250px, 0);
-			}
-			.menu-primary {
-				transform: translate(0, 0);
 			}
 		}
 	}
@@ -261,6 +253,6 @@
 		}
 	}
 	.menu-primary {
-		z-index: 3;
+		z-index: 4;
 	}
 }

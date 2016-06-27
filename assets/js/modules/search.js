@@ -37,8 +37,15 @@ define([
 						return '<div>' + item.label + '</div>';
 					}
 				}
-			}).on('typeahead:selected', function () {
+			})
+			.on('typeahead:selected', function () {
 				$element.submit();
+			})
+			.on('focus', function () {
+				$element.addClass('is-focused');
+			})
+			.on('blur', function () {
+				$element.removeClass('is-focused');
 			});
 		}
 	};
