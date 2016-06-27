@@ -6,6 +6,7 @@ use Folk\SearchQuery;
 use SimpleCrud\Row;
 use FilesystemIterator;
 use RecursiveDirectoryIterator;
+use Exception;
 
 abstract class File extends AbstractEntity implements EntityInterface
 {
@@ -91,7 +92,9 @@ abstract class File extends AbstractEntity implements EntityInterface
         $file = $this->getFilePath($id);
         $source = $this->stringify($data);
 
-        file_put_contents($file, $source);
+        if (file_put_contents($file, $source) === false) {
+            throw new Exception(sprintf('Data could not be saved in the file %s', $file));
+        }
 
         return $id;
     }
@@ -114,7 +117,9 @@ abstract class File extends AbstractEntity implements EntityInterface
         $file = $this->getFilePath($id);
         $source = $this->stringify($data);
 
-        file_put_contents($file, $source);
+        if (file_put_contents($file, $source) === false) {
+            throw new Exception(sprintf('Data could not be saved in the file %s', $file));
+        }
 
         return $data;
     }
@@ -126,7 +131,9 @@ abstract class File extends AbstractEntity implements EntityInterface
     {
         $file = $this->getFilePath($id);
 
-        unlink($file);
+        if (unlink($file) === false) {
+            throw new Exception(sprintf('The file %s could not be deleted', $file));
+        }
     }
 
     /**
