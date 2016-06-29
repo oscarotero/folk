@@ -1,4 +1,4 @@
-<?php $assetsVersion = 'v=1.1'; ?>
+<?php $assetsVersion = 'v=1.2'; ?>
 
 <!DOCTYPE html>
 
