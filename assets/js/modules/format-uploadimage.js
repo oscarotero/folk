@@ -21,14 +21,14 @@ define([
             var $editLink = $extra.find('.ui-edit');
             var $preview = $extra.find('.ui-preview');
 
-            if (config.thumb) {
+            if (config.directory) {
                 config.limit = parseInt(config.limit);
 
                 var $history = $('<span class="button button-normal">' + i18n.__('Previously uploaded...', config.limit) + '</span>')
                     .appendTo($extra)
                     .click(function () {
                         $.getJSON(baseUrl, {
-                            thumbs: config.thumb,
+                            thumbs: config.directory,
                             pattern: config.pattern,
                             limit: config.limit
                         }, function (files) {
@@ -50,7 +50,7 @@ define([
                                         var $this = $(this);
 
                                         $.getJSON(baseUrl, {
-                                            thumbs: config.thumb,
+                                            thumbs: config.directory,
                                             pattern: config.pattern,
                                             limit: config.limit,
                                             offset: $thumbs.children().length
@@ -76,8 +76,8 @@ define([
             function updateUI () {
                 var value = $hidden.val();
 
-                if (config.thumb && value) {
-                    var src = baseUrl + '?thumb=' + encodeURIComponent(config.thumb + value);
+                if (config.directory && value) {
+                    var src = baseUrl + '?thumb=' + encodeURIComponent(config.directory + value);
 
                     $preview.html('<img src="' + src + '" alt="' + value + '">');
                 } else {
@@ -85,7 +85,7 @@ define([
                 }
 
                 if (value) {
-                    $editLink.html('<small>' + value + '</small>');
+                    $editLink.html(value);
                 } else {
                     $editLink.html(i18n.__('Edit as text'));
                 }
@@ -94,7 +94,7 @@ define([
             function htmlImages (config, files) {
                 return files
                     .map(function (file) {
-                        var src = baseUrl + '?thumb=' + encodeURIComponent(config.thumb + file);
+                        var src = baseUrl + '?thumb=' + encodeURIComponent(config.directory + file);
 
                         return '<li><img src="' + src + '" alt="' + file + '"></li>';
                     })

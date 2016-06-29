@@ -7,7 +7,10 @@ define([
     var defaults = {};
     var previews = {
         mp3: function (src) {
-            return '<audio src="' + src + '" controls>';
+            return '<audio src="' + src + '" controls></audio>';
+        },
+        mp4: function (src) {
+            return '<video src="' + src + '" controls></video>';
         }
     };
 
@@ -34,7 +37,7 @@ define([
                 }
 
                 if (value) {
-                    $editLink.html('<small>' + value + '</small>');
+                    $editLink.html(value);
                 } else {
                     $editLink.html(i18n.__('Edit as text'));
                 }
