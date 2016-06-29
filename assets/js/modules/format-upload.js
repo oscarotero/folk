@@ -33,7 +33,7 @@ define([
                     var src = baseUrl + '?file=' + encodeURIComponent(config.directory + value);
                     $preview.html(previews[ext](src));
                 } else {
-                    $previews.empty();
+                    $preview.empty();
                 }
 
                 if (value) {
