@@ -22,9 +22,13 @@ class CreateEntity extends Entity
             ]));
         }
 
-        return $app['templates']->render('pages/insert', [
-            'entityName' => $entityName,
-            'form' => $form,
-        ]);
+        $response->getBody()->write(
+            $app['templates']->render('pages/insert', [
+                'entityName' => $entityName,
+                'form' => $form
+            ])
+        );
+
+        return $response->withStatus(400);
     }
 }

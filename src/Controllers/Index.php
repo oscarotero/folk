@@ -6,6 +6,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Folk\Admin;
 use Imagecow\Image;
+use Zend\Diactoros\Stream;
 
 class Index
 {
@@ -21,7 +22,29 @@ class Index
             return $this->thumbs($request, $response, $app);
         }
 
+        if (isset($query['file'])) {
+            return $this->file($request, $response, $app);
+        }
+
         return $app['templates']->render('pages/index');
+    }
+
+    private function file(Request $request, Response $response, Admin $app)
+    {
+        $query = $request->getQueryParams();
+        $file = $app->getPath($query['file']);
+
+        if (!is_file($file)) {
+            return $response->withStatus(404);
+        }
+
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mime = finfo_file($finfo, $file);
+        finfo_close($finfo);
+
+        return $response
+            ->withBody(new Stream($file, 'r'))
+            ->withHeader('Content-Type', $mime);
     }
 
     private function thumb(Request $request, Response $response, Admin $app)

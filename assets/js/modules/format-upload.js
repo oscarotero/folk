@@ -4,84 +4,48 @@ define([
     'magnific-popup'
 ], function ($, i18n) {
     var baseUrl = $('html').data('baseurl');
-    var defaults = {
-        limit: 100
+    var defaults = {};
+    var previews = {
+        mp3: function (src) {
+            return '<audio src="' + src + '" controls>';
+        }
     };
 
-    return {
+    var module = {
         init: function ($element) {
             var config = $.extend({}, defaults, $element.data('config') || {});
-            var $file = $element.find('input[type="file"]');
+
+            module.checkSize($element);
+            module.createUI($element, updateUI);
+
             var $hidden = $element.find('input[type="hidden"]');
-            var $extra = $('<p class="ui-extra"></p>').insertAfter($file);
+            var $editLink = $element.find('.ui-edit');
+            var $preview = $element.find('.ui-preview');
 
-            var $editLink = $('<span class="button button-normal ui-edit">' + i18n.__('Insert value as text') + '</span>')
-                .appendTo($extra)
-                .click(function () {
-                    var value = window.prompt(i18n.__('New value (empty to remove)'), $hidden.val());
-                    
-                    if (value !== null) {
-                        $hidden.val(value);
+            function updateUI () {
+                var value = $hidden.val();
+                var ext = value.toLowerCase().split('.').pop();
 
-                        updateUI(config);
-                    }
-                });
+                if (config.directory && previews[ext]) {
+                    var src = baseUrl + '?file=' + encodeURIComponent(config.directory + value);
+                    $preview.html(previews[ext](src));
+                } else {
+                    $previews.empty();
+                }
 
-            if (config.thumb) {
-                config.limit = parseInt(config.limit);
-
-                var $history = $('<span class="button button-normal">' + i18n.__('Previously uploaded...', config.limit) + '</span>')
-                    .appendTo($extra)
-                    .click(function () {
-                        $.getJSON(baseUrl, {
-                            thumbs: config.thumb,
-                            pattern: config.pattern,
-                            limit: config.limit
-                        }, function (files) {
-                            $thumbs = $('<ul class="thumbs">' + htmlImages(config, files) + '</ul>');
-
-                            $.magnificPopup.open({
-                                type: 'inline',
-                                mainClass: 'popup-thumbs',
-                                closeOnBgClick: false,
-                                items: {
-                                    src: $('<div></div>').html($thumbs)
-                                }
-                            });
-
-                            if ($thumbs.children().length === config.limit) {
-                                $('<span class="button button-normal">' + i18n.__('Load %d more...', config.limit) + '</span>')
-                                    .insertAfter($thumbs)
-                                    .on('click', function (e) {
-                                        var $this = $(this);
-
-                                        $.getJSON(baseUrl, {
-                                            thumbs: config.thumb,
-                                            pattern: config.pattern,
-                                            limit: config.limit,
-                                            offset: $thumbs.children().length
-                                        }, function (files) {
-                                            $thumbs.append(htmlImages(config, files));
-
-                                            if (files.length < config.limit) {
-                                                $this.remove();
-                                            }
-                                        });
-                                    });
-                            }
-
-                            $thumbs.on('click', 'img', function () {
-                                $hidden.val($(this).attr('alt'));
-                                updateUI(config);
-                                $.magnificPopup.close();
-                            });
-                        });
-                    });
+                if (value) {
+                    $editLink.html('<small>' + value + '</small>');
+                } else {
+                    $editLink.html(i18n.__('Edit as text'));
+                }
             }
 
-            updateUI(config);
-
+            updateUI();
+        },
+        checkSize: function ($element) {
             if ($element.data('max-size')) {
+                var $file = $element.find('input[type="file"]');
+
                 $file.on('change', function () {
                     var max = $element.data('max-size');
 
@@ -96,20 +60,6 @@ define([
                 });
             }
 
-            function updateUI (config) {
-                var value = $hidden.val();
-
-                if (config.thumb && value) {
-                    var src = baseUrl + '?thumb=' + encodeURIComponent(config.thumb + value);
-
-                    $editLink.html('<img src="' + src + '" alt="' + value + '">');
-                } else if (value) {
-                    $editLink.html('<small>' + value + '</small>');
-                } else {
-                    $editLink.html(i18n.__('Edit as text'));
-                }
-            }
-
             function formatBytes (bytes) {
                 if (bytes == 0) {
                     return '0 Byte';
@@ -121,19 +71,30 @@ define([
 
                 return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
             }
+        },
+        createUI: function ($element, onUpdate) {
+            var $file = $element.find('input[type="file"]');
+            var $hidden = $element.find('input[type="hidden"]');
+            var $extra = $('<div class="ui-extra"></div>').insertAfter($file);
 
-            function htmlImages (config, files) {
-                return files
-                    .map(function (file) {
-                        var src = baseUrl + '?thumb=' + encodeURIComponent(config.thumb + file);
+            $('<figure class="media ui-preview"></figure>').appendTo($extra);
 
-                        return '<li><img src="' + src + '" alt="' + file + '"></li>';
-                    })
-                    .join('');
-            }
+            $('<span class="button button-normal ui-edit">' + i18n.__('Insert value as text') + '</span>')
+                .appendTo($extra)
+                .click(function () {
+                    var value = window.prompt(i18n.__('New value (empty to remove)'), $hidden.val());
+                    
+                    if (value !== null) {
+                        $hidden.val(value);
+
+                        onUpdate();
+                    }
+                });
         },
         destroy: function ($element) {
             $element.find('.ui-extra').remove();
         }
     };
+
+    return module;
 });

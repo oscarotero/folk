@@ -64,6 +64,7 @@ h1, h2, h3, h4, h5, h6, strong {
 @import "modules/datetime.css";
 @import "modules/progress.css";
 @import "modules/notification.css";
+@import "modules/media.css";
 
 /* pages */
 @import "pages/home.css";
