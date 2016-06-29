@@ -7,7 +7,7 @@ define([
     return {
         init: function ($form) {
             var enabled = 'FormData' in window;
-            var $progress = $form.next('.progress');
+            var $progress = $('.progress');
 
             $form.on('click', 'button[name="method-override"]', function () {
                 enabled = false;

@@ -23,6 +23,7 @@
         <input type="hidden" name="method-override" value="put">
 
 		<?= $form->closeHtml(); ?>
-        <progress class="progress"></progress>
-	</div>
+    </div>
 </div>
+
+<progress class="progress"></progress>

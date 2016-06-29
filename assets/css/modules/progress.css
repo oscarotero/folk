@@ -9,6 +9,7 @@ progress.progress {
     color: var(--color);
     display: none;
     z-index: 9;
+    background: var(--black);
 
     &::-webkit-progress-value {
         background: var(--color);
