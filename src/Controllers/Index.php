@@ -56,6 +56,16 @@ class Index
             return $response->withStatus(404);
         }
 
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mime = finfo_file($finfo, $thumb);
+        finfo_close($finfo);
+
+        if ($mime === 'image/svg+xml') {
+            return $response
+                ->withBody(new Stream($thumb, 'r'))
+                ->withHeader('Content-Type', $mime);
+        }
+
         $image = Image::fromFile($thumb);
         $image->resize(0, 200);
 
