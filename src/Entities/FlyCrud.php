@@ -8,11 +8,11 @@ use FlyCrud\Document;
 abstract class FlyCrud extends AbstractEntity implements EntityInterface
 {
     /**
-     * Returns the fly-crud repository.
+     * Returns the fly-crud directory.
      * 
-     * @return \FlyCrud\Repository
+     * @return \FlyCrud\Directory
      */
-    abstract protected function getRepository();
+    abstract protected function getDirectory();
 
     /**
      * {@inheritdoc}
@@ -21,8 +21,8 @@ abstract class FlyCrud extends AbstractEntity implements EntityInterface
     {
         $result = [];
 
-        foreach ($this->getRepository()->getAll() as $id => $document) {
-            $result[$id] = $document->getData();
+        foreach ($this->getDirectory()->getAllDocuments() as $id => $document) {
+            $result[$id] = $document->getArrayCopy();
         }
 
         return $result;
@@ -33,14 +33,11 @@ abstract class FlyCrud extends AbstractEntity implements EntityInterface
      */
     public function create(array $data)
     {
-        $repository = $this->getRepository();
-        $data = $this->beforeSave($data);
         $document = new Document($data);
-        $document->setId($this->generateId($document));
+        $id = $this->generateId($document);
+        $this->getDirectory()->saveDocument($id, $document);
 
-        $repository->save($document);
-
-        return $document->getId();
+        return $id;
     }
 
     /**
@@ -48,9 +45,7 @@ abstract class FlyCrud extends AbstractEntity implements EntityInterface
      */
     public function read($id)
     {
-        $repository = $this->getRepository();
-
-        return $repository->get($id)->getData();
+        return $this->getDirectory()->getDocument($id)->getArrayCopy();
     }
 
     /**
@@ -58,13 +53,7 @@ abstract class FlyCrud extends AbstractEntity implements EntityInterface
      */
     public function update($id, array $data)
     {
-        $repository = $this->getRepository();
-
-        $document = $repository->get($id);
-        $data = $this->beforeSave($data);
-        $document->setData($data);
-
-        $repository->save($document);
+        $this->getDirectory()->saveDocument($id, new Document($data));
     }
 
     /**
@@ -72,15 +61,11 @@ abstract class FlyCrud extends AbstractEntity implements EntityInterface
      */
     public function delete($id)
     {
-        $repository = $this->getRepository();
-
-        $document = $repository->get($id);
-        $repository->delete($document);
+        $this->getDirectory()->deleteDocument($id);
     }
 
     /**
-     * Returns the id for the new documents
-     * Useful to customize the id before save.
+     * Generate ids for the new documents
      * 
      * @param Document $document
      * 
@@ -88,6 +73,6 @@ abstract class FlyCrud extends AbstractEntity implements EntityInterface
      */
     protected function generateId(Document $document)
     {
-        return $document->getId();
+        return uniqid();
     }
 }
