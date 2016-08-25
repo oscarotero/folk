@@ -26,9 +26,9 @@
         "oscarotero/psr7-middlewares": "^3.16.1",
         "willdurand/negotiation": "^2.0",
         "fol/core": "^11.1",
-        "form-manager/form-manager": "^5.0.3",
+        "form-manager/form-manager": "^5.0.4",
         "gettext/gettext": "^4.0",
-        "oscarotero/inline-svg": "^1.0",
+        "oscarotero/inline-svg": "^2.0",
         "imagecow/imagecow": "^2.1"
     },
     "autoload": {
