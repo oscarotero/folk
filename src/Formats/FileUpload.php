@@ -3,6 +3,7 @@
 namespace Folk\Formats;
 
 use FormManager\Builder;
+use SplFileInfo;
 
 class FileUpload extends Loader implements FormatInterface
 {
@@ -29,5 +30,17 @@ class FileUpload extends Loader implements FormatInterface
             default:
                 return intval($size);
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function val($value = null)
+    {
+        if ($value instanceof SplFileInfo) {
+            $value = $value->getFileName();
+        }
+
+        return parent::val($value);
     }
 }
