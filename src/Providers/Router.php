@@ -22,6 +22,7 @@ class Router implements ServiceProviderInterface
             $map->put('create', '/{entity}', "{$ns}\\CreateEntity");
             $map->get('read', '/{entity}/{id}', "{$ns}\\ReadEntity");
             $map->post('update', '/{entity}/{id}', "{$ns}\\UpdateEntity");
+            $map->post('updateField', '/{entity}/{id}/{field}', "{$ns}\\UpdateEntityField");
             $map->delete('delete', '/{entity}/{id}', "{$ns}\\DeleteEntity");
 
             return $router;

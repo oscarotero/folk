@@ -26,7 +26,7 @@
 				<?php endforeach; ?>
 			</thead>
 
-			<tbody class="ui-autoload-container">
+			<tbody class="ui-autoload-container" data-module="inline-editor">
 				<?php foreach ($rows as $id => $row): ?>
 				<tr>
 					<th>
@@ -37,9 +37,11 @@
 
 					<?php foreach ($row as $name => $td): ?>
 					<td<?= $sort === $name ? ' class="is-sorted"' : '' ?>>
-						<div class="format <?= $td->get('class') ?>">
-							<?= $td->valToHtml() ?>
-						</div>
+						<?php if ($td->get('editable')): ?>
+						<div class="format <?= $td->get('class') ?> ui-editable is-editable" data-src="<?= $app->getRoute('updateField', ['entity' => $entityName, 'id' => $id, 'field' => $name]) ?>"><?= $td->valToHtml() ?></div>
+						<?php else: ?>
+						<div class="format <?= $td->get('class') ?>"><?= $td->valToHtml() ?></div>
+						<?php endif ?>
 					</td>
 					<?php endforeach; ?>
 				</tr>

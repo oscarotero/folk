@@ -22,4 +22,11 @@ class ReadEntity extends Entity
             'id' => $id,
         ]);
     }
+
+    public function json(Request $request, Response $response, Admin $app, $entityName)
+    {
+        $id = $request->getAttribute('id');
+
+        return json_encode($app->getEntity($entityName)->read($id));
+    }
 }

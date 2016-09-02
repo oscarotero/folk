@@ -116,6 +116,9 @@
 	.is-number {
 		text-align: right;
 	}
+	.is-editable {
+		cursor: context-menu;
+	}
 }
 .page-list-noresults {
 	padding: 2em;

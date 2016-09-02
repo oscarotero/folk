@@ -50,6 +50,7 @@ define([
                         }
                     })
                     .done(function (response) {
+                        $progress.hide();
                         notifier.success(i18n.__('Data saved successfully'));
                         loadContent(response);
                         window.history.replaceState({}, null, myXhr.responseURL);
