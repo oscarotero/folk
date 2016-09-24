@@ -31,6 +31,7 @@ class Articles extends Yaml
                 ->label('Category'),
 
             'actived' => $builder->checkbox()
+                ->set('editable', true)
                 ->label('Actived'),
         ]);
     }

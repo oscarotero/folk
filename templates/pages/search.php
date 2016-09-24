@@ -37,11 +37,15 @@
 
 					<?php foreach ($row as $name => $td): ?>
 					<td<?= $sort === $name ? ' class="is-sorted"' : '' ?>>
-						<?php if ($td->get('editable')): ?>
-						<div class="format <?= $td->get('class') ?> ui-editable is-editable" data-src="<?= $app->getRoute('updateField', ['entity' => $entityName, 'id' => $id, 'field' => $name]) ?>"><?= $td->valToHtml() ?></div>
-						<?php else: ?>
-						<div class="format <?= $td->get('class') ?>"><?= $td->valToHtml() ?></div>
-						<?php endif ?>
+						<div 
+							<?php if ($td->get('editable')): ?>
+							class="format <?= $td->get('class') ?> ui-editable is-editable" data-src="<?= $app->getRoute('updateField', ['entity' => $entityName, 'id' => $id, 'field' => $name]) ?>" data-value="<?= $td->val() ?>"
+							<?php else: ?>
+							class="format <?= $td->get('class') ?>"
+							<?php endif ?>
+						>
+							<?= $td->valToHtml() ?>
+						</div>
 					</td>
 					<?php endforeach; ?>
 				</tr>

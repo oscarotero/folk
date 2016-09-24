@@ -9,7 +9,7 @@ use Zend\Diactoros\Response\RedirectResponse;
 
 class UpdateEntityField extends Entity
 {
-    public function html(Request $request, Response $response, Admin $app, $entityName)
+    public function json(Request $request, Response $response, Admin $app, $entityName)
     {
         $id = $request->getAttribute('id');
         $field = $request->getAttribute('field');
@@ -22,7 +22,10 @@ class UpdateEntityField extends Entity
         if ($form->validate()) {
             $app->getEntity($entityName)->update($id, $form['data']->val());
             
-            return $data['value'];
+            return json_encode([
+                'value' => $form['data'][$field]->val(),
+                'htmlValue' => $form['data'][$field]->valToHtml(),
+            ]);
         }
 
         return $response->withStatus(400);
