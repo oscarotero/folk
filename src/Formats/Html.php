@@ -12,4 +12,22 @@ class Html extends Textarea implements FormatInterface
 
         $this->data('module', 'format-html');
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function valToHtml()
+    {
+        $html = strip_tags(parent::valToHtml(), '<strong><em>');
+
+        if (empty($html)) {
+            return '';
+        }
+
+        if (strlen($html) > 200) {
+            $html = substr($html, 0, 200).'...';
+        }
+
+        return "<p>{$html}</p>";
+    }
 }
