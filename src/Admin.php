@@ -25,7 +25,7 @@ class Admin extends Fol
         $this->setUrl($url);
 
         $this->register(new Providers\Builder());
-        $this->register(new Providers\Middlewares());
+        $this->register(new Providers\Middleware());
         $this->register(new Providers\Router());
         $this->register(new Providers\Templates());
     }
@@ -35,9 +35,9 @@ class Admin extends Fol
      */
     public function __invoke(ServerRequestInterface $request)
     {
-        $dispatcher = (new RelayBuilder())->newInstance($this['middlewares']);
+        $dispatcher = $this->get('middleware');
 
-        return $dispatcher($request, new Response());
+        return $dispatcher->dispatch($request);
     }
 
     public function getRoute($name, array $data = array(), array $query = null)

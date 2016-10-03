@@ -6,10 +6,11 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Folk\Admin;
 use Zend\Diactoros\Response\RedirectResponse;
+use Middlewares\Utils\Factory;
 
 class UpdateEntity extends Entity
 {
-    public function html(Request $request, Response $response, Admin $app, $entityName)
+    public function html(Request $request, Admin $app, $entityName)
     {
         $id = $request->getAttribute('id');
 
@@ -25,14 +26,12 @@ class UpdateEntity extends Entity
             ]));
         }
 
-        $response->getBody()->write(
-            $app['templates']->render('pages/read', [
-                'entityName' => $entityName,
-                'form' => $form,
-                'id' => $id,
-            ])
-        );
+        echo $app['templates']->render('pages/read', [
+            'entityName' => $entityName,
+            'form' => $form,
+            'id' => $id,
+        ]);
 
-        return $response->withStatus(400);
+        return Factory::createResponse(400);
     }
 }

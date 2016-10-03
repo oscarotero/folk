@@ -5,21 +5,27 @@ namespace Folk\Controllers;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Folk\Admin;
-use Psr7Middlewares\Middleware\FormatNegotiator;
+use Middlewares\Utils\Factory;
 use FormManager\Builder as F;
 
 abstract class Entity
 {
-    public function __invoke(Request $request, Response $response, Admin $app)
+    protected $formats = [
+        'text/html' => 'html',
+        'application/json' => 'json',
+    ];
+
+    public function __invoke(Request $request, Admin $app)
     {
-        $format = FormatNegotiator::getFormat($request);
+        $format = $request->getHeaderLine('Accept');
+        $format = isset($this->formats[$format]) ? $this->formats[$format] : 'html';
         $entityName = $request->getAttribute('entity');
 
         if ($app->hasEntity($entityName) && method_exists($this, $format)) {
-            return $this->$format($request, $response, $app, $entityName);
+            return $this->$format($request, $app, $entityName);
         }
 
-        return $response->withStatus(404);
+        return Factory::createResponse(404);
     }
 
     /**

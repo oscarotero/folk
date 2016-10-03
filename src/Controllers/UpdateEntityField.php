@@ -6,10 +6,11 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Folk\Admin;
 use Zend\Diactoros\Response\RedirectResponse;
+use Middlewares\Utils\Factory;
 
 class UpdateEntityField extends Entity
 {
-    public function json(Request $request, Response $response, Admin $app, $entityName)
+    public function json(Request $request, Admin $app, $entityName)
     {
         $id = $request->getAttribute('id');
         $field = $request->getAttribute('field');
@@ -28,6 +29,6 @@ class UpdateEntityField extends Entity
             ]);
         }
 
-        return $response->withStatus(400);
+        return Factory::createResponse(400);
     }
 }

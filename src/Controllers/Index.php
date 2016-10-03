@@ -6,54 +6,54 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Folk\Admin;
 use Imagecow\Image;
-use Zend\Diactoros\Stream;
+use Middlewares\Utils\Factory;
 
 class Index
 {
-    public function __invoke(Request $request, Response $response, Admin $app)
+    public function __invoke(Request $request, Admin $app)
     {
         $query = $request->getQueryParams();
 
         if (isset($query['thumb'])) {
-            return $this->thumb($request, $response, $app);
+            return $this->thumb($request, $app);
         }
 
         if (isset($query['thumbs'])) {
-            return $this->thumbs($request, $response, $app);
+            return $this->thumbs($request, $app);
         }
 
         if (isset($query['file'])) {
-            return $this->file($request, $response, $app);
+            return $this->file($request, $app);
         }
 
         return $app['templates']->render('pages/index');
     }
 
-    private function file(Request $request, Response $response, Admin $app)
+    private function file(Request $request, Admin $app)
     {
         $query = $request->getQueryParams();
         $file = $app->getPath($query['file']);
 
         if (!is_file($file)) {
-            return $response->withStatus(404);
+            return Factory::createResponse(404);
         }
 
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $mime = finfo_file($finfo, $file);
         finfo_close($finfo);
 
-        return $response
-            ->withBody(new Stream($file, 'r'))
+        return Factory::createResponse()
+            ->withBody(Factory::createStream(fopen($file, 'r')))
             ->withHeader('Content-Type', $mime);
     }
 
-    private function thumb(Request $request, Response $response, Admin $app)
+    private function thumb(Request $request, Admin $app)
     {
         $query = $request->getQueryParams();
         $thumb = $app->getPath($query['thumb']);
 
         if (!is_file($thumb)) {
-            return $response->withStatus(404);
+            return Factory::createResponse(404);
         }
 
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -61,20 +61,21 @@ class Index
         finfo_close($finfo);
 
         if ($mime === 'image/svg+xml') {
-            return $response
-                ->withBody(new Stream($thumb, 'r'))
+            return Factory::createResponse()
+                ->withBody(Factory::createStream(fopen($thumb, 'r')))
                 ->withHeader('Content-Type', $mime);
         }
 
         $image = Image::fromFile($thumb);
         $image->resize(0, 200);
 
-        $response->getBody()->write($image->getString());
+        echo $image->getString();
 
-        return $response->withHeader('Content-Type', $image->getMimeType());
+        return Factory::createResponse()
+            ->withHeader('Content-Type', $image->getMimeType());
     }
 
-    private function thumbs(Request $request, Response $response, Admin $app)
+    private function thumbs(Request $request, Admin $app)
     {
         $query = $request->getQueryParams();
         $thumbs = $app->getPath($query['thumbs']);
@@ -96,7 +97,9 @@ class Index
         $files = array_reverse($files);
         $files = array_splice($files, $offset, $limit);
 
-        $response->getBody()->write(json_encode($files));
-        return $response->withHeader('Content-Type', 'application/json');
+        echo json_encode($files);
+
+        return Factory::createResponse()
+            ->withHeader('Content-Type', 'application/json');
     }
 }

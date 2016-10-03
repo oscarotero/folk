@@ -5,11 +5,12 @@ namespace Folk\Controllers;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Folk\Admin;
+use Middlewares\Utils\Factory;
 use Zend\Diactoros\Response\RedirectResponse;
 
 class CreateEntity extends Entity
 {
-    public function html(Request $request, Response $response, Admin $app, $entityName)
+    public function html(Request $request, Admin $app, $entityName)
     {
         $entity = $app->getEntity($entityName);
         $form = static::createForm($app, $entityName);
@@ -22,13 +23,11 @@ class CreateEntity extends Entity
             ]));
         }
 
-        $response->getBody()->write(
-            $app['templates']->render('pages/insert', [
+        echo $app['templates']->render('pages/insert', [
                 'entityName' => $entityName,
                 'form' => $form
-            ])
-        );
+            ]);
 
-        return $response->withStatus(400);
+        return Factory::createResponse(400);
     }
 }
