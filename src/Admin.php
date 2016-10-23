@@ -57,23 +57,24 @@ class Admin extends Fol
                 $name = substr(strrchr($entity, '\\'), 1);
             }
 
-            $this->addEntity($name, new $entity($this));
+            $this->addEntity(new $entity(strtolower($name), $this));
         }
     }
 
     /**
      * Add a new entity.
      *
-     * @param string          $name
      * @param EntityInterface $entity
      */
-    public function addEntity($name, EntityInterface $entity)
+    public function addEntity(EntityInterface $entity)
     {
+        $name = $entity->getName();
+
         if (empty($entity->title)) {
             $entity->title = ucfirst($name);
         }
 
-        $this->entities[strtolower($name)] = $entity;
+        $this->entities[$name] = $entity;
     }
 
     /**
@@ -85,7 +86,7 @@ class Admin extends Fol
      */
     public function hasEntity($name)
     {
-        return isset($this->entities[strtolower($name)]);
+        return isset($this->entities[$name]);
     }
 
     /**
@@ -100,7 +101,7 @@ class Admin extends Fol
     public function getEntity($name)
     {
         if ($this->hasEntity($name)) {
-            return $this->entities[strtolower($name)];
+            return $this->entities[$name];
         }
 
         throw new NotFoundException(sprintf('Entity %s not found', $name));

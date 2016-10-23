@@ -22,6 +22,13 @@ class Articles extends Yaml
             'intro' => $builder->html()
                 ->label('Introduction'),
 
+            'tags' => $builder->relationMany($this->admin->getEntity('tags'))
+                ->allowNewValues()
+                ->data('config', [
+                    'create' => 'name'
+                ])
+                ->label('Tags'),
+
             'category' => $builder->select()
                 ->options([
                     'food' => 'Food',

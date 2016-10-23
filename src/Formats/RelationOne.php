@@ -24,6 +24,9 @@ class RelationOne extends Fields\Select implements FormatInterface
 
         $this->set('list', false);
         $this->wrapper->class('format is-responsive');
-        $this->data('module', 'format-select');
+        $this->data([
+            'module' => 'format-select',
+            'related' => $related->getName(),
+        ]);
     }
 }

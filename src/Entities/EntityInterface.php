@@ -14,9 +14,17 @@ interface EntityInterface
     /**
      * Constructor.
      *
-     * @param Admin $admin
+     * @param string $name
+     * @param Admin  $admin
      */
-    public function __construct(Admin $admin);
+    public function __construct($name, Admin $admin);
+
+    /**
+     * Returns the entity name
+     *
+     * @return string
+     */
+    public function getName();
 
     /**
      * List the entity rows.

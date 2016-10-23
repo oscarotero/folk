@@ -15,7 +15,12 @@
         <script type="text/javascript">
             var require = {
                 baseUrl: "<?= $app->getUrl('js') ?>",
-                urlArgs: '<?= $assetsVersion ?>'
+                urlArgs: '<?= $assetsVersion ?>',
+                config: {
+                    'modules/format-select': {
+                        createUrl: '<?= $app->getUrl('/') ?>'
+                    }
+                }
             };
         </script>
         <script type="text/javascript" src="<?= $app->getUrl('js/modernizr.js?'.$assetsVersion); ?>"></script>
