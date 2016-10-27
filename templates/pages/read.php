@@ -6,6 +6,17 @@
 
 <div class="page page-form">
 	<div class="page-content">
+
+		<?php if (($nav = $entity->getNavigation($id)) !== null): ?>
+		<div class="footer-primary">
+		<?php foreach ($nav as $text => $navId): ?>
+			<a href="<?= $app->getRoute('read', ['entity' => $entityName, 'id' => $navId]) ?>" class="button button-link">
+				<?= $text ?>
+			</a>
+		<?php endforeach ?>
+		</div>
+		<?php endif ?>
+
 		<?php
         echo $form
             ->data('module', 'submit')

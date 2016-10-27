@@ -84,4 +84,14 @@ interface EntityInterface
      * @return string
      */
     public function getLabel($id, array $data);
+
+    /**
+     * Returns navigation links from an entity.
+     * Example: prev / next links
+     *
+     * @param mixed $id   The entity id
+     *
+     * @return array|null
+     */
+    public function getNavigation($id);
 }
