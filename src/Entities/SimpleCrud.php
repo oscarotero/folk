@@ -57,7 +57,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
         //Filter by words
         foreach ($search->getWords() as $k => $word) {
             foreach ($this->searchFields as $field) {
-                $query->where("`{$table->name}`.`{$field}` LIKE :w{$k}", [":w{$k}" => "%{$word}%"]);
+                $query->orWhere("`{$table->name}`.`{$field}` LIKE :w{$k}", [":w{$k}" => "%{$word}%"]);
             }
         }
 
