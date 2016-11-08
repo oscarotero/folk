@@ -184,16 +184,26 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
         $scheme = $table->getScheme();
 
         foreach ($data as $name => $value) {
+            if (isset($scheme['fields'][$name])) {
+                $row->$name = $value;
+            }
+        }
+
+        foreach ($data as $name => $value) {
             if (isset($scheme['relations'][$name])) {
-                $row->unrelateAll($db->$name);
+                $unrelated = $row->$name()
+                    ->where("`{$name}`.`id` NOT IN (:ids)", [':ids' => $value])
+                    ->run();
+
+                foreach ($unrelated as $r) {
+                    $row->unrelate($r);
+                }
 
                 $rows = $db->$name->select()->by('id', $value)->run();
 
                 foreach ($rows as $r) {
                     $row->relate($r);
                 }
-            } else {
-                $row->$name = $value;
             }
         }
 
