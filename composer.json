@@ -48,7 +48,7 @@
     "require-dev": {
         "symfony/yaml": "^3.0",
         "filp/whoops": "^2.1",
-        "gettext/robo": "^2.0",
+        "gettext/robo": "^3.0",
         "consolidation/robo": "^1.0"
     }
 }
