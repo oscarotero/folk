@@ -34,7 +34,8 @@
         "middlewares/negotiation": "^0.1.0",
         "middlewares/method-override": "^0.1.1",
         "middlewares/filesystem": "^0.1.0",
-        "middlewares/aura-router": "^0.1.1"
+        "middlewares/aura-router": "^0.1.1",
+        "middlewares/http-authentication": "^0.1.0"
     },
     "autoload": {
         "psr-4": {
@@ -48,6 +49,6 @@
         "symfony/yaml": "^3.0",
         "filp/whoops": "^2.1",
         "gettext/robo": "^2.0",
-        "codegyre/robo": "^0.7.2"
+        "consolidation/robo": "^1.0"
     }
 }
