@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "34ef574f1604f5ab0212ba7e3d567c49",
-    "content-hash": "615366c98019d4245d7f7cfe60f15cec",
+    "hash": "191559a7b34a035afe307f49d01e5d9c",
+    "content-hash": "c807b3709159cd2b30d2ca8a5636a8c3",
     "packages": [
         {
             "name": "aura/router",
@@ -295,16 +295,16 @@
         },
         {
             "name": "http-interop/http-factory",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/http-interop/http-factory.git",
-                "reference": "2aa8fa7d65101679e0daa864e83d2fd23db9653a"
+                "reference": "403aec5f2451ff83b5ffffea0bfdb588502add3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/http-interop/http-factory/zipball/2aa8fa7d65101679e0daa864e83d2fd23db9653a",
-                "reference": "2aa8fa7d65101679e0daa864e83d2fd23db9653a",
+                "url": "https://api.github.com/repos/http-interop/http-factory/zipball/403aec5f2451ff83b5ffffea0bfdb588502add3e",
+                "reference": "403aec5f2451ff83b5ffffea0bfdb588502add3e",
                 "shasum": ""
             },
             "require": {
@@ -319,7 +319,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Psr\\Http\\Factory\\": "src/"
+                    "Interop\\Http\\Factory\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -343,7 +343,7 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-18 00:32:42"
+            "time": "2016-11-08 00:10:33"
         },
         {
             "name": "http-interop/http-middleware",
@@ -771,16 +771,16 @@
         },
         {
             "name": "middlewares/error-handler",
-            "version": "v0.1.0",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/middlewares/error-handler.git",
-                "reference": "8095c9fce1748c0fe0a2de751053bcdb99410d86"
+                "reference": "03c7a4fa8414d11eba17a4b5b81a45de6c30b97c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/error-handler/zipball/8095c9fce1748c0fe0a2de751053bcdb99410d86",
-                "reference": "8095c9fce1748c0fe0a2de751053bcdb99410d86",
+                "url": "https://api.github.com/repos/middlewares/error-handler/zipball/03c7a4fa8414d11eba17a4b5b81a45de6c30b97c",
+                "reference": "03c7a4fa8414d11eba17a4b5b81a45de6c30b97c",
                 "shasum": ""
             },
             "require": {
@@ -814,7 +814,7 @@
                 "psr-7",
                 "server"
             ],
-            "time": "2016-10-03 12:34:51"
+            "time": "2016-11-19 11:00:52"
         },
         {
             "name": "middlewares/filesystem",
@@ -1066,22 +1066,22 @@
         },
         {
             "name": "middlewares/utils",
-            "version": "v0.3.1",
+            "version": "v0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/middlewares/utils.git",
-                "reference": "00333e8d20b5a718f75cb9c88aff45355acd1b27"
+                "reference": "cae0d317551eda99d14b3a67b02e4bbe22607120"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/utils/zipball/00333e8d20b5a718f75cb9c88aff45355acd1b27",
-                "reference": "00333e8d20b5a718f75cb9c88aff45355acd1b27",
+                "url": "https://api.github.com/repos/middlewares/utils/zipball/cae0d317551eda99d14b3a67b02e4bbe22607120",
+                "reference": "cae0d317551eda99d14b3a67b02e4bbe22607120",
                 "shasum": ""
             },
             "require": {
-                "http-interop/http-factory": "^0.1.0",
+                "http-interop/http-factory": "^0.2",
                 "php": "^5.6 || ^7.0",
-                "psr/http-message": "~1.0"
+                "psr/http-message": "^1.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^1.12",
@@ -1109,7 +1109,7 @@
                 "psr-15",
                 "psr-7"
             ],
-            "time": "2016-10-03 14:35:19"
+            "time": "2016-11-13 19:12:32"
         },
         {
             "name": "mindplay/middleman",
@@ -1482,31 +1482,31 @@
     "packages-dev": [
         {
             "name": "consolidation/annotated-command",
-            "version": "2.0.1",
+            "version": "2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/annotated-command.git",
-                "reference": "2a6ef0b39ed904dabefd796eeaf5f8feeaa881c4"
+                "reference": "6dcc442cbdc2c5145bb19e042d6b5f3979003b9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/2a6ef0b39ed904dabefd796eeaf5f8feeaa881c4",
-                "reference": "2a6ef0b39ed904dabefd796eeaf5f8feeaa881c4",
+                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/6dcc442cbdc2c5145bb19e042d6b5f3979003b9f",
+                "reference": "6dcc442cbdc2c5145bb19e042d6b5f3979003b9f",
                 "shasum": ""
             },
             "require": {
-                "consolidation/output-formatters": "~2",
+                "consolidation/output-formatters": "^3.1.3",
                 "php": ">=5.4.0",
                 "phpdocumentor/reflection-docblock": "^2.0|^3.0.2",
-                "psr/log": "~1.0",
-                "symfony/console": "~2.5|~3.0",
-                "symfony/event-dispatcher": "~2.5|~3.0",
-                "symfony/finder": "~2.5|~3.0"
+                "psr/log": "~1",
+                "symfony/console": "^2.8|~3",
+                "symfony/event-dispatcher": "^2.5|~3",
+                "symfony/finder": "^2.5|~3"
             },
             "require-dev": {
                 "phpunit/phpunit": "4.*",
                 "satooshi/php-coveralls": "^1.0",
-                "squizlabs/php_codesniffer": "2.*"
+                "squizlabs/php_codesniffer": "^2.7"
             },
             "type": "library",
             "extra": {
@@ -1530,7 +1530,7 @@
                 }
             ],
             "description": "Initialize Symfony Console commands from annotated command class methods.",
-            "time": "2016-10-05 04:09:14"
+            "time": "2016-11-19 01:02:43"
         },
         {
             "name": "consolidation/log",
@@ -1581,16 +1581,16 @@
         },
         {
             "name": "consolidation/output-formatters",
-            "version": "2.1.3",
+            "version": "3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/output-formatters.git",
-                "reference": "664722e42208d41c556b40e5ecbf2925b7f26e89"
+                "reference": "1e6c6ab49904a31c310940ec4efccf5f36e386e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/output-formatters/zipball/664722e42208d41c556b40e5ecbf2925b7f26e89",
-                "reference": "664722e42208d41c556b40e5ecbf2925b7f26e89",
+                "url": "https://api.github.com/repos/consolidation/output-formatters/zipball/1e6c6ab49904a31c310940ec4efccf5f36e386e4",
+                "reference": "1e6c6ab49904a31c310940ec4efccf5f36e386e4",
                 "shasum": ""
             },
             "require": {
@@ -1626,29 +1626,29 @@
                 }
             ],
             "description": "Format text by applying transformations provided by plug-in formatters.",
-            "time": "2016-11-10 23:25:21"
+            "time": "2016-11-18 23:04:31"
         },
         {
             "name": "consolidation/robo",
-            "version": "1.0.0",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/Robo.git",
-                "reference": "fe15768eb024b9702ce7a1c821370f8668db8a3b"
+                "reference": "bfe2246358298d7839114612f84bcfdca3c14066"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/Robo/zipball/fe15768eb024b9702ce7a1c821370f8668db8a3b",
-                "reference": "fe15768eb024b9702ce7a1c821370f8668db8a3b",
+                "url": "https://api.github.com/repos/consolidation/Robo/zipball/bfe2246358298d7839114612f84bcfdca3c14066",
+                "reference": "bfe2246358298d7839114612f84bcfdca3c14066",
                 "shasum": ""
             },
             "require": {
-                "consolidation/annotated-command": "~2",
+                "consolidation/annotated-command": "^2.0.1",
                 "consolidation/log": "~1",
-                "consolidation/output-formatters": "~2",
+                "consolidation/output-formatters": "^2.1.2|~3",
                 "league/container": "^2.2",
                 "php": ">=5.5.0",
-                "symfony/console": "~2.5|~3.0",
+                "symfony/console": "~2.8|~3.0",
                 "symfony/event-dispatcher": "~2.5|~3.0",
                 "symfony/filesystem": "~2.5|~3.0",
                 "symfony/finder": "~2.5|~3.0",
@@ -1659,13 +1659,13 @@
             },
             "require-dev": {
                 "codeception/aspect-mock": "~1",
-                "codeception/base": "^2.1.5",
+                "codeception/base": "^2.2.6",
                 "codeception/verify": "^0.3.2",
                 "henrikbjorn/lurker": "~1",
                 "natxet/cssmin": "~3",
                 "patchwork/jsqueeze": "~2",
-                "pear/archive_tar": "~1",
-                "phpunit/php-code-coverage": "~4",
+                "pear/archive_tar": "^1.4.2",
+                "phpunit/php-code-coverage": "~2|~4",
                 "satooshi/php-coveralls": "~1",
                 "squizlabs/php_codesniffer": "~2"
             },
@@ -1685,6 +1685,9 @@
                 }
             },
             "autoload": {
+                "classmap": [
+                    "scripts/composer/ScriptHandler.php"
+                ],
                 "psr-4": {
                     "Robo\\": "src"
                 }
@@ -1700,7 +1703,7 @@
                 }
             ],
             "description": "Modern task runner",
-            "time": "2016-10-12 23:57:51"
+            "time": "2016-11-15 19:24:36"
         },
         {
             "name": "filp/whoops",
@@ -2306,16 +2309,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "dff51f72b0706335131b00a7f49606168c582594"
+                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/dff51f72b0706335131b00a7f49606168c582594",
-                "reference": "dff51f72b0706335131b00a7f49606168c582594",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/e79d363049d1c2128f133a2667e4f4190904f7f4",
+                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4",
                 "shasum": ""
             },
             "require": {
@@ -2327,7 +2330,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -2361,7 +2364,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-05-18 14:26:46"
+            "time": "2016-11-14 01:06:16"
         },
         {
             "name": "symfony/process",

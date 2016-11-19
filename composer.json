@@ -28,7 +28,7 @@
         "imagecow/imagecow": "^2.1",
         "mindplay/middleman": "^2.0",
         "middlewares/cache": "^0.1.0",
-        "middlewares/error-handler": "^0.1.0",
+        "middlewares/error-handler": "^0.2.0",
         "middlewares/base-path": "^0.1.1",
         "middlewares/trailing-slash": "^0.1.1",
         "middlewares/negotiation": "^0.1.0",
