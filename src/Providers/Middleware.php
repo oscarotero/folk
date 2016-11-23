@@ -5,7 +5,6 @@ namespace Folk\Providers;
 use Fol;
 use Fol\ServiceProviderInterface;
 use Middlewares;
-use mindplay\middleman\Dispatcher;
 use Gettext\Translator;
 use Gettext\Translations;
 
@@ -33,7 +32,7 @@ class Middleware implements ServiceProviderInterface
             $middleware[] = new Middlewares\ContentType();
             $middleware[] = new Middlewares\ContentLanguage(['en', 'gl', 'es']);
 
-            $middleware[] = function ($request, $next) use ($app) {
+            $middleware[] = new Middlewares\Utils\CallableMiddleware(function ($request, $next) use ($app) {
                 $language = $request->getHeaderLine('Accept-Language');
                 $translator = new Translator();
                 $translator->loadTranslations(Translations::fromPoFile(dirname(dirname(__DIR__)).'/locales/'.$language.'.po'));
@@ -41,14 +40,14 @@ class Middleware implements ServiceProviderInterface
 
                 $app['templates']->addData(['language' => $language]);
 
-                $response = $next($request);
+                $response = $next->process($request);
 
                 if ($prev) {
                     $prev->register();
                 }
 
                 return $response;
-            };
+            });
 
             $middleware[] = (new Middlewares\MethodOverride())
                 ->parsedBodyParameter('method-override');
@@ -59,7 +58,7 @@ class Middleware implements ServiceProviderInterface
             $middleware[] = (new Middlewares\AuraRouter($app['router']))
                 ->arguments($app);
 
-            return new Dispatcher($middleware);
+            return new Middlewares\Utils\Dispatcher($middleware);
         };
     }
 }
