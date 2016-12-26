@@ -18,7 +18,7 @@ class SearchEntity extends Entity
         $items = $this->search($entity, $search);
 
         //Redirect to edit element if it's only one result
-        if (count($items) === 1 && !empty($search->getQuery())) {
+        if (count($items) === 1 && !empty($search->buildQuery())) {
             return new RedirectResponse($app->getRoute('read', [
                 'entity' => $entityName,
                 'id' => key($items),

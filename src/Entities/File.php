@@ -57,22 +57,6 @@ abstract class File extends AbstractEntity implements EntityInterface
             $result[$id] = $this->parse(file_get_contents($file->getPathname()));
         }
 
-        $sort = $search->getSort();
-
-        if ($sort !== null) {
-            uasort($result, function ($a, $b) use ($sort) {
-                if ($a[$sort] === $b[$sort]) {
-                    return 0;
-                }
-
-                return ($a[$sort] < $b[$sort]) ? -1 : 1;
-            });
-
-            if ($search->getDirection() === 'DESC') {
-                $result = array_reverse($result, true);
-            }
-        }
-
         if ($search->getPage() !== null) {
             $limit = $search->getLimit();
             $offset = ($search->getPage() * $limit) - $limit;

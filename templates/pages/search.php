@@ -14,11 +14,10 @@
 			<thead>
 				<th></th>
 				<?php foreach (reset($rows) as $name => $column): ?>
-				<th class="format <?= $column->get('class').($sort === $name ? ' is-sorted' : '') ?>">
+				<th class="format <?= $column->get('class').(isset($sort[$name]) ? ' is-sorted' : '') ?>">
 					<a href="<?= $app->getRoute('search', ['entity' => $entityName], [
-                        'query' => isset($search) ? $search->getQuery() : null,
-                        'sort' => $name,
-                        'direction' => ($sort === $name) ? ($search->getDirection() === 'ASC' ? 'DESC' : 'ASC') : 'ASC',
+                        'query' => isset($search) ? $search->buildQuery() : null,
+                        'sort' => (isset($sort[$name]) ? ($sort[$name] === 'ASC' ? '-' : '') : '').$name,
                     ]) ?>">
 						<?= $column->label(); ?>
 					</a>
@@ -36,7 +35,7 @@
 					</th>
 
 					<?php foreach ($row as $name => $td): ?>
-					<td<?= $sort === $name ? ' class="is-sorted"' : '' ?>>
+					<td<?= isset($sort[$name]) ? ' class="is-sorted"' : '' ?>>
 						<div 
 							<?php if ($td->get('editable')): ?>
 							class="format <?= $td->get('class') ?> ui-editable is-editable" data-src="<?= $app->getRoute('updateField', ['entity' => $entityName, 'id' => $id, 'field' => $name]) ?>" data-value="<?= $td->val() ?>"
@@ -56,7 +55,8 @@
 		<?php if ($search->getPage() !== null && count($rows) === $search->getLimit()): ?>
 		<footer class="footer-primary">
 			<a href="<?= $app->getRoute('search', ['entity' => $entityName], [
-                    'query' => isset($search) ? $search->getQuery() : null,
+                    'query' => isset($search) ? $search->buildQuery() : null,
+                    'sort' => isset($search) ? $search->buildSort() : null,
                     'page' => (isset($search) ? $search->getPage() : 0) + 1,
                 ]) ?>" class="button button-call ui-autoload-btn">
 				<?= p__('search', 'More results') ?>

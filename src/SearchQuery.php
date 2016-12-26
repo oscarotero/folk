@@ -12,8 +12,7 @@ class SearchQuery
     protected $ids = [];
     protected $conditions = [];
     protected $words = [];
-    protected $sort;
-    protected $direction;
+    protected $sort = [];
 
     /**
      * @param array $query
@@ -29,7 +28,7 @@ class SearchQuery
         }
 
         if (!empty($query['sort'])) {
-            $this->setSortAndDirection($query['sort'], isset($query['direction']) ? $query['direction'] : null);
+            $this->setSort($query['sort']);
         }
     }
 
@@ -70,32 +69,6 @@ class SearchQuery
         }
 
         return $this;
-    }
-
-    /**
-     * Returns the query as string.
-     *
-     * @return string
-     */
-    public function getQuery()
-    {
-        $query = implode(' ', $this->words);
-
-        foreach ($this->ids as $id) {
-            $query .= " #{$id}";
-        }
-
-        foreach ($this->conditions as $name => $values) {
-            foreach ($values as $value) {
-                if (strpos($value, ' ') === false) {
-                    $query .= " {$name}:{$value}";
-                } else {
-                    $query .= " {$name}:\"{$value}\"";
-                }
-            }
-        }
-
-        return trim($query);
     }
 
     /**
@@ -219,33 +192,9 @@ class SearchQuery
     }
 
     /**
-     * Set the sort and direction fields.
+     * Return the sort fields.
      *
-     * @param string $sort
-     * @param string $direction
-     * 
-     * @return self
-     */
-    public function setSortAndDirection($sort, $direction)
-    {
-        $this->sort = $this->direction = null;
-
-        if (!empty($sort)) {
-            $this->sort = $sort;
-            $this->direction = strtoupper($direction);
-
-            if ($this->direction !== 'DESC') {
-                $this->direction = 'ASC';
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * Return the sort field.
-     *
-     * @return string|null
+     * @return array ['field' => 'direction']
      */
     public function getSort()
     {
@@ -253,12 +202,69 @@ class SearchQuery
     }
 
     /**
-     * Return the sort direction in UPPERCASE.
+     * Set the sort and direction fields.
      *
-     * @return string|null
+     * @param string $sort
      */
-    public function getDirection()
+    public function setSort($sort)
     {
-        return isset($this->direction) ? strtoupper($this->direction) : null;
+        $this->sort = [];
+
+        foreach (array_filter(array_map('trim', explode(',', $sort))) as $field) {
+            if ($field[0] === '-') {
+                $direction = 'DESC';
+                $field = substr($field, 1);
+            } else {
+                $direction = 'ASC';
+            }
+
+            $this->sort[$field] = $direction;
+        }
+    }
+
+    /**
+     * Returns the query as string.
+     *
+     * @return string
+     */
+    public function buildQuery()
+    {
+        $query = implode(' ', $this->words);
+
+        foreach ($this->ids as $id) {
+            $query .= " #{$id}";
+        }
+
+        foreach ($this->conditions as $name => $values) {
+            foreach ($values as $value) {
+                if (strpos($value, ' ') === false) {
+                    $query .= " {$name}:{$value}";
+                } else {
+                    $query .= " {$name}:\"{$value}\"";
+                }
+            }
+        }
+
+        return trim($query);
+    }
+
+    /**
+     * Returns the sort as string.
+     *
+     * @return string
+     */
+    public function buildSort()
+    {
+        $sort = [];
+
+        foreach ($this->sort as $field => $direction) {
+            if ($direction === 'DESC') {
+                $sort[] = '-'.$field;
+            } else {
+                $sort[] = $field;
+            }
+        }
+
+        return implode(',', $sort);
     }
 }
