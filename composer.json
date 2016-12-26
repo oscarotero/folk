@@ -26,16 +26,16 @@
         "gettext/gettext": "^4.0",
         "oscarotero/inline-svg": "^2.0",
         "imagecow/imagecow": "^2.1",
-        "middlewares/utils": "~0.5",
-        "middlewares/cache": "^0.2.0",
-        "middlewares/error-handler": "^0.3.0",
-        "middlewares/base-path": "^0.2.0",
-        "middlewares/trailing-slash": "^0.2.0",
-        "middlewares/negotiation": "^0.2.0",
-        "middlewares/method-override": "^0.2.0",
-        "middlewares/filesystem": "^0.2.0",
-        "middlewares/aura-router": "^0.2.0",
-        "middlewares/http-authentication": "^0.2.0"
+        "middlewares/utils": "~0.8",
+        "middlewares/cache": "^0.3.0",
+        "middlewares/error-handler": "^0.4.0",
+        "middlewares/base-path": "^0.3.0",
+        "middlewares/trailing-slash": "^0.3.0",
+        "middlewares/negotiation": "^0.3.0",
+        "middlewares/method-override": "^0.3.0",
+        "middlewares/filesystem": "^0.3.0",
+        "middlewares/aura-router": "^0.3.0",
+        "middlewares/http-authentication": "^0.3.0"
     },
     "autoload": {
         "psr-4": {

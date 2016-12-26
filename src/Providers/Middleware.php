@@ -32,7 +32,7 @@ class Middleware implements ServiceProviderInterface
             $middleware[] = new Middlewares\ContentType();
             $middleware[] = new Middlewares\ContentLanguage(['en', 'gl', 'es']);
 
-            $middleware[] = new Middlewares\Utils\CallableMiddleware(function ($request, $next) use ($app) {
+            $middleware[] = function ($request, $next) use ($app) {
                 $language = $request->getHeaderLine('Accept-Language');
                 $translator = new Translator();
                 $translator->loadTranslations(Translations::fromPoFile(dirname(dirname(__DIR__)).'/locales/'.$language.'.po'));
@@ -47,7 +47,7 @@ class Middleware implements ServiceProviderInterface
                 }
 
                 return $response;
-            });
+            };
 
             $middleware[] = (new Middlewares\MethodOverride())
                 ->parsedBodyParameter('method-override');
