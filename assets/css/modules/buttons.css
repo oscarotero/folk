@@ -17,6 +17,13 @@
   font-weight: var(--font-normal);
   border-radius: 3px;
 
+  svg {
+    margin-left: 0;
+  }
+  path {
+    fill: currentColor;
+  }
+
   &:hover {
     color: var(--black);
     background-color: var(--lightgray);

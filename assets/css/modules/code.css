@@ -1,5 +1,5 @@
 /* Estilos codemirror */
-@import "codemirror";
+@import "../../../bower_components/codemirror/lib/codemirror.css";
 
 .CodeMirror {
 	border: var(--border-thin);

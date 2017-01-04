@@ -21,7 +21,6 @@
 	.cke_combo_text {
 		width: auto; /* para que non quede cortado o texto */
 	}
-
 	.CodeMirror-sizer {
 		background: var(--xlightgray);
 	}
@@ -31,4 +30,9 @@
 	.CodeMirror-linenumber {
 		color: var(--black);
 	}
+}
+
+.cke_combopanel {
+	width: auto !important;
+	max-width: 260px;
 }

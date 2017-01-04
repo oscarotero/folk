@@ -47,10 +47,13 @@ gulp.task('js:vendor', function(done) {
         ['sprintf', 'src/sprintf.js'],
         ['requirejs-plugins', 'src/*.js'],
         ['requirejs-plugins', 'lib/text.js'],
+        ['CKEditor-WordCount-Plugin', 'wordcount/**', 'ckeditor/plugins/wordcount'],
     ].forEach(function (module) {
+        let dest = module[2] || module[0];
+
         gulp
             .src(path.join(bower, module[0], module[1]))
-            .pipe(gulp.dest(path.join('assets/js/vendor', module[0])))
+            .pipe(gulp.dest(path.join('assets/js/vendor', dest)))
     });
 });
 
