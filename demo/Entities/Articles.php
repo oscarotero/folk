@@ -20,6 +20,9 @@ class Articles extends Yaml
                 ->label('Title'),
 
             'intro' => $builder->html()
+                ->data('config', [
+                    'extraPlugins' => 'autogrow,wordcount,notification'
+                ])
                 ->label('Introduction'),
 
             'tags' => $builder->relationMany($this->admin->getEntity('tags'))
@@ -41,5 +44,27 @@ class Articles extends Yaml
                 ->set('editable', true)
                 ->label('Actived'),
         ]);
+    }
+
+    public function getActions($id)
+    {
+        return [
+            [
+                'label' => 'Reload',
+                'target' => '_blank',
+                'icon' => 'editor/insert_drive_file',
+                'url' => $this->admin->getRoute('read', ['entity' => $this->name, 'id' => $id])
+            ],[
+                'label' => 'Insert new article',
+                'target' => '_blank',
+                'method' => 'post',
+                'url' => $this->admin->getRoute('create', ['entity' => $this->name]),
+                'data' => [
+                    'method-override' => 'PUT',
+                    'entity' => $this->name,
+                    'data[title]' => 'New article'
+                ]
+            ]
+        ];
     }
 }

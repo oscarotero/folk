@@ -7,12 +7,10 @@
 <div class="page page-form">
 	<div class="page-content">
 
-		<?php if (($nav = $entity->getNavigation($id)) !== null): ?>
+		<?php if (($actions = $entity->getActions($id)) !== null): ?>
 		<div class="footer-primary">
-		<?php foreach ($nav as $text => $navId): ?>
-			<a href="<?= $app->getRoute('read', ['entity' => $entityName, 'id' => $navId]) ?>" class="button button-link">
-				<?= $text ?>
-			</a>
+		<?php foreach ($actions as $action): ?>
+			<?php $this->insert('action', $action) ?>
 		<?php endforeach ?>
 		</div>
 		<?php endif ?>

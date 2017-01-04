@@ -86,12 +86,20 @@ interface EntityInterface
     public function getLabel($id, array $data);
 
     /**
-     * Returns navigation links from an entity.
-     * Example: prev / next links
+     * Returns action buttons from an entity.
+     * Example: prev / next links, preview, etc
      *
-     * @param mixed $id   The entity id
+     * Each action is an array with the following keys options
+     * - label (string, required)
+     * - url (string, required)
+     * - method (GET by default)
+     * - data (array)
+     * - icon (string)
+     * - target (string)
+     *
+     * @param mixed $id The entity id
      *
      * @return array|null
      */
-    public function getNavigation($id);
+    public function getActions($id);
 }

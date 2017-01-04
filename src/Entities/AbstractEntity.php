@@ -44,7 +44,7 @@ abstract class AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    public function getNavigation($id)
+    public function getActions($id)
     {
     }
 }
