@@ -2,16 +2,15 @@
 
 namespace Folk\Formats;
 
-use FormManager\Builder;
 use SplFileInfo;
 
 class FileUpload extends Loader implements FormatInterface
 {
-    public function __construct(Builder $builder)
+    public function __construct(FormatFactory $factory)
     {
-        parent::__construct($builder, [
-            'loader' => $builder->file(),
-            'field' => $builder->hidden(),
+        parent::__construct($factory, [
+            'loader' => $factory->file(),
+            'field' => $factory->hidden(),
         ]);
 
         $this->data([

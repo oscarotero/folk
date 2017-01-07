@@ -2,17 +2,16 @@
 
 namespace Folk\Providers;
 
-use Fol;
-use Fol\ServiceProviderInterface;
+use Fol\{App, ServiceProviderInterface};
 use League\Plates\Engine;
 use Folk\MaterialDesignIcons;
 use InlineSvg\Collection;
 
 class Templates implements ServiceProviderInterface
 {
-    public function register(Fol $app)
+    public function register(App $app)
     {
-        $app['templates'] = function ($app) {
+        $app['templates'] = function (App $app): Engine {
             $root = dirname(dirname(__DIR__));
 
             $templates = new Engine($root.'/templates');

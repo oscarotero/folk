@@ -11,7 +11,7 @@ use Folk\SearchQuery;
 
 class SearchEntity extends Entity
 {
-    public function html(Request $request, Admin $app, $entityName)
+    public function html(Request $request, Admin $app, string $entityName)
     {
         $entity = $app->getEntity($entityName);
         $search = new SearchQuery($request->getQueryParams());
@@ -57,7 +57,7 @@ class SearchEntity extends Entity
         ]);
     }
 
-    public function json(Request $request, Admin $app, $entityName)
+    public function json(Request $request, Admin $app, string $entityName)
     {
         $entity = $app->getEntity($entityName);
 

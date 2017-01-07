@@ -3,14 +3,13 @@
 namespace Folk\Formats;
 
 use FormManager\Fields;
-use FormManager\Builder;
 
 class Select extends Fields\Select implements FormatInterface
 {
     use Traits\HtmlValueTrait;
     use Traits\RenderTrait;
 
-    public function __construct(Builder $builder, array $options = null)
+    public function __construct(FormatFactory $factory, array $options = null)
     {
         parent::__construct($options);
 

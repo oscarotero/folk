@@ -17,9 +17,9 @@ abstract class File extends AbstractEntity implements EntityInterface
      * 
      * @return string
      */
-    abstract protected function getBasePath();
+    abstract protected function getBasePath(): string;
 
-    protected function getIterator()
+    protected function getIterator(): RecursiveDirectoryIterator
     {
         return new RecursiveDirectoryIterator($this->getBasePath(), FilesystemIterator::SKIP_DOTS);
     }
@@ -27,7 +27,7 @@ abstract class File extends AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    public function search(SearchQuery $search)
+    public function search(SearchQuery $search): array
     {
         $result = [];
         $words = $search->getWords();
@@ -86,7 +86,7 @@ abstract class File extends AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    public function read($id)
+    public function read($id): array
     {
         $file = $this->getFilePath($id);
 
@@ -127,7 +127,7 @@ abstract class File extends AbstractEntity implements EntityInterface
      * 
      * @return string
      */
-    protected function getId(array $data)
+    protected function getId(array $data): string
     {
         $list = glob($this->getBasePath()."/*.{$this->extension}");
 
@@ -139,7 +139,7 @@ abstract class File extends AbstractEntity implements EntityInterface
      * 
      * @return string
      */
-    protected function getFilePath($filename)
+    protected function getFilePath($filename): string
     {
         return $this->getBasePath()."/{$filename}.{$this->extension}";
     }
@@ -151,7 +151,7 @@ abstract class File extends AbstractEntity implements EntityInterface
      * 
      * @return string
      */
-    abstract protected function stringify(array $data);
+    abstract protected function stringify(array $data): string;
 
     /**
      * Transform the string to an array.
@@ -160,5 +160,5 @@ abstract class File extends AbstractEntity implements EntityInterface
      * 
      * @return array
      */
-    abstract protected function parse($source);
+    abstract protected function parse(string $source): array;
 }

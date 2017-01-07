@@ -11,7 +11,7 @@ trait DatetimeValueTrait
      *
      * @return string
      */
-    public function valToHtml()
+    public function valToHtml(): string
     {
         $val = $this->val();
 
@@ -19,6 +19,6 @@ trait DatetimeValueTrait
             return '<time datetime="'.((new Datetime($val))->format(DATE_ISO8601)).'">'.$val.'</time>';
         }
 
-        return $this->val();
+        return '';
     }
 }

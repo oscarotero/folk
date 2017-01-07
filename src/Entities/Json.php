@@ -13,7 +13,7 @@ abstract class Json extends File implements EntityInterface
      * 
      * @return string
      */
-    protected function stringify(array $data)
+    protected function stringify(array $data): string
     {
         return json_encode($data);
     }
@@ -25,7 +25,7 @@ abstract class Json extends File implements EntityInterface
      * 
      * @return array
      */
-    protected function parse($source)
+    protected function parse(string $source): array
     {
         return json_decode($source, true);
     }

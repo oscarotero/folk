@@ -2,17 +2,16 @@
 
 namespace Folk\Providers;
 
-use Fol;
-use Fol\ServiceProviderInterface;
+use Fol\{App, ServiceProviderInterface};
+use Middlewares\Utils\Dispatcher;
 use Middlewares;
-use Gettext\Translator;
-use Gettext\Translations;
+use Gettext\{Translator, Translations};
 
 class Middleware implements ServiceProviderInterface
 {
-    public function register(Fol $app)
+    public function register(App $app)
     {
-        $app['middleware'] = function ($app) {
+        $app['middleware'] = function (App $app): Dispatcher {
             $middleware = [];
 
             if ($app->has('users')) {
@@ -21,13 +20,13 @@ class Middleware implements ServiceProviderInterface
 
             $middleware[] = new Middlewares\Expires();
             $middleware[] = (new Middlewares\ErrorHandler())
-                ->catchExceptions()
+                ->catchExceptions(false)
                 ->statusCode(function ($code) {
                     return $code > 400 && $code < 600;
                 })
                 ->arguments($app);
 
-            $middleware[] = new Middlewares\BasePath($app->getUrlPath());
+            $middleware[] = new Middlewares\BasePath($app->getUri()->getPath());
             $middleware[] = new Middlewares\TrailingSlash();
             $middleware[] = new Middlewares\ContentType();
             $middleware[] = new Middlewares\ContentLanguage(['en', 'gl', 'es']);
@@ -58,7 +57,7 @@ class Middleware implements ServiceProviderInterface
             $middleware[] = (new Middlewares\AuraRouter($app['router']))
                 ->arguments($app);
 
-            return new Middlewares\Utils\Dispatcher($middleware);
+            return new Dispatcher($middleware);
         };
     }
 }

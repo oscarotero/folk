@@ -5,7 +5,8 @@ namespace Demo\Entities;
 use Psr\Http\Message\UploadedFileInterface;
 
 use Folk\Entities\Json;
-use FormManager\Builder;
+use Folk\Formats\Group;
+use Folk\Formats\FormatFactory;
 
 class Items extends Json
 {
@@ -13,7 +14,7 @@ class Items extends Json
     public $title = 'Items';
     public $description = 'Random items';
 
-    protected function getBasePath()
+    protected function getBasePath(): string
     {
         return __DIR__.'/json';
     }
@@ -29,7 +30,7 @@ class Items extends Json
         return parent::create($data);
     }
 
-    public function getScheme(Builder $builder)
+    public function getScheme(FormatFactory $builder): Group
     {
         return $builder->group([
             'text' => $builder->text()->label('Title'),

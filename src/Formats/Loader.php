@@ -3,7 +3,6 @@
 namespace Folk\Formats;
 
 use FormManager\Fields;
-use FormManager\Builder;
 
 class Loader extends Fields\Loader implements FormatInterface
 {
@@ -11,7 +10,7 @@ class Loader extends Fields\Loader implements FormatInterface
 
     public $list = false;
 
-    public function __construct(Builder $builder, array $children = null)
+    public function __construct(FormatFactory $factory, array $children = null)
     {
         parent::__construct($children);
 

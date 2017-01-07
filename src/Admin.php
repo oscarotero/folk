@@ -2,29 +2,27 @@
 
 namespace Folk;
 
-use Fol;
-use Fol\NotFoundException;
+use Fol\{App, NotFoundException};
 use Folk\Entities\EntityInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\{ServerRequestInterface, ResponseInterface, UriInterface};
 use Zend\Diactoros\Response;
 use Relay\RelayBuilder;
 
 /**
  * Main manager.
  */
-class Admin extends Fol
+class Admin extends App
 {
     private $entities = [];
 
     public $title = 'Folk';
     public $description = 'Universal CMS';
 
-    public function __construct($url)
+    public function __construct(UriInterface $uri)
     {
-        $this->setUrl($url);
+        parent::__construct(__DIR__, $uri);
 
-        $this->register(new Providers\Builder());
+        $this->register(new Providers\Formats());
         $this->register(new Providers\Middleware());
         $this->register(new Providers\Router());
         $this->register(new Providers\Templates());
@@ -33,16 +31,16 @@ class Admin extends Fol
     /**
      * @return ResponseInterface
      */
-    public function __invoke(ServerRequestInterface $request)
+    public function __invoke(ServerRequestInterface $request): ResponseInterface
     {
         $dispatcher = $this->get('middleware');
 
         return $dispatcher->dispatch($request);
     }
 
-    public function getRoute($name, array $data = array(), array $query = null)
+    public function getRoute(string $name, array $data = [], array $query = null): string
     {
-        return $this->getUrl($this['router']->getGenerator()->generate($name, $data)).($query ? '?'.http_build_query($query) : '');
+        return $this->getUri($this['router']->getGenerator()->generate($name, $data)).($query ? '?'.http_build_query($query) : '');
     }
 
     /**
@@ -84,7 +82,7 @@ class Admin extends Fol
      *
      * @return bool
      */
-    public function hasEntity($name)
+    public function hasEntity(string $name): bool
     {
         return isset($this->entities[$name]);
     }
@@ -98,7 +96,7 @@ class Admin extends Fol
      * 
      * @return EntityInterface
      */
-    public function getEntity($name)
+    public function getEntity(string $name): EntityInterface
     {
         if ($this->hasEntity($name)) {
             return $this->entities[$name];
@@ -112,7 +110,7 @@ class Admin extends Fol
      *
      * @return array
      */
-    public function getAllEntities()
+    public function getAllEntities(): array
     {
         return $this->entities;
     }

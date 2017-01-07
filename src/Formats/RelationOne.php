@@ -3,7 +3,6 @@
 namespace Folk\Formats;
 
 use FormManager\Fields;
-use FormManager\Builder;
 use Folk\Entities\EntityInterface;
 use Folk\SearchQuery;
 
@@ -12,7 +11,7 @@ class RelationOne extends Fields\Select implements FormatInterface
     use Traits\HtmlValueTrait;
     use Traits\RenderTrait;
 
-    public function __construct(Builder $builder, EntityInterface $related, SearchQuery $search = null)
+    public function __construct(FormatFactory $factory, EntityInterface $related, SearchQuery $search = null)
     {
         parent::__construct();
 

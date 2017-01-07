@@ -9,8 +9,8 @@ trait HtmlValueTrait
      *
      * @return string
      */
-    public function valToHtml()
+    public function valToHtml(): string
     {
-        return $this->val();
+        return (string) $this->val();
     }
 }

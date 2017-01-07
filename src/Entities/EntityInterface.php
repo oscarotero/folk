@@ -4,7 +4,8 @@ namespace Folk\Entities;
 
 use Folk\Admin;
 use Folk\SearchQuery;
-use FormManager\Builder;
+use Folk\Formats\Group;
+use Folk\Formats\FormatFactory;
 
 /**
  * Interface used by all entities.
@@ -17,14 +18,14 @@ interface EntityInterface
      * @param string $name
      * @param Admin  $admin
      */
-    public function __construct($name, Admin $admin);
+    public function __construct(string $name, Admin $admin);
 
     /**
      * Returns the entity name
      *
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * List the entity rows.
@@ -33,7 +34,7 @@ interface EntityInterface
      * 
      * @return array The rows data
      */
-    public function search(SearchQuery $search);
+    public function search(SearchQuery $search): array;
 
     /**
      * Creates a new entity row.
@@ -51,7 +52,7 @@ interface EntityInterface
      *
      * @return array The entity data
      */
-    public function read($id);
+    public function read($id): array;
 
     /**
      * Update the data of an entity row.
@@ -71,9 +72,11 @@ interface EntityInterface
     /**
      * Returns the data scheme used by this entity.
      *
-     * @return Folk\Client\Formats\Group
+     * @param FormatFactory $factory
+     *
+     * @return Group
      */
-    public function getScheme(Builder $builder);
+    public function getScheme(FormatFactory $factory): Group;
 
     /**
      * Returns the label of a row.
@@ -83,7 +86,7 @@ interface EntityInterface
      *
      * @return string
      */
-    public function getLabel($id, array $data);
+    public function getLabel($id, array $data): string;
 
     /**
      * Returns action buttons from an entity.
@@ -101,5 +104,5 @@ interface EntityInterface
      *
      * @return array|null
      */
-    public function getActions($id);
+    public function getActions($id): array;
 }

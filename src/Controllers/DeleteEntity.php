@@ -9,7 +9,7 @@ use Zend\Diactoros\Response\RedirectResponse;
 
 class DeleteEntity extends Entity
 {
-    public function html(Request $request, Admin $app, $entityName)
+    public function html(Request $request, Admin $app, string $entityName)
     {
         $app->getEntity($entityName)->delete($request->getAttribute('id'));
 

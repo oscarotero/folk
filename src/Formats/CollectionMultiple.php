@@ -3,7 +3,6 @@
 namespace Folk\Formats;
 
 use FormManager\Fields;
-use FormManager\Builder;
 
 class CollectionMultiple extends Fields\CollectionMultiple implements FormatInterface
 {
@@ -12,7 +11,7 @@ class CollectionMultiple extends Fields\CollectionMultiple implements FormatInte
     use Traits\CollectionValueTrait;
     use Traits\RenderContainerTrait;
 
-    public function __construct(Builder $builder, array $children = null)
+    public function __construct(FormatFactory $factory, array $children = null)
     {
         parent::__construct($children);
 

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d647375fefc8c522e791ecfc53d6fc3c",
-    "content-hash": "af0adb3d2280c83cfd5065ae3f000a0c",
+    "hash": "b673d2cd9e624018d3b81cb0f508a1b5",
+    "content-hash": "831bd216a299a7c5d7635e3371fb7c9d",
     "packages": [
         {
             "name": "aura/router",
@@ -81,52 +81,6 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "time": "2014-12-30 15:22:37"
-        },
-        {
-            "name": "fol/core",
-            "version": "v11.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fol-project/core.git",
-                "reference": "b76c779e9c6c2c02a636b6d2f064baa7affbc39d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fol-project/core/zipball/b76c779e9c6c2c02a636b6d2f064baa7affbc39d",
-                "reference": "b76c779e9c6c2c02a636b6d2f064baa7affbc39d",
-                "shasum": ""
-            },
-            "require": {
-                "container-interop/container-interop": "*",
-                "php": ">=5.5.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Fol": "src/"
-                },
-                "psr-4": {
-                    "Fol\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "AGPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Oscar Otero",
-                    "email": "oom@oscarotero.com",
-                    "homepage": "http://oscarotero.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "The core of FOL framework",
-            "homepage": "https://github.com/fol-project/core",
-            "keywords": [
-                "framework"
-            ],
-            "time": "2015-12-31 09:46:56"
         },
         {
             "name": "form-manager/form-manager",
@@ -524,20 +478,23 @@
         },
         {
             "name": "league/plates",
-            "version": "3.1.1",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/plates.git",
-                "reference": "2d8569e9f140a70d6a05db38006926f7547cb802"
+                "reference": "b1684b6f127714497a0ef927ce42c0b44b45a8af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/plates/zipball/2d8569e9f140a70d6a05db38006926f7547cb802",
-                "reference": "2d8569e9f140a70d6a05db38006926f7547cb802",
+                "url": "https://api.github.com/repos/thephpleague/plates/zipball/b1684b6f127714497a0ef927ce42c0b44b45a8af",
+                "reference": "b1684b6f127714497a0ef927ce42c0b44b45a8af",
                 "shasum": ""
             },
+            "require": {
+                "php": "^5.3 | ^7.0"
+            },
             "require-dev": {
-                "mikey179/vfsstream": "~1.4.0",
+                "mikey179/vfsstream": "^1.4",
                 "phpunit/phpunit": "~4.0",
                 "squizlabs/php_codesniffer": "~1.5"
             },
@@ -572,7 +529,7 @@
                 "templating",
                 "views"
             ],
-            "time": "2015-07-09 02:14:40"
+            "time": "2016-12-28 00:14:17"
         },
         {
             "name": "micheh/psr7-cache",
@@ -1104,6 +1061,50 @@
             "time": "2016-12-22 19:25:17"
         },
         {
+            "name": "oscarotero/fol",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oscarotero/fol.git",
+                "reference": "2d61f232bb06c0d42be495ab20c849b4c63e1daf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oscarotero/fol/zipball/2d61f232bb06c0d42be495ab20c849b4c63e1daf",
+                "reference": "2d61f232bb06c0d42be495ab20c849b4c63e1daf",
+                "shasum": ""
+            },
+            "require": {
+                "container-interop/container-interop": "*",
+                "php": "^7.0",
+                "psr/http-message": "^1.0"
+            },
+            "require-dev": {
+                "zendframework/zend-diactoros": "^1.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fol\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oscar Otero",
+                    "email": "oom@oscarotero.com",
+                    "homepage": "http://oscarotero.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Base App class to build websites",
+            "homepage": "https://github.com/fol-project/core",
+            "time": "2017-01-07 11:35:00"
+        },
+        {
             "name": "oscarotero/inline-svg",
             "version": "v2.0.1",
             "source": {
@@ -1343,16 +1344,16 @@
         },
         {
             "name": "zendframework/zend-diactoros",
-            "version": "1.3.7",
+            "version": "1.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-diactoros.git",
-                "reference": "969ff423d3f201da3ff718a5831bb999bb0669b0"
+                "reference": "d9c1fd7c4b024179d49faf367da544b4eef7cfe8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/969ff423d3f201da3ff718a5831bb999bb0669b0",
-                "reference": "969ff423d3f201da3ff718a5831bb999bb0669b0",
+                "url": "https://api.github.com/repos/zendframework/zend-diactoros/zipball/d9c1fd7c4b024179d49faf367da544b4eef7cfe8",
+                "reference": "d9c1fd7c4b024179d49faf367da544b4eef7cfe8",
                 "shasum": ""
             },
             "require": {
@@ -1364,7 +1365,7 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.6 || ^5.5",
-                "squizlabs/php_codesniffer": "^2.3.1"
+                "zendframework/zend-coding-standard": "~1.0.0"
             },
             "type": "library",
             "extra": {
@@ -1389,7 +1390,7 @@
                 "psr",
                 "psr-7"
             ],
-            "time": "2016-10-11 13:25:21"
+            "time": "2017-01-05 21:44:28"
         }
     ],
     "packages-dev": [
@@ -1620,16 +1621,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.1.4",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "3f5cbd0e6a2fc17bc40b0238025ef1ff4c8c3efa"
+                "reference": "2abce9d956589122c6443d6265f01cf7e9388e3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/3f5cbd0e6a2fc17bc40b0238025ef1ff4c8c3efa",
-                "reference": "3f5cbd0e6a2fc17bc40b0238025ef1ff4c8c3efa",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/2abce9d956589122c6443d6265f01cf7e9388e3c",
+                "reference": "2abce9d956589122c6443d6265f01cf7e9388e3c",
                 "shasum": ""
             },
             "require": {
@@ -1676,7 +1677,7 @@
                 "whoops",
                 "zf2"
             ],
-            "time": "2016-10-11 15:32:23"
+            "time": "2016-12-26 16:13:31"
         },
         {
             "name": "gettext/robo",
@@ -2487,7 +2488,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.5.0"
+        "php": "^7.0"
     },
     "platform-dev": []
 }

@@ -10,7 +10,7 @@ use Zend\Diactoros\Response\RedirectResponse;
 
 class CreateEntity extends Entity
 {
-    public function html(Request $request, Admin $app, $entityName)
+    public function html(Request $request, Admin $app, string $entityName)
     {
         $entity = $app->getEntity($entityName);
         $form = static::createForm($app, $entityName);

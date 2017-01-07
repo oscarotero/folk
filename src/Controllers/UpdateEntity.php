@@ -10,7 +10,7 @@ use Middlewares\Utils\Factory;
 
 class UpdateEntity extends Entity
 {
-    public function html(Request $request, Admin $app, $entityName)
+    public function html(Request $request, Admin $app, string $entityName)
     {
         $id = $request->getAttribute('id');
 

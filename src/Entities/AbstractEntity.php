@@ -19,7 +19,7 @@ abstract class AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    public function __construct($name, Admin $admin)
+    public function __construct(string $name, Admin $admin)
     {
         $this->name = $name;
         $this->admin = $admin;
@@ -28,7 +28,7 @@ abstract class AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -36,7 +36,7 @@ abstract class AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    public function getLabel($id, array $data)
+    public function getLabel($id, array $data): string
     {
         return current($data);
     }
@@ -44,7 +44,8 @@ abstract class AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    public function getActions($id)
+    public function getActions($id): array
     {
+        return [];
     }
 }

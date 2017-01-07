@@ -1,4 +1,4 @@
-<form method="<?= isset($method) ? $method : 'GET' ?>" action="<?= $url ?>" target="<?= isset($target) ? $arget : '' ?>">
+<form method="<?= $method ?? 'GET' ?>" action="<?= $url ?>" target="<?= $target ?? '' ?>">
 	<?php if (!empty($data)): ?>
 	<?php foreach ($data as $name => $value): ?>
 	<input type="hidden" name="<?= $name ?>" value="<?= $this->e($value) ?>">

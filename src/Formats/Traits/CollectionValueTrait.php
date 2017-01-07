@@ -9,7 +9,7 @@ trait CollectionValueTrait
      *
      * @return string
      */
-    public function valToHtml()
+    public function valToHtml(): string
     {
         $html = '<ul>';
 

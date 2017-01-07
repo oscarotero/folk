@@ -52,7 +52,7 @@ class SearchQuery
                 }
 
                 $name = $piece[1] ? substr($piece[1], 0, -1) : null;
-                $value = isset($piece[4]) ? $piece[4] : $piece[3];
+                $value = $piece[4] ?? $piece[3];
 
                 if ($name !== null) {
                     if (!isset($this->conditions[$name])) {
@@ -88,7 +88,7 @@ class SearchQuery
      * 
      * @return self
      */
-    public function setPage($page)
+    public function setPage($page): self
     {
         $this->page = (int) $page;
 
@@ -100,7 +100,7 @@ class SearchQuery
      *
      * @return int
      */
-    public function getLimit()
+    public function getLimit(): int
     {
         return $this->limit;
     }
@@ -112,7 +112,7 @@ class SearchQuery
      * 
      * @return self
      */
-    public function setLimit($limit)
+    public function setLimit(int $limit): self
     {
         $this->limit = (int) $limit;
 
@@ -124,7 +124,7 @@ class SearchQuery
      *
      * @return array
      */
-    public function getIds()
+    public function getIds(): array
     {
         return $this->ids;
     }
@@ -136,7 +136,7 @@ class SearchQuery
      * 
      * @return self
      */
-    public function setIds(array $ids)
+    public function setIds(array $ids): self
     {
         $this->ids = $ids;
 
@@ -148,7 +148,7 @@ class SearchQuery
      *
      * @return array
      */
-    public function getWords()
+    public function getWords(): array
     {
         return $this->words;
     }
@@ -160,7 +160,7 @@ class SearchQuery
      * 
      * @return self
      */
-    public function setWords(array $words)
+    public function setWords(array $words): self
     {
         $this->words = $words;
 
@@ -174,7 +174,7 @@ class SearchQuery
      * 
      * @return self
      */
-    public function setConditions(array $conditions)
+    public function setConditions(array $conditions): self
     {
         $this->conditions = $conditions;
 
@@ -186,7 +186,7 @@ class SearchQuery
      *
      * @return array
      */
-    public function getConditions()
+    public function getConditions(): array
     {
         return $this->conditions;
     }
@@ -196,7 +196,7 @@ class SearchQuery
      *
      * @return array ['field' => 'direction']
      */
-    public function getSort()
+    public function getSort(): array
     {
         return $this->sort;
     }
@@ -206,7 +206,7 @@ class SearchQuery
      *
      * @param string $sort
      */
-    public function setSort($sort)
+    public function setSort(string $sort)
     {
         $this->sort = [];
 
@@ -227,7 +227,7 @@ class SearchQuery
      *
      * @return string
      */
-    public function buildQuery()
+    public function buildQuery(): string
     {
         $query = implode(' ', $this->words);
 
@@ -253,7 +253,7 @@ class SearchQuery
      *
      * @return string
      */
-    public function buildSort()
+    public function buildSort(): string
     {
         $sort = [];
 

@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html data-baseurl="<?= $app->getUrl() ?>" lang="<?= $language ?>">
+<html data-baseurl="<?= $app->getUri() ?>" lang="<?= $language ?>">
     <head>
         <meta charset="utf-8">
 
@@ -10,21 +10,21 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="<?= $app->getUrl('css/styles.min.css?'.$assetsVersion); ?>">
+        <link rel="stylesheet" type="text/css" href="<?= $app->getUri('css/styles.min.css')."?{$assetsVersion}" ?>">
 
         <script type="text/javascript">
             var require = {
-                baseUrl: "<?= $app->getUrl('js') ?>",
+                baseUrl: "<?= $app->getUri('js') ?>",
                 urlArgs: '<?= $assetsVersion ?>',
                 config: {
                     'modules/format-select': {
-                        createUrl: '<?= $app->getUrl('/') ?>'
+                        createUrl: '<?= $app->getUri('/') ?>'
                     }
                 }
             };
         </script>
-        <script type="text/javascript" src="<?= $app->getUrl('js/modernizr.js?'.$assetsVersion); ?>"></script>
-        <script type="text/javascript" data-main="<?= $app->getUrl('js/main.js?'.$assetsVersion); ?>" src="<?= $app->getUrl('js/vendor/requirejs/require.js?'.$assetsVersion); ?>"></script>
+        <script type="text/javascript" src="<?= $app->getUri('js/modernizr.js').'?'."?{$assetsVersion}" ?>"></script>
+        <script type="text/javascript" data-main="<?= $app->getUri('js/main.js')."?{$assetsVersion}" ?>" src="<?= $app->getUri('js/vendor/requirejs/require.js')."?{$assetsVersion}" ?>"></script>
     </head>
 
     <body class="has-menu">

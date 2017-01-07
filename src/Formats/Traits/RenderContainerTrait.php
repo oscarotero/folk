@@ -7,7 +7,7 @@ trait RenderContainerTrait
     /**
      * {@inheritdoc}
      */
-    protected function defaultRender($prepend = '', $append = '')
+    protected function defaultRender($prepend = '', $append = ''): string
     {
         if ($this->error()) {
             $this->addClass('has-error');

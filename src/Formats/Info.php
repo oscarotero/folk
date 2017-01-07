@@ -2,8 +2,7 @@
 
 namespace Folk\Formats;
 
-use FormManager\Fields;
-use FormManager\Elements;
+use FormManager\{Fields, Elements};
 
 class Info extends Fields\Field implements FormatInterface
 {

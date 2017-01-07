@@ -71,7 +71,7 @@ abstract class FlyCrud extends AbstractEntity implements EntityInterface
      * 
      * @return string
      */
-    protected function generateId(Document $document)
+    protected function generateId(Document $document): string
     {
         return uniqid();
     }

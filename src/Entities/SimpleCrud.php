@@ -3,8 +3,10 @@
 namespace Folk\Entities;
 
 use Folk\SearchQuery;
+use SimpleCrud\Table;
 use SimpleCrud\Row;
 use SimpleCrud\Scheme\Scheme;
+use SimpleCrud\Queries\Query;
 
 abstract class SimpleCrud extends AbstractEntity implements EntityInterface
 {
@@ -14,18 +16,18 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
     /**
      * Returns the simple-crud table.
      * 
-     * @return \SimpleCrud\Table
+     * @return Table
      */
-    abstract protected function getTable();
+    abstract protected function getTable(): Table;
 
     /**
      * Generates the query to search rows.
      * 
      * @param SearchQuery $search
      * 
-     * @return \SimpleCrud\Queries\Query
+     * @return Query
      */
-    protected function getQuery(SearchQuery $search)
+    protected function getQuery(SearchQuery $search): Query
     {
         $table = $this->getTable();
 
@@ -81,7 +83,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    public function search(SearchQuery $search)
+    public function search(SearchQuery $search): array
     {
         $result = [];
 
@@ -107,7 +109,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    public function read($id)
+    public function read($id): array
     {
         $table = $this->getTable();
 
@@ -152,7 +154,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    public function getLabel($id, array $data)
+    public function getLabel($id, array $data): string
     {
         return "{$id} - ".$data[$this->getFirstField()];
     }
@@ -160,7 +162,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    protected function getFirstField()
+    protected function getFirstField(): string
     {
         if ($this->firstField === null) {
             foreach (array_keys($this->getTable()->getScheme()['fields']) as $field) {

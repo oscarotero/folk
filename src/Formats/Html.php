@@ -2,13 +2,11 @@
 
 namespace Folk\Formats;
 
-use FormManager\Builder;
-
 class Html extends Textarea implements FormatInterface
 {
-    public function __construct(Builder $builder)
+    public function __construct(FormatFactory $factory)
     {
-        parent::__construct($builder);
+        parent::__construct($factory);
 
         $this->data('module', 'format-html');
     }

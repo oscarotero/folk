@@ -3,7 +3,6 @@
 namespace Folk\Formats;
 
 use FormManager\Fields;
-use FormManager\Builder;
 
 class Collection extends Fields\Collection implements FormatInterface
 {
@@ -12,7 +11,7 @@ class Collection extends Fields\Collection implements FormatInterface
     use Traits\CollectionValueTrait;
     use Traits\RenderContainerTrait;
 
-    public function __construct(Builder $builder, array $children = null)
+    public function __construct(FormatFactory $factory, array $children = null)
     {
         parent::__construct($children);
 

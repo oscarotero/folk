@@ -8,7 +8,7 @@ use Folk\Admin;
 
 class InsertEntity extends Entity
 {
-    public function html(Request $request, Admin $app, $entityName)
+    public function html(Request $request, Admin $app, string $entityName)
     {
         return $app['templates']->render('pages/insert', [
             'entityName' => $entityName,

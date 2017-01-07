@@ -15,7 +15,7 @@ abstract class Yaml extends File implements EntityInterface
      * 
      * @return string
      */
-    protected function stringify(array $data)
+    protected function stringify(array $data): string
     {
         return SymfonyYaml::dump($data);
     }
@@ -27,7 +27,7 @@ abstract class Yaml extends File implements EntityInterface
      * 
      * @return array
      */
-    protected function parse($source)
+    protected function parse(string $source): array
     {
         return (array) SymfonyYaml::parse($source);
     }

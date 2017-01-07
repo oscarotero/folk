@@ -3,17 +3,17 @@
 namespace Demo\Entities;
 
 use Folk\Entities\Yaml;
-use FormManager\Builder;
-use FormManager\InvalidValueException;
+use Folk\Formats\Group;
+use Folk\Formats\FormatFactory;
 
 class Articles extends Yaml
 {
-    protected function getBasePath()
+    protected function getBasePath(): string
     {
         return __DIR__.'/yaml';
     }
 
-    public function getScheme(Builder $builder)
+    public function getScheme(FormatFactory $builder): Group
     {
         return $builder->group([
             'title' => $builder->text()
@@ -46,7 +46,7 @@ class Articles extends Yaml
         ]);
     }
 
-    public function getActions($id)
+    public function getActions($id): array
     {
         return [
             [

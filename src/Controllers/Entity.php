@@ -18,7 +18,7 @@ abstract class Entity
     public function __invoke(Request $request, Admin $app)
     {
         $format = $request->getHeaderLine('Accept');
-        $format = isset($this->formats[$format]) ? $this->formats[$format] : 'html';
+        $format = $this->formats[$format] ?? 'html';
         $entityName = $request->getAttribute('entity');
 
         if ($app->hasEntity($entityName) && method_exists($this, $format)) {
@@ -37,7 +37,7 @@ abstract class Entity
      * 
      * return \Folk\Formats\Form
      */
-    protected static function createForm(Admin $app, $entityName, $id = null)
+    protected static function createForm(Admin $app, string $entityName, $id = null)
     {
         $entity = $app->getEntity($entityName);
 

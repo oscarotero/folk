@@ -8,7 +8,7 @@ use Folk\Admin;
 
 class ReadEntity extends Entity
 {
-    public function html(Request $request, Admin $app, $entityName)
+    public function html(Request $request, Admin $app, string $entityName)
     {
         $id = $request->getAttribute('id');
 
@@ -23,7 +23,7 @@ class ReadEntity extends Entity
         ]);
     }
 
-    public function json(Request $request, Admin $app, $entityName)
+    public function json(Request $request, Admin $app, string $entityName)
     {
         $id = $request->getAttribute('id');
 

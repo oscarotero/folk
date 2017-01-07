@@ -10,7 +10,7 @@ use Middlewares\Utils\Factory;
 
 class CreateEntityField extends Entity
 {
-    public function json(Request $request, Admin $app, $entityName)
+    public function json(Request $request, Admin $app, string $entityName)
     {
         $field = $request->getAttribute('field');
         $data = $request->getParsedBody();

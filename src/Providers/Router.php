@@ -2,15 +2,14 @@
 
 namespace Folk\Providers;
 
-use Fol;
-use Fol\ServiceProviderInterface;
+use Fol\{App, ServiceProviderInterface};
 use Aura\Router\RouterContainer;
 
 class Router implements ServiceProviderInterface
 {
-    public function register(Fol $app)
+    public function register(App $app)
     {
-        $app['router'] = function ($app) {
+        $app['router'] = function (App $app): RouterContainer {
             $router = new RouterContainer();
 
             $map = $router->getMap();
