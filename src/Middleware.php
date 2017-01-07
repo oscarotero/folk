@@ -8,7 +8,7 @@ use Psr\Http\Message\UriInterface;
 use Interop\Http\ServerMiddleware\MiddlewareInterface;
 use Interop\Http\ServerMiddleware\DelegateInterface;
 
-class FolkMiddleware implements MiddlewareInterface
+class Middleware implements MiddlewareInterface
 {
     private $uri;
     private $factory;
