@@ -10,7 +10,7 @@
 			$url = urlencode($app['url']);
 			$bookmarklet = <<<BOOKMARKLET
 (function () {
-	if (document.location.href.indexOf('{$app['url']}') !== 0 || document.location.href.indexOf('{$app->getUrl()}') === 0) {
+	if (document.location.href.indexOf('{$app['url']}') !== 0 || document.location.href.indexOf('{$app->getUri()}') === 0) {
 		alert('This bookmarklet is only valid for \'{$url}\'');
 	}
 
@@ -30,10 +30,10 @@
 
 		if (parts.length === 1) {
 			link.innerHTML = 'List ' + parts[0];
-			link.setAttribute('href', '{$app->getUrl()}/' + parts[0]);
+			link.setAttribute('href', '{$app->getUri()}/' + parts[0]);
 		} else {
 			link.innerHTML = 'Edit ' + parts[0] + ' #' + parts[1];
-			link.setAttribute('href', '{$app->getUrl()}/' + parts[0] + '/' + parts[1]);
+			link.setAttribute('href', '{$app->getUri()}/' + parts[0] + '/' + parts[1]);
 		}
 
 		link.setAttribute('class', 'folk-button');
