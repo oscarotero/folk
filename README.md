@@ -32,7 +32,8 @@ The entities are classes to manage "things". It can be a database table, a file,
 namespace MyEntities;
 
 use Folk\SearchQuery;
-use FormManager\Builder;
+use Folk\Formats\FormatFactory;
+use Folk\Formats\Group;
 use Folk\Entities\AbstractEntity;
 
 /**
@@ -48,7 +49,7 @@ class Posts extends AbstractEntity
      *
      * @return array [id => data, ...]
      */
-    public function search(SearchQuery $search)
+    public function search(SearchQuery $search): array
     {
         $query = 'SELECT * FROM posts';
 
@@ -93,7 +94,7 @@ class Posts extends AbstractEntity
      *
      * @return array
      */
-    public function read($id)
+    public function read($id): array
     {
         $pdo = $this->admin->get('pdo');
 
@@ -132,14 +133,14 @@ class Posts extends AbstractEntity
     /**
      * Returns the data scheme used by the posts.
      */
-    public function getScheme(Builder $b)
+    public function getScheme(FormatFactory $factory): Group
     {
-        return $b->group([
-            'title' => $b->text()
+        return $factory->group([
+            'title' => $factory->text()
                 ->maxlength(200)
                 ->label('The post title'),
 
-            'text' => $b->html()
+            'text' => $factory->html()
                 ->label('The body'),
         ]);
     }
@@ -148,7 +149,7 @@ class Posts extends AbstractEntity
      * Returns the label of a row.
      * (used in autocomplete searches, select, etc)
      */
-    public function getLabel($id, array $data)
+    public function getLabel($id, array $data): string
     {
         return sprintf('%s (%d)', $data['title'], $id);
     }
@@ -166,18 +167,19 @@ use Folk\Admin;
 
 use Entities\Posts;
 
-//Create a Admin instance passing the admin url:
-$admin = new Admin('http://my-site.com/admin');
+//Create a Admin instance passing the admin uri:
+$uri = new Zend\Diactoros\Uri('http://my-site.com/admin');
+$admin = new Admin($uri);
 
 //Set the pdo instance:
-$admin['pdo'] = new PDO('mysql:dbname=database;charset=UTF8') ;
+$admin['pdo'] = new PDO('mysql:dbname=database;charset=UTF8');
 
 //Add set your entities classes
 $admin->setEntities([
     Posts::class
 ]);
 
-//Run the web (using psr-7 request/responses)
+//Run the web (using PSR-7 request/responses)
 $request = Zend\Diactoros\ServerRequestFactory::fromGlobals();
 $emitter = new Zend\Diactoros\Response\SapiEmitter();
 
@@ -188,4 +190,3 @@ $emitter->emit($response);
 As you can see, this is a simple example with a simple mysql table. But the interface is flexible enought to work with any kind of data.
 
 To know how to work with the scheme, visit [form-manager](https://github.com/oscarotero/form-manager/) project.
-
