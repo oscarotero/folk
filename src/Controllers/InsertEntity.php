@@ -10,7 +10,7 @@ class InsertEntity extends Entity
 {
     public function html(Request $request, Admin $app, string $entityName)
     {
-        return $app['templates']->render('pages/insert', [
+        return $app->get('templates')->render('pages/insert', [
             'entityName' => $entityName,
             'form' => static::createForm($app, $entityName),
         ]);

@@ -26,7 +26,7 @@ class SearchEntity extends Entity
         }
 
         //Load the values
-        $row = $entity->getScheme($app['builder']);
+        $row = $entity->getScheme($app->get('builder'));
 
         //Remove non-listable elements
         $removedKeys = [];
@@ -50,7 +50,7 @@ class SearchEntity extends Entity
         }
 
         //List all results
-        return $app['templates']->render('pages/search', [
+        return $app->get('templates')->render('pages/search', [
             'rows' => $rows,
             'entityName' => $entityName,
             'search' => $search,

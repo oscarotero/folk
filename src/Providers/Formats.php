@@ -2,15 +2,18 @@
 
 namespace Folk\Providers;
 
-use Fol\{App, ServiceProviderInterface};
+use Fol\App;
+use Interop\Container\ServiceProvider;
 use Folk\Formats\FormatFactory;
 
-class Formats implements ServiceProviderInterface
+class Formats implements ServiceProvider
 {
-    public function register(App $app)
+    public function getServices()
     {
-        $app['builder'] = function (App $app): FormatFactory {
-            return new FormatFactory($app);
-        };
+        return [
+        	'builder' => function (App $app): FormatFactory {
+            	return new FormatFactory($app);
+        	}
+        ];
     }
 }

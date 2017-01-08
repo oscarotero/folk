@@ -46,7 +46,7 @@ abstract class Entity
             ->enctype('multipart/form-data')
             ->add([
                 'entity' => F::hidden()->val($entityName)->class('field-data-entity'),
-                'data' => $entity->getScheme($app['builder']),
+                'data' => $entity->getScheme($app->get('builder')),
             ]);
 
         if ($id !== null) {

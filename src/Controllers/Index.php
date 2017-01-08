@@ -26,7 +26,7 @@ class Index
             return $this->file($request, $app);
         }
 
-        return $app['templates']->render('pages/index');
+        return $app->get('templates')->render('pages/index');
     }
 
     private function file(Request $request, Admin $app)

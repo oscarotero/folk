@@ -7,10 +7,10 @@
 		<?php if ($app->has('url')): ?>
 
 		<?php
-			$url = urlencode($app['url']);
+			$url = urlencode($app->get('url'));
 			$bookmarklet = <<<BOOKMARKLET
 (function () {
-	if (document.location.href.indexOf('{$app['url']}') !== 0 || document.location.href.indexOf('{$app->getUri()}') === 0) {
+	if (document.location.href.indexOf('{$app->get('url')}') !== 0 || document.location.href.indexOf('{$app->getUri()}') === 0) {
 		alert('This bookmarklet is only valid for \'{$url}\'');
 	}
 
@@ -61,7 +61,7 @@ BOOKMARKLET;
 
 			<p>
 				<?= $app->description ?>
-				| <a href="<?= $app['url'] ?>" target="_blank"><?= p__('home', 'View web') ?></a>
+				| <a href="<?= $app->get('url') ?>" target="_blank"><?= p__('home', 'View web') ?></a>
 			</p>
 			<p>
 				<a class="button button-bookmarklet" href="javascript:<?= $bookmarklet ?>"><?= p__('home', 'Bookmarklet') ?></a>

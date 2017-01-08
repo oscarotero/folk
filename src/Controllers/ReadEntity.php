@@ -16,7 +16,7 @@ class ReadEntity extends Entity
         $form['data']->val($app->getEntity($entityName)->read($id));
 
         //Render template
-        return $app['templates']->render('pages/read', [
+        return $app->get('templates')->render('pages/read', [
             'entityName' => $entityName,
             'form' => $form,
             'id' => $id,

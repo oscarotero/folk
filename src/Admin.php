@@ -22,10 +22,10 @@ class Admin extends App
     {
         parent::__construct(__DIR__, $uri);
 
-        $this->register(new Providers\Formats());
-        $this->register(new Providers\Middleware());
-        $this->register(new Providers\Router());
-        $this->register(new Providers\Templates());
+        $this->addServiceProvider(new Providers\Formats());
+        $this->addServiceProvider(new Providers\Middleware());
+        $this->addServiceProvider(new Providers\Router());
+        $this->addServiceProvider(new Providers\Templates());
     }
 
     /**
@@ -40,7 +40,7 @@ class Admin extends App
 
     public function getRoute(string $name, array $data = [], array $query = null): string
     {
-        return $this->getUri($this['router']->getGenerator()->generate($name, $data)).($query ? '?'.http_build_query($query) : '');
+        return $this->getUri($this->get('router')->getGenerator()->generate($name, $data)).($query ? '?'.http_build_query($query) : '');
     }
 
     /**

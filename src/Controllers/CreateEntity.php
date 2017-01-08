@@ -23,7 +23,7 @@ class CreateEntity extends Entity
             ]));
         }
 
-        echo $app['templates']->render('pages/insert', [
+        echo $app->get('templates')->render('pages/insert', [
                 'entityName' => $entityName,
                 'form' => $form
             ]);

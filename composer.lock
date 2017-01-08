@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6fccab8658d12b5ffeaeb0e84f8026e8",
-    "content-hash": "f0cec9f0cd3193dab2ab86366820a13f",
+    "hash": "6230ad8ab0f5a571c63e1f1a2bb9b309",
+    "content-hash": "7a41b305ef2a7b235cf0130909f5a12b",
     "packages": [
         {
             "name": "aura/router",
@@ -81,6 +81,37 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "time": "2014-12-30 15:22:37"
+        },
+        {
+            "name": "container-interop/service-provider",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/container-interop/service-provider.git",
+                "reference": "5cb38893b836edb00d3e1ace26c20ee1d29957cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/container-interop/service-provider/zipball/5cb38893b836edb00d3e1ace26c20ee1d29957cf",
+                "reference": "5cb38893b836edb00d3e1ace26c20ee1d29957cf",
+                "shasum": ""
+            },
+            "require": {
+                "container-interop/container-interop": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Interop\\Container\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Promoting container interoperability through standard service providers",
+            "homepage": "https://github.com/container-interop/service-provider",
+            "time": "2016-05-16 07:42:22"
         },
         {
             "name": "form-manager/form-manager",
@@ -1062,24 +1093,27 @@
         },
         {
             "name": "oscarotero/fol",
-            "version": "v1.0.0",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/fol.git",
-                "reference": "2d61f232bb06c0d42be495ab20c849b4c63e1daf"
+                "reference": "1807255060efe2570f67ee9651777eccd8c22981"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/fol/zipball/2d61f232bb06c0d42be495ab20c849b4c63e1daf",
-                "reference": "2d61f232bb06c0d42be495ab20c849b4c63e1daf",
+                "url": "https://api.github.com/repos/oscarotero/fol/zipball/1807255060efe2570f67ee9651777eccd8c22981",
+                "reference": "1807255060efe2570f67ee9651777eccd8c22981",
                 "shasum": ""
             },
             "require": {
-                "container-interop/container-interop": "*",
+                "container-interop/container-interop": "^1.0",
+                "container-interop/service-provider": "^0.3.0",
                 "php": "^7.0",
                 "psr/http-message": "^1.0"
             },
             "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "phpunit/phpunit": "^5.7",
                 "zendframework/zend-diactoros": "^1.3"
             },
             "type": "library",
@@ -1102,7 +1136,7 @@
             ],
             "description": "Base App class to build websites",
             "homepage": "https://github.com/fol-project/core",
-            "time": "2017-01-07 11:35:00"
+            "time": "2017-01-08 19:05:33"
         },
         {
             "name": "oscarotero/inline-svg",
