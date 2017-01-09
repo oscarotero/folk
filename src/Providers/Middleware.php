@@ -4,7 +4,7 @@ namespace Folk\Providers;
 
 use Fol\App;
 use Interop\Container\ServiceProvider;
-use Middlewares\Utils\Dispatcher;
+use Middleland\Dispatcher;
 use Middlewares;
 use Gettext\{Translator, Translations};
 

@@ -5,13 +5,15 @@ namespace Folk;
 use Fol\{App, NotFoundException};
 use Folk\Entities\EntityInterface;
 use Psr\Http\Message\{ServerRequestInterface, ResponseInterface, UriInterface};
+use Interop\Http\ServerMiddleware\MiddlewareInterface;
+use Interop\Http\ServerMiddleware\DelegateInterface;
 use Zend\Diactoros\Response;
 use Relay\RelayBuilder;
 
 /**
  * Main manager.
  */
-class Admin extends App
+class Admin extends App implements MiddlewareInterface
 {
     private $entities = [];
 
@@ -26,6 +28,19 @@ class Admin extends App
         $this->addServiceProvider(new Providers\Middleware());
         $this->addServiceProvider(new Providers\Router());
         $this->addServiceProvider(new Providers\Templates());
+    }
+
+    /**
+     * Use the app as a middleware component.
+     *
+     * @param ServerRequestInterface $request
+     * @param DelegateInterface      $delegate
+     *
+     * @return ResponseInterface
+     */
+    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
+    {
+        return $this->__invoke($request);
     }
 
     /**
