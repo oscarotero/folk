@@ -13,7 +13,7 @@ Demo: https://oscarotero.com/folk/demo/
 
 ## Requirements
 
-* PHP >= 5.5
+* PHP >= 7
 * Composer
 
 ## Installation
