@@ -167,9 +167,9 @@ use Folk\Admin;
 
 use Entities\Posts;
 
-//Create a Admin instance passing the admin uri:
+//Create a Admin instance passing the root path and the http uri:
 $uri = new Zend\Diactoros\Uri('http://my-site.com/admin');
-$admin = new Admin($uri);
+$admin = new Admin(__DIR__, $uri);
 
 //Set the pdo instance:
 $admin['pdo'] = new PDO('mysql:dbname=database;charset=UTF8');
