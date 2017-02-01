@@ -20,9 +20,9 @@ class Admin extends App implements MiddlewareInterface
     public $title = 'Folk';
     public $description = 'Universal CMS';
 
-    public function __construct(UriInterface $uri)
+    public function __construct($path, UriInterface $uri)
     {
-        parent::__construct(__DIR__, $uri);
+        parent::__construct($path, $uri);
 
         $this->addServiceProvider(new Providers\Formats());
         $this->addServiceProvider(new Providers\Middleware());
