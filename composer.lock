@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "13fad4b0036cc13507090bb443cecaf4",
-    "content-hash": "c95e522792fd9a3b75f77fd216eac093",
+    "hash": "6d80a53187d854ae41b46f51c5d38a66",
+    "content-hash": "b69871e90c466f12edcba033fd5d6424",
     "packages": [
         {
             "name": "aura/router",
@@ -759,16 +759,16 @@
         },
         {
             "name": "middlewares/error-handler",
-            "version": "v0.4.0",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/middlewares/error-handler.git",
-                "reference": "02a7ef0d131629673be606ac5b2940b6f24efc58"
+                "reference": "93872e9b049eb59c08479d0d8c3342a23c673cae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/error-handler/zipball/02a7ef0d131629673be606ac5b2940b6f24efc58",
-                "reference": "02a7ef0d131629673be606ac5b2940b6f24efc58",
+                "url": "https://api.github.com/repos/middlewares/error-handler/zipball/93872e9b049eb59c08479d0d8c3342a23c673cae",
+                "reference": "93872e9b049eb59c08479d0d8c3342a23c673cae",
                 "shasum": ""
             },
             "require": {
@@ -801,7 +801,7 @@
                 "psr-7",
                 "server"
             ],
-            "time": "2016-12-26 09:58:26"
+            "time": "2017-02-05 21:51:41"
         },
         {
             "name": "middlewares/filesystem",
