@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "72601294b995aabdef0a6f5f2a535a23",
-    "content-hash": "656c1f90954226c59c3072800f12af94",
+    "hash": "13fad4b0036cc13507090bb443cecaf4",
+    "content-hash": "c95e522792fd9a3b75f77fd216eac093",
     "packages": [
         {
             "name": "aura/router",
@@ -612,30 +612,33 @@
         },
         {
             "name": "middlewares/aura-router",
-            "version": "v0.3.0",
+            "version": "v0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/middlewares/aura-router.git",
-                "reference": "77065b6b13db5a5454171178643edc0bf1f917b5"
+                "reference": "4ba8144ff14f5729af6d9853359e64cc074b288d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/aura-router/zipball/77065b6b13db5a5454171178643edc0bf1f917b5",
-                "reference": "77065b6b13db5a5454171178643edc0bf1f917b5",
+                "url": "https://api.github.com/repos/middlewares/aura-router/zipball/4ba8144ff14f5729af6d9853359e64cc074b288d",
+                "reference": "4ba8144ff14f5729af6d9853359e64cc074b288d",
                 "shasum": ""
             },
             "require": {
                 "aura/router": "^3.0",
-                "container-interop/container-interop": "^1.1",
                 "http-interop/http-middleware": "^0.4",
-                "middlewares/utils": "~0.8",
+                "middlewares/utils": "~0.9",
                 "php": "^5.6 || ^7.0"
             },
             "require-dev": {
+                "container-interop/container-interop": "^1.1",
                 "friendsofphp/php-cs-fixer": "^2.0",
                 "phpunit/phpunit": "^5.5",
                 "squizlabs/php_codesniffer": "^2.7",
                 "zendframework/zend-diactoros": "^1.3"
+            },
+            "suggest": {
+                "container-interop/container-interop": "Can be used to automatically resolve route actions"
             },
             "type": "library",
             "autoload": {
@@ -658,7 +661,7 @@
                 "router",
                 "server"
             ],
-            "time": "2016-12-26 09:57:24"
+            "time": "2017-02-05 18:09:38"
         },
         {
             "name": "middlewares/base-path",
@@ -1045,16 +1048,16 @@
         },
         {
             "name": "middlewares/utils",
-            "version": "v0.8.0",
+            "version": "v0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/middlewares/utils.git",
-                "reference": "eed3bf9d3eeb478d2fecba443bfcdb51eb0a5c67"
+                "reference": "eafb1fea07663e7c2fb844e393291cbc9cf14d8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/middlewares/utils/zipball/eed3bf9d3eeb478d2fecba443bfcdb51eb0a5c67",
-                "reference": "eed3bf9d3eeb478d2fecba443bfcdb51eb0a5c67",
+                "url": "https://api.github.com/repos/middlewares/utils/zipball/eafb1fea07663e7c2fb844e393291cbc9cf14d8e",
+                "reference": "eafb1fea07663e7c2fb844e393291cbc9cf14d8e",
                 "shasum": ""
             },
             "require": {
@@ -1064,12 +1067,16 @@
                 "psr/http-message": "^1.0"
             },
             "require-dev": {
+                "container-interop/container-interop": "^1.1",
                 "friendsofphp/php-cs-fixer": "^2.0",
                 "guzzlehttp/psr7": "^1.3",
                 "phpunit/phpunit": "^5.5",
                 "slim/slim": "^3.5",
                 "squizlabs/php_codesniffer": "^2.7",
                 "zendframework/zend-diactoros": "^1.3"
+            },
+            "suggest": {
+                "container-interop/container-interop": "Can be used to automatically resolve callables"
             },
             "type": "library",
             "autoload": {
@@ -1089,7 +1096,7 @@
                 "psr-15",
                 "psr-7"
             ],
-            "time": "2016-12-22 19:25:17"
+            "time": "2017-02-05 17:31:13"
         },
         {
             "name": "oscarotero/fol",
@@ -1481,16 +1488,16 @@
     "packages-dev": [
         {
             "name": "consolidation/annotated-command",
-            "version": "2.3.3",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/annotated-command.git",
-                "reference": "c23ebfa81cb8c06dcea63afde98f444e818bceb2"
+                "reference": "80afffd362bd1cf83bef60db690a8c50d8390803"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/c23ebfa81cb8c06dcea63afde98f444e818bceb2",
-                "reference": "c23ebfa81cb8c06dcea63afde98f444e818bceb2",
+                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/80afffd362bd1cf83bef60db690a8c50d8390803",
+                "reference": "80afffd362bd1cf83bef60db690a8c50d8390803",
                 "shasum": ""
             },
             "require": {
@@ -1529,7 +1536,7 @@
                 }
             ],
             "description": "Initialize Symfony Console commands from annotated command class methods.",
-            "time": "2017-01-30 22:46:53"
+            "time": "2017-02-04 06:13:54"
         },
         {
             "name": "consolidation/log",

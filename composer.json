@@ -34,7 +34,7 @@
         "middlewares/negotiation": "^0.3",
         "middlewares/method-override": "^0.3",
         "middlewares/filesystem": "^0.3",
-        "middlewares/aura-router": "^0.3",
+        "middlewares/aura-router": "^0.4",
         "middlewares/http-authentication": "^0.3",
         "http-interop/http-middleware": "^0.4"
     },

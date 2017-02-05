@@ -6,9 +6,9 @@ use Folk;
 
 class Admin extends Folk\Admin
 {
-    public function __construct($url)
+    public function __construct($path, $url)
     {
-        parent::__construct($url);
+        parent::__construct($path, $url);
 
         $this->setEntities([
             Entities\Articles::class,
