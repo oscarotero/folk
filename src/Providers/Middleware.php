@@ -16,13 +16,9 @@ class Middleware implements ServiceProvider
             'middleware' => function (App $app): Dispatcher {
                 $middleware = [];
 
-                if ($app->has('users')) {
-                    $middleware[] = new Middlewares\DigestAuthentication($app->get('users'));
-                }
-
                 $middleware[] = new Middlewares\Expires();
                 $middleware[] = (new Middlewares\ErrorHandler())
-                    ->catchExceptions(false)
+                    ->catchExceptions(true)
                     ->statusCode(function ($code) {
                         return $code > 400 && $code < 600;
                     })
