@@ -28,7 +28,7 @@
         "oscarotero/inline-svg": "^2.0",
         "imagecow/imagecow": "^2.1",
         "middlewares/cache": "^0.3.0",
-        "middlewares/error-handler": "^0.5",
+        "middlewares/error-handler": "^0.6",
         "middlewares/base-path": "^0.3",
         "middlewares/trailing-slash": "^0.3",
         "middlewares/negotiation": "^0.3",
