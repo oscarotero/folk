@@ -27,8 +27,10 @@
 
 		<div class="footer-primary is-floating">
 			<button type="submit" class="button button-call"><?= p__('edit', 'Save') ?></button>
+			<?php if ($app->getEntityId($entityName) === null): ?>
 			<button type="submit" name="method-override" value="PUT" data-confirm="<?= p__('edit', 'You will save this data as a new row. Are you sure?') ?>" formaction="<?= $app->getRoute('create', ['entity' => $entityName]); ?>" class="button button-link"><?= p__('edit', 'Duplicate') ?></button>
 			<button type="submit" name="method-override" value="DELETE" data-confirm="<?= p__('edit', 'This action cannot be undo. Are you sure?') ?>" formaction="<?= $app->getRoute('delete', ['entity' => $entityName, 'id' => $id]); ?>" class="button button-link"><?= p__('edit', 'Delete') ?></button>
+			<?php endif ?>
 		</div>
 		<?= $form->closeHtml(); ?>
 

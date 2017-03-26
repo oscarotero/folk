@@ -76,9 +76,13 @@ BOOKMARKLET;
 
 	<div class="page-content">
 		<ul class="page-home-list menu-primary-options">
-			<?php foreach ($app->getAllEntities() as $name => $entity): ?>
+			<?php foreach ($app->getAllEntities() as list($entity, $id)): ?>
 			<li>
-				<a href="<?= $app->getRoute('search', ['entity' => $name]) ?>">
+				<?php if (isset($id)): ?>
+				<a href="<?= $app->getRoute('read', ['entity' => $entity->getName(), 'id' => $id]) ?>">
+				<?php else: ?>
+				<a href="<?= $app->getRoute('search', ['entity' => $entity->getName()]) ?>">
+				<?php endif ?>
 					<?= $this->icon($entity->icon ?: 'file/folder_open') ?>
 
 					<div>
@@ -91,6 +95,6 @@ BOOKMARKLET;
 				</a>
 			</li>
 			<?php endforeach ?>
-		</nav>
+		</ul>
 	</div>
 </div>

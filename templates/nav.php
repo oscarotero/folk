@@ -12,9 +12,16 @@
 			</a>
 		</li>
 
-		<?php foreach ($app->getAllEntities() as $n => $e): ?>
+		<?php foreach ($app->getAllEntities() as list($e, $id)): ?>
 		<li>
-			<a href="<?= $app->getRoute('search', ['entity' => $n]) ?>" title="<?= $e->description ?>"<?= ($entityName === $n) ? ' class="is-active"' : '' ?>>
+			<?php 
+			if ($id === null) {
+				$url = $app->getRoute('search', ['entity' => $e->getName()]);
+			} else {
+				$url = $app->getRoute('read', ['entity' => $e->getName(), 'id' => $id]);
+			}
+			?>
+			<a href="<?= $url ?>" title="<?= $e->description ?>"<?= ($entityName === $e->getName()) ? ' class="is-active"' : '' ?>>
 				<?= $this->icon($e->icon ?: 'file/folder_open') ?>
 				<strong><?= $e->title ?></strong>
 			</a>
@@ -29,7 +36,15 @@
 	</span>
 
 	<form action="<?= $app->getRoute('search', ['entity' => $entityName]) ?>" class="menu-secondary-search" data-module="search" method="get" tabindex="-1">
-		<a href="<?= $app->getRoute('search', ['entity' => $entityName]) ?>" title="<?= $entity->description ?>">
+		<?php 
+		if ($app->getEntityId($entityName) === null) {
+			$url = $app->getRoute('search', ['entity' => $entityName]);
+		} else {
+			$url = $app->getRoute('read', ['entity' => $entityName, 'id' => $id]);
+		}
+		?>
+
+		<a href="<?= $url ?>" title="<?= $entity->description ?>">
 			<?= $entity->title ?>
 		</a>
 

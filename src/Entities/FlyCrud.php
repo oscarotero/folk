@@ -17,7 +17,7 @@ abstract class FlyCrud extends AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    public function search(SearchQuery $search)
+    public function search(SearchQuery $search): array
     {
         $result = [];
 
@@ -43,7 +43,7 @@ abstract class FlyCrud extends AbstractEntity implements EntityInterface
     /**
      * {@inheritdoc}
      */
-    public function read($id)
+    public function read($id): array
     {
         return $this->getDirectory()->getDocument($id)->getArrayCopy();
     }

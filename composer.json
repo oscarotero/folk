@@ -51,6 +51,7 @@
         "symfony/yaml": "^3.0",
         "filp/whoops": "^2.1",
         "gettext/robo": "^3.0",
-        "consolidation/robo": "^1.0"
+        "consolidation/robo": "^1.0",
+        "fly-crud/fly-crud": "^2.0"
     }
 }

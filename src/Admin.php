@@ -4,6 +4,7 @@ namespace Folk;
 
 use Fol\{App, NotFoundException};
 use Folk\Entities\EntityInterface;
+use Folk\Entities\SingleEntityInterface;
 use Psr\Http\Message\{ServerRequestInterface, ResponseInterface, UriInterface};
 use Interop\Http\ServerMiddleware\MiddlewareInterface;
 use Interop\Http\ServerMiddleware\DelegateInterface;
@@ -78,8 +79,9 @@ class Admin extends App implements MiddlewareInterface
      * Add a new entity.
      *
      * @param EntityInterface $entity
+     * @param string|null $id
      */
-    public function addEntity(EntityInterface $entity)
+    public function addEntity(EntityInterface $entity, $id = null)
     {
         $name = $entity->getName();
 
@@ -87,7 +89,7 @@ class Admin extends App implements MiddlewareInterface
             $entity->title = ucfirst($name);
         }
 
-        $this->entities[$name] = $entity;
+        $this->entities[$name] = [$entity, $id];
     }
 
     /**
@@ -103,6 +105,20 @@ class Admin extends App implements MiddlewareInterface
     }
 
     /**
+     * Return the entity id.
+     *
+     * @param string $name
+     *
+     * @return mixed|null
+     */
+    public function getEntityId(string $name)
+    {
+        if ($this->hasEntity($name)) {
+            return $this->entities[$name][1];
+        }
+    }
+
+    /**
      * Return an entity.
      *
      * @param string $name
@@ -114,7 +130,7 @@ class Admin extends App implements MiddlewareInterface
     public function getEntity(string $name): EntityInterface
     {
         if ($this->hasEntity($name)) {
-            return $this->entities[$name];
+            return $this->entities[$name][0];
         }
 
         throw new NotFoundException(sprintf('Entity %s not found', $name));

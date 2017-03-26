@@ -15,5 +15,7 @@ class Admin extends Folk\Admin
             Entities\Items::class,
             Entities\Tags::class,
         ]);
+
+        $this->addEntity(new Entities\Config('config', $this), 'config');
     }
 }

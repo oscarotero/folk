@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "757e0a70b3218df0b8d697ba3f1dfb7c",
-    "content-hash": "2ca093c9f51453a53b72dda8fafe97d0",
+    "hash": "5cf344d7e80b8af900f4c73e78490ff7",
+    "content-hash": "59a6649cb9c492ba499f2ee5699d0453",
     "packages": [
         {
             "name": "aura/router",
@@ -1789,6 +1789,59 @@
                 "zf2"
             ],
             "time": "2017-03-07 09:04:45"
+        },
+        {
+            "name": "fly-crud/fly-crud",
+            "version": "v2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oscarotero/fly-crud.git",
+                "reference": "a8c9c7388a03f1b0c15796560f0bb080d8b16d4b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oscarotero/fly-crud/zipball/a8c9c7388a03f1b0c15796560f0bb080d8b16d4b",
+                "reference": "a8c9c7388a03f1b0c15796560f0bb080d8b16d4b",
+                "shasum": ""
+            },
+            "require": {
+                "league/flysystem": "^1.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8 || ^5.7",
+                "symfony/yaml": "^3.0"
+            },
+            "suggest": {
+                "symfony/yaml": "To use YamlRepository"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FlyCrud\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oscar Otero",
+                    "email": "oom@oscarotero.com",
+                    "homepage": "http://oscarotero.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple crud system build on top of flysystem",
+            "homepage": "https://github.com/oscarotero/fly-crud",
+            "keywords": [
+                "Flysystem",
+                "crud",
+                "json",
+                "yaml"
+            ],
+            "time": "2017-03-26 17:53:25"
         },
         {
             "name": "gettext/robo",
