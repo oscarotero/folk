@@ -14,7 +14,6 @@ class Select extends Fields\Select implements FormatInterface
         parent::__construct($options);
 
         $this->set('list', true);
-        $this->input->class('button');
         $this->wrapper->class('format is-responsive');
     }
 }

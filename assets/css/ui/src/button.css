@@ -6,26 +6,50 @@
 
 /* Generic button */
 .button {
+	transition: all 0.5s;
 	box-sizing: border-box;
-	display: inline-block;
-	padding: 0.3em 1em;
-	text-align: center;
+	display: flex;
+	align-items: center;
+	padding: 1em;
 	vertical-align: middle;
 	cursor: pointer;
-	border: 1px solid transparent;
+	border: none;
 	text-decoration: none;
 	font-style: normal;
 	white-space: nowrap;
 	margin: 0;
 	position: relative;
 	overflow: hidden;
-	color: black;
-	font-size: 1em;
+	font-size: 1rem;
 	line-height: 1.25;
 	max-width: 100%;
 	text-overflow: ellipsis;
-	background: none;
+	background: var(--btn-bg, none);
 	font-family: inherit;
+	outline: 0;
+	font-weight: var(--font-bold);
+	color: var(--btn-color, inherit);
+
+	svg {
+		flex: 0 0 24px;
+		height: 24px;
+		margin-right: 5px;
+	}
+
+	path {
+		fill: var(--btn-icon, currentColor);
+	}
+
+	&:hover,
+	&.is-active {
+		color: var(--btn-hcolor, white);
+		background: var(--btn-hbg, var(--bgdark));
+		text-decoration: none;
+
+		path {
+			fill: var(--btn-hicon, var(--color));
+		}
+	}
 
 	/* Buttons containing input[type="file"] */
 	input[type="file"] {

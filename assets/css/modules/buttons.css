@@ -1,15 +1,5 @@
 @import '../ui/src/button.css';
 
-.button {
-	transition: all 0.5s;
-
-  svg {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 0.5em;
-  }
-}
-
 .button.button-link {
   background: none;
   padding: 0.5em 1em;
@@ -98,13 +88,6 @@
       stroke: var(--white);
     }
   }
-}
-
-@media (max-width: 400px) {
-	.button {
-		display: block;
-		width: 100%;
-	}
 }
 
 /* Range */

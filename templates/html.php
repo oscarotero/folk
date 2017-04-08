@@ -27,7 +27,7 @@
         <script type="text/javascript" data-main="<?= $app->getUri('js/main.js')."?{$assetsVersion}" ?>" src="<?= $app->getUri('js/vendor/requirejs/require.js')."?{$assetsVersion}" ?>"></script>
     </head>
 
-    <body class="has-menu">
+    <body class="has-menu <?= $bodyClass ?? '' ?>">
         <?= $this->section('content'); ?>
     </body>
 </html>

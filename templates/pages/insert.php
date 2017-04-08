@@ -4,7 +4,7 @@
 
 <?php $this->insert('nav', ['entityName' => $entityName]) ?>
 
-<div class="page page-form">
+<div class="page page-form layout-content">
 	<div class="page-content">
 		<?php
         echo $form

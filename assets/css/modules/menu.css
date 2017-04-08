@@ -1,13 +1,7 @@
 /* Menu vertical */
 .menu-primary {
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100%;
-	background: color(var(--black) shade(20%));
-	z-index: 1;
-	width: 250px;
-	box-shadow: inset -5px 0 5px color(black a(0.2));
+	background: var(--bgdark);
+	box-shadow: inset -5px 0 5px var(--bgdark);
 
 	a {
 		border-left: solid 6px transparent;
@@ -15,45 +9,7 @@
 		&.is-active {
 			background: black;
 			border-left-color: var(--color);
-			color: white;
-
-			path {
-				fill: var(--color);
-			}
 		}
-	}
-	.menu-primary-logo {
-		color: white;
-		font-size: 1.8rem;
-
-		svg {
-			position: absolute;
-			left: 0.5rem;
-			top: 1.5rem;
-			transform: translateX(-200px);
-			transition: transform 0.5s;
-
-			line, circle {
-				stroke: var(--white);
-			}
-		}
-		small {
-			display: block;
-			font-size: .8rem;
-			font-weight: var(--font-normal);
-		}
-
-		&:hover {
-			padding-left: 40px;
-
-			svg {
-				transform: translateX(0);
-			}
-		}
-	}
-
-	ul {
-		margin: 0;
 	}
 }
 
@@ -61,49 +17,19 @@
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	color: var(--gray);
 
 	a {
-		color: var(--gray);
-		padding: 16px;
-		text-decoration: none;
-		transition: all 0.5s;
-		outline: 0;
-		display: flex;
-		font-weight: var(--font-bold);
-
-		h2, p {
-			margin: 0;
-		}
+		color: inherit;
 
 		h2 {
+			margin: 0;
 			font-size: 1rem;
 		}
 
 		p {
+			margin: 0;
 			font-size: .9rem;
-			font-weight: var(--font-normal);
-			color: var(--gray);
-		}
-		> div {
-			flex: 1 1 auto;
-		}
-		svg {
-			margin-right: 5px;
-			flex: 0 0 24px;
-		}
-		path {
-			fill: var(--gray);
-		}
-
-		&:hover {
-			background: color(black a(0.2));
-
-			strong, h2 {
-				color: var(--white);
-			}
-			path {
-				fill: var(--color);
-			}
 		}
 	}
 }
@@ -111,31 +37,12 @@
 /* Menú horizontal */
 .menu-secondary {
 	border-bottom: solid 1px black;
-	position: fixed;
-	width: 100%;
-	top: 0;
 	display: flex;
-	align-items: center;
 	z-index: 3;
 	background: var(--black);
 
-	.menu-btn {
-		cursor: pointer;
-		display: block;
-		padding: 1rem;
-		background: var(--black);
-
-		path {
-			fill: var(--white);
-		}
-
-		&:hover {
-			background: black;
-
-			path {
-				fill: var(--color);
-			}
-		}
+	.button {
+		height: 100%;
 	}
 
 	.menu-secondary-search {
@@ -143,7 +50,7 @@
 		align-items: center;
 		padding: 0;
 		flex-grow: 1;
-		color: var(--white);
+		color: white;
 		transition: background .3s, color .3s;
 
 		&.is-focused {
@@ -151,17 +58,20 @@
 			color: var(--black);
 		}
 
-		> a {
+		> label {
 			display: block;
 			font-weight: var(--font-bold);
-			text-decoration: none;
-			color: inherit;
 			padding: 1rem;
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
 
-			&:hover {
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			&:hover a {
 				text-decoration: underline;
 			}
 
@@ -187,16 +97,6 @@
 				color: var(--gray);
 			}
 		}
-		button {
-			padding: 1rem;
-			border: none;
-			cursor: pointer;
-			background: none;
-			color: inherit;
-		}
-		path {
-			fill: currentColor;
-		}
 	}
 
 	.menu-secondary-options {
@@ -204,27 +104,11 @@
 		margin: 0;
 		padding: 0;
 		display: flex;
-
-		a {
-			border-left: solid 1px black;
-			display: block;
-			padding: 1rem;
-
-			path {
-				fill: var(--white);
-			}
-
-			&:hover {
-				background: black;
-
-				path {
-					fill: var(--color);
-				}
-			}
-		}
+		border-left: solid 1px black;
 	}
 }
 
+/*
 @media (max-width: 1400px) {
 	body.has-menu {
 		.menu-secondary, .page {
@@ -256,3 +140,4 @@
 		z-index: 4;
 	}
 }
+*/

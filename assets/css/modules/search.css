@@ -3,22 +3,20 @@
 .tt-dropdown-menu {
 	width: 100%;
 	min-width: 230px;
-	background: var(--white);
+	background: white;
 	border-top: none;
 	box-sizing: border-box;
-	box-shadow: 0 1px 2px -1px color(black a(0.3));
+	box-shadow: 0 1px 2px -1px rgba(0,0,0,.3);
 	color: var(--black);
 	border-radius: 0 0 3px 3px;
-	margin-top: 3px;
-	padding: 3px;
+	margin-top: 5px;
+	padding: 0;
 
 	.tt-suggestion {
 		padding: 0.5em;
-		border-radius: 3px;
 
 		&.tt-cursor {
-			background-color: var(--color);
-			color: var(--white);
+			background-color: var(--bgdark);
 		}
 	}
 }

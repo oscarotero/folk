@@ -1,30 +1,25 @@
 @import "system-font.css";
 @import "normalize-css";
 
-:root {
-	--font: system, Helvetica, Arial, sans-serif;
+@custom-media --narrow (min-width: 20rem);
+@custom-media --medium (min-width: 40rem);
+@custom-media --from-medium (min-width: 40rem);
+@custom-media --to-medium (max-width: 39.999rem);
+
+html {
 	--font-normal: 300;
 	--font-bold: 500;
 	--black: #263541;
-	--gray: color(var(--black) tint(50));
-	--alightgray: color(var(--gray) a(0.15));
-	--lightgray: color(var(--gray) tint(85%));
-	--xlightgray: color(var(--gray) tint(93%));
-	--white: #FFF;
+	--gray: rgb(147,154,160);
+	--bgdark: rgba(0,0,0,.1);
+	--bglight: rgba(255,255,255,.1);
 	--color: #28CB8C;
-	--color-error: red;
+	--darkcolor: #1a9e6b;
+	--bgcolor: #28CB8C22;
+	--error: red;
 
-	/* Borders */
-	--border-thin: solid 1px var(--alightgray);
-	--border-bold: solid 6px var(--alightgray);
-}
-
-@custom-media --narrow (min-width: 20rem);
-@custom-media --medium (min-width: 40rem);
-
-html {
-	font-family: var(--font);
-	color: var(--white);
+	font-family: system, Helvetica, Arial, sans-serif;
+	color: white;
 	background: var(--black);
 	font-weight: var(--font-normal);
 }
@@ -32,24 +27,22 @@ html {
 body {
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
 }
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-.logo {
-	font-weight: normal;
-	font-family: Georgia, Times, sans-serif;
-	letter-spacing: -0.02em;
-}
-
 h1, h2, h3, h4, h5, h6, strong {
 	font-weight: var(--font-bold);
 }
+p, li {
+	font-weight: var(--font-normal);
+}
 
 ::selection {
-	background: color(var(--black) a(0.2));
+	background: var(--bgdark);
 }
 
 /* Modules */
@@ -65,6 +58,7 @@ h1, h2, h3, h4, h5, h6, strong {
 @import "modules/progress.css";
 @import "modules/notification.css";
 @import "modules/media.css";
+@import "modules/layout.css";
 
 /* pages */
 @import "pages/home.css";
@@ -72,35 +66,3 @@ h1, h2, h3, h4, h5, h6, strong {
 @import "pages/form.css";
 @import "pages/list.css";
 @import "pages/error.css";
-
-
-.ia-12 {
-	line, circle {
-		stroke: var(--gray);
-		stroke-width: 2px;
-	}
-}
-:hover > .ia-12 {
-	line, circle {
-		stroke-width: 4px;
-	}
-}
-
-.home-header {
-	text-align: center;
-	padding: 6em 0;
-	border-bottom: var(--border-thin);
-	margin-bottom: 1em;
-
-	h1 {
-		font-size: 3em;
-		margin: 0;
-	}
-}
-.page {
-	box-sizing: border-box;
-	min-height: 100vh;
-	position: relative;
-	z-index: 2;
-	background: var(--black);
-}

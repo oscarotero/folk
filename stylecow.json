@@ -6,26 +6,22 @@
         }
     ],
     "support": {
-        "explorer": 11,
-        "firefox": 30,
-        "chrome": 35,
-        "safari": 6,
-        "opera": 22,
-        "android": 4,
-        "ios": 6
+        "explorer": false,
+        "firefox": 52,
+        "chrome": 57,
+        "safari": 10.1,
+        "opera": 44,
+        "android": false,
+        "ios": 10.3
     },
     "plugins": [
         "bower-loader",
-        "color",
         "custom-media",
         "fixes",
-        "flex",
         "import",
         "matches",
         "nested-rules",
-        "prefixes",
-        "rem",
-        "variables"
+        "prefixes"
     ],
     "code": "minify",
     "map": "file"

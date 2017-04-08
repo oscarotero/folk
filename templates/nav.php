@@ -1,6 +1,6 @@
 <?php $entity = $app->getEntity($entityName); ?>
 
-<nav role="navigation" class="menu-primary" id="main-menu">
+<nav role="navigation" class="menu-primary layout-menu" id="main-menu">
 	<ul class="menu-primary-options">
 		<li>
 			<a href="<?= $app->getRoute('index'); ?>" class="menu-primary-logo">
@@ -21,7 +21,7 @@
 				$url = $app->getRoute('read', ['entity' => $e->getName(), 'id' => $id]);
 			}
 			?>
-			<a href="<?= $url ?>" title="<?= $e->description ?>"<?= ($entityName === $e->getName()) ? ' class="is-active"' : '' ?>>
+			<a href="<?= $url ?>" title="<?= $e->description ?>" class="button <?= ($entityName === $e->getName()) ? 'is-active' : '' ?>">
 				<?= $this->icon($e->icon ?: 'file/folder_open') ?>
 				<strong><?= $e->title ?></strong>
 			</a>
@@ -30,8 +30,8 @@
 	</ul>
 </nav>
 
-<nav role="navigation" class="menu-secondary">
-	<span class="menu-btn" id="menu-btn">
+<nav role="navigation" class="menu-secondary layout-actions">
+	<span class="button menu-btn" id="menu-btn">
 		<?= $this->icon('navigation/menu'); ?>
 	</span>
 
@@ -44,20 +44,22 @@
 		}
 		?>
 
-		<a href="<?= $url ?>" title="<?= $entity->description ?>">
-			<?= $entity->title ?>
-		</a>
+		<label for="search-entity">
+			<a href="<?= $url ?>" title="<?= $entity->description ?>">
+				<?= $entity->title ?>
+			</a>
+		</label>
 
 		<input id="search-entity" name="query" type="search" placeholder="<?= $placeholder ?? p__('search', 'Search %s...', strtolower($entity->title)) ?>" value="<?= isset($search) ? $search->buildQuery() : ''; ?>">
 		<input type="hidden" name="page" value="1">
-		<button type="submit">
+		<button type="submit" class="button">
 			<?= $this->icon('action/search'); ?>
 		</button>
 	</form>
 
 	<ul class="menu-secondary-options">
 		<li>
-			<a href="<?= $app->getRoute('insert', ['entity' => $entityName]) ?>">
+			<a href="<?= $app->getRoute('insert', ['entity' => $entityName]) ?>" class="button">
 				<?= $this->icon('content/add'); ?>
 			</a>
 		</li>

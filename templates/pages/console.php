@@ -2,7 +2,7 @@
 $this->layout('html');
 ?>
 
-<div class="page page-console">
+<div class="page page-console layout-content">
 	<form class="console" method="post" action="<?= $app->getRoute('console') ?>" data-module="console">
 		<pre class="console-output"></pre>
 

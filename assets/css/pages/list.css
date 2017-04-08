@@ -1,11 +1,12 @@
-.page-list {
-	padding: 5rem 1rem;
-	overflow-x: auto;
+.pageSearch-list {
+	padding-top: 1rem;
 }
-.page-list-table {
+
+.pageSearch-table {
 	min-width: 100%;
 	margin: 0;
 	text-align: left;
+	background: white;
 
 	thead {
 		th {
@@ -13,9 +14,10 @@
 			vertical-align: bottom;
 			color: var(--gray);
 			line-height: 1.1;
+			background: var(--black);
 
 			&.is-sorted a {
-				background: color(var(--black) blend(var(--color) 10%));
+				background: var(--bgdark);
 				color: white;
 			}
 		}
@@ -39,18 +41,14 @@
 		}
 		tr + tr {
 			th, td {
-				border-top: dashed 1px color(var(--black) a(.15));
+				border-top: dotted 1px var(--bgdark);
 			}
 		}
 		td {
-			padding: 1em;
-
-			&:last-child {
-				border-right: var(--border-thin);
-			}
+			padding: 1rem;
 
 			&.is-sorted {
-				background: var(--lightgray);
+				background: var(--bgdark);
 			}
 		}
 		th {
@@ -60,11 +58,14 @@
 			text-align: center;
 			padding: 1em;
 			border-left: var(--border-thin);
+			--btn-bg: var(--color);
+			--btn-color: white;
+			--btn-hbg: var(--darkcolor);
 
 			.button {
-				min-width: 0;
-				display: block;
+				justify-content: center;
 				padding: 0.5em 1em;
+				border-radius: 3px;
 			}
 		}
 		dl {
@@ -93,14 +94,6 @@
 			color: var(--gray);
 		}
 
-		a {
-			color: inherit;
-			text-decoration: none;
-
-			&:hover {
-				text-decoration: underline;
-			}
-		}
 		h1, h2, h3, h4, h5, h6, p, ul, ol {
 			margin: .3em 0;
 		}
@@ -120,11 +113,23 @@
 		cursor: context-menu;
 	}
 }
-.page-list-noresults {
-	padding: 2em;
+.pageSearch-load {
+	padding: 1rem;
 	text-align: center;
-	color: var(--gray);
+	display: flex;
+	justify-content: center;
+	--btn-bg: var(--color);
+	--btn-hbg: var(--darkcolor);
+	.button {
+		border-radius: 2px;
+	}
+}
+.pageSearch-noresults {
+	padding: 2rem;
+	text-align: center;
+	color: var(--bglight);
 	font-size: 4rem;
 	letter-spacing: -0.03em;
 	font-weight: var(--font-normal);
+	align-self: center;
 }
