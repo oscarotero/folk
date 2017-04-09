@@ -3,7 +3,7 @@
 	background: var(--bgdark);
 	box-shadow: inset -5px 0 5px var(--bgdark);
 
-	a {
+	.button {
 		border-left: solid 6px transparent;
 
 		&.is-active {
@@ -18,10 +18,10 @@
 	padding: 0;
 	margin: 0;
 	color: var(--gray);
+	--btn-hcolor: white;
+	--borderRadius: 0;
 
 	a {
-		color: inherit;
-
 		h2 {
 			margin: 0;
 			font-size: 1rem;

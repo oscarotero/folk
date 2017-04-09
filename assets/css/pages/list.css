@@ -26,7 +26,7 @@
 			text-decoration: none;
 			display: block;
 			padding: 1em;
-			border-radius: 3px 3px 0 0;
+			border-radius: var(--borderRadius) var(--borderRadius) 0 0;
 
 			&:hover {
 				text-decoration: underline;
@@ -56,8 +56,7 @@
 			font-weight: var(--font-normal);
 			font-size: 0.9em;
 			text-align: center;
-			padding: 1em;
-			border-left: var(--border-thin);
+			padding: 1rem 1rem 1rem 2rem;
 			--btn-bg: var(--color);
 			--btn-color: white;
 			--btn-hbg: var(--darkcolor);
@@ -65,7 +64,6 @@
 			.button {
 				justify-content: center;
 				padding: 0.5em 1em;
-				border-radius: 3px;
 			}
 		}
 		dl {
@@ -120,9 +118,6 @@
 	justify-content: center;
 	--btn-bg: var(--color);
 	--btn-hbg: var(--darkcolor);
-	.button {
-		border-radius: 2px;
-	}
 }
 .pageSearch-noresults {
 	padding: 2rem;

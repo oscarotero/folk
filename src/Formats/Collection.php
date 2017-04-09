@@ -26,8 +26,8 @@ class Collection extends Fields\Collection implements FormatInterface
             return parent::html($html);
         }
 
-        $addBtn = '<div class="button-separator"><button type="button" class="format-child-add button">Add</button></div>';
-        $toolbar = sprintf('<div class="button-toolbar"><div>%s</div></div>', $this->getToolbarButtons());
+        $addBtn = '<div class="format-separator"><button type="button" class="format-child-add button">Add</button></div>';
+        $toolbar = sprintf('<div class="format-toolbar"><div>%s</div></div>', $this->getToolbarButtons());
         $html = '<script type="js-template">'.$this->getTemplate()->toHtml("{$addBtn} {$toolbar}").'</script>';
 
         foreach ($this as $child) {

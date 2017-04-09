@@ -24,7 +24,7 @@ define([
             if (config.directory) {
                 config.limit = parseInt(config.limit);
 
-                var $history = $('<span class="button button-normal">' + i18n.__('Previously uploaded...', config.limit) + '</span>')
+                var $history = $('<span class="button is-simple">' + i18n.__('Previously uploaded...', config.limit) + '</span>')
                     .appendTo($extra)
                     .click(function () {
                         $.getJSON(baseUrl, {
@@ -44,7 +44,7 @@ define([
                             });
 
                             if ($thumbs.children().length === config.limit) {
-                                $('<span class="button button-normal">' + i18n.__('Load %d more...', config.limit) + '</span>')
+                                $('<span class="button">' + i18n.__('Load %d more...', config.limit) + '</span>')
                                     .insertAfter($thumbs)
                                     .on('click', function (e) {
                                         var $this = $(this);

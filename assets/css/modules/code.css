@@ -2,7 +2,7 @@
 @import "../../../bower_components/codemirror/lib/codemirror.css";
 
 .CodeMirror {
-	border: var(--border-thin);
-	border-radius: 3px;
+	border: solid 1px var(--bgdark);
+	border-radius: var(--borderRadius);
 	height: auto;
 }

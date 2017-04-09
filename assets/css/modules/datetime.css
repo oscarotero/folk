@@ -1,9 +1,9 @@
 @import "datetimepicker";
 
 .xdsoft_datetimepicker {
-	border: solid 1px color(var(--gray) a(0.3));
-	font-family: var(--font);
-	box-shadow: 0 5px 10px -5px color(var(--gray) a(.5));
+	border: solid 1px var(--bgdark);
+	font-family: system, Helvetica, Arial, sans-serif;
+	box-shadow: 0 5px 10px -5px var(--bgdark);
 
 	.xdsoft_label {
 		white-space: nowrap;
@@ -16,7 +16,7 @@
 	.xdsoft_timepicker .xdsoft_time_box .xdsoft_time {
 		border: solid 1px transparent !important;
 		color: var(--black);
-		background: var(--xlightgray);
+		background: var(--lightgray);
 
 		&.xdsoft_current {
 			background: var(--color);
@@ -26,7 +26,7 @@
 		&:hover {
 			border-color: var(--color) !important;
 			color: var(--black) !important;
-			background: var(--xlightgray) !important;
+			background: var(--lightgray) !important;
 		}
 	}
 	.xdsoft_calendar th {
@@ -37,7 +37,7 @@
 		border-collapse: separate;
 	}
 	.xdsoft_datepicker + .xdsoft_timepicker {
-		border-left: solid 1px color(var(--gray) a(0.3));
+		border-left: solid 1px var(--bgdark);
 	}
 	.xdsoft_timepicker .xdsoft_time_box {
 		border: none;

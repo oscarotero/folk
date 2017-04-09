@@ -11,12 +11,15 @@ html {
 	--font-bold: 500;
 	--black: #263541;
 	--gray: rgb(147,154,160);
-	--bgdark: rgba(0,0,0,.1);
+	--bgdark: rgba(0,0,0,.15);
+	--bgxdark: rgba(0,0,0,.05);
 	--bglight: rgba(255,255,255,.1);
+	--lightgray: #F8F8F8;
 	--color: #28CB8C;
 	--darkcolor: #1a9e6b;
 	--bgcolor: #28CB8C22;
 	--error: red;
+	--borderRadius: 2px;
 
 	font-family: system, Helvetica, Arial, sans-serif;
 	color: white;
@@ -48,6 +51,7 @@ p, li {
 /* Modules */
 @import "modules/menu.css";
 @import "modules/footer.css";
+@import "modules/format.css";
 @import "modules/buttons.css";
 @import "modules/search.css";
 @import "modules/popup.css";

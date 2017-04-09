@@ -82,7 +82,7 @@ define([
 
             $('<figure class="media ui-preview"></figure>').appendTo($extra);
 
-            $('<span class="button button-normal ui-edit">' + i18n.__('Insert value as text') + '</span>')
+            $('<span class="button is-simple ui-edit">' + i18n.__('Insert value as text') + '</span>')
                 .appendTo($extra)
                 .click(function () {
                     var value = window.prompt(i18n.__('New value (empty to remove)'), $hidden.val());

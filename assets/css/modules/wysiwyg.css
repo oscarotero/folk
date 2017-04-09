@@ -12,8 +12,7 @@
 		box-shadow: none;
 	}
 	.cke_contents {
-		border: var(--border-thin);
-		border-radius: 3px;
+		border: none;
 	}
 	.cke_bottom {
 		border-top: none;

@@ -36,8 +36,8 @@ class CollectionMultiple extends Fields\CollectionMultiple implements FormatInte
             ->class('format-child-add button')
             ->toHtml();
 
-        $addBtn = '<div class="button-separator">'.$addBtn.'</div>';
-        $toolbar = sprintf('<div class="button-toolbar"><div>%s</div></div>', $this->getToolbarButtons());
+        $addBtn = '<div class="format-separator">'.$addBtn.'</div>';
+        $toolbar = sprintf('<div class="format-toolbar"><div>%s</div></div>', $this->getToolbarButtons());
 
         foreach ($templates as $type => $tmpl) {
             $html .= '<script type="js-template" data-type="'.$type.'">'.$tmpl->toHtml("{$addBtn} {$toolbar}").'</script>';

@@ -1,58 +1,5 @@
 @import '../ui/src/button.css';
 
-.button.button-link {
-  background: none;
-  padding: 0.5em 1em;
-  color: var(--gray);
-  font-weight: var(--font-normal);
-  border-radius: 3px;
-
-  svg {
-    margin-left: 0;
-  }
-  path {
-    fill: currentColor;
-  }
-
-  &:hover {
-    color: var(--black);
-    background-color: var(--lightgray);
-  }
-}
-
-.button.button-bookmarklet {
-  background: var(--gray);
-  padding: 0.3em 0.5em;
-  font-size: 0.8rem;
-  font-weight: var(--font-normal);
-  display: inline-block;
-  width: auto;
-  border-radius: 1rem;
-
-  &:hover {
-    color: var(--black);
-    background-color: var(--lightgray);
-  }
-}
-
-.button.button-normal {
-	background: var(--xlightgray);
-	padding: 0.5em 1em;
-	min-width: 150px;
-  color: var(--black);
-  border: var(--border-thin);
-  border-radius: 3px;
-  margin: .3em .3em 0 0;
-  font-size: 0.8rem;
-
-  &:hover {
-		background-color: var(--lightgray);
-
-    line {
-      stroke: var(--white);
-    }
-	}
-}
 
 .button.button-call {
   background: var(--color);

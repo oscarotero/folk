@@ -8,7 +8,7 @@
 	box-sizing: border-box;
 	box-shadow: 0 1px 2px -1px rgba(0,0,0,.3);
 	color: var(--black);
-	border-radius: 0 0 3px 3px;
+	border-radius: 0 0 var(--borderRadius) var(--borderRadius);
 	margin-top: 5px;
 	padding: 0;
 
@@ -25,10 +25,11 @@
 @import "selectize";
 
 .selectize-input {
+	padding: 0.7rem 0.7rem 0.6rem !important;
+	background: var(--lightgray);
+	box-shadow: none;
+	border-radius: 0;
 	border: none;
-	border-bottom: solid 2px white;
-	padding: 0.3em 0 !important;
-	box-shadow: 0 1px 0 var(--bgdark);
 	font-size: inherit;
 	line-height: inherit;
 	color: inherit;
@@ -41,17 +42,16 @@
 	}
 
 	&.focus {
-		border-color: var(--color);
 		box-shadow: none;
 	}
 }
 .selectize-control.multi .selectize-input > div {
 	background: var(--bgdark) !important;
-	border-radius: 2px;
+	border-radius: var(--borderRadius);
 	padding: 0.3em 0.6em;
 }
 .selectize-control.single .selectize-input.input-active {
-	background: color(var(--gray) tint(93%));
+	background: var(--lightgray);
 	display: block;
 }
 .selectize-dropdown {
@@ -59,7 +59,6 @@
 	line-height: inherit;
 	color: var(--gray);
 	background: white;
-	border-top: solid 1px var(--color);
 
 	.active {
 		color: var(--black);

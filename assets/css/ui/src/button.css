@@ -29,6 +29,14 @@
 	outline: 0;
 	font-weight: var(--font-bold);
 	color: var(--btn-color, inherit);
+	flex-shrink: 0;
+	border-radius: var(--borderRadius);
+
+	&.is-simple {
+		display: inline-flex;
+		font-weight: var(--font-normal);
+		font-size: .8rem;
+	}
 
 	svg {
 		flex: 0 0 24px;
@@ -42,8 +50,8 @@
 
 	&:hover,
 	&.is-active {
-		color: var(--btn-hcolor, white);
-		background: var(--btn-hbg, var(--bgdark));
+		color: var(--btn-hcolor, inherit);
+		background-color: var(--btn-hbg, var(--bgdark));
 		text-decoration: none;
 
 		path {
@@ -63,10 +71,15 @@
 	/* Buttons with select */
 	&select {
 		line-height: 1;
-		padding-right: 0.7em;
-		padding-left: 0.7em;
+		padding-right: 2rem;
 		outline: none;
 		text-align: left;
+		box-shadow: none;
+		border: none;
+		appearance: none;
+		background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="rgb(147,154,160)" d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/></svg>');
+		background-repeat: no-repeat;
+		background-position: center right .5rem;
 
 		option {
 			padding: 0 0.5em;
