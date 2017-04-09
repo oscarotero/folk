@@ -4,7 +4,7 @@
 	<input type="hidden" name="<?= $name ?>" value="<?= $this->e($value) ?>">
 	<?php endforeach ?>
 	<?php endif ?>
-	<button class="button button-link">
+	<button class="button">
 		<?php if (isset($icon)): ?>
 		<?= $this->icon($icon) ?>
 		<?php endif ?>

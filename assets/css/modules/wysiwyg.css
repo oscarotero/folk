@@ -22,7 +22,7 @@
 		width: auto; /* para que non quede cortado o texto */
 	}
 	.CodeMirror-sizer {
-		background: var(--xlightgray);
+		background: #F8F8F8;
 	}
 	.CodeMirror-gutters {
 		background: white;
