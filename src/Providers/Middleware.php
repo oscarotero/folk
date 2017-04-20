@@ -17,13 +17,6 @@ class Middleware implements ServiceProvider
                 $middleware = [];
 
                 $middleware[] = new Middlewares\Expires();
-                $middleware[] = (new Middlewares\ErrorHandler())
-                    ->catchExceptions(true)
-                    ->statusCode(function ($code) {
-                        return $code > 400 && $code < 600;
-                    })
-                    ->arguments($app);
-
                 $middleware[] = new Middlewares\BasePath($app->getUri()->getPath());
                 $middleware[] = new Middlewares\TrailingSlash();
                 $middleware[] = new Middlewares\ContentType();
@@ -52,7 +45,8 @@ class Middleware implements ServiceProvider
                 $middleware[] = (new Middlewares\Reader(dirname(dirname(__DIR__)).'/assets'))
                     ->continueOnError();
 
-                $middleware[] = (new Middlewares\AuraRouter($app->get('router')))
+                $middleware[] = new Middlewares\AuraRouter($app->get('router'));
+                $middleware[] = (new Middlewares\RequestHandler())
                     ->arguments($app);
 
                 return new Dispatcher($middleware);
