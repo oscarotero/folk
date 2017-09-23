@@ -52,7 +52,7 @@ class Articles extends Yaml
             [
                 'label' => 'Reload',
                 'target' => '_blank',
-                'icon' => 'editor/insert_drive_file',
+                'icon' => 'reload',
                 'url' => $this->admin->getRoute('read', ['entity' => $this->name, 'id' => $id])
             ],[
                 'label' => 'Insert new article',

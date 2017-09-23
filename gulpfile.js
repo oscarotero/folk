@@ -76,9 +76,9 @@ gulp.task('img', function (done) {
     del.sync(path.join('assets/icons'));
 
     gulp
-        .src(path.join(bower, 'material-design-icons/**/production/*_24px.svg'))
+        .src(path.join(bower, 'mdi-svg/svg/*.svg'))
         .pipe(gulp.dest('assets/icons', done))
         .on('end', done);
 });
 
-gulp.task('default', ['css', 'js']);
+gulp.task('default', ['css', 'js', 'img']);

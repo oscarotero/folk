@@ -83,7 +83,7 @@ BOOKMARKLET;
 				<?php else: ?>
 				<a href="<?= $app->getRoute('search', ['entity' => $entity->getName()]) ?>">
 				<?php endif ?>
-					<?= $this->icon($entity->icon ?: 'file/folder_open') ?>
+					<?= $this->icon($entity->icon ?: 'folder-open') ?>
 
 					<div>
 						<h2><?= $entity->title; ?></h2>

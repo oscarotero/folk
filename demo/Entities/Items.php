@@ -10,7 +10,7 @@ use Folk\Formats\FormatFactory;
 
 class Items extends Json
 {
-    public $icon = 'editor/insert_drive_file';
+    public $icon = 'file';
     public $title = 'Items';
     public $description = 'Random items';
 

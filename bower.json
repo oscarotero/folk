@@ -12,11 +12,11 @@
     "handsontable": "^0.29.1",
     "ckeditor": "^4.5.9",
     "requirejs": "^2.2.0",
-    "material-design-icons": "^2.2.3",
     "datetimepicker": "^2.5.4",
     "notifyjs": "^0.4.2",
     "requirejs-plugins": "^1.0.3",
     "gettext-translator": "^1.0.0",
-    "CKEditor-WordCount-Plugin": "w8tcha/CKEditor-WordCount-Plugin"
+    "CKEditor-WordCount-Plugin": "w8tcha/CKEditor-WordCount-Plugin",
+    "mdi-svg": "^2.0.46"
   }
 }

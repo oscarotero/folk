@@ -5,7 +5,7 @@
 		<li>
 			<a href="<?= $app->getRoute('index'); ?>" class="menu-primary-logo">
 				<div>
-					<?= $this->icon('navigation/chevron_left'); ?>
+					<?= $this->icon('chevron-left'); ?>
 					<?= $app->title ?>
 					<small><?= $app->description ?></small>
 				</div>
@@ -22,7 +22,7 @@
 			}
 			?>
 			<a href="<?= $url ?>" title="<?= $e->description ?>"<?= ($entityName === $e->getName()) ? ' class="is-active"' : '' ?>>
-				<?= $this->icon($e->icon ?: 'file/folder_open') ?>
+				<?= $this->icon($e->icon ?: 'folder-open') ?>
 				<strong><?= $e->title ?></strong>
 			</a>
 		</li>
@@ -32,7 +32,7 @@
 
 <nav role="navigation" class="menu-secondary">
 	<span class="menu-btn" id="menu-btn">
-		<?= $this->icon('navigation/menu'); ?>
+		<?= $this->icon('menu'); ?>
 	</span>
 
 	<form action="<?= $app->getRoute('search', ['entity' => $entityName]) ?>" class="menu-secondary-search" data-module="search" method="get" tabindex="-1">
@@ -51,14 +51,14 @@
 		<input id="search-entity" name="query" type="search" placeholder="<?= $placeholder ?? p__('search', 'Search %s...', strtolower($entity->title)) ?>" value="<?= isset($search) ? $search->buildQuery() : ''; ?>">
 		<input type="hidden" name="page" value="1">
 		<button type="submit">
-			<?= $this->icon('action/search'); ?>
+			<?= $this->icon('magnify'); ?>
 		</button>
 	</form>
 
 	<ul class="menu-secondary-options">
 		<li>
 			<a href="<?= $app->getRoute('insert', ['entity' => $entityName]) ?>">
-				<?= $this->icon('content/add'); ?>
+				<?= $this->icon('plus'); ?>
 			</a>
 		</li>
 	</ul>
