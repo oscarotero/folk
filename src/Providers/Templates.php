@@ -3,13 +3,13 @@
 namespace Folk\Providers;
 
 use Fol\App;
-use Interop\Container\ServiceProvider;
+use Interop\Container\ServiceProviderInterface;
 use League\Plates\Engine;
 use InlineSvg\Collection;
 
-class Templates implements ServiceProvider
+class Templates implements ServiceProviderInterface
 {
-    public function getServices()
+    public function getFactories()
     {
         return [
             'templates' => function (App $app): Engine {
@@ -27,5 +27,9 @@ class Templates implements ServiceProvider
                 return $templates;
             }
         ];
+    }
+
+    public function getExtensions() {
+        return [];
     }
 }

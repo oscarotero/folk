@@ -3,17 +3,21 @@
 namespace Folk\Providers;
 
 use Fol\App;
-use Interop\Container\ServiceProvider;
+use Interop\Container\ServiceProviderInterface;
 use Folk\Formats\FormatFactory;
 
-class Formats implements ServiceProvider
+class Formats implements ServiceProviderInterface
 {
-    public function getServices()
+    public function getFactories()
     {
         return [
         	'builder' => function (App $app): FormatFactory {
             	return new FormatFactory($app);
         	}
         ];
+    }
+
+    public function getExtensions() {
+    	return [];
     }
 }

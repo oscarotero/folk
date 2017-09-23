@@ -3,12 +3,12 @@
 namespace Folk\Providers;
 
 use Fol\App;
-use Interop\Container\ServiceProvider;
+use Interop\Container\ServiceProviderInterface;
 use Aura\Router\RouterContainer;
 
-class Router implements ServiceProvider
+class Router implements ServiceProviderInterface
 {
-    public function getServices()
+    public function getFactories()
     {
         return [
             'router' => function (App $app): RouterContainer {
@@ -30,5 +30,9 @@ class Router implements ServiceProvider
                 return $router;
             }
         ];
+    }
+
+    public function getExtensions() {
+        return [];
     }
 }

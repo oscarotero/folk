@@ -6,15 +6,14 @@ use Fol\{App, NotFoundException};
 use Folk\Entities\EntityInterface;
 use Folk\Entities\SingleEntityInterface;
 use Psr\Http\Message\{ServerRequestInterface, ResponseInterface, UriInterface};
-use Interop\Http\ServerMiddleware\MiddlewareInterface;
-use Interop\Http\ServerMiddleware\DelegateInterface;
+use Interop\Http\Server\RequestHandlerInterface;
 use Zend\Diactoros\Response;
 use Relay\RelayBuilder;
 
 /**
  * Main manager.
  */
-class Admin extends App implements MiddlewareInterface
+class Admin extends App implements RequestHandlerInterface
 {
     private $entities = [];
 
@@ -32,22 +31,11 @@ class Admin extends App implements MiddlewareInterface
     }
 
     /**
-     * Use the app as a middleware component.
-     *
-     * @param ServerRequestInterface $request
-     * @param DelegateInterface      $delegate
-     *
+     * {@inheritdoc}
+     * 
      * @return ResponseInterface
      */
-    public function process(ServerRequestInterface $request, DelegateInterface $delegate)
-    {
-        return $this->__invoke($request);
-    }
-
-    /**
-     * @return ResponseInterface
-     */
-    public function __invoke(ServerRequestInterface $request): ResponseInterface
+    public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $dispatcher = $this->get('middleware');
 

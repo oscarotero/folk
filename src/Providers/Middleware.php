@@ -3,14 +3,14 @@
 namespace Folk\Providers;
 
 use Fol\App;
-use Interop\Container\ServiceProvider;
+use Interop\Container\ServiceProviderInterface;
 use Middleland\Dispatcher;
 use Middlewares;
 use Gettext\{Translator, Translations};
 
-class Middleware implements ServiceProvider
+class Middleware implements ServiceProviderInterface
 {
-    public function getServices()
+    public function getFactories()
     {
         return [
             'middleware' => function (App $app): Dispatcher {
@@ -30,7 +30,7 @@ class Middleware implements ServiceProvider
 
                     $app->get('templates')->addData(['language' => $language]);
 
-                    $response = $next->process($request);
+                    $response = $next->handle($request);
 
                     if ($prev) {
                         $prev->register();
@@ -52,5 +52,9 @@ class Middleware implements ServiceProvider
                 return new Dispatcher($middleware);
             }
         ];
+    }
+
+    public function getExtensions() {
+        return [];
     }
 }
