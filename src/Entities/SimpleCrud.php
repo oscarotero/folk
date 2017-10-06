@@ -116,7 +116,7 @@ abstract class SimpleCrud extends AbstractEntity implements EntityInterface
         $row = $table[$id];
 
         if (empty($row)) {
-            return;
+            return [];
         }
 
         $relations = $table->getScheme()['relations'];
