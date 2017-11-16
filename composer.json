@@ -34,7 +34,7 @@
         "middlewares/method-override": "*",
         "middlewares/filesystem": "*",
         "middlewares/aura-router": "*",
-        "http-interop/http-middleware": "^0.5",
+        "http-interop/http-server-middleware": "^1.0",
         "middlewares/request-handler": "*"
     },
     "autoload": {
