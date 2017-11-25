@@ -118,6 +118,8 @@
 	}
 	.is-editable {
 		cursor: context-menu;
+		min-width: 1em;
+		min-height: 1em;
 	}
 }
 .page-list-noresults {
