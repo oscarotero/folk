@@ -46,8 +46,9 @@ class Middleware implements ServiceProviderInterface
                     ->continueOnError();
 
                 $middleware[] = new Middlewares\AuraRouter($app->get('router'));
-                $middleware[] = (new Middlewares\RequestHandler())
-                    ->arguments($app);
+
+                $container = new Middlewares\Utils\RequestHandlerContainer([$app]);
+                $middleware[] = new Middlewares\RequestHandler($container);
 
                 return new Dispatcher($middleware);
             }

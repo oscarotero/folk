@@ -10,16 +10,16 @@ use Middlewares\Utils\Factory;
 
 class CreateEntityField extends Entity
 {
-    public function json(Request $request, Admin $app, string $entityName)
+    public function json(Request $request, string $entityName)
     {
         $field = $request->getAttribute('field');
         $data = $request->getParsedBody();
 
-        $form = static::createForm($app, $entityName);
+        $form = $this->createForm($entityName);
         $form['data'][$field]->val($data['value']);
 
         if ($form->validate()) {
-            $entity = $app->getEntity($entityName);
+            $entity = $this->app->getEntity($entityName);
 
             $id = $entity->create($form['data']->val());
             $data = $entity->read($id);

@@ -8,11 +8,11 @@ use Folk\Admin;
 
 class InsertEntity extends Entity
 {
-    public function html(Request $request, Admin $app, string $entityName)
+    public function html(Request $request, string $entityName)
     {
-        return $app->get('templates')->render('pages/insert', [
+        return $this->app->get('templates')->render('pages/insert', [
             'entityName' => $entityName,
-            'form' => static::createForm($app, $entityName),
+            'form' => $this->createForm($entityName),
         ]);
     }
 }

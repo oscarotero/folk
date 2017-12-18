@@ -14,7 +14,7 @@ class Html extends Textarea implements FormatInterface
     /**
      * {@inheritdoc}
      */
-    public function valToHtml()
+    public function valToHtml(): string
     {
         $html = strip_tags(parent::valToHtml(), '<strong><em>');
 

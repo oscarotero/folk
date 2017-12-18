@@ -10,29 +10,36 @@ use Middlewares\Utils\Factory;
 
 class Index
 {
-    public function __invoke(Request $request, Admin $app)
+    private $app;
+
+    public function __construct(Admin $app)
+    {
+        $this->app = $app;
+    }
+
+    public function __invoke(Request $request)
     {
         $query = $request->getQueryParams();
 
         if (isset($query['thumb'])) {
-            return $this->thumb($request, $app);
+            return $this->thumb($request);
         }
 
         if (isset($query['thumbs'])) {
-            return $this->thumbs($request, $app);
+            return $this->thumbs($request);
         }
 
         if (isset($query['file'])) {
-            return $this->file($request, $app);
+            return $this->file($request);
         }
 
-        return $app->get('templates')->render('pages/index');
+        return $this->app->get('templates')->render('pages/index');
     }
 
-    private function file(Request $request, Admin $app)
+    private function file(Request $request)
     {
         $query = $request->getQueryParams();
-        $file = $app->getPath($query['file']);
+        $file = $this->app->getPath($query['file']);
 
         if (!is_file($file)) {
             return Factory::createResponse(404);
@@ -47,10 +54,10 @@ class Index
             ->withHeader('Content-Type', $mime);
     }
 
-    private function thumb(Request $request, Admin $app)
+    private function thumb(Request $request)
     {
         $query = $request->getQueryParams();
-        $thumb = $app->getPath($query['thumb']);
+        $thumb = $this->app->getPath($query['thumb']);
 
         if (!is_file($thumb)) {
             return Factory::createResponse(404);
@@ -75,10 +82,10 @@ class Index
             ->withHeader('Content-Type', $image->getMimeType());
     }
 
-    private function thumbs(Request $request, Admin $app)
+    private function thumbs(Request $request)
     {
         $query = $request->getQueryParams();
-        $thumbs = $app->getPath($query['thumbs']);
+        $thumbs = $this->app->getPath($query['thumbs']);
         $limit = empty($query['limit']) ? 100 : (int) $query['limit'];
         $offset = empty($query['offset']) ? 0 : (int) $query['offset'];
         $pattern = empty($query['pattern']) ? '/*' : $query['pattern'];

@@ -8,25 +8,25 @@ use Folk\Admin;
 
 class ReadEntity extends Entity
 {
-    public function html(Request $request, Admin $app, string $entityName)
+    public function html(Request $request, string $entityName)
     {
         $id = $request->getAttribute('id');
 
-        $form = static::createForm($app, $entityName, $id);
-        $form['data']->val($app->getEntity($entityName)->read($id));
+        $form = $this->createForm($entityName, $id);
+        $form['data']->val($this->app->getEntity($entityName)->read($id));
 
         //Render template
-        return $app->get('templates')->render('pages/read', [
+        return $this->app->get('templates')->render('pages/read', [
             'entityName' => $entityName,
             'form' => $form,
             'id' => $id,
         ]);
     }
 
-    public function json(Request $request, Admin $app, string $entityName)
+    public function json(Request $request, string $entityName)
     {
         $id = $request->getAttribute('id');
 
-        return json_encode($app->getEntity($entityName)->read($id));
+        return json_encode($this->app->getEntity($entityName)->read($id));
     }
 }

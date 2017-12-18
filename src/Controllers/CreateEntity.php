@@ -10,20 +10,20 @@ use Zend\Diactoros\Response\RedirectResponse;
 
 class CreateEntity extends Entity
 {
-    public function html(Request $request, Admin $app, string $entityName)
+    public function html(Request $request, string $entityName)
     {
-        $entity = $app->getEntity($entityName);
-        $form = static::createForm($app, $entityName);
+        $entity = $this->app->getEntity($entityName);
+        $form = $this->createForm($entityName);
         $form->loadFromPsr7($request);
 
         if ($form->validate()) {
-            return new RedirectResponse($app->getRoute('read', [
+            return new RedirectResponse($this->app->getRoute('read', [
                 'entity' => $entityName,
                 'id' => $entity->create($form['data']->val()),
             ]));
         }
 
-        echo $app->get('templates')->render('pages/insert', [
+        echo $this->app->get('templates')->render('pages/insert', [
                 'entityName' => $entityName,
                 'form' => $form
             ]);

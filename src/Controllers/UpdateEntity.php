@@ -10,23 +10,23 @@ use Middlewares\Utils\Factory;
 
 class UpdateEntity extends Entity
 {
-    public function html(Request $request, Admin $app, string $entityName)
+    public function html(Request $request, string $entityName)
     {
         $id = $request->getAttribute('id');
 
-        $form = static::createForm($app, $entityName, $id);
+        $form = $this->createForm($entityName, $id);
         $form->loadFromPsr7($request);
 
         if ($form->validate()) {
-            $app->getEntity($entityName)->update($id, $form['data']->val());
+            $this->app->getEntity($entityName)->update($id, $form['data']->val());
 
-            return new RedirectResponse($app->getRoute('read', [
+            return new RedirectResponse($this->app->getRoute('read', [
                 'entity' => $entityName,
                 'id' => $id,
             ]));
         }
 
-        echo $app->get('templates')->render('pages/read', [
+        echo $this->app->get('templates')->render('pages/read', [
             'entityName' => $entityName,
             'form' => $form,
             'id' => $id,
