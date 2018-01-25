@@ -42,7 +42,7 @@ class Middleware implements ServiceProviderInterface
                 $middleware[] = (new Middlewares\MethodOverride())
                     ->parsedBodyParameter('method-override');
 
-                $middleware[] = (new Middlewares\Reader(dirname(dirname(__DIR__)).'/assets'))
+                $middleware[] = Middlewares\Reader::createFromDirectory(dirname(dirname(__DIR__)).'/assets')
                     ->continueOnError();
 
                 $middleware[] = new Middlewares\AuraRouter($app->get('router'));

@@ -6,7 +6,7 @@ use Fol\{App, NotFoundException};
 use Folk\Entities\EntityInterface;
 use Folk\Entities\SingleEntityInterface;
 use Psr\Http\Message\{ServerRequestInterface, ResponseInterface, UriInterface};
-use Interop\Http\Server\RequestHandlerInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Zend\Diactoros\Response;
 use Relay\RelayBuilder;
 
