@@ -9,7 +9,7 @@ define([
 		toolbar: [
 			['Bold', 'Italic', 'Strike', 'Subscript', 'Superscript', '-', 'Link', 'Unlink'],
 			['NumberedList', 'BulletedList', '-', '-', 'Outdent', 'Indent', '-', 'Blockquote'],
-			['Format'],
+			['Format', 'Styles'],
 			['Source', 'Maximize']
 		],
 		format_tags: 'p;h1;h2;h3;h4;h5;h6;pre',
@@ -20,7 +20,16 @@ define([
 		autoGrow_minHeight: 120,
 		contentsCss: require.toUrl('./../../css/modules/wysiwyg-content.css'),
 		extraPlugins: 'autogrow',
-		removePlugins: 'resize'
+		removePlugins: 'resize',
+		stylesSet: [
+			{
+				name: 'Cita',
+				element: 'cite'
+			},{
+				name: 'Inline quote',
+				element: 'q'
+			}
+		]
 	};
 
 	var module = {
