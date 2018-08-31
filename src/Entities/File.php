@@ -24,10 +24,7 @@ abstract class File extends AbstractEntity implements EntityInterface
         return new RecursiveDirectoryIterator($this->getBasePath(), FilesystemIterator::SKIP_DOTS);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function search(SearchQuery $search): array
+    public function search(SearchQuery $search = null): array
     {
         $result = [];
         $words = $search->getWords();
@@ -67,9 +64,6 @@ abstract class File extends AbstractEntity implements EntityInterface
         return $result;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function create(array $data)
     {
         $id = $this->getId($data);
@@ -83,9 +77,6 @@ abstract class File extends AbstractEntity implements EntityInterface
         return $id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function read($id): array
     {
         $file = $this->getFilePath($id);
@@ -93,10 +84,7 @@ abstract class File extends AbstractEntity implements EntityInterface
         return $this->parse(file_get_contents($file));
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function update($id, array $data)
+    public function update($id, array $data): array
     {
         $file = $this->getFilePath($id);
         $source = $this->stringify($data);
@@ -108,10 +96,7 @@ abstract class File extends AbstractEntity implements EntityInterface
         return $data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function delete($id)
+    public function delete($id): void
     {
         $file = $this->getFilePath($id);
 

@@ -24,7 +24,6 @@ class Admin extends App implements RequestHandlerInterface
     {
         parent::__construct($path, $uri);
 
-        $this->addServiceProvider(new Providers\Formats());
         $this->addServiceProvider(new Providers\Middleware());
         $this->addServiceProvider(new Providers\Router());
         $this->addServiceProvider(new Providers\Templates());

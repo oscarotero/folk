@@ -16,34 +16,22 @@ abstract class AbstractEntity implements EntityInterface
     public $title;
     public $description;
 
-    /**
-     * {@inheritdoc}
-     */
     public function __construct(string $name, Admin $admin)
     {
         $this->name = $name;
         $this->admin = $admin;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLabel($id, array $data): string
     {
         return current($data);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getActions($id): array
     {
         return [];

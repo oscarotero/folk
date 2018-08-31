@@ -4,87 +4,62 @@ namespace Folk\Entities;
 
 use Folk\Admin;
 use Folk\SearchQuery;
-use Folk\Formats\Group;
-use Folk\Formats\FormatFactory;
+use Folk\Schema\RowInterface;
 
 /**
  * Interface used by all entities.
  */
 interface EntityInterface
 {
-    /**
-     * Constructor.
-     *
-     * @param string $name
-     * @param Admin  $admin
-     */
     public function __construct(string $name, Admin $admin);
 
     /**
      * Returns the entity name
-     *
-     * @return string
      */
     public function getName(): string;
 
     /**
      * List the entity rows.
-     *
-     * @param SearchQuery $search
-     * 
-     * @return array The rows data
      */
-    public function search(SearchQuery $search): array;
+    public function search(SearchQuery $search = null): array;
 
     /**
      * Creates a new entity row.
      *
-     * @param array $data The entity data
-     *
-     * @return mixed The entity id
+     * @return mixed The id
      */
     public function create(array $data);
 
     /**
-     * Read the data of an entity row.
+     * Read the data of a row.
      *
-     * @param mixed $id The entity id
-     *
-     * @return array The entity data
+     * @param mixed $id
      */
     public function read($id): array;
 
     /**
      * Update the data of an entity row.
      *
-     * @param mixed $id   The entity id
-     * @param array $data The entity data
+     * @param mixed $id
      */
-    public function update($id, array $data);
+    public function update($id, array $data): array;
 
     /**
      * Delete an entity row.
      *
-     * @param mixed $id The entity id
+     * @param mixed $id
      */
-    public function delete($id);
+    public function delete($id): void;
 
     /**
      * Returns the data scheme used by this entity.
-     *
-     * @param FormatFactory $factory
-     *
-     * @return Group
      */
-    public function getScheme(FormatFactory $factory): Group;
+    public function getRow(): RowInterface;
 
     /**
      * Returns the label of a row.
      *
-     * @param mixed $id   The entity id
-     * @param array $data The entity data
-     *
-     * @return string
+     * @param mixed $id
      */
     public function getLabel($id, array $data): string;
 
@@ -101,8 +76,6 @@ interface EntityInterface
      * - target (string)
      *
      * @param mixed $id The entity id
-     *
-     * @return array|null
      */
     public function getActions($id): array;
 }

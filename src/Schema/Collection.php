@@ -4,36 +4,39 @@ namespace Folk\Schema;
 
 use FormManager\Factory as f;
 
-class Collection extends AbstractValue
+use FormManager\InputInterface;
+use FormManager\Groups\Group;
+
+class Collection implements ColumnInterface
 {
-    private $name;
     private $children = [];
 
     public function __construct($children = [])
     {
-        foreach ($children as $key => $child) {
-            $this->addChild($key, $child);
+        foreach ($children as $name => $child) {
+            $this->addChild($name, $child);
         }
     }
 
-    public function addChild($name, $child)
+    public function __clone()
     {
-        if ($name === null) {
-            $this->children[] = $child->setParent($this);
-        } else {
-            $this->children[$name] = $child->setParent($this);
+        foreach ($this->children as $name => $child) {
+            $this->children[$name] = clone $child;
         }
+    }
+
+    public function addChild($name, ColumnInterface $child)
+    {
+        $this->children[$name] = $child;
 
         return $this;
     }
 
-    public function setValue(?array $values): self
+    public function setValue($values): void
     {
         foreach ($this->children as $name => $child) {
             $child->setValue($values[$name] ?? null);
         }
-
-        return $this;
     }
 
     public function getValue(): array
@@ -47,18 +50,7 @@ class Collection extends AbstractValue
         return $values;
     }
 
-    public function buildForm()
-    {
-        $children = [];
-
-        foreach ($this->children as $name => $child) {
-            $children[$name] = $child->buildForm();
-        }
-
-        return f::group($children);
-    }
-
-    public function renderHtml()
+    public function renderHtml(): string
     {
         $html = [];
 
@@ -71,12 +63,24 @@ class Collection extends AbstractValue
         return "<ul>{$html}</ul>";
     }
 
-    public function renderForm()
+    public function createInput(): Group
+    {
+        $group = f::group();
+
+        foreach ($this->children as $name => $child) {
+            $group[$name] = $child->createInput();
+        }
+
+        return $group;
+    }
+
+    public function renderInput(InputInterface $group): string
     {
         $html = [];
 
-        foreach ($this->children as $child) {
-            $html[] = "<li>{$child->renderForm()}</li>";
+        foreach ($this->children as $name => $child) {
+            $input = $group[$name] = $child->createInput();
+            $html[] = "<li>{$child->renderInput($input)}</li>";
         }
 
         $html = implode("\n", $html);

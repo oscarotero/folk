@@ -5,9 +5,6 @@
 	<?php endforeach ?>
 	<?php endif ?>
 	<button class="button button-link">
-		<?php if (isset($icon)): ?>
-		<?= $this->icon($icon) ?>
-		<?php endif ?>
 		<?= $label ?>
 	</button>
 </form>

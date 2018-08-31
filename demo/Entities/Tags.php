@@ -5,6 +5,8 @@ namespace Demo\Entities;
 use Folk\Entities\Yaml;
 use Folk\Formats\Group;
 use Folk\Formats\FormatFactory;
+use Folk\SchemaFactory as f;
+use Folk\Schema\RowInterface;
 
 class Tags extends Yaml
 {
@@ -13,11 +15,10 @@ class Tags extends Yaml
         return __DIR__.'/json';
     }
 
-    public function getScheme(FormatFactory $builder): Group
+    public function getRow(): RowInterface
     {
-        return $builder->group([
-            'name' => $builder->text()
-                ->label('Name')
+        return f::row([
+            'name' => f::text('Name')
         ]);
     }
 }

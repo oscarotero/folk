@@ -6,7 +6,8 @@ use Fol\App;
 use Interop\Container\ServiceProviderInterface;
 use Middleland\Dispatcher;
 use Middlewares;
-use Gettext\{Translator, Translations};
+use Gettext\Translator;
+use Gettext\Translations;
 
 class Middleware implements ServiceProviderInterface
 {

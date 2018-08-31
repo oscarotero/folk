@@ -2,31 +2,39 @@
 
 include 'vendor/autoload.php';
 
-use Folk\Schema\Value;
-use Folk\Schema\Collection;
-use FormManager\Form;
+use Zend\Diactoros\ServerRequestFactory;
+use Zend\Diactoros\Uri;
+use Zend\Diactoros\Response\SapiStreamEmitter;
 
-$value = new Collection([
-    'valor1' => new Value(),
-    'valor2' => new Value(),
-    'valor3' => new Collection([
-        'valor3-1' => new Value(),
-        'valor3-2' => new Value(),
-        'valor3-3' => new Value(),
-    ]),
-]);
+//php -S localhost:8888 demo/index.php
+$app = new Demo\Admin(__DIR__, new Uri('http://localhost:8888'));
 
-echo $value->renderHtml();
+$response = $app->handle(ServerRequestFactory::fromGlobals());
 
-$value->buildForm()->setValue([
-    'valor1' => 'Ola',
-    'valor2' => 'Ola 2',
-    'valor3' => [
-        'valor3-1' => 'Subvalor 1',
-        'valor3-2' => 'Subvalor 2',
-    ],
-]);
+(new SapiStreamEmitter())->emit($response);
 
-echo '<form>';
-echo $value->renderForm();
-echo '</form>';
+
+
+// use Folk\SchemaFactory as f;
+
+// $row = f::row([
+//     'valor1' => f::text('Valor 1'),
+//     'valor2' => f::text('Valor 2'),
+//     'valor3' => f::collection([
+//         'valor3-1' => f::textarea('Valor 3'),
+//         'valor3-2' => f::textarea('Valor 4'),
+//         'valor3-3' => f::textarea('Valor 5'),
+//     ]),
+// ]);
+
+// $row->setValue([
+//     'valor1' => 'Ola',
+//     'valor2' => 'Ola 2',
+//     'valor3' => [
+//         'valor3-1' => 'Subvalor 1',
+//         'valor3-2' => 'Subvalor 2',
+//     ],
+// ]);
+
+// echo $row->renderHtml();
+// echo $row->renderForm();

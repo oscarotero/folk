@@ -11,11 +11,11 @@ class Admin extends Folk\Admin
         parent::__construct($path, $url);
 
         $this->setEntities([
-            Entities\Articles::class,
-            Entities\Items::class,
+            // Entities\Articles::class,
+            // Entities\Items::class,
             Entities\Tags::class,
         ]);
 
-        $this->addEntity(new Entities\Config('config', $this), 'config');
+        // $this->addEntity(new Entities\Config('config', $this), 'config');
     }
 }

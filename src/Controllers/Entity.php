@@ -25,7 +25,7 @@ abstract class Entity
     {
         $format = $request->getHeaderLine('Accept');
         $format = $this->formats[$format] ?? 'html';
-        $entityName = $request->getAttribute('entity');
+        $entityName = $request->getAttribute('entityName');
 
         if ($this->app->hasEntity($entityName) && method_exists($this, $format)) {
             return $this->$format($request, $entityName);

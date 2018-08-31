@@ -6,21 +6,18 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Folk\Admin;
 
-class ReadEntity extends Entity
+class Read extends Entity
 {
     public function html(Request $request, string $entityName)
     {
+        $entity = $this->app->getEntity($entityName);
         $id = $request->getAttribute('id');
 
-        $form = $this->createForm($entityName, $id);
-        $form['data']->val($this->app->getEntity($entityName)->read($id));
+        $row = $entity->getRow();
+        $row->setValue($entity->read($id));
 
-        //Render template
-        return $this->app->get('templates')->render('pages/read', [
-            'entityName' => $entityName,
-            'form' => $form,
-            'id' => $id,
-        ]);
+        return $this->app->get('templates')
+            ->render('pages/read', compact('entityName', 'id', 'row'));
     }
 
     public function json(Request $request, string $entityName)
