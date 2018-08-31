@@ -24,7 +24,7 @@
         "oscarotero/fol": "^0.3",
         "oscarotero/middleland": "^1.0",
         "oscarotero/inline-svg": "^2.0",
-        "form-manager/form-manager": "^5.0",
+        "form-manager/form-manager": "dev-master",
         "gettext/gettext": "^4.0",
         "imagecow/imagecow": "^2.1",
         "psr/http-server-middleware": "^1.0",
