@@ -6,7 +6,7 @@ use FormManager\Inputs\Time as InputTime;
 
 class Time extends Column
 {
-    public function createInput(): InputTime
+    protected function buildInput(): InputTime
     {
         return (new InputTime($this->title, $this->attributes))->setValue($this->value);
     }

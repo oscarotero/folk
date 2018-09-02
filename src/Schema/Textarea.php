@@ -6,7 +6,7 @@ use FormManager\Inputs\Textarea as InputTextarea;
 
 class Textarea extends Column
 {
-    public function createInput(): InputTextarea
+    protected function buildInput(): InputTextarea
     {
         return (new InputTextarea($this->title, $this->attributes))->setValue($this->value);
     }

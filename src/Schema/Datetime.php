@@ -6,7 +6,7 @@ use FormManager\Inputs\DatetimeLocal as InputDatetimeLocal;
 
 class Datetime extends Column
 {
-    public function createInput(): InputDatetimeLocal
+    protected function buildInput(): InputDatetimeLocal
     {
         return (new InputDatetimeLocal($this->title, $this->attributes))->setValue($this->value);
     }

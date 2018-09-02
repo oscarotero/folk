@@ -2,20 +2,26 @@
 
 namespace Folk\Schema;
 
-use FormManager\Factory as f;
-
 use FormManager\InputInterface;
-use FormManager\Groups\Group;
+use FormManager\Groups\Group as InputGroup;
 
-class Collection implements ColumnInterface
+class Group implements ColumnInterface
 {
+    private $title;
     private $children = [];
 
-    public function __construct($children = [])
+    public function __construct(string $title, $children = [])
     {
+        $this->title = $title;
+
         foreach ($children as $name => $child) {
             $this->addChild($name, $child);
         }
+    }
+
+    public function getTitle(): string
+    {
+        return $this->title;
     }
 
     public function __clone()
@@ -50,6 +56,17 @@ class Collection implements ColumnInterface
         return $values;
     }
 
+    public function isValid(): bool
+    {
+        foreach ($this->children as $child) {
+            if (!$child->isValid()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public function renderHtml(): string
     {
         $html = [];
@@ -63,9 +80,9 @@ class Collection implements ColumnInterface
         return "<ul>{$html}</ul>";
     }
 
-    public function createInput(): Group
+    public function createInput(): InputInterface
     {
-        $group = f::group();
+        $group = new InputGroup();
 
         foreach ($this->children as $name => $child) {
             $group[$name] = $child->createInput();
@@ -76,7 +93,7 @@ class Collection implements ColumnInterface
 
     public function renderInput(InputInterface $group): string
     {
-        $html = [];
+        $html = ["<legend>{$this->getTitle()}</legend>"];
 
         foreach ($this->children as $name => $child) {
             $input = $group[$name] = $child->createInput();
@@ -85,6 +102,6 @@ class Collection implements ColumnInterface
 
         $html = implode("\n", $html);
 
-        return "<ul>{$html}</ul>";
+        return "<fieldset>{$html}</fieldset>";
     }
 }

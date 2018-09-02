@@ -1,0 +1,27 @@
+/*@import 'normalize.css';*/
+:root {
+	--font: system-ui;
+	--font-weight-normal: 300;
+	--font-weight-bold: 500;
+}
+body {
+	font-family: var(--font);
+	font-weight: var(--font-weight-normal);
+	background: color-mod(black a(.4));
+}
+form textarea,
+	form input[type="date"],
+	form input[type="datetime-local"],
+	form input[type="email"],
+	form input[type="month"],
+	form input[type="number"],
+	form input[type="search"],
+	form input[type="tel"],
+	form input[type="text"],
+	form input[type="time"],
+	form input[type="url"],
+	form input[type="week"] {
+		border: solid 1px colorblack a(.2));
+		background: white;
+		color: color-mod(black alpha(50%));
+	}

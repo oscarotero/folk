@@ -6,7 +6,7 @@ use FormManager\Inputs\Tel as InputTel;
 
 class Tel extends Column
 {
-    public function createInput(): InputTel
+    protected function buildInput(): InputTel
     {
         return (new InputTel($this->title, $this->attributes))->setValue($this->value);
     }

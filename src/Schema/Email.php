@@ -6,7 +6,7 @@ use FormManager\Inputs\Email as InputEmail;
 
 class Email extends Column
 {
-    public function createInput(): InputEmail
+    protected function buildInput(): InputEmail
     {
         return (new InputEmail($this->title, $this->attributes))->setValue($this->value);
     }

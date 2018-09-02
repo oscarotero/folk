@@ -6,7 +6,7 @@ use FormManager\Inputs\Month as InputMonth;
 
 class Month extends Column
 {
-    public function createInput(): InputMonth
+    protected function buildInput(): InputMonth
     {
         return (new InputMonth($this->title, $this->attributes))->setValue($this->value);
     }
