@@ -8,6 +8,6 @@ class Month extends Column
 {
     public function createInput(): InputMonth
     {
-        return parent::buildInput('month');
+        return (new InputMonth($this->title, $this->attributes))->setValue($this->value);
     }
 }

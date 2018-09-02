@@ -8,6 +8,6 @@ class Url extends Column
 {
     public function createInput(): InputUrl
     {
-        return parent::buildInput('url');
+        return (new InputUrl($this->title, $this->attributes))->setValue($this->value);
     }
 }

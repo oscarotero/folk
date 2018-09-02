@@ -9,14 +9,11 @@ class SearchQuery
 {
     protected $limit = 50;
     protected $page;
-    protected $ids = [];
+    protected $id;
     protected $conditions = [];
-    protected $words = [];
+    protected $terms = [];
     protected $sort = [];
 
-    /**
-     * @param array $query
-     */
     public function __construct(array $query = [])
     {
         if (!empty($query['query'])) {
@@ -34,14 +31,11 @@ class SearchQuery
 
     /**
      * Set the a query.
-     *
-     * @param string $query
-     *
-     * @return self
      */
-    public function setQuery($query)
+    public function setQuery(string $query): self
     {
-        $this->conditions = $this->ids = $this->words = [];
+        $this->conditions = $this->terms = [];
+        $this->id = null;
 
         preg_match_all('/([\w]+:)?("([^"]*)"|([^ ]*))/', trim($query), $pieces, PREG_SET_ORDER);
 
@@ -54,17 +48,25 @@ class SearchQuery
                 $name = $piece[1] ? substr($piece[1], 0, -1) : null;
                 $value = $piece[4] ?? $piece[3];
 
+                //Is a condition "name:value"
                 if ($name !== null) {
                     if (!isset($this->conditions[$name])) {
                         $this->conditions[$name] = [$value];
-                    } else {
-                        $this->conditions[$name][] = $value;
+                        continue;
                     }
-                } elseif (preg_match('/^#[\w-]+$/', $value)) {
-                    $this->ids[] = substr($value, 1);
-                } else {
-                    $this->words[] = $value;
+
+                    $this->conditions[$name][] = $value;
+                    continue;
                 }
+
+                //Is an #id
+                if (preg_match('/^#[\w-]+$/', $value)) {
+                    $this->id = substr($value, 1);
+                    continue;
+                }
+
+                //A generic term
+                $this->terms[] = $value;
             }
         }
 
@@ -73,32 +75,26 @@ class SearchQuery
 
     /**
      * Returns the page number.
-     *
-     * @return null|int
      */
-    public function getPage()
+    public function getPage(): int
     {
-        return $this->page;
+        return $this->page ?: 1;
     }
 
     /**
      * Set the page.
      *
-     * @param null|int $page
-     * 
      * @return self
      */
-    public function setPage($page): self
+    public function setPage(int $page): self
     {
-        $this->page = (int) $page;
+        $this->page = $page;
 
         return $this;
     }
 
     /**
      * Returns the limit of results per page.
-     *
-     * @return int
      */
     public function getLimit(): int
     {
@@ -107,72 +103,52 @@ class SearchQuery
 
     /**
      * Set the limit of results per page.
-     *
-     * @param int $limit
-     * 
-     * @return self
      */
     public function setLimit(int $limit): self
     {
-        $this->limit = (int) $limit;
+        $this->limit = $limit;
 
         return $this;
     }
 
     /**
-     * Returns all ids found.
-     *
-     * @return array
+     * Returns the id found.
      */
-    public function getIds(): array
+    public function getId(): ?string
     {
-        return $this->ids;
+        return $this->id;
     }
 
     /**
-     * Set new ids.
-     *
-     * @param array $ids
-     * 
-     * @return self
+     * Set a new id.
      */
-    public function setIds(array $ids): self
+    public function setId(string $id): self
     {
-        $this->ids = $ids;
+        $this->id = $id;
 
         return $this;
     }
 
     /**
-     * Returns all words in the query.
-     *
-     * @return array
+     * Returns all terms in the query.
      */
-    public function getWords(): array
+    public function getTerms(): array
     {
-        return $this->words;
+        return $this->terms;
     }
 
     /**
-     * Set new words.
-     *
-     * @param array $words
-     * 
-     * @return self
+     * Set new terms.
      */
-    public function setWords(array $words): self
+    public function setTerms(array $terms): self
     {
-        $this->words = $words;
+        $this->terms = $terms;
 
         return $this;
     }
 
     /**
      * Set new conditions.
-     *
-     * @param array $conditions
-     * 
-     * @return self
      */
     public function setConditions(array $conditions): self
     {
@@ -183,8 +159,6 @@ class SearchQuery
 
     /**
      * Return all conditions.
-     *
-     * @return array
      */
     public function getConditions(): array
     {
@@ -192,9 +166,7 @@ class SearchQuery
     }
 
     /**
-     * Return the sort fields.
-     *
-     * @return array ['field' => 'direction']
+     * Return the sort fields. ['field' => 'direction']
      */
     public function getSort(): array
     {
@@ -203,10 +175,8 @@ class SearchQuery
 
     /**
      * Set the sort and direction fields.
-     *
-     * @param string $sort
      */
-    public function setSort(string $sort)
+    public function setSort(string $sort): self
     {
         $this->sort = [];
 
@@ -224,15 +194,13 @@ class SearchQuery
 
     /**
      * Returns the query as string.
-     *
-     * @return string
      */
     public function buildQuery(): string
     {
-        $query = implode(' ', $this->words);
+        $query = implode(' ', $this->terms);
 
-        foreach ($this->ids as $id) {
-            $query .= " #{$id}";
+        if (!empty($this->id)) {
+            $query .= " #{$this->id}";
         }
 
         foreach ($this->conditions as $name => $values) {
@@ -250,8 +218,6 @@ class SearchQuery
 
     /**
      * Returns the sort as string.
-     *
-     * @return string
      */
     public function buildSort(): string
     {

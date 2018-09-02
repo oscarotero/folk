@@ -8,6 +8,6 @@ class Range extends Column
 {
     public function createInput(): InputRange
     {
-        return parent::buildInput('range');
+        return (new InputRange($this->title, $this->attributes))->setValue($this->value);
     }
 }

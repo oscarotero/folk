@@ -9,13 +9,17 @@ $sort = $search->getSort();
 ?>
 
 <main>
+	<a href="<?= $app->getRoute('blank', compact('entityName')) ?>">
+		New
+	</a>
+
 	<?php if ($rows): ?>
 	<table>
 		<thead>
 			<th></th>
 			<?php foreach (reset($rows) as $name => $column): ?>
 			<th>
-				<?= $column->getLabel(); ?>
+				<?= $column->getTitle(); ?>
 			</th>
 			<?php endforeach; ?>
 		</thead>
@@ -24,7 +28,7 @@ $sort = $search->getSort();
 			<?php foreach ($rows as $id => $row): ?>
 			<tr>
 				<th>
-					<a class="button button-call" href="<?= $app->getRoute('read', compact('id', 'entityName')) ?>">
+					<a href="<?= $app->getRoute('read', compact('id', 'entityName')) ?>">
 						<?= $id ?>
 					</a>
 				</th>

@@ -6,8 +6,8 @@ use FormManager\Inputs\Text as InputText;
 
 class Text extends Column
 {
-    public function createInput(): InputText
+    public function buildInput(): InputText
     {
-        return parent::buildInput('text');
+        return (new InputText($this->title, $this->attributes))->setValue($this->value);
     }
 }

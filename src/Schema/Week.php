@@ -8,6 +8,6 @@ class Week extends Column
 {
     public function createInput(): InputWeek
     {
-        return parent::buildInput('week');
+        return (new InputWeek($this->title, $this->attributes))->setValue($this->value);
     }
 }

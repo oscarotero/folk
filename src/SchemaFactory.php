@@ -6,7 +6,7 @@ use InvalidArgumentException;
 
 abstract class SchemaFactory
 {
-	const SCHEMA_NAMESPACE = 'Folk\\Schema\\';
+    const SCHEMA_NAMESPACE = 'Folk\\Schema\\';
 
     /**
      * Factory to create schema elements

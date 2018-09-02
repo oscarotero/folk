@@ -6,11 +6,15 @@ use FormManager\InputInterface;
 
 interface RowInterface
 {
-	public function setValue(iterable $value): void;
+    public function setValue(iterable $value): void;
 
-	public function getValue(): array;
+    public function getValue(): array;
 
-	public function renderHtml(): string;
+    public function isValid(): bool;
 
-    public function renderForm(string $entityName, $id = null): string;
+    public function renderHtml(): string;
+
+    public function createInput(): InputInterface;
+
+    public function renderInput(InputInterface $input): string;
 }

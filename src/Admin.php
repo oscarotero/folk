@@ -2,10 +2,13 @@
 
 namespace Folk;
 
-use Fol\{App, NotFoundException};
+use Fol\App;
+use Fol\NotFoundException;
 use Folk\Entities\EntityInterface;
 use Folk\Entities\SingleEntityInterface;
-use Psr\Http\Message\{ServerRequestInterface, ResponseInterface, UriInterface};
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\UriInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Zend\Diactoros\Response;
 use Relay\RelayBuilder;
@@ -30,8 +33,6 @@ class Admin extends App implements RequestHandlerInterface
     }
 
     /**
-     * {@inheritdoc}
-     * 
      * @return ResponseInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
@@ -48,43 +49,28 @@ class Admin extends App implements RequestHandlerInterface
 
     /**
      * Set the admin entities.
-     *
-     * @param array $entities
      */
-    public function setEntities(array $entities)
+    public function setEntities(array $entities): self
     {
         foreach ($entities as $name => $entity) {
-            if (is_int($name)) {
-                $name = substr(strrchr($entity, '\\'), 1);
-            }
-
-            $this->addEntity(new $entity(strtolower($name), $this));
+            $this->addEntity($name, $entity);
         }
+
+        return $this;
     }
 
     /**
      * Add a new entity.
-     *
-     * @param EntityInterface $entity
-     * @param string|null $id
      */
-    public function addEntity(EntityInterface $entity, $id = null)
+    public function addEntity(string $name, EntityInterface $entity): self
     {
-        $name = $entity->getName();
+        $this->entities[$name] = $entity;
 
-        if (empty($entity->title)) {
-            $entity->title = ucfirst($name);
-        }
-
-        $this->entities[$name] = [$entity, $id];
+        return $this;
     }
 
     /**
      * Return whether an entity exists.
-     *
-     * @param string $name
-     *
-     * @return bool
      */
     public function hasEntity(string $name): bool
     {
@@ -92,32 +78,14 @@ class Admin extends App implements RequestHandlerInterface
     }
 
     /**
-     * Return the entity id.
-     *
-     * @param string $name
-     *
-     * @return mixed|null
-     */
-    public function getEntityId(string $name)
-    {
-        if ($this->hasEntity($name)) {
-            return $this->entities[$name][1];
-        }
-    }
-
-    /**
      * Return an entity.
      *
-     * @param string $name
-     *
      * @throw NotFoundException
-     * 
-     * @return EntityInterface
      */
     public function getEntity(string $name): EntityInterface
     {
         if ($this->hasEntity($name)) {
-            return $this->entities[$name][0];
+            return $this->entities[$name];
         }
 
         throw new NotFoundException(sprintf('Entity %s not found', $name));
@@ -126,7 +94,7 @@ class Admin extends App implements RequestHandlerInterface
     /**
      * Return all entities.
      *
-     * @return array
+     * @return EntityInterface[]
      */
     public function getAllEntities(): array
     {

@@ -8,6 +8,6 @@ class Color extends Column
 {
     public function createInput(): InputColor
     {
-        return parent::buildInput('color');
+        return (new InputColor($this->title, $this->attributes))->setValue($this->value);
     }
 }

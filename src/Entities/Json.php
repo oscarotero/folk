@@ -8,9 +8,9 @@ abstract class Json extends File implements EntityInterface
 
     /**
      * Transform the data to a string.
-     * 
+     *
      * @param array $data
-     * 
+     *
      * @return string
      */
     protected function stringify(array $data): string
@@ -20,9 +20,9 @@ abstract class Json extends File implements EntityInterface
 
     /**
      * Transform the string to an array.
-     * 
+     *
      * @param string $source
-     * 
+     *
      * @return array
      */
     protected function parse(string $source): array

@@ -8,6 +8,6 @@ class Textarea extends Column
 {
     public function createInput(): InputTextarea
     {
-        return parent::buildInput('textarea');
+        return (new InputTextarea($this->title, $this->attributes))->setValue($this->value);
     }
 }

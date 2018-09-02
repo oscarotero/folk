@@ -8,6 +8,6 @@ class Hidden extends Column
 {
     public function createInput(): InputHidden
     {
-        return parent::buildInput('hidden');
+        return (new InputHidden($this->title, $this->attributes))->setValue($this->value);
     }
 }

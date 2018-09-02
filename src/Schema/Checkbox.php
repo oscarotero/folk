@@ -6,8 +6,8 @@ use FormManager\Inputs\Checkbox as InputCheckbox;
 
 class Checkbox extends Column
 {
-    public function createInput(): InputCheckbox
+    public function buildInput(): InputCheckbox
     {
-        return parent::buildInput('checkbox');
+        return (new InputCheckbox($this->title, $this->attributes))->setValue($this->value);
     }
 }

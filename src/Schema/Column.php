@@ -8,18 +8,18 @@ use FormManager\InputInterface;
 abstract class Column implements ColumnInterface
 {
     protected $value;
-    protected $label;
+    protected $title;
     protected $attributes;
 
-    public function __construct(string $label, iterable $attributes = [])
+    public function __construct(string $title, iterable $attributes = [])
     {
-        $this->label = $label;
+        $this->title = $title;
         $this->attributes = $attributes;
     }
 
-    public function getLabel(): string
+    public function getTitle(): string
     {
-        return $this->label;
+        return $this->title;
     }
 
     public function setValue($value): void
@@ -37,13 +37,17 @@ abstract class Column implements ColumnInterface
         return (string) $this->value;
     }
 
-    protected function buildInput(string $type): InputInterface
+    public function isValid(): bool
     {
-        return f::$type()
-            ->setLabel($this->label)
-            ->setAttributes($this->attributes)
-            ->setValue($this->value);
+        return $this->createInput()->isValid();
     }
+
+    public function createInput(): InputInterface
+    {
+        return $this->buildInput();
+    }
+
+    abstract protected function buildInput();
 
     public function renderInput(InputInterface $input): string
     {

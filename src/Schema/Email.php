@@ -8,6 +8,6 @@ class Email extends Column
 {
     public function createInput(): InputEmail
     {
-        return parent::buildInput('email');
+        return (new InputEmail($this->title, $this->attributes))->setValue($this->value);
     }
 }

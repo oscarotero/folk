@@ -22,7 +22,8 @@ class Templates implements ServiceProviderInterface
         ];
     }
 
-    public function getExtensions() {
+    public function getExtensions()
+    {
         return [];
     }
 }

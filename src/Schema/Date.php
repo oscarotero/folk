@@ -8,6 +8,6 @@ class Date extends Column
 {
     public function createInput(): InputDate
     {
-        return parent::buildInput('date');
+        return (new InputDate($this->title, $this->attributes))->setValue($this->value);
     }
 }

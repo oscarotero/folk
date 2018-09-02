@@ -7,7 +7,7 @@ use Interop\Container\ServiceProviderInterface;
 use Aura\Router\RouterContainer;
 use Folk\Controllers\Index;
 use Folk\Controllers\Search;
-use Folk\Controllers\Insert;
+use Folk\Controllers\Blank;
 use Folk\Controllers\Create;
 use Folk\Controllers\Read;
 use Folk\Controllers\Update;
@@ -24,18 +24,19 @@ class Router implements ServiceProviderInterface
 
                 $map->get('index', '/', Index::class);
                 $map->get('search', '/{entityName}', Search::class);
+                $map->put('create', '/{entityName}{/id}', Create::class);
+                $map->get('blank', '/{entityName}/_new', Blank::class);
                 $map->get('read', '/{entityName}/{id}', Read::class);
-                // $map->get('insert', '/{entity}/new', Insert::class);
-                // $map->put('create', '/{entity}', Create::class);
-                // $map->post('update', '/{entity}/{id}', Update::class);
-                // $map->delete('delete', '/{entity}/{id}', Delete::class);
+                $map->post('update', '/{entityName}/{id}', Update::class);
+                $map->delete('delete', '/{entityName}/{id}', Delete::class);
 
                 return $router;
             }
         ];
     }
 
-    public function getExtensions() {
+    public function getExtensions()
+    {
         return [];
     }
 }

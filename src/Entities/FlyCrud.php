@@ -9,7 +9,7 @@ abstract class FlyCrud extends AbstractEntity implements EntityInterface
 {
     /**
      * Returns the fly-crud directory.
-     * 
+     *
      * @return \FlyCrud\Directory
      */
     abstract protected function getDirectory();
@@ -66,9 +66,9 @@ abstract class FlyCrud extends AbstractEntity implements EntityInterface
 
     /**
      * Generate ids for the new documents
-     * 
+     *
      * @param Document $document
-     * 
+     *
      * @return string
      */
     protected function generateId(Document $document): string

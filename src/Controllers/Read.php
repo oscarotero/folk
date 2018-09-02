@@ -2,28 +2,34 @@
 
 namespace Folk\Controllers;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use Folk\Admin;
+use Psr\Http\Message\ServerRequestInterface;
 
-class Read extends Entity
+/**
+ * Display a form to edit a row
+ */
+class Read extends Controller
 {
-    public function html(Request $request, string $entityName)
+    public function __invoke(ServerRequestInterface $request)
     {
+        $entityName = $request->getAttribute('entityName');
+
+        if (!$this->app->hasEntity($entityName)) {
+            return self::notFoundResponse();
+        }
+
         $entity = $this->app->getEntity($entityName);
         $id = $request->getAttribute('id');
+        $data = $entity->read($id);
 
-        $row = $entity->getRow();
-        $row->setValue($entity->read($id));
+        //JSON request
+        if (self::isJSON($request)) {
+            return json_encode($data);
+        }
 
-        return $this->app->get('templates')
-            ->render('pages/read', compact('entityName', 'id', 'row'));
-    }
+        //HTML request
+        $row = $entity->getScheme();
+        $row->setValue($data);
 
-    public function json(Request $request, string $entityName)
-    {
-        $id = $request->getAttribute('id');
-
-        return json_encode($this->app->getEntity($entityName)->read($id));
+        return $this->app->get('templates')->render('pages/read', compact('entityName', 'id', 'row'));
     }
 }

@@ -8,15 +8,8 @@ use Folk\Admin;
 use Imagecow\Image;
 use Middlewares\Utils\Factory;
 
-class Index
+class Index extends Controller
 {
-    private $app;
-
-    public function __construct(Admin $app)
-    {
-        $this->app = $app;
-    }
-
     public function __invoke(Request $request)
     {
         $query = $request->getQueryParams();
@@ -42,7 +35,7 @@ class Index
         $file = $this->app->getPath($query['file']);
 
         if (!is_file($file)) {
-            return Factory::createResponse(404);
+            return self::notFoundResponse();
         }
 
         $finfo = finfo_open(FILEINFO_MIME_TYPE);

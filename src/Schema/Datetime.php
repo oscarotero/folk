@@ -8,6 +8,6 @@ class Datetime extends Column
 {
     public function createInput(): InputDatetimeLocal
     {
-        return parent::buildInput('datetimeLocal');
+        return (new InputDatetimeLocal($this->title, $this->attributes))->setValue($this->value);
     }
 }

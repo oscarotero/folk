@@ -19,7 +19,8 @@ class FileUpload extends Loader implements FormatInterface
         ]);
     }
 
-    private static function getMaxSize() {
+    private static function getMaxSize()
+    {
         $size = ini_get('upload_max_filesize');
 
         switch (strtoupper(substr($size, -1))) {

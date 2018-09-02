@@ -8,6 +8,6 @@ class Number extends Column
 {
     public function createInput(): InputNumber
     {
-        return parent::buildInput('number');
+        return (new InputNumber($this->title, $this->attributes))->setValue($this->value);
     }
 }

@@ -12,19 +12,30 @@ abstract class AbstractEntity implements EntityInterface
     protected $name;
     protected $admin;
 
-    public $icon;
     public $title;
     public $description;
+    public $icon;
 
-    public function __construct(string $name, Admin $admin)
+    public function __construct(string $title, string $description = '', string $icon = '')
     {
-        $this->name = $name;
-        $this->admin = $admin;
+        $this->title = $title;
+        $this->description = $description;
+        $this->icon = $icon;
     }
 
-    public function getName(): string
+    public function getTitle(): string
     {
-        return $this->name;
+        return $this->title;
+    }
+
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    public function getIcon(): string
+    {
+        return $this->icon;
     }
 
     public function getLabel($id, array $data): string

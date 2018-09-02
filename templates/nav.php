@@ -9,34 +9,21 @@
             </a>
         </li>
 
-        <?php foreach ($app->getAllEntities() as list($e, $id)): ?>
+        <?php foreach ($app->getAllEntities() as $name => $ent): ?>
         <li>
-            <?php 
-            if ($id === null) {
-                $url = $app->getRoute('search', ['entityName' => $e->getName()]);
-            } else {
-                $url = $app->getRoute('read', ['entityName' => $e->getName(), 'id' => $id]);
-            }
-            ?>
-            <a href="<?= $url ?>" title="<?= $e->description ?>">
-                <strong><?= $e->title ?></strong>
+            <a href="<?= $app->getRoute('search', ['entityName' => $name]) ?>" title="<?= $ent->getDescription() ?>">
+                <strong><?= $ent->getTitle() ?></strong>
             </a>
         </li>
         <?php endforeach ?>
     </ul>
 </nav>
 
-<form action="<?= $app->getRoute('search', ['entity' => $entityName]) ?>">
-    <?php 
-    if ($app->getEntityId($entityName) === null) {
-        $url = $app->getRoute('search', compact('entityName'));
-    } else {
-        $url = $app->getRoute('read', compact('entityName', 'id'));
-    }
-    ?>
+<?php $url = $app->getRoute('search', compact('entityName')); ?>
 
-    <a href="<?= $url ?>" title="<?= $entity->description ?>">
-        <?= $entity->title ?>
+<form action="<?= $url ?>">
+    <a href="<?= $url ?>" title="<?= $entity->getDescription() ?>">
+        <?= $entity->getTitle() ?>
     </a>
 
     <input name="query" type="search" placeholder="<?= $placeholder ?? p__('search', 'Search %s...', strtolower($entity->title)) ?>" value="<?= isset($search) ? $search->buildQuery() : ''; ?>">

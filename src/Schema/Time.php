@@ -8,6 +8,6 @@ class Time extends Column
 {
     public function createInput(): InputTime
     {
-        return parent::buildInput('time');
+        return (new InputTime($this->title, $this->attributes))->setValue($this->value);
     }
 }

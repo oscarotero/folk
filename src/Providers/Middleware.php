@@ -56,7 +56,8 @@ class Middleware implements ServiceProviderInterface
         ];
     }
 
-    public function getExtensions() {
+    public function getExtensions()
+    {
         return [];
     }
 }

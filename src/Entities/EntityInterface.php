@@ -2,21 +2,29 @@
 
 namespace Folk\Entities;
 
-use Folk\Admin;
 use Folk\SearchQuery;
 use Folk\Schema\RowInterface;
+use FormManager\Form;
 
 /**
  * Interface used by all entities.
  */
 interface EntityInterface
 {
-    public function __construct(string $name, Admin $admin);
+    /**
+     * Returns the entity title
+     */
+    public function getTitle(): string;
 
     /**
-     * Returns the entity name
+     * Returns the entity description
      */
-    public function getName(): string;
+    public function getDescription(): string;
+
+    /**
+     * Returns the entity icon
+     */
+    public function getIcon(): string;
 
     /**
      * List the entity rows.
@@ -54,7 +62,7 @@ interface EntityInterface
     /**
      * Returns the data scheme used by this entity.
      */
-    public function getRow(): RowInterface;
+    public function getScheme(): RowInterface;
 
     /**
      * Returns the label of a row.
@@ -64,18 +72,11 @@ interface EntityInterface
     public function getLabel($id, array $data): string;
 
     /**
-     * Returns action buttons from an entity.
-     * Example: prev / next links, preview, etc
-     *
-     * Each action is an array with the following keys options
-     * - label (string, required)
-     * - url (string, required)
-     * - method (GET by default)
-     * - data (array)
-     * - icon (string)
-     * - target (string)
+     * Returns actions buttons from an entity.
      *
      * @param mixed $id The entity id
+     *
+     * @return Form[]
      */
     public function getActions($id): array;
 }

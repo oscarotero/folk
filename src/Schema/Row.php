@@ -4,13 +4,12 @@ namespace Folk\Schema;
 
 use IteratorAggregate;
 use ArrayIterator;
+use FormManager\InputInterface;
 use FormManager\Factory as f;
 
 class Row implements RowInterface, IteratorAggregate
 {
     private $columns = [];
-    private $form;
-    private $id;
 
     public function __construct($columns = [])
     {
@@ -56,6 +55,17 @@ class Row implements RowInterface, IteratorAggregate
         return $values;
     }
 
+    public function isValid(): bool
+    {
+        foreach ($this->columns as $name => $column) {
+            if (!$column->isValid()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public function renderHtml(): string
     {
         $html = [];
@@ -69,34 +79,25 @@ class Row implements RowInterface, IteratorAggregate
         return "<ul>{$html}</ul>";
     }
 
-    public function renderForm(string $entityName, $id = null): string
+    public function createInput(): InputInterface
     {
-        $form = f::form(
-            [
-                'id' => f::hidden($id),
-                'entity' => f::hidden($entityName),
-            ],[
-                'method' => 'post',
-                'enctype' =>'multipart/form-data'
-            ]
-        );
-
-        $group = $form['data'] = f::group();
-
-        $html = [];
-        $html[] = $form->getOpeningTag();
+        $group = f::group();
 
         foreach ($this->columns as $name => $column) {
-            $html[] = $column->renderInput($group[$name] = $column->createInput());
+            $group[$name] = $column->createInput();
         }
 
-        $html[] = f::submit('Save');
-        $html[] = f::submit('Duplicate', ['name' => 'method-override', 'value' => 'put']);
-        $html[] = f::submit('Delete', ['name' => 'method-override', 'value' => 'delete']);
-        $html[] = $form->getClosingTag();
+        return $group;
+    }
 
-        $html = implode("\n", $html);
+    public function renderInput(InputInterface $input): string
+    {
+        $html = [];
 
-        return (string) $html;
+        foreach ($this->columns as $name => $column) {
+            $html[] = $column->renderInput($input[$name]);
+        }
+
+        return implode("\n", $html);
     }
 }

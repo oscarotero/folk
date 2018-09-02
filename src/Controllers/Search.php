@@ -2,22 +2,38 @@
 
 namespace Folk\Controllers;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use Folk\Admin;
+use Psr\Http\Message\ServerRequestInterface;
 use Folk\Entities\EntityInterface;
-use Zend\Diactoros\Response\RedirectResponse;
 use Folk\SearchQuery;
 
-class Search extends Entity
+/**
+ * Display table to search rows
+ */
+class Search extends Controller
 {
-    public function html(Request $request, string $entityName)
+    public function __invoke(ServerRequestInterface $request)
     {
+        $entityName = $request->getAttribute('entityName');
+
+        if (!$this->app->hasEntity($entityName)) {
+            return self::notFoundResponse();
+        }
+
         $entity = $this->app->getEntity($entityName);
         $search = new SearchQuery($request->getQueryParams());
-        $data = $this->search($entity, $search);
+        $data = $entity->search($search);
 
-        $row = $entity->getRow();
+        //JSON request
+        if (self::isJSON($request)) {
+            foreach ($data as $id => &$item) {
+                $item = $entity->getLabel($id, $item);
+            }
+
+            return json_encode($data);
+        }
+
+        //HTML request
+        $row = $entity->getScheme();
         $rows = [];
 
         foreach ($data as $id => $value) {
@@ -27,29 +43,5 @@ class Search extends Entity
 
         return $this->app->get('templates')
             ->render('pages/search', compact('rows', 'entityName', 'search'));
-    }
-
-    public function json(Request $request, string $entityName)
-    {
-        $entity = $this->app->getEntity($entityName);
-
-        $search = new SearchQuery($request->getQueryParams());
-
-        $json = [];
-
-        foreach ($this->search($entity, $search) as $id => $item) {
-            $json[$id] = $entity->getLabel($id, $item);
-        }
-
-        return json_encode($json);
-    }
-
-    private function search(EntityInterface $entity, SearchQuery $search): array
-    {
-        if ($search->getPage() === null) {
-            $search->setPage(1);
-        }
-
-        return $entity->search($search);
     }
 }

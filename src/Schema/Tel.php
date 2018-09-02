@@ -8,6 +8,6 @@ class Tel extends Column
 {
     public function createInput(): InputTel
     {
-    	return parent::buildInput('tel');
+        return (new InputTel($this->title, $this->attributes))->setValue($this->value);
     }
 }

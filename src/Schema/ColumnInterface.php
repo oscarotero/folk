@@ -6,13 +6,17 @@ use FormManager\InputInterface;
 
 interface ColumnInterface
 {
-	public function getLabel(): string;
+    public function getTitle(): string;
 
-	public function setValue($value): void;
+    public function setValue($value): void;
 
-	public function getValue();
+    public function getValue();
 
-	public function renderHtml(): string;
+    public function isValid(): bool;
+
+    public function renderHtml(): string;
+
+    public function createInput(): InputInterface;
 
     public function renderInput(InputInterface $input): string;
 }

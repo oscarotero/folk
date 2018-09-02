@@ -18,19 +18,9 @@ $this->layout('html', compact('title'));
 
 	<main>
 		<ul>
-			<?php foreach ($app->getAllEntities() as list($entity, $id)): ?>
+			<?php foreach ($app->getAllEntities() as $entityName => $entity): ?>
 			<li>
-				<?php if (isset($id)): ?>
-				<a href="<?= $app->getRoute('read', ['entity' => $entity->getName(), 'id' => $id]) ?>">
-				<?php else: ?>
-				<a href="<?= $app->getRoute('search', ['entity' => $entity->getName()]) ?>">
-				<?php endif ?>
-					<h3><?= $entity->title; ?></h3>
-
-					<?php if ($entity->description): ?>
-		    		<p><?= $entity->description; ?></p>
-					<?php endif ?>
-				</a>
+				<?php $this->insert('partials/entity.list', compact('entityName', 'entity')) ?>
 			</li>
 			<?php endforeach ?>
 		</ul>

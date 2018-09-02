@@ -14,7 +14,7 @@ abstract class File extends AbstractEntity implements EntityInterface
 
     /**
      * Returns the base path.
-     * 
+     *
      * @return string
      */
     abstract protected function getBasePath(): string;
@@ -27,31 +27,33 @@ abstract class File extends AbstractEntity implements EntityInterface
     public function search(SearchQuery $search = null): array
     {
         $result = [];
-        $words = $search->getWords();
+        $terms = $search->getTerms();
         $start = strlen($this->getBasePath()) + 1;
         $length = -strlen($this->extension) - 1;
-        $ids = $search->getIds();
+        $id = $search->getId();
 
         foreach ($this->getIterator() as $file) {
             if (!$file->isFile() || $file->getExtension() !== $this->extension) {
                 continue;
             }
 
-            $id = substr($file->getPathname(), $start, $length);
-
             //Filter by id
-            if (!empty($ids) && !in_array($id, $ids, true)) {
+            $fileId = substr($file->getPathname(), $start, $length);
+
+            if (!empty($id) && $id !== $fileId) {
                 continue;
             }
 
-            //Filter by word
-            foreach ($words as $word) {
-                if (strpos($id, $word) === false) {
-                    continue;
+            //Filter by terms
+            $content = file_get_contents($file->getPathname());
+
+            foreach ($terms as $term) {
+                if (strpos($content, $term) === false) {
+                    continue 2;
                 }
             }
 
-            $result[$id] = $this->parse(file_get_contents($file->getPathname()));
+            $result[$fileId] = $this->parse($content);
         }
 
         if ($search->getPage() !== null) {
@@ -107,9 +109,9 @@ abstract class File extends AbstractEntity implements EntityInterface
 
     /**
      * Calculate the id of a new row.
-     * 
+     *
      * @param array $data
-     * 
+     *
      * @return string
      */
     protected function getId(array $data): string
@@ -121,7 +123,7 @@ abstract class File extends AbstractEntity implements EntityInterface
 
     /**
      * Returns the path of a file.
-     * 
+     *
      * @return string
      */
     protected function getFilePath($filename): string
@@ -131,18 +133,18 @@ abstract class File extends AbstractEntity implements EntityInterface
 
     /**
      * Transform the data to a string.
-     * 
+     *
      * @param array $data
-     * 
+     *
      * @return string
      */
     abstract protected function stringify(array $data): string;
 
     /**
      * Transform the string to an array.
-     * 
+     *
      * @param string $source
-     * 
+     *
      * @return array
      */
     abstract protected function parse(string $source): array;
