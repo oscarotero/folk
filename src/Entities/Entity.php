@@ -2,19 +2,14 @@
 
 namespace Folk\Entities;
 
-use Folk\Admin;
-
 /**
  * Base class extended by all entities.
  */
-abstract class AbstractEntity implements EntityInterface
+abstract class Entity implements EntityInterface
 {
-    protected $name;
-    protected $admin;
-
-    public $title;
-    public $description;
-    public $icon;
+    protected $title;
+    protected $description;
+    protected $icon;
 
     public function __construct(string $title, string $description = '', string $icon = '')
     {

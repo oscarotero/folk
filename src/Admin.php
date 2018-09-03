@@ -5,13 +5,10 @@ namespace Folk;
 use Fol\App;
 use Fol\NotFoundException;
 use Folk\Entities\EntityInterface;
-use Folk\Entities\SingleEntityInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Zend\Diactoros\Response;
-use Relay\RelayBuilder;
 
 /**
  * Main manager.

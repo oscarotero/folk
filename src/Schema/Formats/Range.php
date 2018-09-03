@@ -1,6 +1,6 @@
 <?php
 
-namespace Folk\Schema;
+namespace Folk\Schema\Formats;
 
 use FormManager\Inputs\Range as InputRange;
 

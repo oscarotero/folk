@@ -26,7 +26,7 @@
         <?= $entity->getTitle() ?>
     </a>
 
-    <input name="query" type="search" placeholder="<?= $placeholder ?? p__('search', 'Search %s...', strtolower($entity->title)) ?>" value="<?= isset($search) ? $search->buildQuery() : ''; ?>">
+    <input name="query" type="search" placeholder="<?= $placeholder ?? p__('search', 'Search %s...', strtolower($entity->getTitle())) ?>" value="<?= isset($search) ? $search->buildQuery() : ''; ?>">
     <input type="hidden" name="page" value="1">
     <button type="submit">Search</button>
 </form>

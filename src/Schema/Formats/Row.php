@@ -1,11 +1,13 @@
 <?php
 
-namespace Folk\Schema;
+namespace Folk\Schema\Formats;
 
 use IteratorAggregate;
 use ArrayIterator;
 use FormManager\InputInterface;
 use FormManager\Factory as f;
+use Folk\Schema\RowInterface;
+use Folk\Schema\ColumnInterface;
 
 class Row implements RowInterface, IteratorAggregate
 {

@@ -13,7 +13,7 @@ class Admin extends Folk\Admin
         $this->setEntities([
             // Entities\Articles::class,
             // Entities\Items::class,
-            Entities\Tags::class,
+            'tags' => new Entities\Tags('Etiquetas'),
         ]);
 
         // $this->addEntity(new Entities\Config('config', $this), 'config');

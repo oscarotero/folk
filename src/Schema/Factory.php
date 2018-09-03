@@ -1,12 +1,12 @@
 <?php
 
-namespace Folk;
+namespace Folk\Schema;
 
 use InvalidArgumentException;
 
-abstract class SchemaFactory
+abstract class Factory
 {
-    const SCHEMA_NAMESPACE = 'Folk\\Schema\\';
+    const SCHEMA_NAMESPACE = 'Folk\\Schema\\Formats\\';
 
     /**
      * Factory to create schema elements

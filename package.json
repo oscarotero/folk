@@ -16,7 +16,7 @@
     "normalize.css": "^8.0.0"
   },
   "scripts": {
-    "start": "postcss public/css/styles.css -o public/css/styles.dist.css"
+    "start": "postcss assets/css/styles.css -o public/css/styles.css -w & php -S localhost:8888 -t public"
   },
   "devDependencies": {
     "postcss-cli": "^6.0.0",

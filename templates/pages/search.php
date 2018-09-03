@@ -1,6 +1,6 @@
 <?php
 $entity = $app->getEntity($entityName);
-$title = p__('search', '%s | %s', $entity->title, $app->title);
+$title = p__('search', '%s | %s', $entity->getTitle(), $app->title);
 
 $this->layout('html', compact('title'));
 $this->insert('nav', compact('entityName', 'search'));

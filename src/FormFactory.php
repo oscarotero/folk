@@ -29,8 +29,8 @@ abstract class FormFactory
             'data' => $row->createInput(),
             'method-override' => f::submitGroup([
                 'post' => f::submit('Save'),
-                'put' => f::submit('Duplicate'),
-                'delete' => f::submit('Delete'),
+                'put' => f::submit('Duplicate', ['class' => 'is-secondary']),
+                'delete' => f::submit('Delete', ['class' => 'is-danger']),
             ])
         ], [
             'method' => 'post',

@@ -1,0 +1,61 @@
+form {
+	& textarea,
+	& input[type="date"],
+	& input[type="datetime-local"],
+	& input[type="email"],
+	& input[type="month"],
+	& input[type="number"],
+	& input[type="search"],
+	& input[type="tel"],
+	& input[type="text"],
+	& input[type="time"],
+	& input[type="url"],
+	& input[type="week"] {
+		border: solid 1px color-mod(black a(.2));
+		background: white;
+		padding: .5em;
+		border-radius: 2px;
+
+		&:hover {
+			border-color: color-mod(black a(.6));
+		}
+	}
+}
+button {
+	background: blue;
+	color: white;
+	border: solid 1px blue;
+	border-radius: 2px;
+	padding: .5em;
+
+	&:hover {
+		background: darkblue;
+	}
+
+	&:active {
+		background: black;
+		transform: translateY(1px);
+	}
+
+	&.is-secondary {
+		background: white;
+		color: blue;
+		border-color: currentColor;
+
+		&:hover {
+			background: #eee;
+			color: darkblue;
+		}
+	}
+
+	&.is-danger {
+		background: white;
+		color: red;
+		border-color: currentColor;
+
+		&:hover {
+			background: #eee;
+			color: darkred;
+		}
+	}
+}

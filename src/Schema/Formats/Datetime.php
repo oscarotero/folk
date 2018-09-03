@@ -1,6 +1,6 @@
 <?php
 
-namespace Folk\Schema;
+namespace Folk\Schema\Formats;
 
 use FormManager\Inputs\DatetimeLocal as InputDatetimeLocal;
 

@@ -1,9 +1,10 @@
 <?php
 
-namespace Folk\Schema;
+namespace Folk\Schema\Formats;
 
 use FormManager\Factory as f;
 use FormManager\InputInterface;
+use Folk\Schema\ColumnInterface;
 
 abstract class Column implements ColumnInterface
 {

@@ -1,9 +1,9 @@
 <article>
 	<a href="<?= $app->getRoute('search', compact('entityName')) ?>">
-		<h3><?= $entity->title; ?></h3>
+		<h3><?= $entity->getTitle(); ?></h3>
 
-		<?php if ($entity->description): ?>
-		<p><?= $entity->description; ?></p>
+		<?php if ($entity->getDescription()): ?>
+		<p><?= $entity->getDescription(); ?></p>
 		<?php endif ?>
 	</a>
 </article>

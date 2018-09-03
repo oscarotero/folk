@@ -1,0 +1,20 @@
+body {
+	font-family: var(--font);
+	font-weight: var(--font-weight-normal);
+}
+
+:focus {
+    outline: dotted 2px color-mod(black a(.2));
+    outline-offset: 4px;
+}
+a {
+    color: blue;
+
+    &:hover {
+        color: darkblue;
+    }
+
+    &:active {
+        color: black;
+    }
+}

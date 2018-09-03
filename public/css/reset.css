@@ -1,5 +1,0 @@
-body {
-	font-family: var(--font);
-	font-weight: var(--font-weight-normal);
-	background: color-mod(black a(.4));
-}

@@ -1,21 +1,19 @@
 <?php
 
-namespace Folk\Entities;
+namespace Folk\Entities\File;
 
 use Folk\SearchQuery;
-use SimpleCrud\Row;
+use Folk\Entities\Entity;
 use FilesystemIterator;
 use RecursiveDirectoryIterator;
 use Exception;
 
-abstract class File extends AbstractEntity implements EntityInterface
+abstract class File extends Entity
 {
     protected $extension;
 
     /**
      * Returns the base path.
-     *
-     * @return string
      */
     abstract protected function getBasePath(): string;
 
@@ -68,7 +66,7 @@ abstract class File extends AbstractEntity implements EntityInterface
 
     public function create(array $data)
     {
-        $id = $this->getId($data);
+        $id = $this->generateId($data);
         $file = $this->getFilePath($id);
         $source = $this->stringify($data);
 
@@ -108,13 +106,9 @@ abstract class File extends AbstractEntity implements EntityInterface
     }
 
     /**
-     * Calculate the id of a new row.
-     *
-     * @param array $data
-     *
-     * @return string
+     * Generate the id of a new row.
      */
-    protected function getId(array $data): string
+    protected function generateId(array $data): string
     {
         $list = glob($this->getBasePath()."/*.{$this->extension}");
 
@@ -123,29 +117,19 @@ abstract class File extends AbstractEntity implements EntityInterface
 
     /**
      * Returns the path of a file.
-     *
-     * @return string
      */
-    protected function getFilePath($filename): string
+    protected function getFilePath(string $filename): string
     {
         return $this->getBasePath()."/{$filename}.{$this->extension}";
     }
 
     /**
      * Transform the data to a string.
-     *
-     * @param array $data
-     *
-     * @return string
      */
     abstract protected function stringify(array $data): string;
 
     /**
      * Transform the string to an array.
-     *
-     * @param string $source
-     *
-     * @return array
      */
     abstract protected function parse(string $source): array;
 }
