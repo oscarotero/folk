@@ -1,6 +1,7 @@
 body {
 	font-family: var(--font);
 	font-weight: var(--font-weight-normal);
+    background: gray(95);
 }
 
 :focus {
@@ -12,6 +13,7 @@ a {
 
     &:hover {
         color: darkblue;
+        text-decoration: none;
     }
 
     &:active {

@@ -342,14 +342,15 @@ template {
 }
 
 :root {
-	--font: system-ui;
-	--font-weight-normal: 300;
+	--font: system-ui, sans-serif;
+	--font-weight-normal: 400;
 	--font-weight-bold: 500;
 }
 
 body {
 	font-family: var(--font);
 	font-weight: var(--font-weight-normal);
+    background: rgb(240,240,240);
 }
 
 :focus {
@@ -363,40 +364,100 @@ a {
 
 a:hover {
         color: darkblue;
+        text-decoration: none;
     }
 
 a:active {
         color: black;
     }
 
-form textarea,
-	form input[type="date"],
-	form input[type="datetime-local"],
-	form input[type="email"],
-	form input[type="month"],
-	form input[type="number"],
-	form input[type="search"],
-	form input[type="tel"],
-	form input[type="text"],
-	form input[type="time"],
-	form input[type="url"],
-	form input[type="week"] {
-		border: solid 1px rgba(0, 0, 0, 0.2);
-		background: white;
-		padding: .5em;
-		border-radius: 2px
+select,
+textarea,
+input[type="date"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"] {
+	border: solid 1px rgba(0, 0, 0, 0.2);
+	background: white;
+	padding: .5em;
+	border-radius: 2px;
+	box-sizing: border-box;
+	max-width: 100%
+}
+
+select:hover, textarea:hover, input[type="date"]:hover, input[type="datetime-local"]:hover, input[type="email"]:hover, input[type="month"]:hover, input[type="number"]:hover, input[type="search"]:hover, input[type="tel"]:hover, input[type="text"]:hover, input[type="time"]:hover, input[type="url"]:hover, input[type="week"]:hover {
+		border-color: rgba(0, 0, 0, 0.6);
 	}
 
-form textarea:hover, form input[type="date"]:hover, form input[type="datetime-local"]:hover, form input[type="email"]:hover, form input[type="month"]:hover, form input[type="number"]:hover, form input[type="search"]:hover, form input[type="tel"]:hover, form input[type="text"]:hover, form input[type="time"]:hover, form input[type="url"]:hover, form input[type="week"]:hover {
-			border-color: rgba(0, 0, 0, 0.6);
-		}
+option {
+	font-size: 1rem;
+}
+
+textarea,
+input[type="url"],
+input[type="range"],
+input[type="email"],
+input[type="text"] {
+	width: 100%;
+}
+
+textarea {
+	resize: vertical;
+}
+
+select {
+	min-width: 12em;
+	-webkit-appearance: none;
+	   -moz-appearance: none;
+	        appearance: none;
+	padding-right: 3em;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 14"><g fill="black" fill-rule="evenodd"><path d="M.62639628 5.99993896H9.3727389c.25339173.00130856.482416-.15074264.57956202-.38477624.09714598-.2340336.04312294-.50357616-.13670922-.6820964L5.4401815.1835435C5.32475606.06613116 5.1670083 0 5.00236114 0c-.16464716 0-.3223949.06613117-.43782037.1835435L.1835435 4.93306632C.06613116 5.0484918 0 5.20623953 0 5.3708867s.06613117.32239492.1835435.43782038c.1146444.1224934.27508006.19177244.44285278.19123188zM9.3727389 7.9999685H.6263963c-.1662653-.00316183-.32647608.06237894-.4428528.18116705C.0661312 8.296561 0 8.45430875 0 8.61895592s.06613117.32239492.1835435.43782037l4.38099726 4.7596802C4.67996622 13.9338688 4.83771396 14 5.00236113 14s.32239492-.0661312.43782038-.1835435l4.3754102-4.74961537c.17983216-.17852023.2338552-.44806278.13670922-.68209638-.09714602-.2340336-.3261703-.3860848-.579562-.38477625z"/></g></svg>');
+	background-size: .66em;
+	background-repeat: no-repeat;
+	background-position: top 50% right 1em;
+}
+
+input[type="color"] {
+	border: solid 1px rgba(0, 0, 0, 0.2);
+	padding: 2px;
+	border-radius: 2px;
+	width: 4em;
+	height: 2em;
+}
+
+fieldset {
+	border: solid 1px rgba(0, 0, 0, 0.2);
+	border-radius: 2px;
+	padding: 1em;
+}
+
+legend {
+	font-weight: bold;
+	background: white;
+	padding: 0 1em;
+}
+
+output {
+	display: inline-block;
+	background: rgba(0, 0, 0, 0.1);
+	padding: .5em;
+	border-radius: 2px;
+}
 
 button {
 	background: blue;
 	color: white;
 	border: solid 1px blue;
 	border-radius: 2px;
-	padding: .5em
+	padding: .5em;
+	min-width: 5em
 }
 
 button:hover {
@@ -430,3 +491,88 @@ button.is-danger:hover {
 			background: #eee;
 			color: darkred;
 		}
+
+.editForm {
+	display: grid;
+	grid-gap: 1em;
+	padding: 2em;
+}
+
+.editForm-input.is-standard {
+		display: flex;
+		align-items: center
+	}
+
+.editForm-input.is-standard label {
+			width: 8em;
+			flex: 0 0 auto;
+			margin-right: 1em;
+		}
+
+.editForm-input.is-standard output {
+			margin-left: 1em;
+		}
+
+.editForm-input.is-textarea {
+		display: flex;
+		align-items: flex-start
+	}
+
+.editForm-input.is-textarea label {
+			width: 8em;
+			flex: 0 0 auto;
+			margin-right: 1em;
+			position: -webkit-sticky;
+			position: sticky;
+			top: 1em;
+		}
+
+.editForm-input.is-textarea textarea {
+			align-self: flex-start;
+		}
+
+.editForm-input.is-check {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		margin: 1em 0
+	}
+
+.editForm-input.is-check label {
+			padding-left: .5em;
+			margin-right: 2em;
+		}
+
+.editForm-input.is-group {
+		margin: 1em 0
+	}
+
+.editForm-input.is-group summary {
+			color: blue;
+			text-decoration: underline;
+			cursor: default
+		}
+
+.editForm-input.is-group summary:hover {
+		        color: darkblue;
+				text-decoration: none;
+		    }
+
+.editForm-input.is-group summary:active {
+		        color: black;
+		    }
+
+.editForm-input.is-group > div {
+			display: grid;
+			grid-gap: 1em;
+			margin: 1em 0;
+		}
+
+.page-read {
+	max-width: 80em;
+	margin: auto;
+	background: white;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	border: solid 1px rgba(0, 0, 0, 0.2);
+}

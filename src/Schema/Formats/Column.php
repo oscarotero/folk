@@ -52,6 +52,6 @@ abstract class Column implements ColumnInterface
 
     public function renderInput(InputInterface $input): string
     {
-        return "<div>{$input}</div>";
+        return "<div class='editForm-input is-standard'>{$input}</div>";
     }
 }

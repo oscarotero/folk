@@ -2,6 +2,7 @@
 
 namespace Folk\Schema\Formats;
 
+use Folk\Schema\ColumnInterface;
 use FormManager\InputInterface;
 use FormManager\Groups\Group as InputGroup;
 
@@ -93,15 +94,22 @@ class Group implements ColumnInterface
 
     public function renderInput(InputInterface $group): string
     {
-        $html = ["<legend>{$this->getTitle()}</legend>"];
+        $html = [];
 
         foreach ($this->children as $name => $child) {
             $input = $group[$name] = $child->createInput();
-            $html[] = "<li>{$child->renderInput($input)}</li>";
+            $html[] = $child->renderInput($input);
         }
 
         $html = implode("\n", $html);
 
-        return "<fieldset>{$html}</fieldset>";
+        return <<<HTM
+        <details class="editForm-input is-group">
+            <summary class="editForm-subhead">{$this->getTitle()}</summary>
+            <div>
+                {$html}
+            </div>
+        </details>
+HTM;
     }
 }

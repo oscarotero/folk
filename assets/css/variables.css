@@ -1,5 +1,5 @@
 :root {
-	--font: system-ui;
-	--font-weight-normal: 300;
+	--font: system-ui, sans-serif;
+	--font-weight-normal: 400;
 	--font-weight-bold: 500;
 }
