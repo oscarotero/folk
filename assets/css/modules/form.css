@@ -87,7 +87,7 @@ button {
 	}
 
 	&.is-secondary {
-		background: white;
+		background: transparent;
 		color: blue;
 		border-color: currentColor;
 
@@ -98,7 +98,7 @@ button {
 	}
 
 	&.is-danger {
-		background: white;
+		background: transparent;
 		color: red;
 		border-color: currentColor;
 

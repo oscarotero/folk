@@ -2,6 +2,17 @@
 	display: grid;
 	grid-gap: 1em;
 	padding: 2em;
+	background: white;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px color-mod(black a(.1));
+	border: solid 1px color-mod(black a(.2));
+
+	& label {
+		color: #666;
+	}
+	& :checked + label {
+		color: black;
+	}
 }
 .editForm-input {
 	&.is-standard {
@@ -72,4 +83,7 @@
 			margin: 1em 0;
 		}
 	}
+}
+.editForm-footer  {
+	padding: 2em 0;
 }

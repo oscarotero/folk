@@ -12,13 +12,16 @@ $this->insert('nav', compact('entityName') + ['placeholder' => "#{$id}"]);
     <?php
     $form = FormFactory::update($row, $entityName, $id);
     $form->action = $app->getRoute('update', compact('entityName', 'id'));
-    $form->class = 'editForm';
 
     echo $form->getOpeningTag();
+
+    echo '<div class="editForm">';
     echo $form['id'];
     echo $form['entityName'];
     echo $row->renderInput($form['data']);
-    echo '<div class="input is-submit">';
+    echo '</div>';
+
+    echo '<div class="editForm-footer">';
     echo $form['method-override'];
     echo '</div>';
     echo $form->getClosingTag();

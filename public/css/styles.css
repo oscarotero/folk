@@ -471,7 +471,7 @@ button:active {
 	}
 
 button.is-secondary {
-		background: white;
+		background: transparent;
 		color: blue;
 		border-color: currentColor
 	}
@@ -482,7 +482,7 @@ button.is-secondary:hover {
 		}
 
 button.is-danger {
-		background: white;
+		background: transparent;
 		color: red;
 		border-color: currentColor
 	}
@@ -496,7 +496,19 @@ button.is-danger:hover {
 	display: grid;
 	grid-gap: 1em;
 	padding: 2em;
+	background: white;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	border: solid 1px rgba(0, 0, 0, 0.2)
 }
+
+.editForm label {
+		color: #666;
+	}
+
+.editForm :checked + label {
+		color: black;
+	}
 
 .editForm-input.is-standard {
 		display: flex;
@@ -568,11 +580,11 @@ button.is-danger:hover {
 			margin: 1em 0;
 		}
 
+.editForm-footer  {
+	padding: 2em 0;
+}
+
 .page-read {
 	max-width: 80em;
 	margin: auto;
-	background: white;
-	border-radius: 4px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	border: solid 1px rgba(0, 0, 0, 0.2);
 }

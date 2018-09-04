@@ -21,6 +21,7 @@ class Tags extends Yaml
             'date' => f::date('Date'),
             'datetime' => f::datetime('Datetime'),
             'email' => f::email('Email'),
+            'file' => f::file('File'),
             'group' => f::group('Group', [
                 'title' => f::text('Title'),
                 'body' => f::textarea('Body'),
