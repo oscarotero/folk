@@ -1,11 +1,12 @@
 body {
 	font-family: var(--font);
 	font-weight: var(--font-weight-normal);
-    background: gray(95);
+    background: var(--gray-xlight);
+    color: var(--black);
 }
 
 :focus {
-    outline: dotted 2px color-mod(black a(.2));
+    outline: dotted 2px var(--gray-line);
     outline-offset: 4px;
 }
 a {

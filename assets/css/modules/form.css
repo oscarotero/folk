@@ -11,15 +11,18 @@ input[type="text"],
 input[type="time"],
 input[type="url"],
 input[type="week"] {
-	border: solid 1px color-mod(black a(.2));
-	background: white;
+	border: solid 1px transparent;
+	background: var(--gray-xlight);
 	padding: .5em;
 	border-radius: 2px;
 	box-sizing: border-box;
 	max-width: 100%;
+	transition: border-color .3s, background-color .3s;
 
-	&:hover {
-		border-color: color-mod(black a(.6));
+	&:hover,
+	&:focus {
+		background-color: var(--white);
+		border-color: var(--gray-line-strong);
 	}
 }
 option {
@@ -45,40 +48,31 @@ select {
 	background-position: top 50% right 1em;
 }
 input[type="color"] {
-	border: solid 1px color-mod(black a(.2));
+	border: solid 1px var(--gray-line);
 	padding: 2px;
 	border-radius: 2px;
 	width: 4em;
 	height: 2em;
 }
 
-fieldset {
-	border: solid 1px color-mod(black a(.2));
-	border-radius: 2px;
-	padding: 1em;
-}
-legend {
-	font-weight: bold;
-	background: white;
-	padding: 0 1em;
-}
 output {
 	display: inline-block;
-	background: color-mod(black a(.1));
+	color: var(--gray);
+	border: solid 1px var(--gray-line);
 	padding: .5em;
 	border-radius: 2px;
 }
 
 button {
-	background: blue;
+	background: var(--blue);
 	color: white;
-	border: solid 1px blue;
+	border: solid 1px var(--blue);
 	border-radius: 2px;
 	padding: .5em;
 	min-width: 5em;
 
 	&:hover {
-		background: darkblue;
+		background: var(--blue-dark);
 	}
 
 	&:active {
@@ -88,23 +82,21 @@ button {
 
 	&.is-secondary {
 		background: transparent;
-		color: blue;
+		color: var(--blue);
 		border-color: currentColor;
 
 		&:hover {
-			background: #eee;
-			color: darkblue;
+			color: var(--blue-dark);
 		}
 	}
 
 	&.is-danger {
 		background: transparent;
-		color: red;
+		color: var(--red);
 		border-color: currentColor;
 
 		&:hover {
-			background: #eee;
-			color: darkred;
+			color: var(--red-dark);
 		}
 	}
 }

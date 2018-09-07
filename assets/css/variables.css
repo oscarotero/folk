@@ -2,4 +2,18 @@
 	--font: system-ui, sans-serif;
 	--font-weight-normal: 400;
 	--font-weight-bold: 500;
+
+    --blue: blue;
+    --blue-dark: darkblue;
+    --red: red;
+    --red-dark: darkred;
+
+    --white: white;
+    --black: gray(5);
+    --gray: gray(40);
+    --gray-light: gray(90);
+    --gray-xlight: gray(95);
+
+    --gray-line: color-mod(black a(.2));
+    --gray-line-strong: color-mod(black a(.6));
 }

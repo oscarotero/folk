@@ -1,17 +1,17 @@
 .editForm {
 	display: grid;
-	grid-gap: 1em;
+	grid-gap: 2em;
 	padding: 2em;
 	background: white;
 	border-radius: 4px;
 	box-shadow: 0 2px 4px color-mod(black a(.1));
-	border: solid 1px color-mod(black a(.2));
+	border: solid 1px var(--gray-line);
 
 	& label {
-		color: #666;
+		color: var(--gray);
 	}
 	& :checked + label {
-		color: black;
+		color: var(--black);
 	}
 }
 .editForm-input {
@@ -63,17 +63,17 @@
 		margin: 1em 0;
 
 		& summary {
-			color: blue;
+			color: var(--blue);
 			text-decoration: underline;
 			cursor: default;
 
 			&:hover {
-		        color: darkblue;
+		        color: var(--blue-dark);
 				text-decoration: none;
 		    }
 
 		    &:active {
-		        color: black;
+		        color: var(--black);
 		    }
 		}
 

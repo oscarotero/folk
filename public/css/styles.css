@@ -345,16 +345,31 @@ template {
 	--font: system-ui, sans-serif;
 	--font-weight-normal: 400;
 	--font-weight-bold: 500;
+
+    --blue: blue;
+    --blue-dark: darkblue;
+    --red: red;
+    --red-dark: darkred;
+
+    --white: white;
+    --black: rgb(16,16,16);
+    --gray: rgb(94,94,94);
+    --gray-light: rgb(226,226,226);
+    --gray-xlight: rgb(240,240,240);
+
+    --gray-line: rgba(0, 0, 0, 0.2);
+    --gray-line-strong: rgba(0, 0, 0, 0.6);
 }
 
 body {
 	font-family: var(--font);
 	font-weight: var(--font-weight-normal);
-    background: rgb(240,240,240);
+    background: var(--gray-xlight);
+    color: var(--black);
 }
 
 :focus {
-    outline: dotted 2px rgba(0, 0, 0, 0.2);
+    outline: dotted 2px var(--gray-line);
     outline-offset: 4px;
 }
 
@@ -384,16 +399,43 @@ input[type="text"],
 input[type="time"],
 input[type="url"],
 input[type="week"] {
-	border: solid 1px rgba(0, 0, 0, 0.2);
-	background: white;
+	border: solid 1px transparent;
+	background: var(--gray-xlight);
 	padding: .5em;
 	border-radius: 2px;
 	box-sizing: border-box;
-	max-width: 100%
+	max-width: 100%;
+	transition: border-color .3s, background-color .3s
 }
 
-select:hover, textarea:hover, input[type="date"]:hover, input[type="datetime-local"]:hover, input[type="email"]:hover, input[type="month"]:hover, input[type="number"]:hover, input[type="search"]:hover, input[type="tel"]:hover, input[type="text"]:hover, input[type="time"]:hover, input[type="url"]:hover, input[type="week"]:hover {
-		border-color: rgba(0, 0, 0, 0.6);
+select:hover,
+	select:focus,
+	textarea:hover,
+	textarea:focus,
+	input[type="date"]:hover,
+	input[type="date"]:focus,
+	input[type="datetime-local"]:hover,
+	input[type="datetime-local"]:focus,
+	input[type="email"]:hover,
+	input[type="email"]:focus,
+	input[type="month"]:hover,
+	input[type="month"]:focus,
+	input[type="number"]:hover,
+	input[type="number"]:focus,
+	input[type="search"]:hover,
+	input[type="search"]:focus,
+	input[type="tel"]:hover,
+	input[type="tel"]:focus,
+	input[type="text"]:hover,
+	input[type="text"]:focus,
+	input[type="time"]:hover,
+	input[type="time"]:focus,
+	input[type="url"]:hover,
+	input[type="url"]:focus,
+	input[type="week"]:hover,
+	input[type="week"]:focus {
+		background-color: var(--white);
+		border-color: var(--gray-line-strong);
 	}
 
 option {
@@ -425,43 +467,32 @@ select {
 }
 
 input[type="color"] {
-	border: solid 1px rgba(0, 0, 0, 0.2);
+	border: solid 1px var(--gray-line);
 	padding: 2px;
 	border-radius: 2px;
 	width: 4em;
 	height: 2em;
 }
 
-fieldset {
-	border: solid 1px rgba(0, 0, 0, 0.2);
-	border-radius: 2px;
-	padding: 1em;
-}
-
-legend {
-	font-weight: bold;
-	background: white;
-	padding: 0 1em;
-}
-
 output {
 	display: inline-block;
-	background: rgba(0, 0, 0, 0.1);
+	color: var(--gray);
+	border: solid 1px var(--gray-line);
 	padding: .5em;
 	border-radius: 2px;
 }
 
 button {
-	background: blue;
+	background: var(--blue);
 	color: white;
-	border: solid 1px blue;
+	border: solid 1px var(--blue);
 	border-radius: 2px;
 	padding: .5em;
 	min-width: 5em
 }
 
 button:hover {
-		background: darkblue;
+		background: var(--blue-dark);
 	}
 
 button:active {
@@ -472,42 +503,40 @@ button:active {
 
 button.is-secondary {
 		background: transparent;
-		color: blue;
+		color: var(--blue);
 		border-color: currentColor
 	}
 
 button.is-secondary:hover {
-			background: #eee;
-			color: darkblue;
+			color: var(--blue-dark);
 		}
 
 button.is-danger {
 		background: transparent;
-		color: red;
+		color: var(--red);
 		border-color: currentColor
 	}
 
 button.is-danger:hover {
-			background: #eee;
-			color: darkred;
+			color: var(--red-dark);
 		}
 
 .editForm {
 	display: grid;
-	grid-gap: 1em;
+	grid-gap: 2em;
 	padding: 2em;
 	background: white;
 	border-radius: 4px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	border: solid 1px rgba(0, 0, 0, 0.2)
+	border: solid 1px var(--gray-line)
 }
 
 .editForm label {
-		color: #666;
+		color: var(--gray);
 	}
 
 .editForm :checked + label {
-		color: black;
+		color: var(--black);
 	}
 
 .editForm-input.is-standard {
@@ -560,18 +589,18 @@ button.is-danger:hover {
 	}
 
 .editForm-input.is-group summary {
-			color: blue;
+			color: var(--blue);
 			text-decoration: underline;
 			cursor: default
 		}
 
 .editForm-input.is-group summary:hover {
-		        color: darkblue;
+		        color: var(--blue-dark);
 				text-decoration: none;
 		    }
 
 .editForm-input.is-group summary:active {
-		        color: black;
+		        color: var(--black);
 		    }
 
 .editForm-input.is-group > div {
