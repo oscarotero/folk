@@ -4,7 +4,6 @@ namespace Demo\Entities;
 
 use Folk\Entities\File\Yaml;
 use Folk\Schema\Factory as f;
-use Folk\Schema\RowInterface;
 
 class Tags extends Yaml
 {
@@ -13,9 +12,9 @@ class Tags extends Yaml
         return __DIR__.'/json';
     }
 
-    public function getScheme(): RowInterface
+    public function getScheme(): array
     {
-        return f::row([
+        return [
             'checkbox' => f::checkbox('Checkbox'),
             'color' => f::color('Color'),
             'date' => f::date('Date'),
@@ -44,6 +43,6 @@ class Tags extends Yaml
             'time' => f::time('Time'),
             'url' => f::url('Url'),
             'week' => f::week('Week'),
-        ]);
+        ];
     }
 }

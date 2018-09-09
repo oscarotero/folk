@@ -3,6 +3,7 @@
 namespace Folk\Controllers;
 
 use Psr\Http\Message\ServerRequestInterface;
+use Folk\Schema\Schema;
 
 /**
  * Display a form to edit a row
@@ -27,7 +28,7 @@ class Read extends Controller
         }
 
         //HTML request
-        $row = $entity->getScheme();
+        $row = new Schema($entity->getScheme());
         $row->setValue($data);
 
         return $this->app->get('templates')->render('pages/read', compact('entityName', 'id', 'row'));

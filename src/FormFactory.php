@@ -4,29 +4,31 @@ namespace Folk;
 
 use FormManager\Factory as f;
 use FormManager\Form;
-use Folk\Schema\RowInterface;
+use Folk\Schema\Schema;
 
 abstract class FormFactory
 {
-    public static function insert(RowInterface $row, string $entityName = null): Form
+    public static function insert(Schema $row, string $entityName = null): Form
     {
-        return f::form([
+        $form = f::form([
             'entityName' => f::hidden($entityName),
             'method-override' => f::hidden('put'),
-            'data' => $row->createInput(),
             '' => f::submit('Create')
         ], [
             'method' => 'post',
             'enctype' =>'multipart/form-data'
         ]);
+
+        $row->initInput('data', $form);
+
+        return $form;
     }
 
-    public static function update(RowInterface $row, string $entityName = null, $id = null): Form
+    public static function update(Schema $row, string $entityName = null, $id = null): Form
     {
-        return f::form([
+        $form = f::form([
             'id' => f::hidden($id),
             'entityName' => f::hidden($entityName),
-            'data' => $row->createInput(),
             'method-override' => f::submitGroup([
                 'post' => f::submit('Save'),
                 'put' => f::submit('Duplicate', ['class' => 'is-secondary']),
@@ -36,5 +38,9 @@ abstract class FormFactory
             'method' => 'post',
             'enctype' =>'multipart/form-data'
         ]);
+
+        $row->initInput('data', $form);
+
+        return $form;
     }
 }

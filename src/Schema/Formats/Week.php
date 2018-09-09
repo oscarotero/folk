@@ -4,7 +4,7 @@ namespace Folk\Schema\Formats;
 
 use FormManager\Inputs\Week as InputWeek;
 
-class Week extends Column
+class Week extends Format
 {
     protected function buildInput(): InputWeek
     {

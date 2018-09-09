@@ -4,6 +4,7 @@ namespace Folk\Controllers;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Folk\FormFactory;
+use Folk\Schema\Schema;
 use Middlewares\Utils\Factory;
 
 /**
@@ -41,7 +42,10 @@ class Update extends Controller
                 ->withHeader('location', $this->app->getRoute('read', compact('entityName', 'id')));
         }
 
-        echo $this->app->get('templates')->render('pages/read', compact('entityName', 'id'));
+        $row = new Schema($entity->getScheme());
+        $row->setValue($value['data']);
+
+        echo $this->app->get('templates')->render('pages/read', compact('entityName', 'id', 'row'));
 
         return Factory::createResponse(400);
     }

@@ -2,14 +2,15 @@
 
 namespace Folk\Schema\Formats;
 
-use Folk\Schema\ColumnInterface;
-use FormManager\InputInterface;
+use Folk\Schema\FormatInterface;
+use ArrayAccess;
 use FormManager\Groups\Group as InputGroup;
 
-class Group implements ColumnInterface
+class Group implements FormatInterface
 {
     private $title;
     private $children = [];
+    private $group;
 
     public function __construct(string $title, $children = [])
     {
@@ -32,7 +33,7 @@ class Group implements ColumnInterface
         }
     }
 
-    public function addChild($name, ColumnInterface $child)
+    public function addChild($name, FormatInterface $child)
     {
         $this->children[$name] = $child;
 
@@ -81,24 +82,23 @@ class Group implements ColumnInterface
         return "<ul>{$html}</ul>";
     }
 
-    public function createInput(): InputInterface
+    public function initInput(string $name, ArrayAccess $parent)
     {
-        $group = new InputGroup();
+        $this->group = new InputGroup();
 
         foreach ($this->children as $name => $child) {
-            $group[$name] = $child->createInput();
+            $child->initInput($name, $this->group);
         }
 
-        return $group;
+        $parent[$name] = $this->group;
     }
 
-    public function renderInput(InputInterface $group): string
+    public function renderInput(): string
     {
         $html = [];
 
         foreach ($this->children as $name => $child) {
-            $input = $group[$name] = $child->createInput();
-            $html[] = $child->renderInput($input);
+            $html[] = $child->renderInput();
         }
 
         $html = implode("\n", $html);

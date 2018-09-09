@@ -4,7 +4,7 @@ namespace Folk\Schema\Formats;
 
 use FormManager\Inputs\Tel as InputTel;
 
-class Tel extends Column
+class Tel extends Format
 {
     protected function buildInput(): InputTel
     {

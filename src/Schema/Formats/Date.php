@@ -4,7 +4,7 @@ namespace Folk\Schema\Formats;
 
 use FormManager\Inputs\DatetimeLocal as InputDate;
 
-class Date extends Column
+class Date extends Format
 {
     protected function buildInput(): InputDate
     {

@@ -6,7 +6,7 @@ use FormManager\Groups\Group;
 use FormManager\Inputs\Hidden;
 use FormManager\Inputs\File as InputFile;
 
-class File extends Column
+class File extends Format
 {
 	public function setValue($value): void
     {
@@ -16,8 +16,13 @@ class File extends Column
     protected function buildInput(): Group
     {
     	return new Group([
-    		'default' => new Hidden($this->value),
+    		'default' => new Hidden(is_string($this->value) ? $this->value : null),
     		'value' => new InputFile($this->title, $this->attributes),
     	]);
+    }
+
+    public function renderInput(): string
+    {
+        return "<div class='editForm-input is-standard'>{$this->input}</div>";
     }
 }

@@ -1,1 +1,21 @@
-name: Probando
+checkbox: null
+color: '#00d100'
+date: ''
+datetime: ''
+email: ''
+file:
+    default: ''
+    value: null
+body:
+    title: ''
+    body: ''
+radios: null
+select: red
+hidden: ''
+month: ''
+number: null
+range: '50'
+tel: ''
+time: ''
+url: ''
+week: ''

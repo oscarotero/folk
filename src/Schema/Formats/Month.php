@@ -4,7 +4,7 @@ namespace Folk\Schema\Formats;
 
 use FormManager\Inputs\Month as InputMonth;
 
-class Month extends Column
+class Month extends Format
 {
     protected function buildInput(): InputMonth
     {

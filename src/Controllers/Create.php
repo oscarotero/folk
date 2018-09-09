@@ -4,6 +4,7 @@ namespace Folk\Controllers;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Folk\FormFactory;
+use Folk\Schema\Schema;
 use Middlewares\Utils\Factory;
 
 /**
@@ -26,7 +27,7 @@ class Create extends Controller
         }
 
         $entity = $this->app->getEntity($entityName);
-        $row = $entity->getScheme();
+        $row = new Schema($entity->getScheme());
 
         $form = FormFactory::update($row);
         $form->loadFromServerRequest($request);

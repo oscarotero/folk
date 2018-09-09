@@ -4,7 +4,7 @@ namespace Folk\Schema\Formats;
 
 use FormManager\Inputs\Url as InputUrl;
 
-class Url extends Column
+class Url extends Format
 {
     protected function buildInput(): InputUrl
     {

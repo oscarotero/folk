@@ -3,7 +3,6 @@
 namespace Folk\Entities;
 
 use Folk\SearchQuery;
-use Folk\Schema\RowInterface;
 use FormManager\Form;
 
 /**
@@ -62,7 +61,7 @@ interface EntityInterface
     /**
      * Returns the data scheme used by this entity.
      */
-    public function getScheme(): RowInterface;
+    public function getScheme(): array;
 
     /**
      * Returns the label of a row.

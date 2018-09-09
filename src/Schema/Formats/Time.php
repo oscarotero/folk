@@ -4,7 +4,7 @@ namespace Folk\Schema\Formats;
 
 use FormManager\Inputs\Time as InputTime;
 
-class Time extends Column
+class Time extends Format
 {
     protected function buildInput(): InputTime
     {

@@ -4,7 +4,7 @@ namespace Folk\Schema\Formats;
 
 use FormManager\Inputs\Color as InputColor;
 
-class Color extends Column
+class Color extends Format
 {
     protected function buildInput(): InputColor
     {

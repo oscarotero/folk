@@ -4,7 +4,7 @@ namespace Folk\Schema\Formats;
 
 use FormManager\Inputs\Email as InputEmail;
 
-class Email extends Column
+class Email extends Format
 {
     protected function buildInput(): InputEmail
     {

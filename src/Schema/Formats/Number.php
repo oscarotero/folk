@@ -4,7 +4,7 @@ namespace Folk\Schema\Formats;
 
 use FormManager\Inputs\Number as InputNumber;
 
-class Number extends Column
+class Number extends Format
 {
     protected function buildInput(): InputNumber
     {

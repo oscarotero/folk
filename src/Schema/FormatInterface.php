@@ -2,9 +2,9 @@
 
 namespace Folk\Schema;
 
-use FormManager\InputInterface;
+use ArrayAccess;
 
-interface ColumnInterface
+interface FormatInterface
 {
     public function getTitle(): string;
 
@@ -16,7 +16,7 @@ interface ColumnInterface
 
     public function renderHtml(): string;
 
-    public function createInput(): InputInterface;
+    public function initInput(string $name, ArrayAccess $parent);
 
-    public function renderInput(InputInterface $input): string;
+    public function renderInput(): string;
 }

@@ -5,7 +5,7 @@ namespace Folk\Schema\Formats;
 use FormManager\Inputs\Select as InputSelect;
 use FormManager\InputInterface;
 
-class Select extends Column
+class Select extends Format
 {
 	private $options;
 

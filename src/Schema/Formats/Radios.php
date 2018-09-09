@@ -3,9 +3,8 @@
 namespace Folk\Schema\Formats;
 
 use FormManager\Groups\RadioGroup;
-use FormManager\InputInterface;
 
-class Radios extends Column
+class Radios extends Format
 {
 	private $options;
 
@@ -20,8 +19,8 @@ class Radios extends Column
         return (new RadioGroup($this->options))->setValue($this->value);
     }
 
-    public function renderInput(InputInterface $input): string
+    public function renderInput(): string
     {
-        return "<div class='editForm-input is-check'>{$input}</div>";
+        return "<div class='editForm-input is-check'>{$this->input}</div>";
     }
 }

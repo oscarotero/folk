@@ -2,15 +2,15 @@
 
 namespace Folk\Schema\Formats;
 
-use FormManager\Factory as f;
-use FormManager\InputInterface;
-use Folk\Schema\ColumnInterface;
+use ArrayAccess;
+use Folk\Schema\FormatInterface;
 
-abstract class Column implements ColumnInterface
+abstract class Format implements FormatInterface
 {
     protected $value;
     protected $title;
     protected $attributes;
+    protected $input;
 
     public function __construct(string $title, iterable $attributes = [])
     {
@@ -40,18 +40,19 @@ abstract class Column implements ColumnInterface
 
     public function isValid(): bool
     {
-        return $this->createInput()->isValid();
+        return $this->initInput()->isValid();
     }
 
-    public function createInput(): InputInterface
+    public function initInput(string $name, ArrayAccess $parent)
     {
-        return $this->buildInput();
+        $this->input = $this->buildInput();
+        $parent[$name] = $this->input;
     }
 
     abstract protected function buildInput();
 
-    public function renderInput(InputInterface $input): string
+    public function renderInput(): string
     {
-        return "<div class='editForm-input is-standard'>{$input}</div>";
+        return "<div class='editForm-input is-standard'>{$this->input}</div>{$this->input->getError()}";
     }
 }

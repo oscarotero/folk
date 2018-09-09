@@ -4,6 +4,7 @@ namespace Folk\Controllers;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Folk\Entities\EntityInterface;
+use Folk\Schema\Schema;
 use Folk\SearchQuery;
 
 /**
@@ -33,7 +34,7 @@ class Search extends Controller
         }
 
         //HTML request
-        $row = $entity->getScheme();
+        $row = new Schema($entity->getScheme());
         $rows = [];
 
         foreach ($data as $id => $value) {

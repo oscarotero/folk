@@ -4,7 +4,7 @@ namespace Folk\Schema\Formats;
 
 use FormManager\Inputs\Text as InputText;
 
-class Text extends Column
+class Text extends Format
 {
     protected function buildInput(): InputText
     {

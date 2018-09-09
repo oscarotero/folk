@@ -1,17 +1,17 @@
 <?php
 
-namespace Folk\Schema\Formats;
+namespace Folk\Schema;
 
 use IteratorAggregate;
 use ArrayIterator;
-use FormManager\InputInterface;
+use ArrayAccess;
 use FormManager\Factory as f;
-use Folk\Schema\RowInterface;
-use Folk\Schema\ColumnInterface;
+use Folk\Schema\FormatInterface;
 
-class Row implements RowInterface, IteratorAggregate
+class Schema implements IteratorAggregate
 {
     private $columns = [];
+    private $group;
 
     public function __construct($columns = [])
     {
@@ -32,7 +32,7 @@ class Row implements RowInterface, IteratorAggregate
         return new ArrayIterator($this->columns);
     }
 
-    public function addColumn($name, ColumnInterface $column)
+    public function addColumn($name, FormatInterface $column)
     {
         $this->columns[$name] = $column;
 
@@ -81,23 +81,23 @@ class Row implements RowInterface, IteratorAggregate
         return "<ul>{$html}</ul>";
     }
 
-    public function createInput(): InputInterface
+    public function initInput(string $name, ArrayAccess $parent)
     {
-        $group = f::group();
+        $this->group = f::group();
 
-        foreach ($this->columns as $name => $column) {
-            $group[$name] = $column->createInput();
+        foreach ($this->columns as $columnName => $column) {
+            $column->initInput($columnName, $this->group);
         }
 
-        return $group;
+        $parent[$name] = $this->group;
     }
 
-    public function renderInput(InputInterface $input): string
+    public function renderInput(): string
     {
         $html = [];
 
         foreach ($this->columns as $name => $column) {
-            $html[] = $column->renderInput($input[$name]);
+            $html[] = $column->renderInput();
         }
 
         return implode("\n", $html);
