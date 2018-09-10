@@ -37,14 +37,18 @@ class Tags extends Yaml
             ]),
             'hidden' => f::hidden('foo'),
             'month' => f::month('Month'),
-            'number' => f::number('Number'),
-            'range' => f::range('Range'),
-            'tel' => f::tel('Tel'),
 
-            f::tab('Tab1', [
-                'time' => f::time('Time'),
-                'url' => f::url('Url'),
-                'week' => f::week('Week'),
+            f::tabs('Other options', [
+                f::tab('Tab 1', [
+                    'time' => f::time('Time'),
+                    'url' => f::url('Url'),
+                    'week' => f::week('Week'),
+                ]),
+                f::tab('Tab 2', [
+                    'number' => f::number('Number'),
+                    'range' => f::range('Range'),
+                    'tel' => f::tel('Tel'),
+                ])
             ])
         ];
     }

@@ -8,6 +8,8 @@ use FormManager\Groups\Group as InputGroup;
 
 class Tab implements FormatInterface
 {
+    private static $index = 0;
+
     private $title;
     private $children = [];
 
@@ -86,6 +88,8 @@ class Tab implements FormatInterface
 
     public function renderInput(): string
     {
+        $id = 'tab-input-'.(self::$index++);
+
         $html = [];
 
         foreach ($this->children as $name => $child) {
@@ -95,8 +99,8 @@ class Tab implements FormatInterface
         $html = implode("\n", $html);
 
         return <<<HTM
-        <h3 class="editForm-subhead">{$this->getTitle()}</h3>
-        <div class="editForm-container">
+        <a href="#{$id}" class="editForm-subhead">{$this->getTitle()}</a>
+        <div class="editForm-container" id="{$id}">
             {$html}
         </div>
 HTM;

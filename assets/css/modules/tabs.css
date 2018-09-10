@@ -1,0 +1,16 @@
+.tabs {
+	display: flex;
+	border-bottom: solid 1px var(--gray-line);
+
+	& a {
+		padding: 1em;
+		border-bottom: solid 2px transparent;
+		margin-bottom: -1px;
+		margin: 0;
+
+		&.is-selected,
+		&:hover {
+			border-bottom-color: var(--blue);
+		}
+	}
+}

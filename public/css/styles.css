@@ -344,7 +344,11 @@ template {
 :root {
 	--font: system-ui, sans-serif;
 	--font-weight-normal: 400;
-	--font-weight-bold: 500;
+    --font-weight-bold: 700;
+
+    --font-size-1: 1rem;
+    --font-size-2: 1.6rem;
+	--font-size-3: 2.2rem;
 
     --blue: blue;
     --blue-dark: darkblue;
@@ -385,6 +389,10 @@ a:hover {
 a:active {
         color: black;
     }
+
+[hidden] {
+    display: none !important;
+}
 
 select,
 textarea,
@@ -535,7 +543,8 @@ button.is-danger:hover {
 		color: var(--gray);
 	}
 
-.editForm :checked + label {
+.editForm :checked + label,
+	.editForm label:hover {
 		color: var(--black);
 	}
 
@@ -590,7 +599,6 @@ button.is-danger:hover {
 
 .editForm-input.is-group summary {
 			color: var(--blue);
-			text-decoration: underline;
 			cursor: default
 		}
 
@@ -612,6 +620,39 @@ button.is-danger:hover {
 .editForm-footer  {
 	padding: 2em 0;
 }
+
+.editForm-subhead {
+	font-size: var(--font-size-1);
+	font-weight: var(--font-weight-bold);
+	text-decoration: none;
+	text-transform: uppercase;
+	margin: 1em 0;
+	display: block;
+}
+
+.editForm-head {
+	font-size: var(--font-size-2);
+	font-weight: var(--font-weight-normal);
+	margin: 1em 0 0;
+	display: block;
+}
+
+.tabs {
+	display: flex;
+	border-bottom: solid 1px var(--gray-line)
+}
+
+.tabs a {
+		padding: 1em;
+		border-bottom: solid 2px transparent;
+		margin-bottom: -1px;
+		margin: 0
+	}
+
+.tabs a.is-selected,
+		.tabs a:hover {
+			border-bottom-color: var(--blue);
+		}
 
 .page-read {
 	max-width: 80em;

@@ -1,7 +1,11 @@
 :root {
 	--font: system-ui, sans-serif;
 	--font-weight-normal: 400;
-	--font-weight-bold: 500;
+    --font-weight-bold: 700;
+
+    --font-size-1: 1rem;
+    --font-size-2: 1.6rem;
+	--font-size-3: 2.2rem;
 
     --blue: blue;
     --blue-dark: darkblue;
