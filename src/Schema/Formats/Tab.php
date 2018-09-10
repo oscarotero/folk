@@ -6,11 +6,10 @@ use Folk\Schema\FormatInterface;
 use ArrayAccess;
 use FormManager\Groups\Group as InputGroup;
 
-class Group implements FormatInterface
+class Tab implements FormatInterface
 {
     private $title;
     private $children = [];
-    private $group;
 
     public function __construct(string $title, $children = [])
     {
@@ -42,22 +41,16 @@ class Group implements FormatInterface
 
     public function setValue(string $name, array $values): void
     {
-        $val = $values[$name] ?? [];
-
         foreach ($this->children as $key => $child) {
-            $child->setValue($key, $val);
+            $child->setValue($key, $values);
         }
     }
 
     public function getValue(string $name, array &$values): void
     {
-        $childValues = [];
-
-        foreach ($this->children as $key => $child) {
-            $child->getValue($key, $childValues);
+        foreach ($this->children as $name => $child) {
+            $child->getValue($name, $values);
         }
-
-        $values[$name] = $childValues;
     }
 
     public function isValid(): bool
@@ -86,13 +79,9 @@ class Group implements FormatInterface
 
     public function initInput(string $name, ArrayAccess $parent)
     {
-        $this->group = new InputGroup();
-
         foreach ($this->children as $name => $child) {
-            $child->initInput($name, $this->group);
+            $child->initInput($name, $parent);
         }
-
-        $parent[$name] = $this->group;
     }
 
     public function renderInput(): string
@@ -106,12 +95,10 @@ class Group implements FormatInterface
         $html = implode("\n", $html);
 
         return <<<HTM
-        <details class="editForm-input is-group">
-            <summary class="editForm-subhead">{$this->getTitle()}</summary>
-            <div class="editForm-container">
-                {$html}
-            </div>
-        </details>
+        <h3 class="editForm-subhead">{$this->getTitle()}</h3>
+        <div class="editForm-container">
+            {$html}
+        </div>
 HTM;
     }
 }

@@ -8,9 +8,9 @@ interface FormatInterface
 {
     public function getTitle(): string;
 
-    public function setValue($value): void;
+    public function setValue(string $name, array $values): void;
 
-    public function getValue();
+    public function getValue(string $name, array &$values): void;
 
     public function isValid(): bool;
 

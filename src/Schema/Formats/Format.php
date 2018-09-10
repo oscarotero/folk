@@ -23,14 +23,14 @@ abstract class Format implements FormatInterface
         return $this->title;
     }
 
-    public function setValue($value): void
+    public function setValue(string $name, array $values): void
     {
-        $this->value = $value;
+        $this->value = $values[$name];
     }
 
-    public function getValue()
+    public function getValue(string $name, array &$values): void
     {
-        return $this->value;
+        $values[$name] = $this->value;
     }
 
     public function renderHtml(): string

@@ -8,9 +8,9 @@ use FormManager\Inputs\File as InputFile;
 
 class File extends Format
 {
-	public function setValue($value): void
+	public function setValue(string $name, array $values): void
     {
-        $this->value = $value['value'] ?? $value['default'];
+        $this->value = $values[$name]['value'] ?? $values[$name]['default'];
     }
 
     protected function buildInput(): Group

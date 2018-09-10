@@ -39,10 +39,10 @@ class Schema implements IteratorAggregate
         return $this;
     }
 
-    public function setValue(iterable $value): void
+    public function setValue(iterable $values): void
     {
         foreach ($this->columns as $name => $column) {
-            $column->setValue($value[$name] ?? null);
+            $column->setValue($name, $values);
         }
     }
 
@@ -51,7 +51,7 @@ class Schema implements IteratorAggregate
         $values = [];
 
         foreach ($this->columns as $name => $column) {
-            $values[$name] = $column->getValue();
+            $column->getValue($name, $values);
         }
 
         return $values;

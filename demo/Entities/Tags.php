@@ -40,9 +40,12 @@ class Tags extends Yaml
             'number' => f::number('Number'),
             'range' => f::range('Range'),
             'tel' => f::tel('Tel'),
-            'time' => f::time('Time'),
-            'url' => f::url('Url'),
-            'week' => f::week('Week'),
+
+            f::tab('Tab1', [
+                'time' => f::time('Time'),
+                'url' => f::url('Url'),
+                'week' => f::week('Week'),
+            ])
         ];
     }
 }

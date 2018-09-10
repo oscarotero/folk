@@ -76,13 +76,12 @@
 		        color: var(--black);
 		    }
 		}
-
-		& > div {
-			display: grid;
-			grid-gap: 1em;
-			margin: 1em 0;
-		}
 	}
+}
+.editForm-container {
+	display: grid;
+	grid-gap: 1em;
+	margin: 1em 0;
 }
 .editForm-footer  {
 	padding: 2em 0;
