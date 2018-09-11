@@ -534,9 +534,9 @@ button.is-danger:hover {
 	grid-gap: 2em;
 	padding: 2em;
 	background: white;
-	border-radius: 4px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	border: solid 1px var(--gray-line)
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0, 0, 0, 0.1)
+	/*border: solid 1px var(--gray-line);*/
 }
 
 .editForm label {
@@ -547,6 +547,30 @@ button.is-danger:hover {
 	.editForm label:hover {
 		color: var(--black);
 	}
+
+.editForm > .tabs {
+		margin: -2em -2em 0;
+	}
+
+.editForm + .editForm {
+		margin-top: 2em;
+	}
+
+.editForm summary {
+		color: var(--blue);
+		cursor: default;
+		margin: -2em -2em 0;
+		padding: 1em 2em
+	}
+
+.editForm summary:hover {
+	        color: var(--blue-dark);
+			text-decoration: none;
+	    }
+
+.editForm summary:active {
+	        color: var(--black);
+	    }
 
 .editForm-input.is-standard {
 		display: flex;
@@ -593,28 +617,18 @@ button.is-danger:hover {
 			margin-right: 2em;
 		}
 
-.editForm-input.is-group {
-		margin: 1em 0
-	}
-
-.editForm-input.is-group summary {
-			color: var(--blue);
-			cursor: default
+.editForm-input.is-check:first-child {
+			margin-top: 0;
 		}
 
-.editForm-input.is-group summary:hover {
-		        color: var(--blue-dark);
-				text-decoration: none;
-		    }
-
-.editForm-input.is-group summary:active {
-		        color: var(--black);
-		    }
+.editForm-input.is-check:last-child {
+			margin-bottom: 0;
+		}
 
 .editForm-container {
 	display: grid;
 	grid-gap: 1em;
-	margin: 1em 0;
+	margin: 0;
 }
 
 .editForm-footer  {
@@ -633,7 +647,7 @@ button.is-danger:hover {
 .editForm-head {
 	font-size: var(--font-size-2);
 	font-weight: var(--font-weight-normal);
-	margin: 1em 0 0;
+	margin: 2em 0 1em;
 	display: block;
 }
 
@@ -643,7 +657,7 @@ button.is-danger:hover {
 }
 
 .tabs a {
-		padding: 1em;
+		padding: 1em 2em;
 		border-bottom: solid 2px transparent;
 		margin-bottom: -1px;
 		margin: 0
@@ -657,4 +671,5 @@ button.is-danger:hover {
 .page-read {
 	max-width: 80em;
 	margin: auto;
+    padding: 2em;
 }

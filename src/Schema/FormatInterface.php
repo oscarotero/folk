@@ -14,6 +14,8 @@ interface FormatInterface
 
     public function isValid(): bool;
 
+    public function isBlock(): bool;
+
     public function renderHtml(): string;
 
     public function initInput(string $name, ArrayAccess $parent);

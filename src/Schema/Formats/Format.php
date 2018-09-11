@@ -7,6 +7,8 @@ use Folk\Schema\FormatInterface;
 
 abstract class Format implements FormatInterface
 {
+    const IS_BLOCK = false;
+
     protected $value;
     protected $title;
     protected $attributes;
@@ -41,6 +43,11 @@ abstract class Format implements FormatInterface
     public function isValid(): bool
     {
         return $this->initInput()->isValid();
+    }
+
+    public function isBlock(): bool
+    {
+        return static::IS_BLOCK;
     }
 
     public function initInput(string $name, ArrayAccess $parent)

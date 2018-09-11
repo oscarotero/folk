@@ -8,6 +8,8 @@ use FormManager\Groups\Group as InputGroup;
 
 class Tabs implements FormatInterface
 {
+    const IS_BLOCK = true;
+
     private $tabs = [];
 
     public function __construct(string $title, $tabs = [])
@@ -63,6 +65,11 @@ class Tabs implements FormatInterface
         return true;
     }
 
+    public function isBlock(): bool
+    {
+        return true;
+    }
+
     public function renderHtml(): string
     {
         $html = [];
@@ -95,7 +102,7 @@ class Tabs implements FormatInterface
 
         return <<<HTM
         <h3 class="editForm-head">{$this->getTitle()}</h3>
-        <div class="editForm-container module-tabs">
+        <div class="editForm module-tabs">
             {$html}
         </div>
 HTM;

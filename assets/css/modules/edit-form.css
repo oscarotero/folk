@@ -3,9 +3,9 @@
 	grid-gap: 2em;
 	padding: 2em;
 	background: white;
-	border-radius: 4px;
-	box-shadow: 0 2px 4px color-mod(black a(.1));
-	border: solid 1px var(--gray-line);
+	border-radius: 8px;
+	box-shadow: 0 2px 4px color-mod(black a(.15)), 0 1px 1px color-mod(black a(.1));
+	/*border: solid 1px var(--gray-line);*/
 
 	& label {
 		color: var(--gray);
@@ -13,6 +13,30 @@
 	& :checked + label,
 	& label:hover {
 		color: var(--black);
+	}
+
+	& > .tabs {
+		margin: -2em -2em 0;
+	}
+
+	& + .editForm {
+		margin-top: 2em;
+	}
+
+	& summary {
+		color: var(--blue);
+		cursor: default;
+		margin: -2em -2em 0;
+		padding: 1em 2em;
+
+		&:hover {
+	        color: var(--blue-dark);
+			text-decoration: none;
+	    }
+
+	    &:active {
+	        color: var(--black);
+	    }
 	}
 }
 .editForm-input {
@@ -58,30 +82,20 @@
 			padding-left: .5em;
 			margin-right: 2em;
 		}
-	}
 
-	&.is-group {
-		margin: 1em 0;
+		&:first-child {
+			margin-top: 0;
+		}
 
-		& summary {
-			color: var(--blue);
-			cursor: default;
-
-			&:hover {
-		        color: var(--blue-dark);
-				text-decoration: none;
-		    }
-
-		    &:active {
-		        color: var(--black);
-		    }
+		&:last-child {
+			margin-bottom: 0;
 		}
 	}
 }
 .editForm-container {
 	display: grid;
 	grid-gap: 1em;
-	margin: 1em 0;
+	margin: 0;
 }
 .editForm-footer  {
 	padding: 2em 0;
@@ -97,6 +111,6 @@
 .editForm-head {
 	font-size: var(--font-size-2);
 	font-weight: var(--font-weight-normal);
-	margin: 1em 0 0;
+	margin: 2em 0 1em;
 	display: block;
 }

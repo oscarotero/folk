@@ -8,6 +8,8 @@ use FormManager\Groups\Group as InputGroup;
 
 class Group implements FormatInterface
 {
+    const IS_BLOCK = true;
+
     private $title;
     private $children = [];
     private $group;
@@ -71,6 +73,11 @@ class Group implements FormatInterface
         return true;
     }
 
+    public function isBlock(): bool
+    {
+        return true;
+    }
+
     public function renderHtml(): string
     {
         $html = [];
@@ -106,12 +113,10 @@ class Group implements FormatInterface
         $html = implode("\n", $html);
 
         return <<<HTM
-        <details class="editForm-input is-group">
-            <summary class="editForm-subhead">{$this->getTitle()}</summary>
-            <div class="editForm-container">
-                {$html}
-            </div>
-        </details>
+        <h3 class="editForm-head">{$this->getTitle()}</h3>
+        <div class="editForm">
+            {$html}
+        </div>
 HTM;
     }
 }

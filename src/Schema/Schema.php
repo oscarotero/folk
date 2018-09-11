@@ -94,10 +94,25 @@ class Schema implements IteratorAggregate
 
     public function renderInput(): string
     {
+        $autoBlock = false;
         $html = [];
 
         foreach ($this->columns as $name => $column) {
+            if (!$column->isBlock()) {
+                if (!$autoBlock) {
+                    $html[] = '<div class="editForm">';
+                    $autoBlock = true;
+                }
+            } elseif ($autoBlock) {
+                $html[] = '</div>';
+                $autoBlock = false;
+            }
+
             $html[] = $column->renderInput();
+        }
+
+        if ($autoBlock) {
+            $html[] = '</div>';
         }
 
         return implode("\n", $html);

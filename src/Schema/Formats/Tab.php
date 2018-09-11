@@ -66,6 +66,11 @@ class Tab implements FormatInterface
         return true;
     }
 
+    public function isBlock(): bool
+    {
+        return false;
+    }
+
     public function renderHtml(): string
     {
         $html = [];
