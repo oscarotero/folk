@@ -108,7 +108,7 @@ class Schema implements IteratorAggregate
                 $autoBlock = false;
             }
 
-            $html[] = $column->renderInput();
+            $html[] = $column->render('form');
         }
 
         if ($autoBlock) {

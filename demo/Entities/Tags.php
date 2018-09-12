@@ -39,12 +39,12 @@ class Tags extends Yaml
             'month' => f::month('Month'),
 
             f::tabs('Other options', [
-                f::tab('Tab 1', [
+                f::section('Tab 1', [
                     'time' => f::time('Time'),
                     'url' => f::url('Url'),
                     'week' => f::week('Week'),
                 ]),
-                f::tab('Tab 2', [
+                f::section('Tab 2', [
                     'number' => f::number('Number'),
                     'range' => f::range('Range'),
                     'tel' => f::tel('Tel'),

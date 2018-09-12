@@ -35,7 +35,7 @@ $sort = $search->getSort();
 
 				<?php foreach ($row as $column): ?>
 				<td>
-					<?= $column->renderHtml() ?>
+					<?= $column->render('html') ?>
 				</td>
 				<?php endforeach; ?>
 			</tr>

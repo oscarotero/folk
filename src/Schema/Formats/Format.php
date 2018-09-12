@@ -35,11 +35,6 @@ abstract class Format implements FormatInterface
         $values[$name] = $this->value;
     }
 
-    public function renderHtml(): string
-    {
-        return (string) $this->value;
-    }
-
     public function isValid(): bool
     {
         return $this->initInput()->isValid();
@@ -57,9 +52,4 @@ abstract class Format implements FormatInterface
     }
 
     abstract protected function buildInput();
-
-    public function renderInput(): string
-    {
-        return "<div class='editForm-input is-standard'>{$this->input}</div>{$this->input->getError()}";
-    }
 }

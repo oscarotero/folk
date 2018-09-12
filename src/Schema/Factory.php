@@ -13,7 +13,8 @@ abstract class Factory
      */
     public static function __callStatic(string $name, $arguments)
     {
-        $class = self::SCHEMA_NAMESPACE.ucfirst($name);
+        $name = ucfirst($name);
+        $class = sprintf('%s%s\\%s', self::SCHEMA_NAMESPACE, $name, $name);
 
         if (class_exists($class)) {
             return new $class(...$arguments);

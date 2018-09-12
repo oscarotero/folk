@@ -16,9 +16,7 @@ interface FormatInterface
 
     public function isBlock(): bool;
 
-    public function renderHtml(): string;
-
     public function initInput(string $name, ArrayAccess $parent);
 
-    public function renderInput(): string;
+    public function render(string $template): string;
 }
