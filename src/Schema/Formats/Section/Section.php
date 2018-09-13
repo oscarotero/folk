@@ -11,8 +11,6 @@ class Section implements FormatInterface
 {
     use RenderTrait;
     
-    private static $index = 0;
-
     private $title;
     private $children = [];
 
@@ -71,7 +69,7 @@ class Section implements FormatInterface
 
     public function isBlock(): bool
     {
-        return false;
+        return true;
     }
 
     public function renderHtml(): string

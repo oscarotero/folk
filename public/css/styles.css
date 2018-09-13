@@ -529,51 +529,58 @@ button.is-danger:hover {
 			color: var(--red-dark);
 		}
 
+label {
+	color: var(--gray);
+}
+
+:checked + label,
+label:hover {
+	color: var(--black);
+}
+
 .editForm {
 	display: grid;
 	grid-gap: 2em;
+	margin: 0;
+}
+
+.editForm-container {
+	display: grid;
+	grid-gap: 2em;
+	margin: 0;
 	padding: 2em;
 	background: white;
 	border-radius: 8px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0, 0, 0, 0.1)
-	/*border: solid 1px var(--gray-line);*/
 }
 
-.editForm label {
-		color: var(--gray);
-	}
-
-.editForm :checked + label,
-	.editForm label:hover {
-		color: var(--black);
-	}
-
-.editForm > .tabs {
+.editForm-container .editForm-container {
 		margin: -2em -2em 0;
+		border-radius: 0;
+		box-shadow: none;
+		background: none;
+		border-bottom: solid 1px var(--gray-line)
 	}
 
-.editForm + .editForm {
-		margin-top: 2em;
+.editForm-container .editForm-container:last-child {
+			border-bottom: none;
+			margin-bottom: -2em;
+		}
+
+.editForm-container.tabs-content {
+		border-bottom: none;
+		margin-bottom: -2em;
 	}
 
-.editForm summary {
-		color: var(--blue);
-		cursor: default;
-		margin: -2em -2em 0;
-		padding: 1em 2em
+.editForm-container > .tabs-list {
+		margin: -1em -2em 0;
 	}
 
-.editForm summary:hover {
-	        color: var(--blue-dark);
-			text-decoration: none;
-	    }
-
-.editForm summary:active {
-	        color: var(--black);
-	    }
+.editForm-input {
+	display: flex
+}
 
 .editForm-input.is-standard {
-		display: flex;
 		align-items: center
 	}
 
@@ -588,7 +595,6 @@ button.is-danger:hover {
 		}
 
 .editForm-input.is-textarea {
-		display: flex;
 		align-items: flex-start
 	}
 
@@ -606,7 +612,6 @@ button.is-danger:hover {
 		}
 
 .editForm-input.is-check {
-		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
 		margin: 1em 0
@@ -625,12 +630,6 @@ button.is-danger:hover {
 			margin-bottom: 0;
 		}
 
-.editForm-container {
-	display: grid;
-	grid-gap: 1em;
-	margin: 0;
-}
-
 .editForm-footer  {
 	padding: 2em 0;
 }
@@ -647,26 +646,49 @@ button.is-danger:hover {
 .editForm-head {
 	font-size: var(--font-size-2);
 	font-weight: var(--font-weight-normal);
-	margin: 2em 0 1em;
-	display: block;
+	margin: 1em 0 0;
+	display: block
 }
 
-.tabs {
+.editForm-head:first-child {
+		margin-top: 0;
+	}
+
+.tabs-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 	display: flex;
 	border-bottom: solid 1px var(--gray-line)
 }
 
-.tabs a {
+.tabs-list a {
+		display: block;
 		padding: 1em 2em;
 		border-bottom: solid 2px transparent;
 		margin-bottom: -1px;
-		margin: 0
+		margin: 0;
+		text-decoration: none;
+		font-weight: bold;
+		text-transform: uppercase
 	}
 
-.tabs a.is-selected,
-		.tabs a:hover {
+.tabs-list a.is-selected,
+		.tabs-list a:hover {
 			border-bottom-color: var(--blue);
 		}
+
+.tabs-content > h3 {
+		display: none;
+	}
+
+.tabs-content:not(:target) {  
+	  display: none;
+	}
+
+.tabs-content[hidden] {
+	display: none;
+}
 
 .page-read {
 	max-width: 80em;

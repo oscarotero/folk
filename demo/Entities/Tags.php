@@ -21,19 +21,21 @@ class Tags extends Yaml
             'datetime' => f::datetime('Datetime'),
             'email' => f::email('Email'),
             'file' => f::file('File'),
-            'group' => f::group('Group', [
-                'title' => f::text('Title'),
-                'body' => f::textarea('Body'),
-            ]),
-            'radios' => f::radios('Colors', [
-                'red' => 'Red',
-                'blue' => 'Blue',
-                'green' => 'Green',
-            ]),
-            'select' => f::select('Select', [
-                'red' => 'Red',
-                'blue' => 'Blue',
-                'green' => 'Green',
+            f::section('Outras opcións', [
+                'group' => f::group('Group', [
+                    'title' => f::text('Title'),
+                    'body' => f::textarea('Body'),
+                ]),
+                'radios' => f::radios('Colors', [
+                    'red' => 'Red',
+                    'blue' => 'Blue',
+                    'green' => 'Green',
+                ]),
+                'select' => f::select('Select', [
+                    'red' => 'Red',
+                    'blue' => 'Blue',
+                    'green' => 'Green',
+                ]),
             ]),
             'hidden' => f::hidden('foo'),
             'month' => f::month('Month'),

@@ -1,47 +1,44 @@
 .editForm {
 	display: grid;
 	grid-gap: 2em;
+	margin: 0;
+}
+.editForm-container {
+	display: grid;
+	grid-gap: 2em;
+	margin: 0;
 	padding: 2em;
 	background: white;
 	border-radius: 8px;
 	box-shadow: 0 2px 4px color-mod(black a(.15)), 0 1px 1px color-mod(black a(.1));
-	/*border: solid 1px var(--gray-line);*/
 
-	& label {
-		color: var(--gray);
-	}
-	& :checked + label,
-	& label:hover {
-		color: var(--black);
-	}
-
-	& > .tabs {
+	& .editForm-container {
 		margin: -2em -2em 0;
+		border-radius: 0;
+		box-shadow: none;
+		background: none;
+		border-bottom: solid 1px var(--gray-line);
+
+		&:last-child {
+			border-bottom: none;
+			margin-bottom: -2em;
+		}
 	}
 
-	& + .editForm {
-		margin-top: 2em;
+	&.tabs-content {
+		border-bottom: none;
+		margin-bottom: -2em;
 	}
 
-	& summary {
-		color: var(--blue);
-		cursor: default;
-		margin: -2em -2em 0;
-		padding: 1em 2em;
-
-		&:hover {
-	        color: var(--blue-dark);
-			text-decoration: none;
-	    }
-
-	    &:active {
-	        color: var(--black);
-	    }
+	& > .tabs-list {
+		margin: -1em -2em 0;
 	}
 }
+
 .editForm-input {
+	display: flex;
+
 	&.is-standard {
-		display: flex;
 		align-items: center;
 
 		& label {
@@ -56,7 +53,6 @@
 	}
 
 	&.is-textarea {
-		display: flex;
 		align-items: flex-start;
 
 		& label {
@@ -73,7 +69,6 @@
 	}
 
 	&.is-check {
-		display: flex;
 		align-items: center;
 		flex-wrap: wrap;
 		margin: 1em 0;
@@ -92,11 +87,6 @@
 		}
 	}
 }
-.editForm-container {
-	display: grid;
-	grid-gap: 1em;
-	margin: 0;
-}
 .editForm-footer  {
 	padding: 2em 0;
 }
@@ -111,6 +101,10 @@
 .editForm-head {
 	font-size: var(--font-size-2);
 	font-weight: var(--font-weight-normal);
-	margin: 2em 0 1em;
+	margin: 1em 0 0;
 	display: block;
+
+	&:first-child {
+		margin-top: 0;
+	}
 }

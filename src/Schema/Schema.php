@@ -100,7 +100,7 @@ class Schema implements IteratorAggregate
         foreach ($this->columns as $name => $column) {
             if (!$column->isBlock()) {
                 if (!$autoBlock) {
-                    $html[] = '<div class="editForm">';
+                    $html[] = '<div class="editForm-container is-raised">';
                     $autoBlock = true;
                 }
             } elseif ($autoBlock) {

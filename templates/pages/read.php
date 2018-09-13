@@ -12,6 +12,7 @@ $this->layout('html', compact('title'));
     <?php
     $form = FormFactory::update($row, $entityName, $id);
     $form->action = $app->getRoute('update', compact('entityName', 'id'));
+    $form->class = 'editForm';
 
     echo $form->getOpeningTag();
 

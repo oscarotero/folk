@@ -1,4 +1,5 @@
 export default function init(container) {
+    return;
     const links = container.querySelectorAll(':scope > a');
 	const containers = container.querySelectorAll(':scope > div');
     const linksContainer = document.createElement('nav');

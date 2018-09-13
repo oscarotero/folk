@@ -13,6 +13,7 @@ class Tabs implements FormatInterface
 
     const IS_BLOCK = true;
 
+    private static $index = 0;
     private $tabs = [];
 
     public function __construct(string $title, $tabs = [])
