@@ -654,41 +654,37 @@ label:hover {
 		margin-top: 0;
 	}
 
-.tabs-list {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	border-bottom: solid 1px var(--gray-line)
+[role="tabpanel"]:not(:target) {
+        display: none;
+    }
+
+[role="tabpanel"] > h3 {
+        display: none;
+    }
+
+[role="tablist"] {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    border-bottom: solid 1px var(--gray-line)
 }
 
-.tabs-list a {
-		display: block;
-		padding: 1em 2em;
-		border-bottom: solid 2px transparent;
-		margin-bottom: -1px;
-		margin: 0;
-		text-decoration: none;
-		font-weight: bold;
-		text-transform: uppercase
-	}
+[role="tablist"] a {
+        display: block;
+        padding: 1em 2em;
+        border-bottom: solid 2px transparent;
+        margin-bottom: -1px;
+        margin: 0;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase
+    }
 
-.tabs-list a.is-selected,
-		.tabs-list a:hover {
-			border-bottom-color: var(--blue);
-		}
-
-.tabs-content > h3 {
-		display: none;
-	}
-
-.tabs-content:not(:target) {  
-	  display: none;
-	}
-
-.tabs-content[hidden] {
-	display: none;
-}
+[role="tablist"] a[aria-selected="true"],
+        [role="tablist"] a:hover {
+            border-bottom-color: var(--blue);
+        }
 
 .page-read {
 	max-width: 80em;

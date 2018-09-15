@@ -1,9 +1,14 @@
 import inputRange from './modules/input-range.js';
-import tabs from './modules/tabs.js';
+import Tab from './vendor/@oom/tab/tab.js';
+
+try {
+	customElements.define('folk-tab', Tab);
+} catch (err) {
+	console.error(err.message);
+}
 
 function start(context = document) {
     context.querySelectorAll('.module-input-range').forEach(inputRange);
-	context.querySelectorAll('.module-tabs').forEach(tabs);
 }
 
 start();

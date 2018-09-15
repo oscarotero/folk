@@ -4,11 +4,14 @@ $id = 'tab-'.(++self::$index);
 
 <h3 class="editForm-head"><?= $this->getTitle() ?></h3>
 
-<div class="editForm-container module-tabs">
+<folk-tab class="editForm-container" role="region">
     <ul role="tablist" class="tabs-list">
     <?php foreach ($this->tabs as $index => $tab): ?>
         <li role="presentation">
-            <a href="#<?= $id.$index ?>" role="tab" id="label-<?= $id.$index ?>">
+            <a href="#<?= $id.$index ?>"
+                role="tab"
+                id="label-<?= $id.$index ?>"
+                <?= $index === 0 ? 'aria-selected="true"' : '' ?>>
                 <?= $tab->getTitle() ?>
             </a>
         </li>
@@ -20,4 +23,4 @@ $id = 'tab-'.(++self::$index);
         <?= $tab->render('form') ?>
     </section>
     <?php endforeach ?>
-</div>
+</folk-tab>
