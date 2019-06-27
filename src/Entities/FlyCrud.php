@@ -5,7 +5,7 @@ namespace Folk\Entities;
 use Folk\SearchQuery;
 use FlyCrud\Document;
 
-abstract class FlyCrud extends AbstractEntity implements EntityInterface
+abstract class FlyCrud extends AbstractEntity
 {
     /**
      * Returns the fly-crud directory.
