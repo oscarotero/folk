@@ -2,7 +2,7 @@
 
 namespace Folk\Entities;
 
-abstract class Json extends File implements EntityInterface
+abstract class Json extends File
 {
     protected $extension = 'json';
 

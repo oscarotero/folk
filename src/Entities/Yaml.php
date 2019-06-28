@@ -4,7 +4,7 @@ namespace Folk\Entities;
 
 use Symfony\Component\Yaml\Yaml as SymfonyYaml;
 
-abstract class Yaml extends File implements EntityInterface
+abstract class Yaml extends File
 {
     protected $extension = 'yml';
 

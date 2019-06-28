@@ -8,7 +8,7 @@ use SimpleCrud\Row;
 use SimpleCrud\Scheme\Scheme;
 use SimpleCrud\Queries\Query;
 
-abstract class SimpleCrud extends AbstractEntity implements EntityInterface
+abstract class SimpleCrud extends AbstractEntity
 {
     protected $searchFields;
     protected $firstField;
