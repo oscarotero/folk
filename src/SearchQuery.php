@@ -85,7 +85,7 @@ class SearchQuery
      * Set the page.
      *
      * @param null|int $page
-     * 
+     *
      * @return self
      */
     public function setPage($page): self
@@ -109,7 +109,7 @@ class SearchQuery
      * Set the limit of results per page.
      *
      * @param int $limit
-     * 
+     *
      * @return self
      */
     public function setLimit(int $limit): self
@@ -133,7 +133,7 @@ class SearchQuery
      * Set new ids.
      *
      * @param array $ids
-     * 
+     *
      * @return self
      */
     public function setIds(array $ids): self
@@ -157,7 +157,7 @@ class SearchQuery
      * Set new words.
      *
      * @param array $words
-     * 
+     *
      * @return self
      */
     public function setWords(array $words): self
@@ -171,7 +171,7 @@ class SearchQuery
      * Set new conditions.
      *
      * @param array $conditions
-     * 
+     *
      * @return self
      */
     public function setConditions(array $conditions): self

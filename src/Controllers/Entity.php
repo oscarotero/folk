@@ -2,11 +2,10 @@
 
 namespace Folk\Controllers;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
 use Folk\Admin;
-use Middlewares\Utils\Factory;
 use FormManager\Builder as F;
+use Middlewares\Utils\Factory;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 abstract class Entity
 {
@@ -36,10 +35,10 @@ abstract class Entity
 
     /**
      * Helper to build the entity form.
-     * 
+     *
      * @param string     $entityName
      * @param mixed|null $id
-     * 
+     *
      * return \Folk\Formats\Form
      */
     protected function createForm(string $entityName, $id = null)

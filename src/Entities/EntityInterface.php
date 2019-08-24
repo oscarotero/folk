@@ -3,9 +3,9 @@
 namespace Folk\Entities;
 
 use Folk\Admin;
-use Folk\SearchQuery;
-use Folk\Formats\Group;
 use Folk\Formats\FormatFactory;
+use Folk\Formats\Group;
+use Folk\SearchQuery;
 
 /**
  * Interface used by all entities.
@@ -31,7 +31,7 @@ interface EntityInterface
      * List the entity rows.
      *
      * @param SearchQuery $search
-     * 
+     *
      * @return array The rows data
      */
     public function search(SearchQuery $search): array;

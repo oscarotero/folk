@@ -3,8 +3,6 @@
 namespace Folk\Controllers;
 
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use Folk\Admin;
 
 class ReadEntity extends Entity
 {

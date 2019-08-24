@@ -2,11 +2,8 @@
 
 namespace Folk\Controllers;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use Folk\Admin;
-use Zend\Diactoros\Response\RedirectResponse;
 use Middlewares\Utils\Factory;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class CreateEntityField extends Entity
 {
@@ -23,7 +20,7 @@ class CreateEntityField extends Entity
 
             $id = $entity->create($form['data']->val());
             $data = $entity->read($id);
-            
+
             return json_encode([
                 'id' => $id,
                 'label' => $entity->getLabel($id, $data),

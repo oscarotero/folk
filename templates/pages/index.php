@@ -2,13 +2,13 @@
 
 <div class="page page-home">
 	<header class="page-header">
-		<h1><?= $app->title ?></h1>
+		<h1><?php echo $app->title; ?></h1>
 
 		<?php if ($app->has('url')): ?>
 
 		<?php
-			$url = urlencode($app->get('url'));
-			$bookmarklet = <<<BOOKMARKLET
+            $url = urlencode($app->get('url'));
+            $bookmarklet = <<<BOOKMARKLET
 (function () {
 	if (document.location.href.indexOf('{$app->get('url')}') !== 0 || document.location.href.indexOf('{$app->getUri()}') === 0) {
 		alert('This bookmarklet is only valid for \'{$url}\'');
@@ -60,18 +60,18 @@ BOOKMARKLET;
         ?>
 
 			<p>
-				<?= $app->description ?>
-				| <a href="<?= $app->get('url') ?>" target="_blank"><?= p__('home', 'View web') ?></a>
+				<?php echo $app->description; ?>
+				| <a href="<?php echo $app->get('url'); ?>" target="_blank"><?php echo p__('home', 'View web'); ?></a>
 			</p>
 			<p>
-				<a class="button button-bookmarklet" href="javascript:<?= $bookmarklet ?>"><?= p__('home', 'Bookmarklet') ?></a>
+				<a class="button button-bookmarklet" href="javascript:<?php echo $bookmarklet; ?>"><?php echo p__('home', 'Bookmarklet'); ?></a>
 			</p>
 
 		<?php else: ?>
 			<p>
-				<?= $app->description ?>
+				<?php echo $app->description; ?>
 			</p>
-		<?php endif ?>
+		<?php endif; ?>
 	</header>
 
 	<div class="page-content">
@@ -79,22 +79,22 @@ BOOKMARKLET;
 			<?php foreach ($app->getAllEntities() as list($entity, $id)): ?>
 			<li>
 				<?php if (isset($id)): ?>
-				<a href="<?= $app->getRoute('read', ['entity' => $entity->getName(), 'id' => $id]) ?>">
+				<a href="<?php echo $app->getRoute('read', ['entity' => $entity->getName(), 'id' => $id]); ?>">
 				<?php else: ?>
-				<a href="<?= $app->getRoute('search', ['entity' => $entity->getName()]) ?>">
-				<?php endif ?>
-					<?= $this->icon($entity->icon ?: 'folder-open') ?>
+				<a href="<?php echo $app->getRoute('search', ['entity' => $entity->getName()]); ?>">
+				<?php endif; ?>
+					<?php echo $this->icon($entity->icon ?: 'folder-open'); ?>
 
 					<div>
-						<h2><?= $entity->title; ?></h2>
+						<h2><?php echo $entity->title; ?></h2>
 
 						<?php if ($entity->description): ?>
-			    		<p><?= $entity->description; ?></p>
-						<?php endif ?>
+			    		<p><?php echo $entity->description; ?></p>
+						<?php endif; ?>
 					</div>
 				</a>
 			</li>
-			<?php endforeach ?>
+			<?php endforeach; ?>
 		</ul>
 	</div>
 </div>

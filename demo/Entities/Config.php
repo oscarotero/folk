@@ -2,11 +2,11 @@
 
 namespace Demo\Entities;
 
-use Folk\Entities\FlyCrud;
-use Folk\Formats\Group;
-use Folk\Formats\FormatFactory;
 use FlyCrud\Directory;
 use FlyCrud\Formats\Json;
+use Folk\Entities\FlyCrud;
+use Folk\Formats\FormatFactory;
+use Folk\Formats\Group;
 
 class Config extends FlyCrud
 {
@@ -18,7 +18,7 @@ class Config extends FlyCrud
     public function getScheme(FormatFactory $builder): Group
     {
         return $builder->group([
-            'dev' => $builder->checkbox()->label('Dev mode')
+            'dev' => $builder->checkbox()->label('Dev mode'),
         ]);
     }
 }

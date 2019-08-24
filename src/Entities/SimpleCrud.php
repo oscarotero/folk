@@ -3,10 +3,9 @@
 namespace Folk\Entities;
 
 use Folk\SearchQuery;
-use SimpleCrud\Table;
-use SimpleCrud\Row;
-use SimpleCrud\Scheme\Scheme;
 use SimpleCrud\Queries\Query;
+use SimpleCrud\Row;
+use SimpleCrud\Table;
 
 abstract class SimpleCrud extends AbstractEntity
 {
@@ -103,7 +102,7 @@ abstract class SimpleCrud extends AbstractEntity
     public function create(array $data)
     {
         $row = $this->getTable()->create();
-        
+
         $this->save($row, $data);
 
         return $row->id;
@@ -185,7 +184,7 @@ abstract class SimpleCrud extends AbstractEntity
 
     /**
      * Save the data in the database.
-     * 
+     *
      * @param Row   $row
      * @param array $data
      */

@@ -2,7 +2,7 @@
 
 <?php $this->layout('html', ['title' => p__('insert', '%s - New | %s', $entity->title, $app->title)]); ?>
 
-<?php $this->insert('nav', ['entityName' => $entityName]) ?>
+<?php $this->insert('nav', ['entityName' => $entityName]); ?>
 
 <div class="page page-form">
 	<div class="page-content">
@@ -17,12 +17,12 @@
         ?>
 
 		<div class="footer-primary is-floating">
-			<button type="submit" class="button button-call"><?= p__('insert', 'Create') ?></button>
+			<button type="submit" class="button button-call"><?php echo p__('insert', 'Create'); ?></button>
 		</div>
 
         <input type="hidden" name="method-override" value="put">
 
-		<?= $form->closeHtml(); ?>
+		<?php echo $form->closeHtml(); ?>
     </div>
 </div>
 

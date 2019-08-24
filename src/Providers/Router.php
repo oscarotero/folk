@@ -2,9 +2,9 @@
 
 namespace Folk\Providers;
 
+use Aura\Router\RouterContainer;
 use Fol\App;
 use Interop\Container\ServiceProviderInterface;
-use Aura\Router\RouterContainer;
 
 class Router implements ServiceProviderInterface
 {
@@ -28,11 +28,12 @@ class Router implements ServiceProviderInterface
                 $map->delete('delete', '/{entity}/{id}', "{$ns}\\DeleteEntity");
 
                 return $router;
-            }
+            },
         ];
     }
 
-    public function getExtensions() {
+    public function getExtensions()
+    {
         return [];
     }
 }

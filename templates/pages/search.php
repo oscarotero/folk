@@ -4,7 +4,7 @@
 
 <?php $this->insert('nav', ['entityName' => $entityName, 'search' => $search]); ?>
 
-<?php $sort = $search->getSort() ?>
+<?php $sort = $search->getSort(); ?>
 
 <article class="page page-list">
 	<div class="page-content" data-module="page-loader">
@@ -14,12 +14,12 @@
 			<thead>
 				<th></th>
 				<?php foreach (reset($rows) as $name => $column): ?>
-				<th class="format <?= $column->get('class').(isset($sort[$name]) ? ' is-sorted' : '') ?>">
-					<a href="<?= $app->getRoute('search', ['entity' => $entityName], [
+				<th class="format <?php echo $column->get('class').(isset($sort[$name]) ? ' is-sorted' : ''); ?>">
+					<a href="<?php echo $app->getRoute('search', ['entity' => $entityName], [
                         'query' => isset($search) ? $search->buildQuery() : null,
                         'sort' => (isset($sort[$name]) ? ($sort[$name] === 'ASC' ? '-' : '') : '').$name,
-                    ]) ?>">
-						<?= $column->label(); ?>
+                    ]); ?>">
+						<?php echo $column->label(); ?>
 					</a>
 				</th>
 				<?php endforeach; ?>
@@ -29,21 +29,21 @@
 				<?php foreach ($rows as $id => $row): ?>
 				<tr>
 					<th>
-						<a class="button button-call" href="<?= $app->getRoute('read', ['entity' => $entityName, 'id' => $id]) ?>">
-							<?= $id ?>
+						<a class="button button-call" href="<?php echo $app->getRoute('read', ['entity' => $entityName, 'id' => $id]); ?>">
+							<?php echo $id; ?>
 						</a>
 					</th>
 
 					<?php foreach ($row as $name => $td): ?>
-					<td<?= isset($sort[$name]) ? ' class="is-sorted"' : '' ?>>
+					<td<?php echo isset($sort[$name]) ? ' class="is-sorted"' : ''; ?>>
 						<div 
 							<?php if ($td->get('editable')): ?>
-							class="format <?= $td->get('class') ?> ui-editable is-editable" data-src="<?= $app->getRoute('updateField', ['entity' => $entityName, 'id' => $id, 'field' => $name]) ?>" data-value="<?= $td->val() ?>"
+							class="format <?php echo $td->get('class'); ?> ui-editable is-editable" data-src="<?php echo $app->getRoute('updateField', ['entity' => $entityName, 'id' => $id, 'field' => $name]); ?>" data-value="<?php echo $td->val(); ?>"
 							<?php else: ?>
-							class="format <?= $td->get('class') ?>"
-							<?php endif ?>
+							class="format <?php echo $td->get('class'); ?>"
+							<?php endif; ?>
 						>
-							<?= $td->valToHtml() ?>
+							<?php echo $td->valToHtml(); ?>
 						</div>
 					</td>
 					<?php endforeach; ?>
@@ -54,19 +54,19 @@
 
 		<?php if ($search->getPage() !== null && count($rows) === $search->getLimit()): ?>
 		<footer class="footer-primary">
-			<a href="<?= $app->getRoute('search', ['entity' => $entityName], [
+			<a href="<?php echo $app->getRoute('search', ['entity' => $entityName], [
                     'query' => isset($search) ? $search->buildQuery() : null,
                     'sort' => isset($search) ? $search->buildSort() : null,
                     'page' => (isset($search) ? $search->getPage() : 0) + 1,
-                ]) ?>" class="button button-call ui-autoload-btn">
-				<?= p__('search', 'More results') ?>
+                ]); ?>" class="button button-call ui-autoload-btn">
+				<?php echo p__('search', 'More results'); ?>
 			</a>
 		</footer>
 		<?php endif; ?>
 
 		<?php else: ?>
 		<div class="page-list-noresults">
-			<p><?= p__('search', 'No items found') ?></p>
+			<p><?php echo p__('search', 'No items found'); ?></p>
 		</div>
 		<?php endif; ?>
 	</div>

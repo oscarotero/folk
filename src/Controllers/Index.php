@@ -2,11 +2,10 @@
 
 namespace Folk\Controllers;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
 use Folk\Admin;
 use Imagecow\Image;
 use Middlewares\Utils\Factory;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class Index
 {

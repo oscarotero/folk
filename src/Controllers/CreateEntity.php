@@ -2,10 +2,8 @@
 
 namespace Folk\Controllers;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use Folk\Admin;
 use Middlewares\Utils\Factory;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Zend\Diactoros\Response\RedirectResponse;
 
 class CreateEntity extends Entity
@@ -25,7 +23,7 @@ class CreateEntity extends Entity
 
         echo $this->app->get('templates')->render('pages/insert', [
                 'entityName' => $entityName,
-                'form' => $form
+                'form' => $form,
             ]);
 
         return Factory::createResponse(400);

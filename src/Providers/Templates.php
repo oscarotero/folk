@@ -3,9 +3,9 @@
 namespace Folk\Providers;
 
 use Fol\App;
+use InlineSvg\Collection;
 use Interop\Container\ServiceProviderInterface;
 use League\Plates\Engine;
-use InlineSvg\Collection;
 
 class Templates implements ServiceProviderInterface
 {
@@ -25,11 +25,12 @@ class Templates implements ServiceProviderInterface
                 });
 
                 return $templates;
-            }
+            },
         ];
     }
 
-    public function getExtensions() {
+    public function getExtensions()
+    {
         return [];
     }
 }

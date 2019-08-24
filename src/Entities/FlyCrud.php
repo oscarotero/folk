@@ -2,14 +2,14 @@
 
 namespace Folk\Entities;
 
-use Folk\SearchQuery;
 use FlyCrud\Document;
+use Folk\SearchQuery;
 
 abstract class FlyCrud extends AbstractEntity
 {
     /**
      * Returns the fly-crud directory.
-     * 
+     *
      * @return \FlyCrud\Directory
      */
     abstract protected function getDirectory();
@@ -66,9 +66,9 @@ abstract class FlyCrud extends AbstractEntity
 
     /**
      * Generate ids for the new documents
-     * 
+     *
      * @param Document $document
-     * 
+     *
      * @return string
      */
     protected function generateId(Document $document): string

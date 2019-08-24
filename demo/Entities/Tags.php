@@ -3,8 +3,8 @@
 namespace Demo\Entities;
 
 use Folk\Entities\Yaml;
-use Folk\Formats\Group;
 use Folk\Formats\FormatFactory;
+use Folk\Formats\Group;
 
 class Tags extends Yaml
 {
@@ -17,7 +17,7 @@ class Tags extends Yaml
     {
         return $builder->group([
             'name' => $builder->text()
-                ->label('Name')
+                ->label('Name'),
         ]);
     }
 }

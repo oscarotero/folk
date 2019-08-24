@@ -19,7 +19,6 @@
     },
     "require": {
         "php": "^7.2",
-        "zendframework/zend-diactoros": "^2.1.3",
         "league/plates": "^3.1",
         "oscarotero/fol": "^1.0",
         "oscarotero/middleland": "^1.0",
@@ -35,7 +34,8 @@
         "middlewares/cache": "^1.0",
         "middlewares/negotiation": "^1.0",
         "middlewares/filesystem": "^1.0",
-        "middlewares/request-handler": "^1.0"
+        "middlewares/request-handler": "^1.0",
+        "middlewares/utils": "^2.2"
     },
     "autoload": {
         "psr-4": {
@@ -53,6 +53,11 @@
         "consolidation/robo": "^1.0",
         "fly-crud/fly-crud": "^3.0",
         "simple-crud/simple-crud": "^7.0",
-        "middlewares/emitter": "^1.0"
+        "middlewares/emitter": "^1.0",
+        "zendframework/zend-diactoros": "^2.1.3",
+        "friendsofphp/php-cs-fixer": "^2.15"
+    },
+    "scripts": {
+        "cs-fix": "php-cs-fixer fix ."
     }
 }

@@ -2,9 +2,9 @@
 
 namespace Folk\Formats;
 
-use FormManager\Fields;
 use Folk\Entities\EntityInterface;
 use Folk\SearchQuery;
+use FormManager\Fields;
 
 class RelationOne extends Fields\Select implements FormatInterface
 {

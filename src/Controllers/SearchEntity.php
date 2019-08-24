@@ -2,12 +2,10 @@
 
 namespace Folk\Controllers;
 
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
-use Folk\Admin;
 use Folk\Entities\EntityInterface;
-use Zend\Diactoros\Response\RedirectResponse;
 use Folk\SearchQuery;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Zend\Diactoros\Response\RedirectResponse;
 
 class SearchEntity extends Entity
 {
@@ -74,10 +72,10 @@ class SearchEntity extends Entity
 
     /**
      * Execute the search in the entity.
-     * 
+     *
      * @param EntityInterface $entity
      * @param SearchQuery     $search
-     * 
+     *
      * @return array
      */
     private function search(EntityInterface $entity, SearchQuery $search)

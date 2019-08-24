@@ -2,11 +2,10 @@
 
 namespace Demo\Entities;
 
-use Psr\Http\Message\UploadedFileInterface;
-
 use Folk\Entities\Json;
-use Folk\Formats\Group;
 use Folk\Formats\FormatFactory;
+use Folk\Formats\Group;
+use Psr\Http\Message\UploadedFileInterface;
 
 class Items extends Json
 {
@@ -74,7 +73,7 @@ class Items extends Json
 
             'imageupload' => $builder->imageUpload()
                 ->data('config', [
-                    'thumb' => 'Entities/img'
+                    'thumb' => 'Entities/img',
                 ])
                 ->label('Image upload'),
 

@@ -2,11 +2,11 @@
 
 namespace Folk\Entities;
 
-use Folk\SearchQuery;
-use SimpleCrud\Row;
-use FilesystemIterator;
-use RecursiveDirectoryIterator;
 use Exception;
+use FilesystemIterator;
+use Folk\SearchQuery;
+use RecursiveDirectoryIterator;
+use SimpleCrud\Row;
 
 abstract class File extends AbstractEntity implements EntityInterface
 {
@@ -14,7 +14,7 @@ abstract class File extends AbstractEntity implements EntityInterface
 
     /**
      * Returns the base path.
-     * 
+     *
      * @return string
      */
     abstract protected function getBasePath(): string;
@@ -122,9 +122,9 @@ abstract class File extends AbstractEntity implements EntityInterface
 
     /**
      * Calculate the id of a new row.
-     * 
+     *
      * @param array $data
-     * 
+     *
      * @return string
      */
     protected function getId(array $data): string
@@ -136,7 +136,8 @@ abstract class File extends AbstractEntity implements EntityInterface
 
     /**
      * Returns the path of a file.
-     * 
+     *
+     * @param  mixed  $filename
      * @return string
      */
     protected function getFilePath($filename): string
@@ -146,18 +147,18 @@ abstract class File extends AbstractEntity implements EntityInterface
 
     /**
      * Transform the data to a string.
-     * 
+     *
      * @param array $data
-     * 
+     *
      * @return string
      */
     abstract protected function stringify(array $data): string;
 
     /**
      * Transform the string to an array.
-     * 
+     *
      * @param string $source
-     * 
+     *
      * @return array
      */
     abstract protected function parse(string $source): array;

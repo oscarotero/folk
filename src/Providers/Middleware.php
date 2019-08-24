@@ -3,10 +3,11 @@
 namespace Folk\Providers;
 
 use Fol\App;
+use Gettext\Translations;
+use Gettext\Translator;
 use Interop\Container\ServiceProviderInterface;
 use Middleland\Dispatcher;
 use Middlewares;
-use Gettext\{Translator, Translations};
 
 class Middleware implements ServiceProviderInterface
 {
@@ -51,11 +52,12 @@ class Middleware implements ServiceProviderInterface
                 $middleware[] = new Middlewares\RequestHandler($container);
 
                 return new Dispatcher($middleware);
-            }
+            },
         ];
     }
 
-    public function getExtensions() {
+    public function getExtensions()
+    {
         return [];
     }
 }

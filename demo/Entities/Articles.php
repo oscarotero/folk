@@ -3,8 +3,8 @@
 namespace Demo\Entities;
 
 use Folk\Entities\Yaml;
-use Folk\Formats\Group;
 use Folk\Formats\FormatFactory;
+use Folk\Formats\Group;
 
 class Articles extends Yaml
 {
@@ -21,14 +21,14 @@ class Articles extends Yaml
 
             'intro' => $builder->html()
                 ->data('config', [
-                    'extraPlugins' => 'autogrow,wordcount,notification'
+                    'extraPlugins' => 'autogrow,wordcount,notification',
                 ])
                 ->label('Introduction'),
 
             'tags' => $builder->relationMany($this->admin->getEntity('tags'))
                 ->allowNewValues()
                 ->data('config', [
-                    'create' => 'name'
+                    'create' => 'name',
                 ])
                 ->label('Tags'),
 
@@ -53,8 +53,8 @@ class Articles extends Yaml
                 'label' => 'Reload',
                 'target' => '_blank',
                 'icon' => 'reload',
-                'url' => $this->admin->getRoute('read', ['entity' => $this->name, 'id' => $id])
-            ],[
+                'url' => $this->admin->getRoute('read', ['entity' => $this->name, 'id' => $id]),
+            ], [
                 'label' => 'Insert new article',
                 'target' => '_blank',
                 'method' => 'post',
@@ -62,9 +62,9 @@ class Articles extends Yaml
                 'data' => [
                     'method-override' => 'PUT',
                     'entity' => $this->name,
-                    'data[title]' => 'New article'
-                ]
-            ]
+                    'data[title]' => 'New article',
+                ],
+            ],
         ];
     }
 }

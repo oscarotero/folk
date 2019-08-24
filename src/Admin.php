@@ -2,13 +2,13 @@
 
 namespace Folk;
 
-use Fol\{App, NotFoundException};
+use Fol\App;
+use Fol\NotFoundException;
 use Folk\Entities\EntityInterface;
-use Folk\Entities\SingleEntityInterface;
-use Psr\Http\Message\{ServerRequestInterface, ResponseInterface, UriInterface};
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\UriInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Zend\Diactoros\Response;
-use Relay\RelayBuilder;
 
 /**
  * Main manager.
@@ -32,7 +32,7 @@ class Admin extends App implements RequestHandlerInterface
 
     /**
      * {@inheritdoc}
-     * 
+     *
      * @return ResponseInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
@@ -67,7 +67,7 @@ class Admin extends App implements RequestHandlerInterface
      * Add a new entity.
      *
      * @param EntityInterface $entity
-     * @param string|null $id
+     * @param string|null     $id
      */
     public function addEntity(EntityInterface $entity, $id = null)
     {
@@ -112,7 +112,7 @@ class Admin extends App implements RequestHandlerInterface
      * @param string $name
      *
      * @throw NotFoundException
-     * 
+     *
      * @return EntityInterface
      */
     public function getEntity(string $name): EntityInterface
