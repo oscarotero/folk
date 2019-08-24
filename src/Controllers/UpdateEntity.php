@@ -4,7 +4,6 @@ namespace Folk\Controllers;
 
 use Middlewares\Utils\Factory;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Zend\Diactoros\Response\RedirectResponse;
 
 class UpdateEntity extends Entity
 {
@@ -18,10 +17,11 @@ class UpdateEntity extends Entity
         if ($form->validate()) {
             $this->app->getEntity($entityName)->update($id, $form['data']->val());
 
-            return new RedirectResponse($this->app->getRoute('read', [
-                'entity' => $entityName,
-                'id' => $id,
-            ]));
+            return Factory::createResponse(302)
+                ->withHeader('Location', $this->app->getRoute('read', [
+                    'entity' => $entityName,
+                    'id' => $id,
+                ]));
         }
 
         echo $this->app->get('templates')->render('pages/read', [

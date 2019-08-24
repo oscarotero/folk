@@ -5,7 +5,7 @@ namespace Folk\Controllers;
 use Folk\Entities\EntityInterface;
 use Folk\SearchQuery;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Zend\Diactoros\Response\RedirectResponse;
+use Middlewares\Utils\Factory;
 
 class SearchEntity extends Entity
 {
@@ -17,10 +17,11 @@ class SearchEntity extends Entity
 
         //Redirect to edit element if it's only one result
         if (count($items) === 1 && !empty($search->buildQuery())) {
-            return new RedirectResponse($this->app->getRoute('read', [
-                'entity' => $entityName,
-                'id' => key($items),
-            ]));
+            return Factory::createResponse(302)
+                ->withHeader('Location', $this->app->getRoute('read', [
+                    'entity' => $entityName,
+                    'id' => key($items),
+                ]));
         }
 
         //Load the values

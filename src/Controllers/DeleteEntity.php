@@ -2,8 +2,8 @@
 
 namespace Folk\Controllers;
 
+use Middlewares\Utils\Factory;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Zend\Diactoros\Response\RedirectResponse;
 
 class DeleteEntity extends Entity
 {
@@ -11,8 +11,9 @@ class DeleteEntity extends Entity
     {
         $this->app->getEntity($entityName)->delete($request->getAttribute('id'));
 
-        return new RedirectResponse($this->app->getRoute('search', [
-            'entity' => $entityName,
-        ]));
+        return Factory::createResponse(302)
+                ->withHeader('Location', $this->app->getRoute('search', [
+                    'entity' => $entityName,
+                ]));
     }
 }

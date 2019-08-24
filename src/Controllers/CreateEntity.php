@@ -4,7 +4,6 @@ namespace Folk\Controllers;
 
 use Middlewares\Utils\Factory;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Zend\Diactoros\Response\RedirectResponse;
 
 class CreateEntity extends Entity
 {
@@ -15,10 +14,11 @@ class CreateEntity extends Entity
         $form->loadFromPsr7($request);
 
         if ($form->validate()) {
-            return new RedirectResponse($this->app->getRoute('read', [
-                'entity' => $entityName,
-                'id' => $entity->create($form['data']->val()),
-            ]));
+            return Factory::createResponse(302)
+                ->withHeader('Location', $this->app->getRoute('read', [
+                    'entity' => $entityName,
+                    'id' => $entity->create($form['data']->val()),
+                ]));
         }
 
         echo $this->app->get('templates')->render('pages/insert', [
