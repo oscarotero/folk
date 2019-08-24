@@ -15,17 +15,11 @@ abstract class SimpleCrud extends AbstractEntity
 
     /**
      * Returns the simple-crud table.
-     * 
-     * @return Table
      */
     abstract protected function getTable(): Table;
 
     /**
      * Generates the query to search rows.
-     * 
-     * @param SearchQuery $search
-     * 
-     * @return Query
      */
     protected function getQuery(SearchQuery $search): Query
     {
@@ -35,7 +29,7 @@ abstract class SimpleCrud extends AbstractEntity
 
         //Filter by id
         if (count($search->getIds())) {
-            $query->byId($search->getIds());
+            $query->where('id IN', $search->getIds());
         }
 
         if ($search->getPage() !== null) {
@@ -51,22 +45,27 @@ abstract class SimpleCrud extends AbstractEntity
         $orderBy = $search->getSort();
 
         if (empty($orderBy)) {
-            $query->orderBy("`{$table->getName()}`.`id`", 'DESC');
+            $query->orderBy("{$table->id} DESC");
         } else {
             foreach ($orderBy as $field => $direction) {
-                $query->orderBy("`{$table->getName()}`.`{$field}`", $direction);
+                $query->orderBy("{$table->$field} {$direction}");
             }
         }
 
         //Filter by words
-        foreach ($search->getWords() as $k => $word) {
-            $where = [];
+        foreach ($search->getWords() as $word) {
+            $query->where('(');
+            $like = "%{$word}%";
 
-            foreach ($this->searchFields as $field) {
-                $where[] = "(`{$table->getName()}`.`{$field}` LIKE :w{$k})";
+            foreach ($this->searchFields as $k => $field) {
+                if ($k !== 0) {
+                    $query->catWhere(' OR ');
+                }
+
+                $query->catWhere("{$table->$field} LIKE ", $like);
             }
 
-            $query->where(implode(' OR ', $where), [":w{$k}" => "%{$word}%"]);
+            $query->catWhere(')');
         }
 
         //Filter by relations
@@ -75,7 +74,7 @@ abstract class SimpleCrud extends AbstractEntity
         foreach ($search->getConditions() as $name => $value) {
             $related = $db->$name
                 ->select()
-                ->by('id', $value)
+                ->whereEquals(['id' => $value])
                 ->run();
 
             $query->relatedWith($related);
@@ -92,7 +91,7 @@ abstract class SimpleCrud extends AbstractEntity
         $result = [];
 
         foreach ($this->getQuery($search)->run() as $row) {
-            $result[$row->id] = $row->toArray();
+            $result[$row->id] = $row->toArray(true);
         }
 
         return $result;
@@ -104,7 +103,7 @@ abstract class SimpleCrud extends AbstractEntity
     public function create(array $data)
     {
         $row = $this->getTable()->create();
-
+        
         $this->save($row, $data);
 
         return $row->id;
@@ -116,6 +115,7 @@ abstract class SimpleCrud extends AbstractEntity
     public function read($id): array
     {
         $table = $this->getTable();
+        $db = $table->getDatabase();
 
         $row = $table[$id];
 
@@ -123,12 +123,16 @@ abstract class SimpleCrud extends AbstractEntity
             return [];
         }
 
-        $relations = $table->getScheme()['relations'];
-        $array = $row->toArray();
+        $array = $row->toArray(true);
+        $foreignKey = $table->getForeignKey();
 
-        foreach ($relations as $name => $relation) {
-            if ($relation[0] === Scheme::HAS_MANY || $relation[0] === Scheme::HAS_MANY_TO_MANY) {
-                $array[$name] = array_values($row->$name->id);
+        foreach ($db->getScheme()->getTables() as $tableName) {
+            $table2 = $db->{$tableName};
+
+            //Has many OR has many to many
+            if ($table2->getJoinField($table) || $table->getJoinTable($table2)) {
+                $array[$tableName] = array_values($row->$tableName->id);
+                continue;
             }
         }
 
@@ -169,9 +173,9 @@ abstract class SimpleCrud extends AbstractEntity
     protected function getFirstField(): string
     {
         if ($this->firstField === null) {
-            foreach (array_keys($this->getTable()->getScheme()['fields']) as $field) {
-                if ($field !== 'id') {
-                    return $this->firstField = $field;
+            foreach ($this->getTable()->getFields() as $field) {
+                if ($field->getName() !== 'id') {
+                    return $this->firstField = $field->getName();
                 }
             }
         }
@@ -189,28 +193,35 @@ abstract class SimpleCrud extends AbstractEntity
     {
         $table = $this->getTable();
         $db = $table->getDatabase();
-        $scheme = $table->getScheme();
+        $tables = $db->getScheme()->getTables();
+        $relations = [];
 
         foreach ($data as $name => $value) {
-            if (isset($scheme['fields'][$name])) {
+            if (isset($table->$name)) {
                 $row->$name = $value;
+                continue;
+            }
+
+            if (in_array($name, $tables)) {
+                $relations[$name] = (array) $value;
             }
         }
 
-        foreach ($data as $name => $value) {
-            if (isset($scheme['relations'][$name])) {
-                $unrelated = $row->$name()
-                    ->where("`{$name}`.`id` NOT IN (:ids)", [':ids' => $value])
-                    ->run();
+        foreach ($relations as $name => $ids) {
+            $table2 = $db->$name;
+            $related = $row->$name;
 
-                foreach ($unrelated as $r) {
+            foreach ($related as $id => $r) {
+                if (!in_array($id, $ids)) {
                     $row->unrelate($r);
                 }
+            }
 
-                $rows = $db->$name->select()->by('id', $value)->run();
-
-                foreach ($rows as $r) {
-                    $row->relate($r);
+            foreach ($ids as $id) {
+                if ($id && !isset($related[$id])) {
+                    if ($r = $table2[$id]) {
+                        $row->relate($r);
+                    }
                 }
             }
         }
