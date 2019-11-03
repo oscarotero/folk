@@ -9,19 +9,20 @@ require __DIR__.'/vendor/autoload.php';
  */
 class RoboFile extends \Robo\Tasks
 {
-    use Gettext\Robo\GettextScanner;
+    use Gettext\Robo\Gettext;
 
     /**
      * Scan files to find new gettext values.
      */
     public function gettext()
     {
-        $this->taskGettextScanner()
-            ->extract('templates/')
-            ->extract('assets/js/modules', '/.*\.js/')
-            ->generate('locales/en.po', 'assets/js/locales/en.json')
-            ->generate('locales/es.po', 'assets/js/locales/es.json')
-            ->generate('locales/gl.po', 'assets/js/locales/gl.json')
+        $this->taskGettext()
+            ->scan('templates/', '/\.php$/')
+            ->scan('assets/js/modules', '/\.js$/')
+            ->scan('assets/js/modules', '/\.js$/')
+            ->save('messages', 'locales/en.po', 'locales/en.php', 'assets/js/locales/en.json')
+            ->save('messages', 'locales/es.po', 'locales/es.php', 'assets/js/locales/es.json')
+            ->save('messages', 'locales/gl.po', 'locales/gl.php', 'assets/js/locales/gl.json')
             ->run();
     }
 }

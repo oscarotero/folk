@@ -1,9 +1,8 @@
 define([
     'jquery',
     '../loader',
-    '../notifier',
-    '../i18n'
-], function ($, loader, notifier, i18n) {
+    '../notifier'
+], function ($, loader, notifier) {
     return {
         init: function ($form) {
             var enabled = 'FormData' in window;

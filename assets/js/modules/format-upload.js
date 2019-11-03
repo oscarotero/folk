@@ -1,8 +1,7 @@
 define([
     'jquery',
-    '../i18n',
     'magnific-popup'
-], function ($, i18n) {
+], function ($) {
     var baseUrl = $('html').data('baseurl');
     var defaults = {};
     var previews = {

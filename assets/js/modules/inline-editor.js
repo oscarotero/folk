@@ -1,8 +1,7 @@
 define([
 	'jquery',
-	'../notifier',
-	'../i18n'
-], function ($, notifier, i18n) {
+	'../notifier'
+], function ($, notifier) {
 	return {
 		init: function ($element) {
 			$element.on('click', '.ui-editable', function () {

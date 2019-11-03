@@ -4,8 +4,8 @@ namespace Folk\Controllers;
 
 use Folk\Entities\EntityInterface;
 use Folk\SearchQuery;
-use Psr\Http\Message\ServerRequestInterface as Request;
 use Middlewares\Utils\Factory;
+use Psr\Http\Message\ServerRequestInterface as Request;
 
 class SearchEntity extends Entity
 {

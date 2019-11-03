@@ -24,7 +24,8 @@
             };
         </script>
         <script type="text/javascript" src="<?php echo $app->getUri('js/modernizr.js').'?'."?{$assetsVersion}"; ?>"></script>
-        <script type="text/javascript" data-main="<?php echo $app->getUri('js/main.js')."?{$assetsVersion}"; ?>" src="<?php echo $app->getUri('js/vendor/requirejs/require.js')."?{$assetsVersion}"; ?>"></script>
+        <script type="module" src="<?= $app->getUri('js/modules.js') ?>"></script>
+        <script type="text/javascript" data-main="<?php echo $app->getUri('js/main.js')."?{$assetsVersion}"; ?>" src="<?php echo $app->getUri('js/vendor/requirejs/require.js')."?{$assetsVersion}"; ?>" defer></script>
     </head>
 
     <body class="has-menu">

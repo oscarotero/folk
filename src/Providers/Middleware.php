@@ -5,6 +5,7 @@ namespace Folk\Providers;
 use Fol\App;
 use Gettext\Translations;
 use Gettext\Translator;
+use Gettext\TranslatorFunctions;
 use Interop\Container\ServiceProviderInterface;
 use Middleland\Dispatcher;
 use Middlewares;
@@ -25,16 +26,15 @@ class Middleware implements ServiceProviderInterface
 
                 $middleware[] = function ($request, $next) use ($app) {
                     $language = $request->getHeaderLine('Accept-Language');
-                    $translator = new Translator();
-                    $translator->loadTranslations(Translations::fromPoFile(dirname(dirname(__DIR__)).'/locales/'.$language.'.po'));
-                    $prev = $translator->register();
+                    $translator = (new Translator())->loadTranslations(dirname(dirname(__DIR__)).'/locales/'.$language.'.php');
+                    $prev = TranslatorFunctions::register($translator);
 
                     $app->get('templates')->addData(['language' => $language]);
 
                     $response = $next->handle($request);
 
                     if ($prev) {
-                        $prev->register();
+                        TranslatorFunctions::register($prev);
                     }
 
                     return $response;

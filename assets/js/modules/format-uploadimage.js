@@ -1,9 +1,8 @@
 define([
     'jquery',
-    '../i18n',
     './format-upload',
     'magnific-popup'
-], function ($, i18n, formatUpload) {
+], function ($, formatUpload) {
     var baseUrl = $('html').data('baseurl');
     var defaults = {
         limit: 100

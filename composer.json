@@ -24,7 +24,12 @@
         "oscarotero/middleland": "^1.0",
         "oscarotero/inline-svg": "^2.0",
         "form-manager/form-manager": "^5.0",
-        "gettext/gettext": "^4.0",
+        "gettext/gettext": "dev-v5-dev",
+		"gettext/robo": "dev-v4-dev",
+		"gettext/php-scanner": "dev-master",
+		"gettext/js-scanner": "dev-master",
+		"gettext/translator": "dev-master",
+		"gettext/json": "dev-master",
         "imagecow/imagecow": "^2.1",
         "psr/http-server-middleware": "^1.0",
         "middlewares/base-path": "^1.0",
@@ -49,15 +54,15 @@
     },
     "require-dev": {
         "symfony/yaml": "^4.0",
-        "gettext/robo": "^3.0",
-        "consolidation/robo": "^1.0",
+        "consolidation/robo": "^2.0",
         "fly-crud/fly-crud": "^3.0",
         "simple-crud/simple-crud": "^7.0",
         "middlewares/emitter": "^1.0",
         "zendframework/zend-diactoros": "^2.1.3",
-        "friendsofphp/php-cs-fixer": "^2.15"
+        "friendsofphp/php-cs-fixer": "^2.15",
+        "oscarotero/php-cs-fixer-config": "^1.0"
     },
     "scripts": {
-        "cs-fix": "php-cs-fixer fix ."
+        "cs-fix": "php-cs-fixer fix"
     }
 }

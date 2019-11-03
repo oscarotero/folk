@@ -1,8 +1,7 @@
 define([
 	'jquery',
-	'../loader',
-	'../i18n'
-], function ($, loader, i18n) {
+	'../loader'
+], function ($, loader) {
 	return {
 		init: function ($element) {
 			$element

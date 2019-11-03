@@ -1,10 +1,9 @@
 define([
     'jquery',
-    '../i18n',
     '../notifier',
     'module',
     'selectize'
-], function ($, i18n, notifier, module) {
+], function ($, notifier, module) {
 	var defaults = {};
 
 	return {
