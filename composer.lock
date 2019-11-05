@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da9b7ec91436e37b903af4edc7b3b880",
+    "content-hash": "32ab5bf761dee5b43f936bf0d98ae5bc",
     "packages": [
         {
             "name": "aura/router",
@@ -637,16 +637,16 @@
         },
         {
             "name": "gettext/gettext",
-            "version": "dev-v5-dev",
+            "version": "v5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-gettext/Gettext.git",
-                "reference": "34daf8598ab177426d1474cff117d5e883cd2a09"
+                "reference": "20059a7495e0202b0fadd14e0cac237b3ca80ca3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-gettext/Gettext/zipball/34daf8598ab177426d1474cff117d5e883cd2a09",
-                "reference": "34daf8598ab177426d1474cff117d5e883cd2a09",
+                "url": "https://api.github.com/repos/php-gettext/Gettext/zipball/20059a7495e0202b0fadd14e0cac237b3ca80ca3",
+                "reference": "20059a7495e0202b0fadd14e0cac237b3ca80ca3",
                 "shasum": ""
             },
             "require": {
@@ -688,24 +688,24 @@
                 "po",
                 "translation"
             ],
-            "time": "2019-11-01T16:38:39+00:00"
+            "time": "2019-11-04T22:54:56+00:00"
         },
         {
             "name": "gettext/js-scanner",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/oscarotero/JS-Scanner.git",
-                "reference": "77050988daab86215053e18d99b0f7f4ee685eb8"
+                "url": "https://github.com/php-gettext/JS-Scanner.git",
+                "reference": "d20dd7702f21df9d2aa2b1704182d29efe21caff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/JS-Scanner/zipball/77050988daab86215053e18d99b0f7f4ee685eb8",
-                "reference": "77050988daab86215053e18d99b0f7f4ee685eb8",
+                "url": "https://api.github.com/repos/php-gettext/JS-Scanner/zipball/d20dd7702f21df9d2aa2b1704182d29efe21caff",
+                "reference": "d20dd7702f21df9d2aa2b1704182d29efe21caff",
                 "shasum": ""
             },
             "require": {
-                "gettext/gettext": "dev-v5-dev",
+                "gettext/gettext": "^5.0.0",
                 "mck89/peast": "^1.9",
                 "php": "^7.2"
             },
@@ -742,24 +742,24 @@
                 "scanner",
                 "translation"
             ],
-            "time": "2019-11-01T23:56:05+00:00"
+            "time": "2019-11-04T23:54:03+00:00"
         },
         {
             "name": "gettext/json",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-gettext/Json.git",
-                "reference": "ae718fe379d0c7c2cd337bf0e009ae50652858a4"
+                "reference": "a707d2fe23031b5cada18827444e1254592c8e6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-gettext/Json/zipball/ae718fe379d0c7c2cd337bf0e009ae50652858a4",
-                "reference": "ae718fe379d0c7c2cd337bf0e009ae50652858a4",
+                "url": "https://api.github.com/repos/php-gettext/Json/zipball/a707d2fe23031b5cada18827444e1254592c8e6b",
+                "reference": "a707d2fe23031b5cada18827444e1254592c8e6b",
                 "shasum": ""
             },
             "require": {
-                "gettext/gettext": "dev-v5-dev",
+                "gettext/gettext": "^5.0.0",
                 "php": "^7.2"
             },
             "require-dev": {
@@ -795,7 +795,7 @@
                 "loader",
                 "translation"
             ],
-            "time": "2019-11-02T18:30:32+00:00"
+            "time": "2019-11-05T19:24:58+00:00"
         },
         {
             "name": "gettext/languages",
@@ -860,20 +860,20 @@
         },
         {
             "name": "gettext/php-scanner",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-gettext/PHP-Scanner.git",
-                "reference": "72a4c9883f8c992e381b07665aec7f668ef124dc"
+                "reference": "37581cbfb65babd2298c292cfab291e6be209457"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-gettext/PHP-Scanner/zipball/72a4c9883f8c992e381b07665aec7f668ef124dc",
-                "reference": "72a4c9883f8c992e381b07665aec7f668ef124dc",
+                "url": "https://api.github.com/repos/php-gettext/PHP-Scanner/zipball/37581cbfb65babd2298c292cfab291e6be209457",
+                "reference": "37581cbfb65babd2298c292cfab291e6be209457",
                 "shasum": ""
             },
             "require": {
-                "gettext/gettext": "dev-v5-dev",
+                "gettext/gettext": "^5.0",
                 "nikic/php-parser": "^4.2",
                 "php": "^7.2"
             },
@@ -910,30 +910,34 @@
                 "scanner",
                 "translation"
             ],
-            "time": "2019-11-01T16:29:15+00:00"
+            "time": "2019-11-04T23:17:20+00:00"
         },
         {
             "name": "gettext/robo",
-            "version": "dev-v4-dev",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-gettext/Robo.git",
-                "reference": "5deaaf6c0117d79a5cb4aaf7dcf4267939946fb5"
+                "reference": "2591e12655159d25e4bd00676858afca1854114e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-gettext/Robo/zipball/5deaaf6c0117d79a5cb4aaf7dcf4267939946fb5",
-                "reference": "5deaaf6c0117d79a5cb4aaf7dcf4267939946fb5",
+                "url": "https://api.github.com/repos/php-gettext/Robo/zipball/2591e12655159d25e4bd00676858afca1854114e",
+                "reference": "2591e12655159d25e4bd00676858afca1854114e",
                 "shasum": ""
             },
             "require": {
                 "consolidation/robo": "^2.0",
-                "gettext/gettext": "dev-v5-dev",
+                "gettext/gettext": "^5.0.0",
                 "php": "^7.2"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.15",
                 "oscarotero/php-cs-fixer-config": "^1.0"
+            },
+            "suggest": {
+                "gettext/json": "Is necessary to load and generate json files",
+                "gettext/translator": "Is necessary to load and generate php array files"
             },
             "type": "library",
             "autoload": {
@@ -965,20 +969,20 @@
                 "robo",
                 "translation"
             ],
-            "time": "2019-11-02T21:08:35+00:00"
+            "time": "2019-11-05T19:56:26+00:00"
         },
         {
             "name": "gettext/translator",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-gettext/Translator.git",
-                "reference": "77af368c77277789c5a7e67df4df59a27b58bab2"
+                "reference": "4025181bb16b04962505f764b7fabb93941a2a09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-gettext/Translator/zipball/77af368c77277789c5a7e67df4df59a27b58bab2",
-                "reference": "77af368c77277789c5a7e67df4df59a27b58bab2",
+                "url": "https://api.github.com/repos/php-gettext/Translator/zipball/4025181bb16b04962505f764b7fabb93941a2a09",
+                "reference": "4025181bb16b04962505f764b7fabb93941a2a09",
                 "shasum": ""
             },
             "require": {
@@ -986,10 +990,13 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.15",
-                "gettext/gettext": "dev-v5-dev",
+                "gettext/gettext": "^5.0.0",
                 "oscarotero/php-cs-fixer-config": "^1.0",
                 "phpunit/phpunit": "^8.0",
                 "squizlabs/php_codesniffer": "^3.0"
+            },
+            "suggest": {
+                "gettext/gettext": "Is necessary to load and generate array files used by the translator"
             },
             "type": "library",
             "autoload": {
@@ -1017,7 +1024,7 @@
                 "php",
                 "translator"
             ],
-            "time": "2019-11-02T20:57:26+00:00"
+            "time": "2019-11-05T19:14:30+00:00"
         },
         {
             "name": "grasmash/expander",
@@ -3545,16 +3552,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v2.15.3",
+            "version": "v2.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "705490b0f282f21017d73561e9498d2b622ee34c"
+                "reference": "ceaff36bee1ed3f1bbbedca36d2528c0826c336d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/705490b0f282f21017d73561e9498d2b622ee34c",
-                "reference": "705490b0f282f21017d73561e9498d2b622ee34c",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/ceaff36bee1ed3f1bbbedca36d2528c0826c336d",
+                "reference": "ceaff36bee1ed3f1bbbedca36d2528c0826c336d",
                 "shasum": ""
             },
             "require": {
@@ -3630,7 +3637,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2019-08-31T12:51:54+00:00"
+            "time": "2019-11-03T13:31:09+00:00"
         },
         {
             "name": "middlewares/emitter",
@@ -4205,14 +4212,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "gettext/gettext": 20,
-        "gettext/robo": 20,
-        "gettext/php-scanner": 20,
-        "gettext/js-scanner": 20,
-        "gettext/translator": 20,
-        "gettext/json": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

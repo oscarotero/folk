@@ -24,12 +24,12 @@
         "oscarotero/middleland": "^1.0",
         "oscarotero/inline-svg": "^2.0",
         "form-manager/form-manager": "^5.0",
-        "gettext/gettext": "dev-v5-dev",
-		"gettext/robo": "dev-v4-dev",
-		"gettext/php-scanner": "dev-master",
-		"gettext/js-scanner": "dev-master",
-		"gettext/translator": "dev-master",
-		"gettext/json": "dev-master",
+        "gettext/gettext": "^5.0.0",
+		"gettext/robo": "^4.0.0",
+		"gettext/php-scanner": "^1.0.0",
+		"gettext/js-scanner": "^1.0.0",
+		"gettext/translator": "^1.0.0",
+		"gettext/json": "^1.0.0",
         "imagecow/imagecow": "^2.1",
         "psr/http-server-middleware": "^1.0",
         "middlewares/base-path": "^1.0",
@@ -63,6 +63,7 @@
         "oscarotero/php-cs-fixer-config": "^1.0"
     },
     "scripts": {
-        "cs-fix": "php-cs-fixer fix"
+        "cs-fix": "php-cs-fixer fix",
+        "gettext:update": "robo gettext"
     }
 }

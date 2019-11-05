@@ -17,12 +17,12 @@ msgctxt "search"
 msgid "Search %s..."
 msgstr "Buscar %s..."
 
-#: assets/js/modules/submit.js:54
-#: assets/js/modules/inline-editor.js:20
+#: assets/js/modules/submit.js:53
+#: assets/js/modules/inline-editor.js:19
 msgid "Data saved successfully"
 msgstr "Datos gardados correctamente"
 
-#: assets/js/modules/submit.js:67
+#: assets/js/modules/submit.js:66
 msgid "Too big data"
 msgstr "Non se poden subir arquivos tan grandes"
 
@@ -51,7 +51,7 @@ msgctxt "home"
 msgid "Bookmarklet"
 msgstr ""
 
-#: assets/js/modules/format-select.js:17
+#: assets/js/modules/format-select.js:16
 msgid "Creating \"%s\", are you sure?"
 msgstr "Creando \"%s\", estas seguro?"
 
@@ -100,35 +100,35 @@ msgctxt "edit"
 msgid "Delete"
 msgstr "Eliminar"
 
-#: assets/js/modules/format-upload.js:42
-#: assets/js/modules/format-uploadimage.js:90
+#: assets/js/modules/format-upload.js:41
+#: assets/js/modules/format-uploadimage.js:89
 msgid "Edit as text"
 msgstr "Editar manualmente"
 
-#: assets/js/modules/format-upload.js:58
+#: assets/js/modules/format-upload.js:57
 msgid "Too big file: %s (%s max allowed)"
 msgstr "Arquivo demasiado grande: %s (máximo permitido: %s)"
 
-#: assets/js/modules/format-upload.js:85
+#: assets/js/modules/format-upload.js:84
 msgid "Insert value as text"
 msgstr "Insertar o valor manualmente"
 
-#: assets/js/modules/format-upload.js:88
+#: assets/js/modules/format-upload.js:87
 msgid "New value (empty to remove)"
 msgstr "Novo valor (deixa baleiro para eliminar)"
 
-#: assets/js/modules/format-uploadimage.js:27
+#: assets/js/modules/format-uploadimage.js:26
 msgid "Previously uploaded..."
 msgstr "Cargados previamente"
 
-#: assets/js/modules/format-uploadimage.js:47
+#: assets/js/modules/format-uploadimage.js:46
 msgid "Load %d more..."
 msgstr "Cargar %d más"
 
-#: assets/js/modules/inline-editor.js:10
+#: assets/js/modules/inline-editor.js:9
 msgid "Edit this value"
 msgstr ""
 
-#: assets/js/modules/format-collection.js:30
+#: assets/js/modules/format-collection.js:29
 msgid "Are you sure?"
 msgstr "Estas seguro?"
