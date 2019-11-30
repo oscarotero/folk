@@ -18,7 +18,6 @@ class Middleware implements ServiceProviderInterface
             'middleware' => function (App $app): Dispatcher {
                 $middleware = [];
 
-                $middleware[] = new Middlewares\Expires();
                 $middleware[] = new Middlewares\BasePath($app->getUri()->getPath());
                 $middleware[] = new Middlewares\TrailingSlash();
                 $middleware[] = new Middlewares\ContentType();
