@@ -18,7 +18,7 @@
         "issues": "https://github.com/oscarotero/folk/issues"
     },
     "require": {
-        "php": "^7.2",
+        "php": "^7.2|^8.0",
         "league/plates": "^3.1",
         "oscarotero/fol": "^1.0",
         "oscarotero/middleland": "^1.0",
